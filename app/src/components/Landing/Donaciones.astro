@@ -1,0 +1,37 @@
+---
+import EstandarButton from "../Buttons/EstandarButton.astro";
+import PayButtons from "../Buttons/PayButtons.astro";
+
+
+---
+
+<section class="px-36 py-20 w-full flex flex-col">
+  <div class="flex flex-col justify-center items-center gap-10">
+    <p class="text-5xl font-semibold">Apoya Nuestra Labor</p>
+    <EstandarButton
+      bgColor={"bg-pink-500"}
+      url={"./Adopta"}
+      nameButton={"HAZ TU DONACION AQUI"}
+    />
+    <p class="text-2xl text-gray-600 font-semibold">
+      También puedes hacer tu aporte por estos medios
+    </p>
+  </div>
+  <div class="flex flex-row gap-14 justify-center items-center py-20 border-b-2 border-pink-500 border-dashed">
+    <PayButtons
+      namePayment={"info@peluditostepa.org"}
+      urlPayment={"/"}
+      urlIcon={"https://www.fundaciontepa.org/wp-content/uploads/2022/11/logo-paypal-ajustado.jpg"}
+    />
+    <PayButtons
+      namePayment={"321 306 7647"}
+      urlPayment={"/"}
+      urlIcon={"https://www.fundaciontepa.org/wp-content/uploads/2022/08/logo-nequi.jpeg"}
+    />
+    <PayButtons
+      namePayment={"310 854 0203"}
+      urlPayment={"/"}
+      urlIcon={"https://www.fundaciontepa.org/wp-content/uploads/2022/11/logo-daviplata.jpg"}
+    />
+  </div>
+</section>
