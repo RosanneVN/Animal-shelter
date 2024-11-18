@@ -1,0 +1,33 @@
+---
+import EstandarButton from "../Buttons/EstandarButton.astro";
+---
+
+<section class="flex flex-row gap-6 py-20 px-36">
+  <div class="w-[50%] flex flex-col gap-6">
+    <p class="text-2xl font-semibold text-gray-500">TU BUSCAS A UN PELUDITO</p>
+    <p class="text-5xl font-semibold">En Tepa tenemos a muchos buscando un hogar</p>
+    <p class="text-gray-500 text-xl">
+      Nos alegra saber que estas pensando en adoptar, todos nuestros peludos
+      estan a la espera de una familia y son entregados en optimas condiciones
+      de salud y belleza a adoptantes responsables y amorosos. En esta pagina
+      conoceras nuestro proceso de adopcion y requisitos, pero lo primero es
+      conocer al peludo que deseas adoptar, si ya tienes su nombre sigue leyendo
+      nuestras condiciones, de lo contrario puedes conocer todos nuestro
+      peluditos en los siguientes links.
+    </p>
+    <EstandarButton
+      bgColor={"bg-lime-600"}
+      url={"./PeluditosAdoptables"}
+      nameButton={"PELUDITOS ADOPTABLES"}
+    />
+  </div>
+
+  <div class="rounded-xl w-[50%]">
+    <video controls width="600">
+      <source
+        src="https://youtu.be/6jF2DZbaBl4?si=UH0SijqCcFghzmkO"
+        type="video/mp4"
+      />
+    </video>
+  </div>
+</section>
