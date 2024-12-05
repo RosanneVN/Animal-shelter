@@ -1,0 +1,113 @@
+---
+import EstandarButton from "../Buttons/EstandarButton.astro";
+---
+
+<section class="flex flex-col w-full">
+  <div
+    class="flex bg-[#474747] font-semibold text-white text-xl py-10 pt-20 gap-20 place-content-center"
+  >
+    <div class="flex flex-col gap-3 place-items-center">
+      <img class="size-16" src="/Icons/Home.png" alt="" />
+      <p>ADOPTA</p>
+      <EstandarButton
+        bgColor={"bg-lime-500"}
+        url={"./Adopta"}
+        nameButton={"ADOPTA"}
+      />
+    </div>
+    <div class="flex flex-col gap-3 place-items-center">
+      <img class="size-16" src="/Icons/Home.png" alt="" />
+      <p>ADOPTA</p>
+      <EstandarButton
+        bgColor={"bg-lime-500"}
+        url={"./Adopta"}
+        nameButton={"ADOPTA"}
+      />
+    </div>
+    <div class="flex flex-col gap-3 place-items-center">
+      <img class="size-16" src="/Icons/Home.png" alt="" />
+      <p>ADOPTA</p>
+      <EstandarButton
+        bgColor={"bg-lime-600"}
+        url={"./Adopta"}
+        nameButton={"ADOPTA"}
+      />
+    </div>
+  </div>
+
+  <div class="flex flex-col text-white font-semibold">
+    <div class="relative">
+      <div
+        class="bg-[url('/Image/FooterBlog.jpg')] bg-cover bg-no-repeat bg-center w-full py-32 place-items-center place-content-center"
+      >
+        <div
+          class="w-[50%] flex flex-col gap-12 relative z-10 place-items-center place-content-center"
+        >
+          <p class="text-5xl text-center">Suscríbete a nuestra Newsletter</p>
+          <p class="text-2xl text-center">
+            Te enviaremos cada mes noticias sobre la manada, peluditos en
+            adopción, eventos y mucho más.
+          </p>
+          <form
+            class="flex flex-col place-items-center place-content-center gap-3"
+            action=""
+          >
+            <div class="flex gap-3 place-items-center">
+              <p>Nombre</p>
+              <input
+                class="bg-white/25 py-2 px-5 rounded-full border-none outline-none"
+                type="text"
+              />
+            </div>
+            <div class="flex gap-3 place-items-center">
+              <p>Correo Electronico</p>
+              <input
+                class="bg-white/25 py-2 px-5 rounded-full border-none outline-none"
+                type="email"
+                name=""
+                id=""
+              />
+            </div>
+            <div class="flex gap-3">
+              <input type="checkbox" name="" id="" />
+              <p>He leído y aceptado la politica de privacidad</p>
+            </div>
+          </form>
+
+          <EstandarButton
+            bgColor={"bg-lime-600"}
+            url={"./Adopta"}
+            nameButton={"QUIERO SUSCRIBIRME"}
+          />
+
+          <div class="flex flex-row w-full place-content-center gap-10">
+            <div class="bg-white/15 rounded-full p-5">
+              <a href="/">
+                <img src="/Icons/facebook.png" alt="" />
+              </a>
+            </div>
+            <div class="bg-white/15 rounded-full p-5">
+              <a href="/">
+                <img src="/Icons/x.png" alt="" />
+              </a>
+            </div>
+            <div class="bg-white/15 rounded-full p-5">
+              <a href="/">
+                <img src="/Icons/instagram.png" alt="" />
+              </a>
+            </div>
+            <div class="bg-white/15 rounded-full p-5">
+              <a href="/">
+                <img src="/Icons/youtube.png" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="w-full h-[100vh] bg-gradient-to-b from-[#474747] to-transparent absolute top-0"
+      >
+      </div>
+    </div>
+  </div>
+</section>
