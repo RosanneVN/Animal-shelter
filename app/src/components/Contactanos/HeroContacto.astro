@@ -1,0 +1,23 @@
+---
+import EstandarButton from "../Buttons/EstandarButton.astro";
+---
+
+<section
+  class="bg-[url('/Image/AdoptaBgHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col w-full h-[60vh] relative justify-center items-center gap-6"
+>
+  <p class="text-2xl font-semibold text-white">QUEREMOS ESCUCHARTE</p>
+  <p class="text-6xl font-semibold text-white">Contactanos</p>
+  <div class="flex flex-row gap-6">
+    <EstandarButton
+      bgColor={"bg-pink-500"}
+      url={"./Contactanos"}
+      nameButton={"ESCRIBENOS"}
+    />
+    <a class="bg-white/30 px-10 py-5 w-fit text-white font-semibold rounded-full hover:bg-lime-600 transition duration-500" href="./ApadrinaYDona">HAZ UNA DONACION</a>
+  </div>
+
+  <img
+    class="w-full absolute bottom-0 scale-x-[-1]"
+    src="/Image/transparent.svg"
+  />
+</section>

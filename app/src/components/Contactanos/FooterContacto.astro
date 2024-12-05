@@ -1,0 +1,44 @@
+---
+import EstandarButton from "../Buttons/EstandarButton.astro";
+---
+
+<section class="flex flex-col w-full place-items-center relative">
+  <div class="bg-pink-500 w-[80%] text-white font-semibold flex flex-col py-32 px-32 gap-10  place-items-center rounded-lg absolute bottom-60">
+    <p class="text-pink-300 text-2xl">CONTACTANOS</p>
+    <p class="text-5xl">Mándanos un mensaje</p>
+    <form class="flex flex-col gap-10" action="">
+        <div class="flex gap-10">
+            <input class="bg-pink-600 border-none outline-none placeholder-white py-2 px-4 rounded-lg" type="text" placeholder="Nombre">
+            <input class="bg-pink-600 border-none outline-none placeholder-white py-2 px-4 rounded-lg" type="text" name="" id="" placeholder="Celular">
+        </div>
+        <div class="flex flex-col gap-10">
+            <input class="bg-secondary border-none outline-none placeholder-white py-2 px-4 rounded-lg" type="email" name="" placeholder="Correo electronico" id="">
+            <textarea class="bg-pink-600 border-none outline-none placeholder-white py-2 px-4 rounded-lg" name="" placeholder="Mensaje" id=""></textarea>
+        </div>
+        <div class="flex place-content-end">
+            <a class="py-2 px-4 bg-white/15 w-fit rounded-full" href="/">ENVIAR</a>
+        </div>
+      
+      
+    </form>
+  </div>
+
+  <div class="bg-[#474747] flex gap-16 place-content-center  w-full pb-20 pt-40">
+    <div>
+      <p class="text-white font-semibold text-2xl">CORREO DE CONTACTO</p>
+      <p class="text-lime-600 font-semibold text-2xl">info@peluditostepa.org</p>
+    </div>
+    <div>
+      <p class="text-white font-semibold text-2xl">HORRARIO DE ATENCION</p>
+      <p class="text-lime-600 font-semibold text-2xl">
+        L-V: 10am – 4pm <br>S-D: 10am – 4pm
+      </p>
+    </div>
+    <div>
+      <p class="text-white font-semibold text-2xl">DIRECCION</p>
+      <p class="text-lime-600 font-semibold text-2xl">
+        Vereda San Vicente, Suesca <br> Colombia
+      </p>
+    </div>
+  </div>
+</section>

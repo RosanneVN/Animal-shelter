@@ -1,0 +1,32 @@
+---
+import FrecuentesDesplegables from "../Adopta/FrecuentesDesplegables.astro";
+---
+
+<section class="flex flex-col w-full gap-6 py-20 px-36 font-semibold text-gray-500 text-lg">
+  <p class="text-2xl text-center">PREGUNTAS FRECUENTES</p>
+  <p class="text-black text-5xl">Lee la siguiente sección antes de contactarnos</p>
+  <p>
+    Diariamente recibimos correos donde encontramos la mismas preguntas, por eso
+    decidimos agruparlas en la siguiente sección para despejarlas y puedas
+    conocer un poco más sobre nuestra labor. Si después de leerlas sgues con
+    alguna duda, por favor no dudes en escribirnos 🙂
+  </p>
+
+  <div class="border p-3 flex flex-col gap-2">
+    <p class="text-black text-3xl">¿Pueden recibir un perrito en su fundación?</p>
+    <p>
+      Tenemos alrededor de 180 perritos, por lo que nos es díficil abrir un
+      nuevo espacio. Los peludos en la Fundación Tepa han ingresado debido a las
+      difíciles condiciones en que los hemos encontrado, si tu perrito esta sano
+      podemos ayudarte difundiendo el caso para tratar de encontrarle un nuevo
+      hogar. Escríbenos por Instagram o Facebook.
+    </p>
+  </div>
+
+  <div class="flex flex-col gap-6">
+    <FrecuentesDesplegables
+      text={"¿Cuáles son sus canales oficiales de donación?"}
+    />
+    <FrecuentesDesplegables text={"¿En qué emplean las donaciones?"} />
+  </div>
+</section>
