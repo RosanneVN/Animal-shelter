@@ -1,15 +1,22 @@
 ---
 import BlogComponent from "../BlogComponent.astro";
+import Transparent from "../icons/Transparent.astro";
 ---
 
-<section class="flex flex-col w-full  py-20 px-36">
-  <div class="grid grid-cols-3 grid-flow-row gap-4">
-    <BlogComponent />
-    <BlogComponent />
-    <BlogComponent />
-    <BlogComponent />
-    <BlogComponent />
-    <BlogComponent />
+<section class="relative">
+  <div class="flex flex-col w-full pt-10 pb-28 px-36">
+    <div class="grid grid-cols-3 grid-flow-row gap-4">
+      <BlogComponent />
+      <BlogComponent />
+      <BlogComponent />
+      <BlogComponent />
+      <BlogComponent />
+      <BlogComponent />
+    </div>
+    <a class="text-primary underline" href="./Blog">«Entradas mas antiguas</a>
   </div>
-  <a class="text-lime-600" href="./Blog">«Entradas mas antiguas</a>
+
+  <div class="w-full absolute bottom-0 ">
+    <Transparent color={"#003049"} />
+  </div>
 </section>

@@ -1,47 +1,60 @@
 ---
 import DonationButton from "../Buttons/DonationButton.astro";
 import EstandarButton from "../Buttons/EstandarButton.astro";
-
-
+import Transparent from "../icons/Transparent.astro";
 ---
 
-<section class="flex flex-col w-full py-20 px-36 gap-10">
-  <div class="flex flex-col items-center">
-    <p class="text-4xl font-semibold text-center">DONAR CON</p>
-    <img class="h-20 w-48"
-      src="https://www.fundaciontepa.org/wp-content/uploads/2022/11/logo-paypal-ajustado.jpg"
-      alt=""
-    />
-  </div>
-  <div class="grid grid-cols-3 grid-rows-3 w-full gap-20">
-    <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-    <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-    <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-    <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-    <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-    <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-    <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-    <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-    <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-  </div>
-  <div class="flex flex-row gap-10">
-    <div class="w-[50%] flex flex-col place-content-center place-items-center">
-        <img class="h-20 w-40"
+<section class="relative">
+  <div class="flex flex-col w-full py-20 px-36 gap-10">
+    <div class="flex flex-col items-center">
+      <p class="text-4xl font-semibold text-center">DONAR CON</p>
+      <img
+        class="h-20 w-48"
         src="https://www.fundaciontepa.org/wp-content/uploads/2022/11/logo-paypal-ajustado.jpg"
         alt=""
       />
-      <EstandarButton
-      bgColor={"bg-lime-500"}
-      url={"/"}
-      nameButton={"DONATE WITH PAYPAL"}
-    />
     </div>
-    <div class="w-[50%] flex flex-col place-content-center place-items-center">
-        <img class="h-20 w-48"
-        src="https://www.fundaciontepa.org/wp-content/uploads/2022/08/logo-nequi.jpeg"
-        alt="" >
-        <p class="text-xl font-semibold text-gray-700">321 306 7647</p>
-        <img class="size-40" src="/Image/codigo-qr-nequi2.jpeg" alt="">
+    <div class="grid grid-cols-3 grid-rows-3 w-full gap-20">
+      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
+      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
+      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
+      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
+      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
+      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
+      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
+      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
+      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
     </div>
+    <div class="flex flex-row gap-10">
+      <div
+        class="w-[50%] flex flex-col place-content-center place-items-center"
+      >
+        <img
+          class="h-20 w-40"
+          src="https://www.fundaciontepa.org/wp-content/uploads/2022/11/logo-paypal-ajustado.jpg"
+          alt=""
+        />
+        <EstandarButton
+          bgColor={"bg-primary"}
+          url={"/"}
+          nameButton={"DONATE WITH PAYPAL"}
+        />
+      </div>
+      <div
+        class="w-[50%] flex flex-col place-content-center place-items-center"
+      >
+        <img
+          class="h-20 w-48"
+          src="https://www.fundaciontepa.org/wp-content/uploads/2022/08/logo-nequi.jpeg"
+          alt=""
+        />
+        <p class="text-xl font-semibold text-lettersMiddle">321 306 7647</p>
+        <img class="size-40" src="/Image/codigo-qr-nequi2.jpeg" alt="" />
+      </div>
+    </div>
+  </div>
+
+  <div class="w-full absolute bottom-0">
+    <Transparent color={"#003049"} />
   </div>
 </section>

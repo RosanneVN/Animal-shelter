@@ -1,41 +1,48 @@
 ---
 import EstandarButton from "../Buttons/EstandarButton.astro";
+import Donation from "../icons/Donation.astro";
+import Facebook from "../icons/Facebook.astro";
+import Home from "../icons/Home.astro";
+import Instagram from "../icons/Instagram.astro";
+import Pet from "../icons/Pet.astro";
+import Twitter from "../icons/Twitter.astro";
+import Youtube from "../icons/Youtube.astro";
 ---
 
 <section class="flex flex-col w-full">
   <div
-    class="flex bg-[#474747] font-semibold text-white text-xl py-10 pt-20 gap-20 place-content-center"
+    class="flex bg-primary font-semibold text-lettersLight text-xl py-10 pt-20 gap-20 place-content-center"
   >
     <div class="flex flex-col gap-3 place-items-center">
-      <img class="size-16" src="/Icons/Home.png" alt="" />
-      <p>ADOPTA</p>
+      <Home color={"#999"} />
+      <p>Adopta un peludito</p>
       <EstandarButton
-        bgColor={"bg-lime-500"}
+        bgColor={"bg-secondary"}
         url={"./Adopta"}
         nameButton={"ADOPTA"}
       />
     </div>
     <div class="flex flex-col gap-3 place-items-center">
-      <img class="size-16" src="/Icons/Home.png" alt="" />
-      <p>ADOPTA</p>
+      <Donation color={"#999"} />
+      <p>Apoya nuestra labor</p>
       <EstandarButton
-        bgColor={"bg-lime-500"}
-        url={"./Adopta"}
-        nameButton={"ADOPTA"}
+        bgColor={"bg-secondary"}
+        url={"./ApadrinaYDona"}
+        nameButton={"APADRINA Y DONA"}
       />
     </div>
     <div class="flex flex-col gap-3 place-items-center">
-      <img class="size-16" src="/Icons/Home.png" alt="" />
-      <p>ADOPTA</p>
+      <Pet color={"#999"} />
+      <p>Un espacio en tu hogar</p>
       <EstandarButton
-        bgColor={"bg-lime-600"}
-        url={"./Adopta"}
-        nameButton={"ADOPTA"}
+        bgColor={"bg-secondary"}
+        url={"./HogaresTepa"}
+        nameButton={"HOGARES TEPA"}
       />
     </div>
   </div>
 
-  <div class="flex flex-col text-white font-semibold">
+  <div class="flex flex-col text-lettersLight font-semibold">
     <div class="relative">
       <div
         class="bg-[url('/Image/FooterBlog.jpg')] bg-cover bg-no-repeat bg-center w-full py-32 place-items-center place-content-center"
@@ -75,37 +82,39 @@ import EstandarButton from "../Buttons/EstandarButton.astro";
           </form>
 
           <EstandarButton
-            bgColor={"bg-lime-600"}
+            bgColor={"bg-secondary"}
             url={"./Adopta"}
             nameButton={"QUIERO SUSCRIBIRME"}
           />
 
-          <div class="flex flex-row w-full place-content-center gap-10">
+          <div
+            class="flex flex-row w-full place-content-center gap-10"
+          >
             <div class="bg-white/15 rounded-full p-5">
               <a href="/">
-                <img src="/Icons/facebook.png" alt="" />
+                <Facebook color={"#fff"} />
               </a>
             </div>
             <div class="bg-white/15 rounded-full p-5">
               <a href="/">
-                <img src="/Icons/x.png" alt="" />
+                <Twitter color={"#fff"} />
               </a>
             </div>
             <div class="bg-white/15 rounded-full p-5">
               <a href="/">
-                <img src="/Icons/instagram.png" alt="" />
+                <Instagram color={"#fff"} />
               </a>
             </div>
             <div class="bg-white/15 rounded-full p-5">
               <a href="/">
-                <img src="/Icons/youtube.png" alt="" />
+                <Youtube color={"#fff"}/>
               </a>
             </div>
           </div>
         </div>
       </div>
       <div
-        class="w-full h-[100vh] bg-gradient-to-b from-[#474747] to-transparent absolute top-0"
+        class="w-full h-[100vh] bg-gradient-to-b from-primary to-transparent absolute top-0"
       >
       </div>
     </div>

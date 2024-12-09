@@ -1,19 +1,31 @@
-<section class="flex flex-row w-full py-20 px-36 gap-10">
-  <div class="w-[50%] flex flex-col gap-6">
-    <p class="text-xl text-gray-500 font-semibold">¿DE QUE SE TRATA?</p>
-    <p class="text-4xl font-semibold">Otra forma de ayudar a nuestra manada</p>
-    <p class="text-xl text-gray-500 font-semibold">
-      Los Hogares Tepa, o lo que comúnmente se conocen como hogares de paso, es
-      una forma en la que nos puedes ayudar con nuestra labor de seguir salvando
-      las vidas de más peluditos. Consiste en abrir un espacio en tu casa o
-      apartamento para acoger de forma temporal a uno de nuestros perritos
-      rescatados. Tendrás que cuidarlo y darle cariño, mientras nosotros nos
-      encargamos de su alimentación y gastos veterinarios hasta que encontremos
-      su hogar definitivo.
-    </p>
+---
+import Transparent from "../icons/Transparent.astro";
+---
+
+<section class="relative">
+  <div class="flex flex-row w-full py-20 px-36 gap-10">
+    <div class="w-[50%] flex flex-col gap-6">
+      <p class="text-xl text-gray-500 font-semibold">¿DE QUE SE TRATA?</p>
+      <p class="text-4xl font-semibold">
+        Otra forma de ayudar a nuestra manada
+      </p>
+      <p class="text-xl text-gray-500 font-semibold">
+        Los Hogares Tepa, o lo que comúnmente se conocen como hogares de paso,
+        es una forma en la que nos puedes ayudar con nuestra labor de seguir
+        salvando las vidas de más peluditos. Consiste en abrir un espacio en tu
+        casa o apartamento para acoger de forma temporal a uno de nuestros
+        perritos rescatados. Tendrás que cuidarlo y darle cariño, mientras
+        nosotros nos encargamos de su alimentación y gastos veterinarios hasta
+        que encontremos su hogar definitivo.
+      </p>
+    </div>
+
+    <div class="w-[50%]">
+      <img src="/Image/CartelSeBusca.jpg" alt="" />
+    </div>
   </div>
 
-  <div class="w-[50%]">
-    <img src="/Image/CartelSeBusca.jpg" alt="" />
+  <div class="w-full absolute bottom-0 scale-x-[-1]">
+    <Transparent color={"#003049"} />
   </div>
 </section>

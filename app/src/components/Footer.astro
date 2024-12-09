@@ -1,19 +1,30 @@
-<footer class="w-full flex flex-row gap-20 place-content-center bg-primary py-3 text-lettersMiddle font-semibold">
-  <p>
-    © 2024 Fundacion TEPA. Todos los derechos reservados. | Donado con ❤ por
-    Alunizar.
-  </p>
-  <div class="flex flex-row">
-    <a href="/">
-      <img src="/Icons/facebook.png" alt="" />
-    </a>
+---
+import Facebook from "./icons/Facebook.astro";
+import Instagram from "./icons/Instagram.astro";
+import Twitter from "./icons/Twitter.astro";
+---
 
-    <a href="/">
-      <img src="/Icons/x.png" alt="" />
-    </a>
+<footer
+  class="w-full flex flex-col gap-5 place-content-center bg-primary py-10 text-lettersMiddle font-semibold"
+>
+<p class="text-terciary text-2xl text-center">Términos y Condiciones</p>
+  <div class="w-full flex flex-row gap-20 place-content-center">
+    <p>
+      © 2024 Fundacion TEPA. Todos los derechos reservados. | Donado con ❤ por
+      Alunizar.
+    </p>
+    <div class="flex flex-row gap-5">
+      <a href="/">
+        <Facebook color={"#999"} />
+      </a>
 
-    <a href="/">
-      <img src="/Icons/instagram.png" alt="" />
-    </a>
+      <a href="/">
+        <Twitter color={"#999"} />
+      </a>
+
+      <a href="/">
+        <Instagram color={"#999"} />
+      </a>
+    </div>
   </div>
 </footer>

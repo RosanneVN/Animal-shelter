@@ -1,34 +1,35 @@
 ---
 import EstandarButton from "../Buttons/EstandarButton.astro";
+import Transparent from "../icons/Transparent.astro";
 ---
 
 <section
-  class="bg-[url('/Image/ApadrinayDonaHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col w-full h-[120vh] relative justify-center items-center gap-6 text-white"
+  class="bg-[url('/Image/ApadrinayDonaHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col w-full h-[120vh] relative justify-center items-center gap-6 text-lettersLight"
 >
   <p class="text-6xl font-semibold text-center">Apadrina y Dona</p>
   <ul class="text-xl font-semibold text-center flex flex-col gap-2">
     <li>Nuestros canales oficiales de donación</li>
-    <li> Bancolombia ahorros No. 01316502624 – Fundación Tepa NIT. 900.669.514 – 1</li>
+    <li>
+      Bancolombia ahorros No. 01316502624 – Fundación Tepa NIT. 900.669.514 – 1
+    </li>
     <li>Daviplata 310 854 0203</li>
     <li>Nequi 321 306 7647</li>
   </ul>
 
-  <div class="flex flex-row">
+  <div class="flex flex-row gap-5">
     <EstandarButton
-    bgColor={"bg-pink-500"}
-    url={"/"}
-    nameButton={"DONAR CON PAYU"}
-  />
-  
-  <a class="bg-white/30 px-10 py-5 w-fit text-white font-semibold rounded-full hover:bg-lime-600 transition duration-500" href="/">DONA CON PAYPAL</a>
+      bgColor={"bg-secondary"}
+      url={"/"}
+      nameButton={"DONAR CON PAYU"}
+    />
+
+    <a
+      class="bg-lettersLight/30 px-10 py-5 w-fit text-lettersLight font-semibold rounded-full hover:bg-primary transition duration-500"
+      href="/">DONA CON PAYPAL</a
+    >
   </div>
-  
-  <img
-    class="w-full absolute bottom-0 scale-x-[-1]"
-    src="/Image/transparent.svg"
-  />
+
+  <div class="w-full absolute bottom-0 scale-x-[-1]">
+    <Transparent color={"#fff"} />
+  </div>
 </section>
-
-
-
-
