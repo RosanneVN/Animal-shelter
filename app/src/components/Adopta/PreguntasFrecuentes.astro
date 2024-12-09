@@ -1,70 +1,77 @@
 ---
 import EstandarButton from "../Buttons/EstandarButton.astro";
-import FrecuentesDesplegables from "../Adopta/FrecuentesDesplegables.astro";
+import ToggleableContent from "../ToggleableContent";
 ---
 
-<section class="flex flex-row w-full gap-10 py-10 px-36">
+<section class="flex flex-row w-full gap-10 py-20 px-36">
   <div class="flex flex-col w-[35%] gap-10">
-    <p class="text-gray-400 text-2xl font-semibold">¿ESTAS LIST@?</p>
+    <p class="text-lettersMiddle text-2xl font-semibold">¿ESTAS LIST@?</p>
     <p class="text-4xl font-semibold">ANTES DE APLICAR</p>
-    <p class="text-gray-500 font-semibold text-lg">
+    <p class="text-lettersMiddle font-semibold text-lg">
       Si estás interesad@ en adoptar a alguno de nuestros peluditos, antes de
-      diligenciar el pre-formulario <span class="text-pink-500">
+      diligenciar el pre-formulario <span class="text-secondary">
         debes leer con detenimiento cada una de las siguientes preguntas
         frecuentes:</span
       >
     </p>
     <EstandarButton
-      bgColor={"bg-pink-500"}
+      bgColor={"bg-secondary"}
       url={"./Contactanos"}
       nameButton={"PRE-FORMULARIO DE ADOPCION"}
     />
   </div>
   <div class="flex flex-col w-[65%] rounded-lg gap-3">
-    <p class="text-gray-400 text-2xl font-semibold">
+    <p class="text-lettersMiddle text-2xl font-semibold">
       PREGUNTAS FRECUNTES SOBRE ADOPCION
     </p>
-    <div class="bg-[#474747] flex flex-col rounded-lg gap-3 p-6 text-white">
-      <p class="text-xl font-semibold text-lime-600">
-        ¿CUAL ES EL PROCESO PARA ADOPTAR UN ANIMAL DE LA FUNDACION?
-      </p>
-      <p class="font-semibold">
-        Tenemos una gran cantidad de solicitudes y pocos recursos humanos para
-        el estudio de estos, por eso te pedimos tener un poco de paciencia y
-        respeto, leer con detalle y cuidado la información suministrada para
-        empezar el proceso de adopción.
-      </p>
-      <ol>
-        <li>
-          Escoger el perrito o gatito que desees adoptar teniendo en cuenta el
-          espacio que dispones, su edad y tamaño. Perritos adoptables — Gatitos
-          Adoptables
-        </li>
-        <li>
-          Diligencia el Pre- Formulario de Adopción. Los datos ingresados serán
-          verificados por funcionarios de la Fundación (esta verificación tarda
-          3 días calendario). Si no sigues en el proceso te enviaremos un correo
-          electrónico informándote.
-        </li>
-        <li>
-          Si tu formulario es aprobado, te llamaremos para darte todas las
-          instrucciones para que grabes un video del lugar donde vivirá el
-          peludo y nos lo envies, ya que por tema del Coronavirus no podemos
-          hacer la visita domiciliaria.
-        </li>
-        <li>
-          Revisaremos tu solicitud y si todo está en orden, nos contactaremos
-          para coordinar el día en que el peludito que escogiste llegue a tu
-          casa.
-        </li>
-      </ol>
-    </div>
+
     <div class="flex flex-col gap-6">
-      <FrecuentesDesplegables text={"CUALES SON LOS BENEFICIOS DE ADOPTAR?"}/>
-      <FrecuentesDesplegables text={"POR QUE ADOPTAR EN LUGAR DE COMPRAR?"}/>
-      <FrecuentesDesplegables text={"CUALES SON LAS RESPONSABILIDADES DE UN ADOPTANTE?"}/>
-      <FrecuentesDesplegables text={"QUE CUIDADOS ESPECIALES DEBE TENER?"}/>
-      <FrecuentesDesplegables text={"CUANTOS ANIMALES HAN SIDO DADOS EN ADOPCION?"}/>
+      <ToggleableContent
+        client:visible
+        question={"CUALES SON LOS BENEFICIOS DE ADOPTAR?"}
+        answer={`Tenemos una gran cantidad de solicitudes y pocos recursos humanos para el estudio de estos, por eso te pedimos tener un poco de paciencia y respeto, leer con detalle y cuidado la información suministrada para empezar el proceso de adopción.
+Escoger el perrito o gatito que desees adoptar teniendo en cuenta el espacio que dispones, su edad y tamaño. Perritos adoptables — Gatitos Adoptables
+Diligencia el Pre- Formulario de Adopción. Los datos ingresados serán verificados por funcionarios de la Fundación (esta verificación tarda 3 días calendario). Si no sigues en el proceso te enviaremos un correo electrónico informándote.
+Si tu formulario es aprobado, te llamaremos para darte todas las instrucciones para que grabes un video del lugar donde vivirá el peludo y nos lo envies, ya que por tema del Coronavirus no podemos hacer la visita domiciliaria.
+Revisaremos tu solicitud y si todo está en orden, nos contactaremos para coordinar el día en que el peludito que escogiste llegue a tu casa.`}
+        isStartOpen={true}
+      />
+      <ToggleableContent
+        client:visible
+        question={"POR QUE ADOPTAR EN LUGAR DE COMPRAR?"}
+        answer={`Tenemos una gran cantidad de solicitudes y pocos recursos humanos para el estudio de estos, por eso te pedimos tener un poco de paciencia y respeto, leer con detalle y cuidado la información suministrada para empezar el proceso de adopción.
+          Escoger el perrito o gatito que desees adoptar teniendo en cuenta el espacio que dispones, su edad y tamaño. Perritos adoptables — Gatitos Adoptables
+          Diligencia el Pre- Formulario de Adopción. Los datos ingresados serán verificados por funcionarios de la Fundación (esta verificación tarda 3 días calendario). Si no sigues en el proceso te enviaremos un correo electrónico informándote.
+          Si tu formulario es aprobado, te llamaremos para darte todas las instrucciones para que grabes un video del lugar donde vivirá el peludo y nos lo envies, ya que por tema del Coronavirus no podemos hacer la visita domiciliaria.
+          Revisaremos tu solicitud y si todo está en orden, nos contactaremos para coordinar el día en que el peludito que escogiste llegue a tu casa.`}
+      />
+      <ToggleableContent
+        client:visible
+        question={"CUALES SON LAS RESPONSABILIDADES DE UN ADOPTANTE?"}
+        answer={`Tenemos una gran cantidad de solicitudes y pocos recursos humanos para el estudio de estos, por eso te pedimos tener un poco de paciencia y respeto, leer con detalle y cuidado la información suministrada para empezar el proceso de adopción.
+          Escoger el perrito o gatito que desees adoptar teniendo en cuenta el espacio que dispones, su edad y tamaño. Perritos adoptables — Gatitos Adoptables
+          Diligencia el Pre- Formulario de Adopción. Los datos ingresados serán verificados por funcionarios de la Fundación (esta verificación tarda 3 días calendario). Si no sigues en el proceso te enviaremos un correo electrónico informándote.
+          Si tu formulario es aprobado, te llamaremos para darte todas las instrucciones para que grabes un video del lugar donde vivirá el peludo y nos lo envies, ya que por tema del Coronavirus no podemos hacer la visita domiciliaria.
+          Revisaremos tu solicitud y si todo está en orden, nos contactaremos para coordinar el día en que el peludito que escogiste llegue a tu casa.`}
+      />
+      <ToggleableContent
+        client:visible
+        question={"QUE CUIDADOS ESPECIALES DEBE TENER?"}
+        answer={`Tenemos una gran cantidad de solicitudes y pocos recursos humanos para el estudio de estos, por eso te pedimos tener un poco de paciencia y respeto, leer con detalle y cuidado la información suministrada para empezar el proceso de adopción.
+          Escoger el perrito o gatito que desees adoptar teniendo en cuenta el espacio que dispones, su edad y tamaño. Perritos adoptables — Gatitos Adoptables
+          Diligencia el Pre- Formulario de Adopción. Los datos ingresados serán verificados por funcionarios de la Fundación (esta verificación tarda 3 días calendario). Si no sigues en el proceso te enviaremos un correo electrónico informándote.
+          Si tu formulario es aprobado, te llamaremos para darte todas las instrucciones para que grabes un video del lugar donde vivirá el peludo y nos lo envies, ya que por tema del Coronavirus no podemos hacer la visita domiciliaria.
+          Revisaremos tu solicitud y si todo está en orden, nos contactaremos para coordinar el día en que el peludito que escogiste llegue a tu casa.`}
+      />
+      <ToggleableContent
+        client:visible
+        question={"CUANTOS ANIMALES HAN SIDO DADOS EN ADOPCION?"}
+        answer={`Tenemos una gran cantidad de solicitudes y pocos recursos humanos para el estudio de estos, por eso te pedimos tener un poco de paciencia y respeto, leer con detalle y cuidado la información suministrada para empezar el proceso de adopción.
+          Escoger el perrito o gatito que desees adoptar teniendo en cuenta el espacio que dispones, su edad y tamaño. Perritos adoptables — Gatitos Adoptables
+          Diligencia el Pre- Formulario de Adopción. Los datos ingresados serán verificados por funcionarios de la Fundación (esta verificación tarda 3 días calendario). Si no sigues en el proceso te enviaremos un correo electrónico informándote.
+          Si tu formulario es aprobado, te llamaremos para darte todas las instrucciones para que grabes un video del lugar donde vivirá el peludo y nos lo envies, ya que por tema del Coronavirus no podemos hacer la visita domiciliaria.
+          Revisaremos tu solicitud y si todo está en orden, nos contactaremos para coordinar el día en que el peludito que escogiste llegue a tu casa.`}
+      />
     </div>
   </div>
 </section>
