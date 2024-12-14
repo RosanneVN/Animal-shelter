@@ -1,17 +1,31 @@
-<section class="w-full py-20 px-36 flex flex-col gap-10">
-  <div class="w-[50%] flex flex-col place-items-start gap-6">
-    <p class="text-5xl font-semibold">Peluditos Adoptados</p>
-    <p class="text-lettersMiddle text-lg">
+---
+import Title from "../Title.astro";
+---
+
+<section
+  class="w-full py-20 px-36 flex flex-col gap-10 max-lg:px-20 max-sm:px-7"
+>
+  <div
+    class="w-[50%] flex flex-col place-items-start gap-6 max-lg:w-full max-lg:place-items-center"
+  >
+    <Title className="max-lg:text-4xl max-sm:text-2xl"
+      >Peluditos Adoptados</Title
+    >
+    <p class="text-lettersMiddle text-lg max-sm:text-base max-lg:text-center">
       Estos son los peludos que han encontrado humanos con un corazon enorme y
       que ahora disfrutan de la vida que se merecen.
     </p>
   </div>
 
-  <div class="grid grid-cols-4 grid-rows-3 w-full h-[100vh]">
-    <div class="h-40 w-52 relative">
+  <div
+    class="grid grid-cols-4 grid-rows-flow place-items-center w-full h-[100vh]
+     max-lg:h-[150vh] max-sm:h-[400vh] max-lg:grid-cols-2 max-sm:grid-cols-1"
+  >
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 transition duration-500 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 transition duration-500
+        h-40 w-52 max-sm:w-72 max-sm:h-52 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
@@ -20,10 +34,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 max-sm:w-72 max-sm:h-52
+         absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -32,10 +47,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52
+         max-sm:w-72 max-sm:h-52 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -44,10 +60,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52
+         max-sm:w-60 max-sm:h-48 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -56,10 +73,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52
+        max-sm:w-72 max-sm:h-52 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -68,10 +86,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52
+        max-sm:w-72 max-sm:h-52 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -80,10 +99,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52
+        max-sm:w-72 max-sm:h-52 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -92,10 +112,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52
+        max-sm:w-72 max-sm:h-52 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -104,10 +125,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52
+        max-sm:w-72 max-sm:h-52 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -116,10 +138,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52
+        max-sm:w-72 max-sm:h-52 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -128,10 +151,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52
+        max-sm:w-72 max-sm:h-52 absolute top-0 flex justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
@@ -140,10 +164,11 @@
         />
       </div>
     </div>
-    <div class="h-40 w-52 relative">
+    <div class="h-40 w-52 max-sm:w-72 max-sm:h-52 relative">
       <img src="/Image/Adoptados.jpg" alt="" />
       <div
-        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 absolute top-0 flex justify-center items-center"
+        class="bg-transparent group hover:bg-lettersLight/80 h-40 w-52 max-sm:w-72 max-sm:h-52 absolute top-0 flex
+         justify-center items-center"
       >
         <img
           class="size-8 opacity-0 group-hover:opacity-100"
