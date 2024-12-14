@@ -2,8 +2,12 @@
 const { nameButton, url, bgColor } = Astro.props;
 ---
 
-<div class={`px-10 py-5 rounded-full w-fit ${bgColor}`}>
+<div
+  class={`px-10 py-5 rounded-full flex place-items-center w-fit max-md:px-5 max-md:py-4 ${bgColor}`}
+>
   <a href={url}>
-    <p class="text-base font-semibold text-white">{nameButton}</p>
+    <p class="text-base font-semibold text-white max-md:text-sm">
+      {nameButton}
+    </p>
   </a>
 </div>

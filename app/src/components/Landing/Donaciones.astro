@@ -1,23 +1,25 @@
 ---
 import EstandarButton from "../Buttons/EstandarButton.astro";
 import PayButtons from "../Buttons/PayButtons.astro";
-
-
+import Title from "../Title.astro";
 ---
 
-<section class="px-36 py-20 w-full flex flex-col">
+<section class="px-36 py-20 w-full flex flex-col max-sm:px-10">
   <div class="flex flex-col justify-center items-center gap-10">
-    <p class="text-5xl font-semibold">Apoya Nuestra Labor</p>
+    <Title className="text-5xl text-lettersDark max-sm:text-3xl">Apoya Nuestra Labor</Title>
     <EstandarButton
       bgColor={"bg-secondary"}
       url={"./Adopta"}
       nameButton={"HAZ TU DONACION AQUI"}
     />
-    <p class="text-2xl text-lettersMiddle font-semibold">
+    <p class="text-2xl text-lettersMiddle text-center">
       También puedes hacer tu aporte por estos medios
     </p>
   </div>
-  <div class="flex flex-row gap-14 justify-center items-center py-20 border-b-2 border-secondary border-dashed">
+  <div
+    class="flex flex-row gap-14 justify-center items-center py-20 border-b-2
+   border-secondary border-dashed flex-wrap"
+  >
     <PayButtons
       namePayment={"info@peluditostepa.org"}
       urlPayment={"/"}

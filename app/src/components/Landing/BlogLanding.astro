@@ -2,21 +2,19 @@
 import BlogComponent from "../BlogComponent.astro";
 ---
 
-<section class="pt-96 px-36 w-full flex flex-col">
+<section class="pt-96 px-36 w-full flex flex-col max-lg:px-10">
   <p class="text-xl font-semibold text-lettersMiddle text-center pb-5">
     CONOCE MAS NUESTRA LABOR
   </p>
   <p class="font-semibold text-5xl text-center">Blog</p>
 
-  <div class="grid grid-cols-3 grid-flow-row">
+  <div class="grid grid-cols-3 grid-flow-row max-lg:grid-cols-1">
     <BlogComponent />
     <BlogComponent />
     <BlogComponent />
     <BlogComponent />
     <BlogComponent />
-
   </div>
 
   <a class="text-primary underline" href="./Blog">«Entradas mas antiguas</a>
-  
 </section>

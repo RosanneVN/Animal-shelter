@@ -3,24 +3,27 @@ import EstandarButton from "../Buttons/EstandarButton.astro";
 import Donation from "../icons/Donation.astro";
 import Home from "../icons/Home.astro";
 import Pet from "../icons/Pet.astro";
+import Title from "../Title.astro";
 ---
 
 <section class="flex flex-col w-full justify-center items-center relative">
-  <div class="bg-terciary px-36 pt-20 pb-96">
+  <div class="bg-terciary px-36 pt-20 pb-96 max-lg:px-10">
     <div>
       <p class="text-lettersLight font-semibold text-xl text-center">
         NECESITAMOS TU AYUDA
       </p>
-      <p class="text-5xl font-semibold text-center">Haz parte del cambio</p>
+      <Title classname="text-5xl">Haz parte del cambio</Title>
     </div>
 
-    <div class="flex flex-row gap-10 py-10">
+    <div class="flex flex-row gap-10 py-10 max-lg:flex-col">
       <div
         class="flex flex-col justify-center items-center gap-6 text-lettersLight"
       >
-      <Home color={"#003049"} />
-        <a class="text-4xl font-semibold" href="./Adopta">ADOPTA</a>
-        <p class="text-lg font-semibold text-center">
+        <Home color={"#003049"} />
+        <a class="text-4xl font-semibold max-lg:text-2xl" href="./Adopta"
+          >ADOPTA</a
+        >
+        <p class="text-lg font-semibold text-center max-lg:font-normal">
           Te invitamos a nuestras jornadas de adopción o visita la fundación
           para que conozcas a tu alma gemela. Todos nuestros peludos son
           entregados en óptimas condiciones de salud a adoptantes responsables
@@ -30,9 +33,11 @@ import Pet from "../icons/Pet.astro";
       <div
         class="flex flex-col justify-center items-center gap-6 text-lettersLight"
       >
-      <Pet color={"#003049"} />
-        <a class="text-4xl font-semibold" href="./ApadrinaYDona">APADRINA</a>
-        <p class="text-lg font-semibold text-center">
+        <Pet color={"#003049"} />
+        <a class="text-4xl font-semibold max-lg:text-2xl" href="./ApadrinaYDona"
+          >APADRINA</a
+        >
+        <p class="text-lg font-semibold text-center max-lg:font-normal">
           Puedes apadrinar alguno de nuestros peludos para que su estadía en
           nuestro refugio sea óptima. Manejamos diferentes planes de padrinos en
           los que puedes hacer un aporte mensual. Si estás interesado en
@@ -41,13 +46,15 @@ import Pet from "../icons/Pet.astro";
       </div>
     </div>
 
-    <div class="flex flex-row gap-10 py-10">
+    <div class="flex flex-row gap-10 py-10 max-lg:flex-col">
       <div
         class="flex flex-col justify-center items-center gap-6 text-lettersLight"
       >
-      <Donation color={"#003049"} />
-        <a class="text-4xl font-semibold" href="./ApadrinaYDona">DONA</a>
-        <p class="text-lg font-semibold text-center">
+        <Donation color={"#003049"} />
+        <a class="text-4xl font-semibold max-lg:text-2xl" href="./ApadrinaYDona"
+          >DONA</a
+        >
+        <p class="text-lg font-semibold text-center max-lg:font-normal">
           Te invitamos a nuestras jornadas de adopción o visita la fundación
           para que conozcas a tu alma gemela. Todos nuestros peludos son
           entregados en óptimas condiciones de salud a adoptantes responsables
@@ -58,8 +65,8 @@ import Pet from "../icons/Pet.astro";
         class="flex flex-col justify-center items-center gap-6 text-lettersLight"
       >
         <img src="/Icons/SVGs/people.svg" alt="" />
-        <p class="text-4xl font-semibold">DIFUNDE</p>
-        <p class="text-lg font-semibold text-center">
+        <p class="text-4xl font-semibold max-lg:text-2xl">DIFUNDE</p>
+        <p class="text-lg font-semibold text-center max-lg:font-normal">
           Puedes apadrinar alguno de nuestros peludos para que su estadía en
           nuestro refugio sea óptima. Manejamos diferentes planes de padrinos en
           los que puedes hacer un aporte mensual. Si estás interesado en
@@ -70,11 +77,14 @@ import Pet from "../icons/Pet.astro";
   </div>
 
   <section
-    class="bg-secondary w-[80%] h-[80vh] flex flex-col justify-center items-center absolute -bottom-60 rounded-lg px-48 py-20 gap-6"
+    class="bg-secondary w-[80%] h-[80vh] flex flex-col justify-center items-center
+     absolute -bottom-60 rounded-lg px-48 py-20 gap-6 text-xl max-lg:px-10 max-lg:text-lg"
   >
-    <p class="font-semibold text-xl text-white">JUNTOS PODEMOS MAS</p>
-    <p class="font-semibold text-5xl text-white">Necesitamos tu apoyo</p>
-    <p class="font-semibold text-white text-center text-xl">
+    <p class="font-semibold text-white">JUNTOS PODEMOS MAS</p>
+    <p class="font-semibold text-5xl text-white text-center max-lg:text-3xl">
+      Necesitamos tu apoyo
+    </p>
+    <p class="font-semibold text-white text-center max-sm:text-base">
       Queremos cada día poder ayudar a más y más peludos, es por eso que creamos
       los Hogares Tepa. Si puedes abrirle un espacio en tu hogar de forma
       temporal a uno de nuestros peludos, te invitamos a inscribirte.

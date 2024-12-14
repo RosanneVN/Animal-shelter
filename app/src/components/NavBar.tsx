@@ -9,10 +9,10 @@ const NavBar = () => {
     <>
       <nav className="flex w-full place-content-center ">
         <div
-          className="fixed top-0 z-20 w-[80%] flex flex-row px-10 py-5 my-10 justify-between items-center
+          className="fixed top-0 z-20 w-[80%] max-sm:w-[95%] flex flex-row px-10 py-5 my-10 justify-between items-center
 bg-white/55 rounded-full backdrop-blur-md"
         >
-          <div className="text-2xl text-secondary items-center justify-center font-bold">
+          <div className="text-2xl max-sm:text-lg text-secondary items-center justify-center font-bold">
             <p>Fundacion Tepa</p>
           </div>
 
@@ -33,7 +33,10 @@ bg-white/55 rounded-full backdrop-blur-md"
             </ul>
           </div>
 
-          <div className="lg:hidden cursor-pointer" onClick={() => setOpen(!open)}>
+          <div
+            className="lg:hidden cursor-pointer"
+            onClick={() => setOpen(!open)}
+          >
             <img src="/Icons/SVGs/menu.svg" alt="" />
           </div>
         </div>

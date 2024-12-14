@@ -5,15 +5,16 @@ import Twitter from "./icons/Twitter.astro";
 ---
 
 <footer
-  class="w-full flex flex-col gap-5 place-content-center bg-primary py-10 text-lettersMiddle font-semibold"
+  class="w-full flex flex-col gap-5 place-content-center bg-primary py-10 max-lg:px-5
+   text-lettersMiddle font-semibold"
 >
 <p class="text-terciary text-2xl text-center">Términos y Condiciones</p>
-  <div class="w-full flex flex-row gap-20 place-content-center">
+  <div class="w-full flex flex-row gap-20 place-content-center max-sm:flex-col max-sm:gap-10">
     <p>
-      © 2024 Fundacion TEPA. Todos los derechos reservados. | Donado con ❤ por
-      Alunizar.
+      © 2024 Organizacion sin animo de lucro. Todos los derechos reservados. | Donado por
+      Rosanne.
     </p>
-    <div class="flex flex-row gap-5">
+    <div class="flex flex-row gap-5 max-sm:place-items-center max-sm:place-content-center">
       <a href="/">
         <Facebook color={"#999"} />
       </a>
