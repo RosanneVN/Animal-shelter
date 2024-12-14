@@ -8,13 +8,15 @@ export default {
           "linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%), url('/Image/BgProm.jpg')",
       },
       colors: {
-        primary: "#003049", 
+        primary: "#003049",
         secondary: "#c1121f",
         terciary: "#669bbc",
         lettersDark: "#0d0a0b",
-      lettersMiddle: "#999",
-        lettersLight: "#f3eff5"
-
+        lettersMiddle: "#999",
+        lettersLight: "#f3eff5",
+      },
+      fontFamily: {
+        poppins: ["poppins"],
       },
     },
   },
