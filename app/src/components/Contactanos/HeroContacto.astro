@@ -4,10 +4,11 @@ import Transparent from "../icons/Transparent.astro";
 ---
 
 <section
-  class="bg-[url('/Image/AdoptaBgHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col w-full h-[80vh] relative justify-center items-center gap-6"
+  class="bg-[url('/Image/AdoptaBgHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col
+   w-full h-[80vh] relative justify-center items-center gap-6 font-semibold text-lettersLight"
 >
-  <p class="text-2xl font-semibold text-lettersLight">QUEREMOS ESCUCHARTE</p>
-  <p class="text-6xl font-semibold text-lettersLight">Contactanos</p>
+  <p class="text-2xl max-sm:text-lg">QUEREMOS ESCUCHARTE</p>
+  <p class="text-6xl max-sm:text-3xl">Contactanos</p>
   <div class="flex flex-row gap-6">
     <EstandarButton
       bgColor={"bg-secondary"}
@@ -15,7 +16,8 @@ import Transparent from "../icons/Transparent.astro";
       nameButton={"ESCRIBENOS"}
     />
     <a
-      class="bg-white/30 px-10 py-5 w-fit text-lettersLight font-semibold rounded-full hover:bg-primary transition duration-500"
+      class="bg-white/30 px-10 py-5 w-fit text-lettersLight font-semibold rounded-full
+       hover:bg-primary transition duration-500 max-md:text-sm max-md:px-5 max-md:py-4"
       href="./ApadrinaYDona">HAZ UNA DONACION</a
     >
   </div>
