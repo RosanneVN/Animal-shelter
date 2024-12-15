@@ -2,14 +2,16 @@
 import Transparent from "../icons/Transparent.astro";
 ---
 
-<section class="bg-gradient-to-b from-black to-transparent relative">
+<section class="flex flex-col bg-gradient-to-b from-black to-transparent ">
   <div
-    class="bg-custom-gradient bg-cover bg-no-repeat bg-center w-full h-[150vh]"
+    class="bg-custom-gradient bg-cover bg-no-repeat bg-center w-full h-[150vh] relative"
   >
-    <div class="bg-white flex flex-col w-[40%] mx-36 p-10 rounded-xl gap-6">
-      <p class="text-xl font-semibold text-center">
+    <div
+      class="bg-white flex flex-col w-[40%] mx-36 p-10 rounded-xl gap-6 max-lg:w-full max-lg:mx-5 "
+    >
+      <h3 class="text-xl font-semibold text-center">
         HEMOS RESCATADO A MAS DE 950 PELUDOS
-      </p>
+      </h3>
       <p class="text-lettersMiddle">
         Hemos cambiado su mundo y ellos el nuestro. Muchos han sido felizmente
         adoptados, otros nos han enseñado a no darnos por vencidos y son ejemplo
@@ -33,8 +35,8 @@ import Transparent from "../icons/Transparent.astro";
         </video>
       </div>
     </div>
-  </div>
-  <div class="w-full absolute bottom-0 ">
-    <Transparent color={"#669bbc"} />
+    <div class="w-full absolute bottom-0">
+      <Transparent color={"#669bbc"} />
+    </div>
   </div>
 </section>
