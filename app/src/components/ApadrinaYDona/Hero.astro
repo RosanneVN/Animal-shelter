@@ -1,12 +1,15 @@
 ---
 import EstandarButton from "../Buttons/EstandarButton.astro";
 import Transparent from "../icons/Transparent.astro";
+import Title from "../Title.astro";
 ---
 
 <section
-  class="bg-[url('/Image/ApadrinayDonaHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col w-full h-[120vh] relative justify-center items-center gap-6 text-lettersLight"
+  class="bg-[url('/Image/ApadrinayDonaHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col
+   w-full h-[120vh] relative justify-center items-center gap-6 text-lettersLight max-lg:px-20"
 >
-  <p class="text-6xl font-semibold text-center">Apadrina y Dona</p>
+<Title className="max-lg:text-5xl">Apadrina y Dona</Title>
+
   <ul class="text-xl font-semibold text-center flex flex-col gap-2">
     <li>Nuestros canales oficiales de donación</li>
     <li>

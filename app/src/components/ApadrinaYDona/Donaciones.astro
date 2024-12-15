@@ -1,7 +1,11 @@
-<section class="flex py-20 px-36 gap-10 font-semibold">
-  <div class="flex flex-col w-[50%] bg-terciary gap-6 text-lettersLight p-10">
+---
+import Title from "../Title.astro";
+---
+
+<section class="flex py-20 px-36 gap-10 font-semibold max-lg:flex-col max-lg:px-20">
+  <div class="flex flex-col w-[50%] bg-terciary gap-6 text-lettersLight p-10 max-lg:w-full">
     <p class="text-primary text-3xl">ESPANOL</p>
-    <p class="text-3xl">Donaciones</p>
+    <Title className="max-lg:text-3xl max-lg:text-left">Donaciones</Title>
     <p class="text-xl">
       Puedes donar insumos desde alimentos y medicinas hasta cobijas o tejas
       para la adecuación del espacio de la fundación. También puedes compartir
@@ -16,9 +20,9 @@
     </p>
   </div>
 
-  <div class="flex flex-col w-[50%] gap-6 p-10 text-lettersMiddle">
+  <div class="flex flex-col w-[50%] gap-6 p-10 text-lettersMiddle max-lg:w-full">
     <p class="text-secondary text-3xl">ENGLISH</p>
-    <p class="text-3xl text-lettersDark">Donations</p>
+    <Title className="max-lg:text-3xl max-lg:text-lettersDark max-lg:text-left">Donaciones</Title>
     <p class="text-xl">
       You can donate many different things, from food to medicine. However,
       since you are probably reading this from abroad, the way you can help us
