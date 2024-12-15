@@ -9,9 +9,10 @@ import Twitter from "../icons/Twitter.astro";
 import Youtube from "../icons/Youtube.astro";
 ---
 
-<section class="flex flex-col w-full">
+<section class="flex flex-col w-full ">
   <div
-    class="flex bg-primary font-semibold text-lettersLight text-xl py-10 pt-20 gap-20 place-content-center"
+    class="flex bg-primary font-semibold text-lettersLight text-xl py-10
+     pt-20 gap-20 place-content-center max-lg:flex-col max-sm:px-5"
   >
     <div class="flex flex-col gap-3 place-items-center">
       <Home color={"#999"} />
@@ -50,8 +51,8 @@ import Youtube from "../icons/Youtube.astro";
         <div
           class="w-[50%] flex flex-col gap-12 relative z-10 place-items-center place-content-center"
         >
-          <p class="text-5xl text-center">Suscríbete a nuestra Newsletter</p>
-          <p class="text-2xl text-center">
+          <p class="text-5xl text-center max-sm:text-3xl">Suscríbete a nuestra Newsletter</p>
+          <p class="text-2xl text-center max-sm:text-xl">
             Te enviaremos cada mes noticias sobre la manada, peluditos en
             adopción, eventos y mucho más.
           </p>
@@ -60,14 +61,14 @@ import Youtube from "../icons/Youtube.astro";
             action=""
           >
             <div class="flex gap-3 place-items-center">
-              <p>Nombre</p>
+              <p class="text-start">Nombre</p>
               <input
                 class="bg-white/25 py-2 px-5 rounded-full border-none outline-none"
                 type="text"
               />
             </div>
             <div class="flex gap-3 place-items-center">
-              <p>Correo Electronico</p>
+              <p class="text-start"> Correo Electronico</p>
               <input
                 class="bg-white/25 py-2 px-5 rounded-full border-none outline-none"
                 type="email"
@@ -88,7 +89,7 @@ import Youtube from "../icons/Youtube.astro";
           />
 
           <div
-            class="flex flex-row w-full place-content-center gap-10"
+            class="flex flex-row w-full place-content-center gap-10  max-sm:flex-wrap"
           >
             <div class="bg-white/15 rounded-full p-5">
               <a href="/">
