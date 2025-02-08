@@ -12,8 +12,12 @@ const NavBar = () => {
           className="fixed top-0 z-20 w-[80%] max-sm:w-[95%] flex flex-row px-10 py-5 my-10 justify-between items-center
 bg-white/55 rounded-full backdrop-blur-md"
         >
-          <div className="text-2xl max-sm:text-lg text-secondary items-center justify-center font-bold">
-            <p>Fundacion Tepa</p>
+          <div className="text-2xl max-sm:text-lg text-secondary items-center justify-center font-bold flex ">
+            <p>PASOS</p>
+            <div className="size-6 items-center justify-center flex ml-2">
+            <img src="/Icons/PatitaLogo.png" alt="" />
+            </div>
+           
           </div>
 
           <div className="hidden lg:block">
