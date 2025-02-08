@@ -1,0 +1,43 @@
+---
+import AdoptionCards from "../AdoptionCards.astro";
+import Transparent from "../icons/Transparent.astro";
+import Title from "../Title.astro";
+---
+
+<section
+  class="w-full py-20 px-36 flex flex-col gap-10 max-lg:px-20 max-sm:px-7 relative"
+>
+  <div
+    class="w-full flex flex-col place-items-start gap-6 max-lg:w-full max-lg:place-items-center"
+  >
+    <Title
+      className="max-lg:text-4xl max-sm:text-2xl flex w-full justify-center items-center"
+      >Peluditos Adoptables</Title
+    >
+    <p class="text-lettersMiddle text-lg max-sm:text-base max-lg:text-center">
+      Lorem ipsum dolor sit amet consectetur, adipisicing elit. At unde fugit
+      quisquam facere asperiores ab numquam quis provident ut consequatur minima
+      mollitia natus quae corporis culpa officiis, esse dolorum placeat!
+    </p>
+  </div>
+
+  <div
+    class="grid grid-cols-3 grid-rows-flow place-items-center w-full h-full
+    max-lg:h-[150vh] max-sm:h-[400vh] max-lg:grid-cols-2 max-sm:grid-cols-1 gap-16"
+  >
+    <AdoptionCards />
+    <AdoptionCards />
+    <AdoptionCards />
+    <AdoptionCards />
+    <AdoptionCards />
+    <AdoptionCards />
+  </div>
+
+  <a class="text-primary underline" href="./PeluditosAdoptables"
+    >Ver todos los animales en adopcion</a
+  >
+
+  <div class="w-full absolute bottom-0 scale-x-[-1]">
+    <Transparent color={"#669bbc"} />
+  </div>
+</section>
