@@ -6,14 +6,22 @@ import Title from "../Title.astro";
 
 <section class="px-36 py-20 w-full flex flex-col max-sm:px-10">
   <div class="flex flex-col justify-center items-center gap-10">
-    <Title className="text-5xl text-lettersDark max-sm:text-3xl">Apoya Nuestra Labor</Title>
+    <Title className="text-5xl text-lettersDark max-sm:text-3xl"
+      >Apoya Nuestra Labor</Title
+    >
     <EstandarButton
       bgColor={"bg-secondary"}
       url={"./Adopta"}
       nameButton={"HAZ TU DONACION AQUI"}
     />
-    <p class="text-2xl text-lettersMiddle text-center">
-      También puedes hacer tu aporte por estos medios
+    <p class="text-xl text-lettersDark text-center">
+      Tu ayuda cambia vidas Cada donación, por pequeña que sea, marca la
+      diferencia en la vida de los animales que rescatamos. Con tu apoyo,
+      podemos proporcionarles alimento, cuidados veterinarios y un hogar
+      temporal lleno de amor mientras esperan una familia que los adopte.
+      Juntos, podemos seguir salvando y protegiendo a quienes más lo necesitan.
+      <br>
+      ¡Dona hoy y sé parte de su segunda oportunidad!
     </p>
   </div>
   <div
@@ -21,19 +29,14 @@ import Title from "../Title.astro";
    border-secondary border-dashed flex-wrap"
   >
     <PayButtons
-      namePayment={"info@peluditostepa.org"}
+      namePayment={"Transfermovil"}
       urlPayment={"/"}
-      urlIcon={"https://www.fundaciontepa.org/wp-content/uploads/2022/11/logo-paypal-ajustado.jpg"}
+      urlIcon={"/Image/Transfermovil.png"}
     />
     <PayButtons
-      namePayment={"321 306 7647"}
+      namePayment={"EnZona"}
       urlPayment={"/"}
-      urlIcon={"https://www.fundaciontepa.org/wp-content/uploads/2022/08/logo-nequi.jpeg"}
-    />
-    <PayButtons
-      namePayment={"310 854 0203"}
-      urlPayment={"/"}
-      urlIcon={"https://www.fundaciontepa.org/wp-content/uploads/2022/11/logo-daviplata.jpg"}
+      urlIcon={"/Image/EnzonaLogo.png"}
     />
   </div>
 </section>
