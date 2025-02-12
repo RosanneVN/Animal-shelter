@@ -1,5 +1,5 @@
 ---
-import AdoptionCards from "../components/AdoptionCards.astro";
+import ContendCards from "../components/ContendCards";
 import Title from "../components/Title.astro";
 ---
 
@@ -12,12 +12,6 @@ import Title from "../components/Title.astro";
     class="grid grid-cols-3 grid-rows-flow place-items-center w-full h-full
     max-lg:h-[150vh] max-sm:h-[400vh] max-lg:grid-cols-2 max-sm:grid-cols-1 gap-16"
   >
-  <AdoptionCards />
-  <AdoptionCards />
-  <AdoptionCards />
-  <AdoptionCards />
-  <AdoptionCards />
-  <AdoptionCards />
+    <ContendCards client:visible />
   </div>
- 
 </section>
