@@ -11,7 +11,7 @@ export default {
         primary: "#003049",
         secondary: "#c1121f",
         terciary: "#669bbc",
-        lettersDark: "#0d0a0b",
+        lettersDark: "#333",
         lettersMiddle: "#999",
         lettersLight: "#f3eff5",
       },
