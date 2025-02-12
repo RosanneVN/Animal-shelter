@@ -3,8 +3,8 @@ const { namePayment, urlPayment, urlIcon } = Astro.props;
 ---
 
 <div class="flex flex-col">
-  <div class="w-60">
-    <a href={urlPayment}><img  src={urlIcon} alt="" /></a>
+  <div class="size-40">
+    <a href={urlPayment}><img class="size-32"  src={urlIcon} alt="" /></a>
   </div>
   <p class="text-center text-lg font-semibold text-gray-600">{namePayment}</p>
 </div>
