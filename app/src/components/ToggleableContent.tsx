@@ -20,7 +20,9 @@ const ToggleableContent = ({
   return (
     <div className="flex flex-col bg-lettersLight p-3 rounded-lg">
       <div className="flex flex-row justify-between items-center">
-        <p className="text-lg text-secondary font-semibold max-sm:text-base">{question}</p>
+        <p className="text-lg text-secondary font-semibold max-sm:text-base">
+          {question}
+        </p>
         <button
           type="button"
           onClick={toggle}
