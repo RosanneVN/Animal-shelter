@@ -12,7 +12,7 @@ type FormData = {
 const PersonalData = () => {
   const [values, setValues] = useState<FormData>({
     fullName: "",
-    age:undefined ,
+    age: undefined,
     cellPhone: undefined,
     alternativeCellPhone: undefined,
     address: "",
@@ -26,6 +26,19 @@ const PersonalData = () => {
       ...prev,
       [field]: value,
     }));
+  };
+
+  const getEdadError = () => {
+    const num = Number(values.age);
+    if (num < 18) {
+      handleChange("age", "18");
+      return "Edad minima 18";
+    }
+
+    if (num > 100) {
+      handleChange("age", "100");
+      return "Edad maxima 100";
+    }
   };
 
   return (
@@ -46,20 +59,20 @@ const PersonalData = () => {
             label={"Nombre completo"}
             type={"text"}
             placeholderText={"Ej: Rosanne Vazquez"}
-            errorMesage={""}
             onChange={(inputValue) => {
               handleChange("fullName", inputValue.target.value);
             }}
             isRequired={true}
             value={values.fullName}
             defaultValue={""}
+            errorMesage={!values.fullName? "Este campo es obligatorio" : undefined}
           />
           <InputForm
             name={""}
             label={"Edad"}
             type={"number"}
             placeholderText={"23"}
-            errorMesage={""}
+            errorMesage={getEdadError()}
             onChange={(inputValue) => {
               handleChange("age", inputValue.target.value);
             }}
@@ -72,7 +85,7 @@ const PersonalData = () => {
             label={"Dirección de residencia (Municipio)"}
             type={"text"}
             placeholderText={"5ta A / 238 y 240 #23810, Playa, Jaimanistas"}
-            errorMesage={""}
+            errorMesage={!values.address? "Este campo es obligatorio" : undefined}
             onChange={(inputValue) => {
               handleChange("address", inputValue.target.value);
             }}
@@ -85,7 +98,7 @@ const PersonalData = () => {
             label={"Teléfono de contacto principal"}
             type={"tel"}
             placeholderText={"56 77 52 45"}
-            errorMesage={""}
+            errorMesage={!values.cellPhone? "Este campo es obligatorio" : undefined}
             onChange={(inputValue) => {
               handleChange("cellPhone", inputValue.target.value.trim());
             }}
@@ -98,9 +111,12 @@ const PersonalData = () => {
             label={"Teléfono alternativo (familiar o amigo cercano)"}
             type={"tel"}
             placeholderText={"56 77 52 45"}
-            errorMesage={""}
+            errorMesage={!values.alternativeCellPhone? "Este campo es obligatorio" : undefined}
             onChange={(inputValue) => {
-              handleChange("alternativeCellPhone", inputValue.target.value.trim());
+              handleChange(
+                "alternativeCellPhone",
+                inputValue.target.value.trim()
+              );
             }}
             isRequired={true}
             value={values.alternativeCellPhone}
