@@ -2,6 +2,7 @@ import { useState } from "react";
 import TextareaForm from "../Inputs/TextareaForm";
 import OptionButtons from "../Inputs/OptionButtons";
 import BackAndNext from "../Buttons/BackAndNext";
+import Notes from "./Notes";
 
 type FormData = {
   motivation: string;
@@ -56,18 +57,18 @@ const Motivaciones = () => {
                 first={"Para mi"}
                 second={"Otra persona"}
               />
-              <div className="flex flex-col gap-3">
-                <OptionButtons
-                  label={
-                    "¿Está dispuesto/a a asumir todos los gastos que conlleva una mascota (alimentación, salud, vacunas, etc.)?"
-                  }
-                  first={"Si"}
-                  second={"No"}
-                />
-                <p className="text-xs text-lettersDark">
-                  Nota: La esterilización está cubierta por nosotros.
-                </p>
-              </div>
+
+              <OptionButtons
+                label={
+                  "¿Está dispuesto/a a asumir todos los gastos que conlleva una mascota (alimentación, salud, vacunas, etc.)?"
+                }
+                first={"Si"}
+                second={"No"}
+              />
+              <Notes
+                noteText={"Nota: La esterilización está cubierta por nosotros."}
+              ></Notes>
+
               <OptionButtons
                 label={
                   " ¿Está de acuerdo con realizar un seguimiento mensual (enviar fotos o videos para saber del animal)?"
