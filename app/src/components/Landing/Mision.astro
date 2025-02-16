@@ -3,18 +3,24 @@ import EstandarButton from "../Buttons/EstandarButton.astro";
 import Title from "../Title.astro";
 ---
 
-<section class="flex flex-col py-10 px-36 w-full h-[100vh] max-lg:h-[150vh] max-lg:px-10">
+<section
+  class="flex flex-col py-10 px-36 w-full h-[100vh] max-lg:h-[150vh] max-lg:px-10"
+>
   <div class="pb-20 flex flex-col place-items-center">
-    <p class="text-xl text-lettersMiddle text-center uppercase">
+    <Title classname=" text-bigLetters max-sm:text-3xl"
+      >Nuestra misión</Title
+    >
+    <p class="text-lettersMiddle text-longLetters text-center uppercase">
       Trabajando en pro de los animales
     </p>
-    <Title classname="text-lettersDark max-sm:text-3xl">Nuestra misión</Title>
   </div>
 
   <div class="flex flex-row gap-16 max-lg:flex-col">
-    <div class="flex flex-col gap-6 text-xl max-sm:text-base">
-      <p class="font-semibold uppercase">Lo que hacemos</p>
-      <p class="text-lettersMiddle">
+    <div
+      class="flex flex-col gap-6 max-sm:text-base text-middleLetters justify-center items-center"
+    >
+      <p class="font-semibold uppercase text-center text-lettersDark">Lo que hacemos</p>
+      <p class="text-lettersMiddle text-justify">
         Los animales que llegan a la fundación reciben atención veterinaria
         completa, incluyendo esterilización, vacunación, desparacitación,
         identificación con microchip y cualquier tratamiento necesario para
@@ -28,9 +34,11 @@ import Title from "../Title.astro";
       />
     </div>
 
-    <div class="flex flex-col gap-6 text-xl max-sm:text-base">
-      <p class="font-semibold uppercase">Lo que queremos</p>
-      <p class="text-lettersMiddle">
+    <div
+      class="flex flex-col gap-6 max-sm:text-base text-middleLetters justify-center items-center"
+    >
+      <p class="font-semibold uppercase text-center text-lettersDark">Lo que queremos</p>
+      <p class="text-lettersMiddle text-justify">
         Promover la sensibilización colectiva fomentando la esterilización, el
         respeto a la vida, el NO al maltrato animal y la adopción responsable y
         soñamos con convertirnos en una organización líder en la protección y
