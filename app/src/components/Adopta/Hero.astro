@@ -6,12 +6,15 @@ import Title from "../Title.astro";
 
 <section
   class="bg-[url('/Image/AdoptaBgHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col w-full h-[100vh]
-   relative justify-center items-center gap-6 max-sm:px-7"
+   relative justify-center items-center gap-16 max-sm:px-7"
 >
-  <p class="text-2xl font-semibold text-lettersLight max-sm:text-xl">
+<div class="flex flex-col">
+  <Title className="text-lettersLight text-bigLetters max-sm:text-xl">Adopciones</Title>
+  <p class="text-longLetters  text-lettersLight max-sm:text-xl">
     ENCUENTRA TU ALMA GEMELA
   </p>
-  <Title className="text-lettersLight max-sm:text-xl">Adopciones</Title>
+</div>
+ 
   <div class="flex flex-row gap-6">
     <EstandarButton
       bgColor={"bg-secondary"}
@@ -24,7 +27,7 @@ import Title from "../Title.astro";
       href="./ApadrinaYDona">HAZ UNA DONACION</a
     >
   </div>
-  
+
   <div class="w-full absolute bottom-0 scale-x-[-1]">
     <Transparent color={"#fff"} />
   </div>

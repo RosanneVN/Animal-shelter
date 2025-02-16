@@ -8,9 +8,16 @@ import ToggleableContent from "../ToggleableContent";
   class="flex flex-row w-full gap-10 py-20 px-36 max-lg:flex-col max-lg:px-10"
 >
   <div class="flex flex-col w-[35%] gap-10 max-lg:w-full max-sm:gap-5">
-    <p class="text-lettersMiddle text-2xl font-semibold max-lg:text-center uppercase text-center">¿Estas list@?</p>
-    <Title className="max-lg:text-3xl max-sm:text-2xl">ANTES DE APLICAR</Title>
-    <p class="text-lettersMiddle font-semibold text-lg max-sm:text-base">
+    <div class="flex flex-col">
+      <p
+        class="text-lettersMiddle text-longLetters max-lg:text-center uppercase text-center"
+      >
+        ¿Estas list@?
+      </p>
+      <Title className="max-lg:text-3xl max-sm:text-2xl">ANTES DE APLICAR</Title
+      >
+    </div>
+    <p class="text-lettersMiddle text-middleLetters max-sm:text-base">
       Si estás interesad@ en adoptar a alguno de nuestros peluditos, antes de
       diligenciar el formulario <span class="text-secondary">
         debes leer con detenimiento cada una de las siguientes preguntas
@@ -23,12 +30,13 @@ import ToggleableContent from "../ToggleableContent";
       nameButton={"FORMULARIO DE ADOPCION"}
     />
   </div>
+
   <div class="flex flex-col w-[65%] rounded-lg gap-3 max-lg:w-full">
-    <p class="text-lettersMiddle text-2xl font-semibold max-sm:text-xl">
+    <p class="text-lettersMiddle text-longLetters  max-sm:text-xl">
       PREGUNTAS FRECUNTES SOBRE ADOPCION
     </p>
 
-    <div class="flex flex-col gap-6 ">
+    <div class="flex flex-col gap-6">
       <ToggleableContent
         client:visible
         question={"CUALES SON LOS BENEFICIOS DE ADOPTAR?"}
