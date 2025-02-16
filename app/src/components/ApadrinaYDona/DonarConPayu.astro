@@ -1,58 +1,34 @@
 ---
-import DonationButton from "../Buttons/DonationButton.astro";
-import EstandarButton from "../Buttons/EstandarButton.astro";
+import { undefined } from "astro:schema";
+import DonationButton from "../Buttons/DonationButton"
+
 import Transparent from "../icons/Transparent.astro";
 ---
 
 <section class="relative">
   <div class="flex flex-col w-full py-20 px-36 gap-10 max-lg:px-20">
     <div class="flex flex-col items-center">
-      <p class="text-4xl font-semibold text-center">DONAR CON</p>
-      <img
-        class="h-20 w-48"
-        src="https://www.fundaciontepa.org/wp-content/uploads/2022/11/logo-paypal-ajustado.jpg"
-        alt=""
-      />
-    </div>
-    <div
-      class="grid grid-cols-3 grid-rows-flow w-full gap-20 max-lg:grid-cols-2 max-lg:place-items-center"
-    >
-      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-      <DonationButton url={"/"} image={"/Image/BotonDonar-05.png"} />
-    </div>
-    <div class="flex flex-row gap-10">
-      <div
-        class="w-[50%] flex flex-col place-content-center place-items-center"
+      <p
+        class="text-bigLetters text-lettersDark font-semibold text-center uppercase"
       >
-        <img
-          class="h-20 w-40"
-          src="https://www.fundaciontepa.org/wp-content/uploads/2022/11/logo-paypal-ajustado.jpg"
-          alt=""
-        />
-        <EstandarButton
-          bgColor={"bg-primary"}
-          url={"/"}
-          nameButton={"DONATE WITH PAYPAL"}
-        />
+        Donar con:
+      </p>
+      <div class="w-[80%] text-justify text-middleLetters">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo,
+          quas ipsa. Veritatis asperiores nesciunt perspiciatis voluptate
+          voluptatibus, explicabo dolorum sit culpa totam, ab eveniet ea iure
+          reiciendis aut voluptates odio Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Explicabo, quas ipsa. Veritatis asperiores nesciunt
+          perspiciatis voluptate voluptatibus, explicabo dolorum sit culpa
+          totam, ab eveniet ea iure reiciendis aut voluptates odio Lorem ipsum
+          dolor sit amet consectetur adipisicing elit.
+        </p>
       </div>
-      <div
-        class="w-[50%] flex flex-col place-content-center place-items-center"
-      >
-        <img
-          class="h-20 w-48"
-          src="https://www.fundaciontepa.org/wp-content/uploads/2022/08/logo-nequi.jpeg"
-          alt=""
-        />
-        <p class="text-xl font-semibold text-lettersMiddle">321 306 7647</p>
-        <img class="size-40" src="/Image/codigo-qr-nequi2.jpeg" alt="" />
-      </div>
+    </div>
+
+    <div class="w-[50%] flex flex-col place-content-center place-items-center">
+      <DonationButton image={undefined} title=""></DonationButton>
     </div>
   </div>
 

@@ -1,3 +1,7 @@
+---
+import EstandarButton from "../Buttons/EstandarButton.astro";
+---
+
 <section
   class="flex flex-col w-full px-36 py-20 bg-primary text-lettersLight max-lg:px-10"
 >
@@ -6,52 +10,32 @@
       <img class="rounded-md" src="/Image/Ayudanos.jpg" alt="" />
     </div>
     <div class="w-[50%] max-lg:w-full flex flex-col gap-3">
-      <p class="font-semibold text-terciary text-3xl">AYUDANOS</p>
-      <p class="font-semibold text-lettersLight text-3xl">
-        Apadrina un perro o gato
-      </p>
-      <p class="text-lettersLight text-lg">
-        Si no puedes adoptar, puedes apadrinar alguno de nuestros peludos para
-        que su estadía en nuestro refugio sea optima. Manejamos diferentes
-        planes de padrinos en los que puedes hacer un aporte mensual. Si estás
-        interesado en apadrinar un Tepiano contáctanos y te daremos más
-        detalles.
+      <p class="font-semibold text-terciary text-center text-bigLetters">AYUDANOS</p>
+     
+      <p class=" text-justify text-middleLetters">
+        Puedes donar insumos desde alimentos y medicinas hasta cobijas o tejas
+        para la adecuación del espacio de la fundación. También puedes compartir
+        tiempo con los peluditos y ayudarnos en la fundación o hacer donaciones
+        en dinero.
       </p>
     </div>
   </div>
   <div class="flex flex-row gap-10 py-20 max-lg:flex-col-reverse">
-    <div class="w-[80%] max-lg:w-full flex flex-col gap-5">
-      <p class="font-semibold text-3xl">
-        ¿Por qué apadrinar un perrito en Tepa?
+    <div class="w-[70%] max-lg:w-full flex flex-col gap-20 items-center justify-center">
+      <p class="text-justify text-middleLetters">
+        Puedes donar en línea a través de PayU de forma segura y rápida
+        seleccionando el botón del valor que deseas aportar. Estos aportes serán
+        invertidos en alimentos, medicinas y la adecuación de los espacios para
+        nuestros peludos.
       </p>
-      <ul class="list-disc pl-5 text-lg">
-        <li>
-          ¡Porque en casa no puedes tener un perrito, pero aún así quieres tener
-          un amigo peludo a quien abrazar, aunque sea los fines de semana! Puede
-          volverse un motivo de paseo con quienes amas.
-        </li>
-        <li>
-          Porque hay demasiados perritos acá. Debido a la venta de perros en
-          tiendas y criaderos sin esterilizar, a la alta densidad de éstos en
-          las calles, y su incontrolada reproducción, muchos perritos pasan años
-          acá sin saber lo que es el amor humano.
-        </li>
-        <li>
-          Por que al apadrinar un perrito, estableces un vínculo afectivo con
-          otro ser vivo sintiente, que va a esperarte ansioso cuando lo visites.
-          Sobre todo si le llevas comida y pasas un rato con él.
-        </li>
-        <li>
-          Porque los lazos que estableces con un perro son positivos física y
-          emocionalmente para ti. Y tendrás derecho a visitarlo cuando quieras y
-          tener noticias de él.
-        </li>
-        <li>
-          Porque es más económico que tener un perrito en casa y acá ya están
-          esterilizados.
-        </li>
-      </ul>
+      <EstandarButton
+      bgColor={"bg-secondary"}
+      url={"/"}
+      nameButton={"Contactanos"}
+    />
     </div>
+   
+
     <div class="w-[20%] max-lg:w-full max-lg:place-items-center">
       <img src="/Image/AyudanosNinnos.png" alt="" />
     </div>
