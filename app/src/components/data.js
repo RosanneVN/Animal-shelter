@@ -11,12 +11,12 @@ export const NavBarMenu = [
   },
   {
     id: 3,
-    title: "Apadrina y Dona",
+    title: "Dona",
     url: "./ApadrinaYDona",
   },
   {
     id: 4,
-    title: "Hogares Tepa",
+    title: "Pasos SOS",
     url: "./HogaresTepa",
   },
   {
