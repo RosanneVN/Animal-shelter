@@ -7,8 +7,12 @@ type FormData = {
   family: string;
   pets?: number;
 };
+type Props ={
+  nextStep: any
+  prevStep?: any
+}
 
-const Experience = () => {
+const Experience = ({nextStep, prevStep}:Props) => {
   const [values, setValues] = useState<FormData>({
     family: "",
     pets: undefined,
@@ -85,7 +89,7 @@ const Experience = () => {
               />
              
             </div>
-            <BackAndNext></BackAndNext>
+            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
       </form>

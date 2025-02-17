@@ -1,12 +1,37 @@
 import { useContext, useEffect, useState } from "react";
 import { ModalFormContext } from "../Context/ModalFormContext";
-import InputForm from "./Inputs/InputForm";
 import PersonalData from "./Forms/PersonalData";
+import Motivaciones from "./Forms/Motivaciones";
+import HomeConditions from "./Forms/HomeConditions";
+import Experience from "./Forms/Experience";
+import LifeStyle from "./Forms/LifeStyle";
+import Knowledge from "./Forms/Knowledge";
+import Documentation from "./Forms/Documentation";
 
 const ModalForm = () => {
-  const { setIsOpen, isOpen } = useContext(ModalFormContext);
-
+  const { isOpen } = useContext(ModalFormContext);
+  const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const steps = [
+    <PersonalData />,
+    <Motivaciones key={1} />,
+    <HomeConditions key={2} />,
+    <Experience key={3} />,
+    <LifeStyle key={4} />,
+    <Knowledge key={5} />,
+    <Documentation key={6} />,
+  ];
+  const handleNext = () => {
+    if (currentStep < steps.length - 1) {
+      setCurrentStep((prev) => prev + 1);
+    }
+  };
+  const handlePrev = () => {
+    if (currentStep > 0) {
+      setCurrentStep((prev) => prev - 1);
+    }
+  };
 
   return isOpen ? (
     <section
@@ -15,26 +40,17 @@ const ModalForm = () => {
     >
       <div className="bg-white flex  h-[80vh] w-[700px] rounded-lg">
         <div className="bg-orange-400 w-[40%] flex justify-start items-end rounded-l-lg overflow-hidden">
-          <div>
-          </div>
+          <div></div>
           <img className="w-40 h-60" src="/Image/michi.png" alt="" />
         </div>
-
-        <div className="w-[60%] rounded-xl">
-          <PersonalData></PersonalData>
-          <div className="flex justify-around">
-            <button
-              className="bg-white shadow-lg  hover:bg-red-600 py-1 px-4 rounded-full text-sm"
-              onClick={() => setIsOpen(false)}
-            >
-              Cancelar
-            </button>
-
-            <button className="bg-white shadow-lg hover:bg-green-500 text-sm py-1 px-4 rounded-full">
-              Siguiente
-            </button>
-          </div>
-        </div>
+        {/* componente que cambia*/}
+        <PersonalData />,
+        <Motivaciones />,
+        <HomeConditions />,
+        <Experience />,
+        <LifeStyle />,
+        <Knowledge />,
+        <Documentation />,
       </div>
     </section>
   ) : null;

@@ -7,8 +7,12 @@ import Notes from "./Notes";
 type FormData = {
   opnion: string;
 };
+type Props ={
+  nextStep: any
+  prevStep: any
+}
 
-const Knowledge = () => {
+const Knowledge = ({nextStep, prevStep}: Props) => {
   const [values, setValues] = useState<FormData>({
     opnion: "",
   });
@@ -70,7 +74,7 @@ const Knowledge = () => {
                 }
               />
             </div>
-            <BackAndNext></BackAndNext>
+            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
       </form>

@@ -6,8 +6,12 @@ import InputForm from "../Inputs/InputForm";
 type FormData = {
   ifTravel: string;
 };
+type Props = {
+  nextStep: any;
+  prevStep: any;
+};
 
-const LifeStyle = () => {
+const LifeStyle = ({ nextStep, prevStep }: Props) => {
   const [values, setValues] = useState<FormData>({
     ifTravel: "",
   });
@@ -71,7 +75,7 @@ const LifeStyle = () => {
                 second={"No"}
               />
             </div>
-            <BackAndNext />
+            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
       </form>

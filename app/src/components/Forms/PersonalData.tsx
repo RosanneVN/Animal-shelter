@@ -10,7 +10,12 @@ type FormData = {
   alternativeCellPhone?: string | number;
 };
 
-const PersonalData = () => {
+type Props ={
+  nextStep: any
+  prevStep?: any
+}
+
+const PersonalData = ({nextStep}:Props) => {
   const [values, setValues] = useState<FormData>({
     fullName: "",
     age: undefined,
@@ -139,7 +144,8 @@ const PersonalData = () => {
                 defaultValue={""}
               />
             </div>
-            <BackAndNext></BackAndNext>
+            {/*botones de siguiente*/}
+            <BackAndNext prevStep={undefined} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
       </form>

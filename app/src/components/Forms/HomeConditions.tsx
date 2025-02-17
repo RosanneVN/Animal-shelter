@@ -6,8 +6,12 @@ import BackAndNext from "../Buttons/BackAndNext";
 type FormData = {
   sleepPlace: string;
 };
+type Props = {
+  nextStep: any;
+  prevStep: any;
+};
 
-const HomeConditions = () => {
+const HomeConditions = ({ nextStep, prevStep }: Props) => {
   const [values, setValues] = useState<FormData>({
     sleepPlace: "",
   });
@@ -86,7 +90,7 @@ const HomeConditions = () => {
                 second={"No"}
               />
             </div>
-            <BackAndNext></BackAndNext>
+            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
       </form>

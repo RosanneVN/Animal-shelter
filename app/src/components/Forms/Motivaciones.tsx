@@ -8,7 +8,12 @@ type FormData = {
   motivation: string;
 };
 
-const Motivaciones = () => {
+type Props ={
+  nextStep: any
+  prevStep: any
+}
+
+const Motivaciones = ({nextStep, prevStep}: Props) => {
   const [values, setValues] = useState<FormData>({
     motivation: "",
   });
@@ -85,7 +90,7 @@ const Motivaciones = () => {
                 second={"No"}
               />
             </div>
-            <BackAndNext></BackAndNext>
+            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
       </form>
