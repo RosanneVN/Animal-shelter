@@ -6,37 +6,26 @@ import Title from "../Title.astro";
 
 <section class="px-36 py-20 w-full flex flex-col max-sm:px-10">
   <div class="flex flex-col justify-center items-center gap-10">
-    <Title className="text-5xl text-lettersDark max-sm:text-3xl"
+    <Title className=" text-lettersDark max-sm:text-3xl"
       >Apoya Nuestra Labor</Title
     >
+    <div class="w-[80%]">
+      <p class="text-middleLetters text-justify text-lettersDark">
+        Tu ayuda cambia vidas Cada donación, por pequeña que sea, marca la
+        diferencia en la vida de los animales que rescatamos. Con tu apoyo,
+        podemos proporcionarles alimento, cuidados veterinarios y un hogar
+        temporal lleno de amor mientras esperan una familia que los adopte.
+        Juntos, podemos seguir salvando y protegiendo a quienes más lo
+        necesitan.
+        <br />
+        ¡Dona hoy y sé parte de su segunda oportunidad!
+      </p>
+    </div>
+
     <EstandarButton
       bgColor={"bg-secondary"}
       url={"./Adopta"}
       nameButton={"HAZ TU DONACION AQUI"}
-    />
-    <p class="text-xl text-lettersDark text-center">
-      Tu ayuda cambia vidas Cada donación, por pequeña que sea, marca la
-      diferencia en la vida de los animales que rescatamos. Con tu apoyo,
-      podemos proporcionarles alimento, cuidados veterinarios y un hogar
-      temporal lleno de amor mientras esperan una familia que los adopte.
-      Juntos, podemos seguir salvando y protegiendo a quienes más lo necesitan.
-      <br>
-      ¡Dona hoy y sé parte de su segunda oportunidad!
-    </p>
-  </div>
-  <div
-    class="flex flex-row gap-14 justify-center items-center py-20 border-b-2
-   border-secondary border-dashed flex-wrap"
-  >
-    <PayButtons
-      namePayment={"Transfermovil"}
-      urlPayment={"/"}
-      urlIcon={"/Image/Transfermovil.png"}
-    />
-    <PayButtons
-      namePayment={"EnZona"}
-      urlPayment={"/"}
-      urlIcon={"/Image/EnzonaLogo.png"}
     />
   </div>
 </section>

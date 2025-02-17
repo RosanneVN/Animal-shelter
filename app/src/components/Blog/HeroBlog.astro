@@ -4,20 +4,22 @@ import Transparent from "../icons/Transparent.astro";
 ---
 
 <section
-  class="bg-[url('/Image/HogarTepaHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col w-full h-[70vh] relative items-center justify-center gap-6"
+  class="bg-[url('/Image/HogarTepaHero.jpg')] bg-cover bg-no-repeat bg-center
+   flex flex-col w-full h-[80vh] relative items-center justify-center gap-14"
 >
-  <p class="text-lettersLight text-xl font-semibold max-sm:text-lg">
-   BLOG
-  </p>
-  <p class="text-lettersLight text-6xl font-semibold max-sm:text-3xl">Tepa Noticias</p>
+<div class="text-lettersLight uppercase text-center flex flex-col">
+  <p class=" text-bigLetters font-semibold max-sm:text-lg">BLOG</p>
+  <p class="text-longLetters max-sm:text-3xl">Pasos sos Noticias</p>
 
-  <EstandarButton
-  bgColor={"bg-secondary"}
-  url={"/"}
-  nameButton={"QUIERO SUSCRIBIRME"}
-/>
-
-<div class="w-full absolute bottom-0 scale-x-[-1]">
-  <Transparent color={"#fff"} />
 </div>
+ 
+  <EstandarButton
+    bgColor={"bg-secondary"}
+    url={"/"}
+    nameButton={"QUIERO SUSCRIBIRME"}
+  />
+
+  <div class="w-full absolute bottom-0 scale-x-[-1]">
+    <Transparent color={"#fff"} />
+  </div>
 </section>
