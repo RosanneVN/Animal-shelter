@@ -20,7 +20,7 @@ const ToggleableContent = ({
   return (
     <div className="flex flex-col bg-lettersLight p-3 rounded-lg">
       <div className="flex flex-row justify-between items-center">
-        <p className="text-lg text-secondary font-semibold max-sm:text-base">
+        <p className="text-middleLetters uppercase text-secondary font-semibold max-sm:text-base">
           {question}
         </p>
         <button
@@ -39,7 +39,7 @@ const ToggleableContent = ({
         }`}
       >
         <div className="mt-2 p-2 border-t border-lettersMiddle">
-          <p className="text-base text-secondary">{answer}</p>
+          <p className="text-middleLetters text-secondary">{answer}</p>
         </div>
       </div>
     </div>

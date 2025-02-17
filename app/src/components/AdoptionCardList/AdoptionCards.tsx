@@ -6,14 +6,14 @@ const AdoptionCards = ({ onOpen }: Props) => {
       <div className="flex flex-col py-10 px-8 gap-5">
         <div className="">
           <img
-            className="rounded-lg h-60 w-80 object-cover"
+            className="rounded-lg h-48 w-56 object-cover"
             src="/Image/Adoptable1.jpg"
             alt=""
           />
         </div>
         <div>
-          <p className="font-bold text-lg">Nombre: </p>
-          <div className="flex flex-row justify-between font-semibold text-lg">
+          <p className="font-bold text-shortLetters">Nombre: </p>
+          <div className="flex flex-row justify-between font-semibold text-shortLetters">
             <p>Edad: </p>
             <p>Sexo: </p>
           </div>
