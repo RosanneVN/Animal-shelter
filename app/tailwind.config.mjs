@@ -18,6 +18,12 @@ export default {
       fontFamily: {
         poppins: ["poppins"],
       },
+      fontSize: {
+        bigLetters: "2.3rem",
+        longLetters:"1.3rem",
+        middleLetters:"1rem",
+        shortLetters:"0.8rem",
+      }
     },
   },
   plugins: [],
