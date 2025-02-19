@@ -1,4 +1,9 @@
-const BackAndNext = ({prevStep, nextStep}) => {
+type Props ={
+  prevStep: any
+  nextStep: any
+}
+
+const BackAndNext = ({prevStep, nextStep}:Props) => {
   return (
     <>
       <div className="flex justify-around pb-4">
