@@ -1,8 +1,9 @@
 ---
 import BlogComponent from "../BlogComponent.astro";
+import Transparent from "../icons/Transparent.astro";
 ---
 
-<section class="pt-96 px-36 w-full flex flex-col max-lg:px-10">
+<section class="pt-96 px-36 py-20 w-full flex flex-col max-lg:px-10 relative">
   <p class="font-semibold text-bigLetters text-lettersDark text-center">Blog</p>
   <p class="text-lg text-lettersMiddle text-center pb-5">
     CONOCE MAS NUESTRA LABOR
@@ -16,4 +17,8 @@ import BlogComponent from "../BlogComponent.astro";
   </div>
 
   <a class="text-primary underline text-middleLetters" href="./Blog">«Entradas mas antiguas</a>
+
+  <div class="w-full absolute bottom-0 scale-x-[-1]">
+    <Transparent color={"#003049"} />
+  </div>
 </section>

@@ -8,7 +8,7 @@ type FormData = {
    docId?: any
   };
   type Props ={
-    nextStep: any
+    nextStep?: any
     prevStep: any
   }
 

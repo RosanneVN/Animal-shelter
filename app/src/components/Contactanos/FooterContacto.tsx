@@ -46,7 +46,7 @@ const FooterContacto = () => {
             </div>
             <form
               action=""
-              className="flex flex-col justify-between h-full gap-4 overflow-auto"
+              className="flex flex-col  h-full gap-4 overflow-auto"
             >
               <div className="flex flex-col gap-5 ">
                 <InputForm
@@ -112,7 +112,7 @@ const FooterContacto = () => {
               <div className="w-full flex justify-end ">
                 <button
                   className="uppercase text-lettersDark w-fit bg-orange-200 py-1
-                 px-5 rounded-xl shadow-lg"
+                 px-5 rounded-xl shadow-lg hover:translate-y-1"
                 >
                   enviar
                 </button>
