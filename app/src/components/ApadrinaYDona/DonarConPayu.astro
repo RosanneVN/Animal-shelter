@@ -1,12 +1,12 @@
 ---
-import { undefined } from "astro:schema";
-import DonationButton from "../Buttons/DonationButton"
-
+import CreditCardsList from "../ApadrinaYDona/CreditCardsList"
 import Transparent from "../icons/Transparent.astro";
 ---
 
 <section class="relative">
-  <div class="flex flex-col w-full py-20 px-36 gap-10 max-lg:px-20">
+  <div
+    class="flex flex-col w-full py-28 text-lettersDark px-36 gap-10 max-lg:px-20"
+  >
     <div class="flex flex-col items-center">
       <p
         class="text-bigLetters text-lettersDark font-semibold text-center uppercase"
@@ -26,9 +26,12 @@ import Transparent from "../icons/Transparent.astro";
         </p>
       </div>
     </div>
+    <div class="flex flex-row">
+      <CreditCardsList></CreditCardsList>
 
-    <div class="w-[50%] flex flex-col place-content-center place-items-center">
-      <DonationButton image={undefined} title=""></DonationButton>
+      <div class="flex flex-col w-[50%]">
+
+      </div>
     </div>
   </div>
 
