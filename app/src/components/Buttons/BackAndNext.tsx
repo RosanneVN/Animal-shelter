@@ -8,14 +8,14 @@ const BackAndNext = ({prevStep, nextStep}:Props) => {
     <>
       <div className="flex justify-around pb-4">
         <button
-          className="bg-white shadow-lg  hover:bg-red-600 py-1 px-4 rounded-full text-sm"
+          className="bg-white shadow-lg hover:translate-y-1 hover:text-red-600 py-1 px-4 rounded-full text-sm"
           onClick={prevStep}
         >
           Anterior
         </button>
 
         <button
-          className="bg-white shadow-lg hover:bg-green-500 text-sm py-1 px-4 rounded-full"
+          className="bg-white shadow-lg hover:translate-y-1 hover:text-green-500 text-sm py-1 px-4 rounded-full"
           onClick={nextStep}
         >
           Siguiente
