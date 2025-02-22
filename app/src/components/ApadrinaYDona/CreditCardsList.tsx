@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import DonationButton from "../Buttons/DonationButton";
-import { CreditCardsContext } from "../../Context/CreditCardsContext";
+import { ModalFormContext } from "../../Context/ModalFormContext";
 
 type Props = {};
 
 const CreditCardsList = (props: Props) => {
-     const { setIsOpen } = useContext(CreditCardsContext);
+  const { setIsOpen } = useContext(ModalFormContext);
   return (
     <>
       <div
