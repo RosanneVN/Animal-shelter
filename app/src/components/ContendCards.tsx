@@ -6,7 +6,7 @@ import Stepper from "./Forms/Stepper";
 export default function ContendCards() {
   return (
     <>
-      <section className=" w-full">
+      <section className="w-full">
         <ModalFormProvider>
           <ModalForm>
             <Stepper />

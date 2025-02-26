@@ -1,5 +1,5 @@
 ---
-import CreditCardsList from "../ApadrinaYDona/CreditCardsList"
+import CreditCardsContent from "../CreditCardsContent";
 import Transparent from "../icons/Transparent.astro";
 ---
 
@@ -27,11 +27,9 @@ import Transparent from "../icons/Transparent.astro";
       </div>
     </div>
     <div class="flex flex-row">
-      <CreditCardsList></CreditCardsList>
+      <CreditCardsContent client:visible />
 
-      <div class="flex flex-col w-[50%]">
-
-      </div>
+      <div class="flex flex-col w-[50%]"></div>
     </div>
   </div>
 
