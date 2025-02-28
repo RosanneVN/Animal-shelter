@@ -2,7 +2,7 @@ type Props = {
   name: string;
   type?: React.HTMLInputTypeAttribute;
   placeholderText?: string;
-  errorMesage: any;
+  errorMesage?: any;
   isRequired?: boolean;
   label?: string;
   value?: string | number | string[];

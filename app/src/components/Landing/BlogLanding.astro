@@ -1,6 +1,6 @@
 ---
 import BlogComponent from "../BlogComponent.astro";
-import Transparent from "../icons/Transparent.astro";
+import Transparent from "../icons/Transparent";
 ---
 
 <section class="pt-96 px-36 py-20 w-full flex flex-col max-lg:px-10 relative">
@@ -19,6 +19,6 @@ import Transparent from "../icons/Transparent.astro";
   <a class="text-primary underline text-middleLetters" href="./Blog">«Entradas mas antiguas</a>
 
   <div class="w-full absolute bottom-0 scale-x-[-1]">
-    <Transparent color={"#003049"} />
+    <Transparent color={"#003049"} client:visible/>
   </div>
 </section>

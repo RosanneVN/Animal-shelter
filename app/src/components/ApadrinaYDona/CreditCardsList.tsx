@@ -7,6 +7,7 @@ type Props = {};
 const CreditCardsList = (props: Props) => {
   const { setIsOpen } = useContext(ModalFormContext);
 
+
   return (
     <>
       <div className="w-[50%] flex flex-col gap-10 place-content-center place-items-center">

@@ -1,6 +1,6 @@
 ---
 import EstandarButton from "../Buttons/EstandarButton.astro";
-import Transparent from "../icons/Transparent.astro";
+import Transparent from "../icons/Transparent";
 import Title from "../Title.astro";
 ---
 
@@ -34,6 +34,6 @@ import Title from "../Title.astro";
   </div>
 
   <div class="w-full absolute bottom-0 scale-x-[-1]">
-    <Transparent color={"#fff"} />
+    <Transparent color={"#fff"} client:visible/>
   </div>
 </section>

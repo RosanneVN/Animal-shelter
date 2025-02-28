@@ -6,7 +6,7 @@ type Props = {
   isRequired?: boolean;
   onChange?: React.ChangeEventHandler<HTMLTextAreaElement> | undefined;
   defaultValue?: string;
-  errorMesage: any;
+  errorMesage?: any;
 };
 
 const TextareaForm = ({

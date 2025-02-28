@@ -9,7 +9,7 @@ export default {
       },
       colors: {
         primary: "#003049",
-        secondary: "#c1121f",
+        secondary: "#FB923C",
         terciary: "#669bbc",
         lettersDark: "#333",
         lettersMiddle: "#999",
