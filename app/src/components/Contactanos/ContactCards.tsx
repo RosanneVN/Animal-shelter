@@ -1,15 +1,20 @@
 type Props = {
   nameContact: string;
-  numberContact: any;
 };
 
-const ContactCards = ({ nameContact, numberContact }: Props) => {
+const ContactCards = ({ nameContact }: Props) => {
   return (
     <>
-      <div className="flex flex-row shadow-lg my-10 rounded-md bg-white w-96 h-20 px-5
-        justify-between items-center text-lettersDark hover:translate-y-1">
-        <p>{nameContact}</p>
-        <p>{numberContact}</p>
+      <div
+        className="flex flex-row shadow-lg rounded-md overflow-hidden w-96 h-20  max-sm:w-full
+       justify-between items-center text-lettersDark hover:translate-y-1"
+      >
+        <div className="w-[30%] h-full bg-secondary flex justify-center items-center">
+          <img className="size-8" src="/Image/wz.png" alt="" />
+        </div>
+        <div className="w-[70%] flex items-center justify-center">
+          <p>Contacta con {nameContact}</p>
+        </div>
       </div>
     </>
   );

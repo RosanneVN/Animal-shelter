@@ -1,34 +1,41 @@
 ---
+import ScreenWidthLayout from "../../layouts/ScreenWidthLayout.astro";
 import EstandarButton from "../Buttons/EstandarButton.astro";
 import Transparent from "../icons/Transparent";
 import Title from "../Title.astro";
 ---
 
 <section
-  class="bg-[url('/Image/AdoptaBgHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col w-full h-[100vh]
-   relative justify-center items-center gap-16 max-sm:px-7"
+  class="bg-[url('/Image/bg2.jpg')] bg-cover bg-no-repeat bg-center flex flex-col
+   w-full h-[100vh] relative justify-center items-start px-36 max-sm:px-10 text-lettersLight max-lg:px-20"
 >
-<div class="flex flex-col">
-  <Title className="text-lettersLight text-bigLetters max-sm:text-xl">Adopciones</Title>
-  <p class="text-longLetters  text-lettersLight max-sm:text-xl">
-    ENCUENTRA TU ALMA GEMELA
-  </p>
-</div>
- 
-  <div class="flex flex-row gap-6">
-    <EstandarButton
-      bgColor={"bg-secondary"}
-      url={"./Contactanos"}
-      nameButton={"CONTACTANOS"}
-    />
-    <a
-      class="bg-white/30 px-10 py-5 w-fit text-lettersLight font-semibold
-       rounded-full hover:bg-primary transition duration-500 max-md:text-sm max-md:px-5 max-md:py-4"
-      href="./ApadrinaYDona">HAZ UNA DONACION</a
-    >
-  </div>
+  <ScreenWidthLayout>
+    <div class="flex flex-col w-[50%] max-sm:w-full  gap-7">
+      <Title className="text-lettersDark text-bigLetters max-sm:text-bigLetters uppercase"
+        >Adopciones</Title
+      >
+      <p class="text-middleLetters lg:font-semibold text-justify  text-lettersDark max-sm:text-middleLetters">
+        ¿Estás listo para encontrar al compañero perfecto que te haga sonreír
+        cada día? En nuestra protectora, tenemos a los peluditos más adorables
+        esperando por ti. ¡Ven y descubre a tu nueva mejor amiga o amigo, y
+        prepárate para vivir una aventura llena de amor y felicidad!
+      </p>
 
-  <div class="w-full absolute bottom-0 scale-x-[-1]">
+      <div class="flex flex-row gap-6 max-sm:gap-3">
+        <EstandarButton
+          bgColor={"bg-secondary"}
+          url={"./Contactanos"}
+          nameButton={"CONTACTANOS"}
+        />
+        <EstandarButton
+          bgColor={"bg-primary"}
+          url={"./ApadrinaYDona#donaCon"}
+          nameButton={"haz una donacion"}
+        />
+      </div>
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute left-0 -bottom-0.5 scale-x-[-1]">
     <Transparent color={"#fff"} client:visible />
   </div>
 </section>

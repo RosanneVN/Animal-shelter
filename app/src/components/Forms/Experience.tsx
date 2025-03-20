@@ -2,17 +2,18 @@ import { useState } from "react";
 import InputForm from "../Inputs/InputForm";
 import OptionButtons from "../Inputs/OptionButtons";
 import BackAndNext from "../Buttons/BackAndNext";
+import FormContent from "../FormContent";
 
 type FormData = {
   family: string;
   pets?: number;
 };
-type Props ={
-  nextStep: any
-  prevStep?: any
-}
+type Props = {
+  nextStep: any;
+  prevStep?: any;
+};
 
-const Experience = ({nextStep, prevStep}:Props) => {
+const Experience = ({ nextStep, prevStep }: Props) => {
   const [values, setValues] = useState<FormData>({
     family: "",
     pets: undefined,
@@ -27,10 +28,7 @@ const Experience = ({nextStep, prevStep}:Props) => {
 
   return (
     <>
-      <form
-        action=""
-        className="w-[60%] rounded-xl flex flex-col overflow-auto"
-      >
+      <FormContent>
         <div className="py-9 px-10 flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-1">
             <h3 className="text-center text-lg text-orange-400 font-semibold">
@@ -87,12 +85,11 @@ const Experience = ({nextStep, prevStep}:Props) => {
                 first={"Sigue vivo"}
                 second={"Fallecio"}
               />
-             
             </div>
             <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
-      </form>
+      </FormContent>
     </>
   );
 };

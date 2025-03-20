@@ -43,11 +43,12 @@ const Stepper = (props: Props) => {
   console.log(currentStep);
 
   return (
-    <div className="bg-white flex  h-[80vh] w-[700px] rounded-lg">
-      <div className="bg-orange-400 w-[40%] flex justify-start items-end rounded-l-lg overflow-hidden">
+    <div className="bg-white flex  h-[80vh] w-[700px] rounded-lg max-sm:flex-col max-sm:w-[400px] max-sm:h-[100%] overflow-auto">
+      <div className="bg-orange-400 w-[40%] max-sm:w-full flex justify-start items-end rounded-l-lg overflow-hidden">
         <div></div>
-        <img className="w-40 h-60" src="/Image/michi.png" alt="" />
+        <img className="w-40 h-60 " src="/Image/michi.png" alt="" />
       </div>
+
       {currentStep == steps.indexOf(Steps.PersonalData) && (
         <PersonalData nextStep={handleNext}></PersonalData>
       )}

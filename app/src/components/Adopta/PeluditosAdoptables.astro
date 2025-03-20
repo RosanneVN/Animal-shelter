@@ -1,31 +1,37 @@
 ---
+import ScreenWidthLayout from "../../layouts/ScreenWidthLayout.astro";
 import ContendCards from "../ContendCards";
 import Title from "../Title.astro";
 ---
 
-<section
-  class="w-full py-20 px-36 flex flex-col gap-10 max-lg:px-20 max-sm:px-7 "
->
-  <div
-    class="w-full flex flex-col place-items-start gap-6 max-lg:w-full max-lg:place-items-center"
+<ScreenWidthLayout>
+  <section
+    class="w-full py-20 px-36 flex flex-col gap-10 max-sm:gap-0 max-sm:py-10 max-lg:px-20 max-sm:px-7"
   >
-    <Title
-      className="max-lg:text-4xl max-sm:text-2xl flex w-full justify-center items-center"
-      >Peluditos Adoptables</Title
+    <div
+      class="w-full flex flex-col place-items-start gap-6 max-lg:w-full max-lg:place-items-center"
     >
-    <p class="text-lettersMiddle text-middleLetters max-sm:text-base max-lg:text-center">
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. At unde fugit
-      quisquam facere asperiores ab numquam quis provident ut consequatur minima
-      mollitia natus quae corporis culpa officiis, esse dolorum placeat!
-    </p>
-  </div>
+      <Title
+        className="max-lg:text-4xl max-sm:text-2xl flex w-full justify-center items-center"
+        >Peluditos Adoptables</Title
+      >
+      <p
+        class="text-lettersMiddle text-middleLetters max-sm:text-base max-lg:text-justify"
+      >
+        ¿Estás listo para sumar un poco de diversión y amor a tu vida? ¡Aquí
+        están los peluditos más adorables que esperan por ti! Descubre a los
+        increíbles compañeros que te harán sonreír cada día. ¡Prepárate para
+        enamorarte!
+      </p>
+    </div>
 
-  <div
-     >
-    <ContendCards client:visible />
-  </div>
+    <div>
+      <ContendCards client:visible />
+    </div>
 
-  <a class="text-primary underline text-middleLetters" href="./PeluditosAdoptables"
-    >«Ver todos los animales en adopcion</a
-  >
-</section>
+    <a
+      class="text-primary underline text-middleLetters max-sm:text-center"
+      href="./PeluditosAdoptables">«Ver todos los animales en adopcion</a
+    >
+  </section>
+</ScreenWidthLayout>

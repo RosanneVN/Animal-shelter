@@ -1,25 +1,22 @@
 ---
+import ScreenWidthLayout from "../../layouts/ScreenWidthLayout.astro";
 import EstandarButton from "../Buttons/EstandarButton.astro";
 import Transparent from "../icons/Transparent";
 ---
 
 <section
-  class="bg-[url('/Image/HogarTepaHero.jpg')] bg-cover bg-no-repeat bg-center
-   flex flex-col w-full h-[80vh] relative items-center justify-center gap-14"
+  class="bg-[url('/Image/HeroBlog1.jpg')] bg-cover bg-no-repeat bg-center
+   flex flex-col w-full h-[100vh] relative"
 >
-<div class="text-lettersLight uppercase text-center flex flex-col">
-  <p class=" text-bigLetters font-semibold max-sm:text-lg">BLOG</p>
-  <p class="text-longLetters max-sm:text-3xl">Pasos sos Noticias</p>
-
-</div>
- 
-  <EstandarButton
-    bgColor={"bg-secondary"}
-    url={"/"}
-    nameButton={"QUIERO SUSCRIBIRME"}
-  />
-
-  <div class="w-full absolute bottom-0 scale-x-[-1]">
-    <Transparent color={"#fff"} client:visible/>
+  <ScreenWidthLayout>
+    <div class="flex flex-col w-full items-center justify-center gap-14">
+      <div class="text-lettersLight uppercase text-center flex flex-col">
+        <p class="text-bigLetters font-semibold max-sm:text-lg">BLOG</p>
+        <p class="text-longLetters max-sm:text-3xl font-semibold">Pasos sos Noticias</p>
+      </div>
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute -bottom-0.5 scale-x-[-1]">
+    <Transparent color={"#fff"} client:visible />
   </div>
 </section>

@@ -3,16 +3,17 @@ import BackAndNext from "../Buttons/BackAndNext";
 import OptionButtons from "../Inputs/OptionButtons";
 import TextareaForm from "../Inputs/TextareaForm";
 import Notes from "./Notes";
+import FormContent from "../FormContent";
 
 type FormData = {
   opnion: string;
 };
-type Props ={
-  nextStep: any
-  prevStep: any
-}
+type Props = {
+  nextStep: any;
+  prevStep: any;
+};
 
-const Knowledge = ({nextStep, prevStep}: Props) => {
+const Knowledge = ({ nextStep, prevStep }: Props) => {
   const [values, setValues] = useState<FormData>({
     opnion: "",
   });
@@ -26,10 +27,7 @@ const Knowledge = ({nextStep, prevStep}: Props) => {
 
   return (
     <>
-      <form
-        action=""
-        className="w-[60%] rounded-xl flex flex-col overflow-auto"
-      >
+      <FormContent>
         <div className="py-9 px-10 flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-1">
             <h3 className="text-center text-lg text-orange-400 font-semibold">
@@ -77,7 +75,7 @@ const Knowledge = ({nextStep, prevStep}: Props) => {
             <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
-      </form>
+      </FormContent>
     </>
   );
 };

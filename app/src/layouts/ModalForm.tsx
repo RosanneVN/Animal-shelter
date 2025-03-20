@@ -6,10 +6,14 @@ type Props = {
 };
 
 const ModalForm = ({ children }: Props) => {
-  const { isOpen } = useContext(ModalFormContext);
+  const { isOpen, setIsOpen } = useContext(ModalFormContext);
+  
 
   return isOpen ? (
     <section
+      onClick={() => {
+        setIsOpen(false);
+      }}
       className="backdrop-blur-md bg-black/30 w-screen h-[100vh] fixed bottom-0 left-0 z-50 
     place-content-center place-items-center"
     >

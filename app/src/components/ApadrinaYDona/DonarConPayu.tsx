@@ -4,6 +4,7 @@ import Transparent from "../icons/Transparent";
 import InputForm from "../Inputs/InputForm";
 import TextareaForm from "../Inputs/TextareaForm";
 import SendButton from "../Buttons/SendButton";
+import ScreenWidthLayoutTsx from "../../layouts/ScreenWidthLayoutTsx";
 
 type FormData = {
   donationUser: string | undefined;
@@ -24,36 +25,33 @@ const DonarConPayu = (props: Props) => {
     }));
   };
   return (
-    <>
-      <section className="relative">
-        <div className="flex flex-col w-full py-28 text-lettersDark px-36 gap-10 max-lg:px-20">
-          <div className="flex flex-col items-center justify-center">
-            <p className="text-bigLetters text-lettersDark font-semibold text-center uppercase">
+    <section className="relative" id="donarCon">
+      <ScreenWidthLayoutTsx>
+        <div
+          className="flex flex-col w-full py-28 text-lettersDark px-36 gap-10 max-lg:px-20 
+       max-sm:px-10 "
+        >
+          <div className="flex flex-col items-center justify-center gap-5 ">
+            <p className="text-bigLetters max-sm:text-longLetters text-lettersDark font-semibold text-center uppercase">
               Donar con:
             </p>
-            <div className="w-[80%] text-justify text-middleLetters">
+            <div className="w-[80%] max-sm:w-full text-justify text-middleLetters">
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Explicabo, quas ipsa. Veritatis asperiores nesciunt perspiciatis
-                voluptate voluptatibus, explicabo dolorum sit culpa totam, ab
-                eveniet ea iure reiciendis aut voluptates odio Lorem ipsum dolor
-                sit amet consectetur adipisicing elit. Explicabo, quas ipsa.
-                Veritatis asperiores nesciunt perspiciatis voluptate
-                voluptatibus, explicabo dolorum sit culpa totam, ab eveniet ea
-                iure reiciendis aut voluptates odio Lorem ipsum dolor sit amet
-                consectetur adipisicing elit.
+                Haz tu donación a través de tranferencia bancaria(MLC, CUP,
+                Zelle). Cada gesto cuenta y nos ayuda a seguir cuidando a
+                nuestros peluditos. ¡Gracias por tu apoyo!
               </p>
             </div>
           </div>
-          <div className="flex flex-row w-full">
-            <div className="flex w-[50%] justify-center items-center">
+          <div className="flex flex-row w-full max-lg:flex-col max-lg:gap-10">
+            <div className="flex w-[50%] max-lg:w-full justify-center items-center">
               {" "}
               <CreditCardsContent />
             </div>
 
-            <div className="flex flex-col w-[50%] items-center justify-center text-lettersDark text-shortLetters">
-              <div className="bg-white w-96 flex flex-col shadow-md rounded-md py-10 px-6 gap-5">
-                <div className="flex bg-terciary h-36 rounded-md justify-center items-center">
+            <div className="flex flex-col w-[50%]  max-lg:w-full items-center justify-center text-lettersDark text-shortLetters">
+              <div className="bg-white w-80 flex flex-col shadow-md rounded-md py-10 px-6 gap-5">
+                <div className="flex bg-terciary h-32 rounded-md justify-center items-center">
                   <img className="size-16" src="/Image/camera.png" alt="" />
                 </div>
                 <div>
@@ -103,12 +101,11 @@ const DonarConPayu = (props: Props) => {
             </div>
           </div>
         </div>
-
-        <div className="w-full absolute bottom-0 scale-x-[-1]">
-          <Transparent color={"#003049"} />
-        </div>
-      </section>
-    </>
+      </ScreenWidthLayoutTsx>
+      <div className="w-full absolute -bottom-0.5 scale-x-[-1]">
+        <Transparent color={"#003049"} />
+      </div>
+    </section>
   );
 };
 export default DonarConPayu;

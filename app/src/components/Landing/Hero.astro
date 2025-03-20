@@ -1,4 +1,5 @@
 ---
+import ScreenWidthLayout from "../../layouts/ScreenWidthLayout.astro";
 import EstandarButton from "../Buttons/EstandarButton.astro";
 import Transparent from "../icons/Transparent";
 ---
@@ -8,38 +9,42 @@ import Transparent from "../icons/Transparent";
    w-full relative place-content-center"
 >
   <div class="flex">
-    <div
-      class="py-10 px-36 flex flex-col relative z-10 max-sm:text-xl max-md:text-xl max-lg:px-5"
-    >
+    <ScreenWidthLayout>
       <div
-        class="text-lettersLight flex flex-col w-[50%] max-lg:w-full gap-7 max-sm:text-base"
+        class="py-10 px-36 flex flex-col relative z-10 max-sm:text-xl max-md:text-xl max-lg:px-5"
       >
-        <p class="text-longLetters">EL ARTE DE SALVAR CORAZONES PELUDOS</p>
+        <div
+          class="text-lettersLight flex flex-col w-[50%] max-lg:w-full gap-7 max-sm:text-base"
+        >
+          <p class="text-longLetters font-semibold">
+            EL ARTE DE SALVAR CORAZONES PELUDOS
+          </p>
 
-        <p class="text-middleLetters text-justify">
-          Rescatamos animales en situación de maltrato y abandono,
-          brindándoles alimento, cuidados y un refugio seguro. Nuestro sueño es
-          mejorar sus vidas y encontrarles un hogar lleno de amor. ¡Únete a
-          nosotros y ayúdanos a cambiar su destino!
-        </p>
+          <p class="text-middleLetters text-justify">
+            Rescatamos animales en situación de maltrato y abandono,
+            brindándoles alimento, cuidados y un refugio seguro. Nuestro sueño
+            es mejorar sus vidas y encontrarles un hogar lleno de amor. ¡Únete a
+            nosotros y ayúdanos a cambiar su destino!
+          </p>
+        </div>
+        <div class="flex flex-row gap-6 py-12">
+          <EstandarButton
+            bgColor={"bg-secondary"}
+            url={"./PeluditosAdoptables"}
+            nameButton={"ADOPTA UN PELUDO"}
+          />
+          <EstandarButton
+            bgColor={"bg-primary"}
+            url={"./ApadrinaYDona#donarCon"}
+            nameButton={"HAZ UNA DONACION"}
+          />
+        </div>
       </div>
-      <div class="flex flex-row gap-6 py-20">
-        <EstandarButton
-          bgColor={"bg-secondary"}
-          url={"./Adopta"}
-          nameButton={"ADOPTA UN PELUDO"}
-        />
-        <EstandarButton
-          bgColor={"bg-primary"}
-          url={"./ApadrinaYDona"}
-          nameButton={"HAZ UNA DONACION"}
-        />
-      </div>
-    </div>
+    </ScreenWidthLayout>
     <div class="h-[130vh] w-full absolute top-0 bg-black/50"></div>
   </div>
 
-  <div class="w-full absolute bottom-0 scale-x-[-1]">
-    <Transparent color={"#fff"} client:visible/>
+  <div class="w-full absolute -bottom-0.5 scale-x-[-1]">
+    <Transparent color={"#fff"} client:visible />
   </div>
 </section>

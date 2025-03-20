@@ -2,6 +2,7 @@ import { useState } from "react";
 import BackAndNext from "../Buttons/BackAndNext";
 import OptionButtons from "../Inputs/OptionButtons";
 import InputForm from "../Inputs/InputForm";
+import FormContent from "../FormContent";
 
 type FormData = {
   ifTravel: string;
@@ -24,10 +25,7 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
   };
   return (
     <>
-      <form
-        action=""
-        className="w-[60%] rounded-xl flex flex-col overflow-auto"
-      >
+      <FormContent>
         <div className="py-9 px-10 flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-1">
             <h3 className="text-center text-lg text-orange-400 font-semibold">
@@ -78,7 +76,7 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
             <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
-      </form>
+      </FormContent>
     </>
   );
 };

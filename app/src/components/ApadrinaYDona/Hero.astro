@@ -1,4 +1,5 @@
 ---
+import ScreenWidthLayout from "../../layouts/ScreenWidthLayout.astro";
 import EstandarButton from "../Buttons/EstandarButton.astro";
 import Transparent from "../icons/Transparent";
 import Title from "../Title.astro";
@@ -6,34 +7,37 @@ import Title from "../Title.astro";
 
 <section
   class="bg-[url('/Image/ApadrinayDonaHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col
-   w-full h-[120vh] relative justify-center items-center gap-6 text-lettersLight max-lg:px-20"
+   w-full h-[100vh] relative justify-center items-start px-36 max-sm:px-10 text-lettersLight max-lg:px-20"
 >
-  <Title className="text-lettersLight max-lg:text-5xl">Donaciones</Title>
+  <ScreenWidthLayout>
+    <div class="flex flex-col w-[50%] max-sm:w-full gap-7">
+      <Title className="text-lettersLight max-lg:text-longLetters uppercase"
+        >Donaciones</Title
+      >
 
-  <ul class="text-middleLetters text-center flex flex-col gap-2">
-    <li>Nuestros canales oficiales de donación</li>
-    <li>
-      Bancolombia ahorros No. 01316502624 – Fundación Tepa NIT. 900.669.514 – 1
-    </li>
-    <li>Daviplata 310 854 0203</li>
-    <li>Nequi 321 306 7647</li>
-  </ul>
+      <p class="text-justify">
+        Con tu apoyo, podemos seguir brindando amor, cuidado y un hogar seguro a
+        los animales que más lo necesitan. Cada donación cuenta y nos acerca un
+        paso más a un mundo donde todos los peluditos tengan una oportunidad
+        para vivir felices y sanos. ¡Únete a nosotros y haz que la compasión sea
+        la respuesta!
+      </p>
 
-  <div class="flex flex-row gap-5">
-    <EstandarButton
-      bgColor={"bg-secondary"}
-      url={"/"}
-      nameButton={"DONAR CON ENZONA"}
-    />
-
-    <a
-      class="bg-lettersLight/30 px-10 py-5 w-fit text-lettersLight rounded-full hover:bg-primary
-       transition duration-500 text-middleLetters"
-      href="/">DONA CON TRANSFERMOVIL</a
-    >
-  </div>
-
-  <div class="w-full absolute bottom-0 scale-x-[-1]">
-    <Transparent color={"#fff"} client:visible/>
+      <div class="flex flex-row gap-5">
+        <EstandarButton
+          bgColor={"bg-secondary"}
+          url={"./ApadrinaYDona#donarCon"}
+          nameButton={"!dona aqui¡"}
+        />
+        <EstandarButton
+          bgColor={"bg-primary"}
+          url={"./Contactanos"}
+          nameButton={"Únete a nosotros"}
+        />
+      </div>
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute left-0 -bottom-1 scale-x-[-1]">
+    <Transparent color={"#fff"} />
   </div>
 </section>

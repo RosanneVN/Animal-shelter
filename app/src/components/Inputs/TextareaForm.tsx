@@ -34,8 +34,8 @@ const TextareaForm = ({
             required={isRequired}
             onChange={onChange}
             defaultValue={defaultValue}
-            className="rounded-full border-[1px] focus:border-2 focus:outline-none focus:bg-orange-50 border-orange-400 border-solid 
-      text-lettersDark font-normal text-xs py-1 px-3"
+            className="rounded-2xl border-[1px] focus:border-2 focus:outline-none focus:bg-orange-50 border-orange-400 border-solid 
+      text-lettersDark font-normal text-xs py-1 px-3 h-20"
           ></textarea>
         </div>
         {errorMesage && (

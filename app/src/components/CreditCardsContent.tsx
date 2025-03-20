@@ -9,7 +9,7 @@ type Props = {};
 const CreditCardsContent = (props: Props) => {
   return (
     <>
-      <section className=" w-full">
+      <section className=" w-full flex justify-center items-center">
         <ModalFormProvider>
           <ModalForm>
             <CreditCard></CreditCard>

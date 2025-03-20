@@ -1,24 +1,21 @@
 ---
+import ScreenWidthLayout from "../../layouts/ScreenWidthLayout.astro";
 import EstandarButton from "../Buttons/EstandarButton.astro";
 import PayButtons from "../Buttons/PayButtons.astro";
 import Title from "../Title.astro";
 ---
-
+<ScreenWidthLayout>
 <section class="px-36 py-20 w-full flex flex-col max-sm:px-10">
   <div class="flex flex-col justify-center items-center gap-10">
     <Title className=" text-lettersDark max-sm:text-3xl"
       >Apoya Nuestra Labor</Title
     >
-    <div class="w-[80%]">
+    <div class="w-[80%] max-sm:w-full">
       <p class="text-middleLetters text-justify text-lettersDark">
-        Tu ayuda cambia vidas Cada donación, por pequeña que sea, marca la
-        diferencia en la vida de los animales que rescatamos. Con tu apoyo,
-        podemos proporcionarles alimento, cuidados veterinarios y un hogar
-        temporal lleno de amor mientras esperan una familia que los adopte.
-        Juntos, podemos seguir salvando y protegiendo a quienes más lo
-        necesitan.
-        <br />
-        ¡Dona hoy y sé parte de su segunda oportunidad!
+        Tu apoyo puede cambiar vidas. Con una pequeña donación, ayudas a
+        rescatar, cuidar y dar un hogar a animales necesitados. ¡Únete a nuestra
+        causa y sé parte de su segunda oportunidad! Cada aporte cuenta. 💖
+        #DonaYSalva
       </p>
     </div>
 
@@ -29,3 +26,4 @@ import Title from "../Title.astro";
     />
   </div>
 </section>
+</ScreenWidthLayout>

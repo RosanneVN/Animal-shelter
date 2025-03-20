@@ -1,55 +1,67 @@
 ---
+import ScreenWidthLayout from "../../layouts/ScreenWidthLayout.astro";
 import Facebook from "../icons/Facebook.astro";
 import Instagram from "../icons/Instagram.astro";
 import ContactCards from "./ContactCards";
 ---
 
-<section class="flex flex-row py-20">
-  <!--contacto -->
-  <div class="w-[50%] h-[70vh] flex justify-center items-center relative">
-    <!-- Círculo naranja (debajo de todo) -->
-    <div class="bg-orange-400 rounded-full w-60 h-60 absolute"></div>
-
-    <!-- Capa de blur -->
-    <div class="backdrop-blur-md w-full h-full z-20 absolute top-0"></div>
-
-    <!-- ContactCards (encima del blur) -->
-    <div class="relative z-30">
-      <ContactCards nameContact={"Laura"} numberContact={"555555"} />
-      <ContactCards nameContact={"Laura"} numberContact={"555555"} />
-      <ContactCards nameContact={"Laura"} numberContact={"555555"} />
-    </div>
-  </div>
-
-  <!--redes -->
-
-  <div class="w-[50%] flex flex-col justify-center">
-    <div class="bg-orange-50 w-[80%] rounded-lg flex flex-col justify-center items-center p-7 gap-7">
-      <div class=" ">
-        <img class="size-16 scale-x-[-1] object-cover rounded-full" src="/Image/NewBgLandingHero.jpg" alt="" />
-      </div>
-      <div class="text-lettersDark text-middleLetters">
-        <h2 class="font-semibold">Dear User:</h2>
-        <p class="text-justify">
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. elit.
-          Asperiores molestiae, nobis nisi voluptatum modi dignissimos iure
-          explicabo repellat amet voluptate at rem reiciendis ut laborum
-          voluptatem. Excepturi speriores molestiae, nobis nisi voluptatum modi
-          dignissimos iure explicabo repellat amet vitae exercitationem
-          corrupti.
-        </p>
-      </div>
+<ScreenWidthLayout>
+  <section class="flex flex-row justify-between py-20 max-lg:flex-col">
+    <!--contacto -->
+    <div
+      class="w-[50%] max-lg:w-full max-sm:py-10 h-[70vh] flex justify-center items-center"
+    >
       <div
-        class="flex flex-row gap-5 max-sm:place-items-center max-sm:place-content-center"
+        class="flex flex-col gap-10 max-sm:mx-auto justify-center items-center w-full max-sm:p-8"
       >
-        <a href="/" class="bg-orange-400 p-3 rounded-full">
-          <Facebook color={"#fff"} size={"25px"} />
-        </a>
-
-        <a href="/" class="bg-orange-400 p-3 rounded-full">
-          <Instagram color={"#fff"} size={"25px"}/>
-        </a>
+        <ContactCards nameContact={"Laura"} />
+        <ContactCards nameContact={"Gabriela"} />
+        <ContactCards nameContact={"Raquel"} />
       </div>
     </div>
-  </div>
-</section>
+
+    <!--redes -->
+
+    <div
+      class="w-[50%] max-lg:w-full flex flex-col justify-center max-lg:items-center"
+    >
+      <div
+        class="bg-orange-50 w-[80%] rounded-lg flex flex-col justify-center items-center p-7 gap-7"
+      >
+        <div class="">
+          <img
+            class="size-20 scale-x-[-1] object-cover rounded-full"
+            src="/Image/michiRedes.jpg"
+            alt=""
+          />
+        </div>
+        <div class="text-lettersDark text-middleLetters flex flex-col gap-3">
+          <h2 class="font-semibold">Querido usuario:</h2>
+          <p class="text-justify">
+            Sabemos que llegaste aquí porque amas a los animales (o porque un
+            peludito te robó el corazón en nuestras fotos, no te juzgamos). Aquí
+            encontrarás orejitas curiosas y colitas que no paran de moverse.
+            Cada pequeño gesto cuenta, ya sea adoptar, donar o simplemente pasar
+            a saludar. Prepárate para enamorarte de nuestros peluditos, ¡ellos
+            ya están listos para conocerte!
+          </p>
+          <p>
+            Con cariño, <br />
+            Los peluditos (y su equipo humano)
+          </p>
+        </div>
+        <div
+          class="flex flex-row gap-5 max-sm:place-items-center max-sm:place-content-center"
+        >
+          <a href="/" class="bg-orange-400 p-3 rounded-full">
+            <Facebook color={"#fff"} size={"25px"} />
+          </a>
+
+          <a href="/" class="bg-orange-400 p-3 rounded-full">
+            <Instagram color={"#fff"} size={"25px"} />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</ScreenWidthLayout>

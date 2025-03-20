@@ -10,7 +10,7 @@ const CreditCardsList = (props: Props) => {
 
   return (
     <>
-      <div className="w-[50%] flex flex-col gap-10 place-content-center place-items-center">
+      <div className="w-[50%] max-sm:w-full flex flex-col gap-10 place-content-center place-items-center">
         <DonationButton onOpen={setIsOpen} title={"tarjeta cup"} />
         <DonationButton onOpen={setIsOpen} title={"tarjeta mlc"} />
         <DonationButton onOpen={setIsOpen} title={"tarjeta zelle"} />
