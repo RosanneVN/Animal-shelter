@@ -1,8 +1,8 @@
 import React from "react";
-import CreditCardsList from "./ApadrinaYDona/CreditCardsList";
-import CreditCard from "./ApadrinaYDona/CreditCard";
 import ModalForm from "../layouts/ModalForm";
 import { ModalFormProvider } from "../Context/ModalFormContext";
+import CreditCard from "../moduls/ApadrinaYDona/components/CreditCard";
+import CreditCardsList from "../moduls/ApadrinaYDona/components/CreditCardsList";
 
 type Props = {};
 

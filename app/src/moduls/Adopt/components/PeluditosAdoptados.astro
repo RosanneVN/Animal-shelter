@@ -1,0 +1,55 @@
+---
+import Transparent from "../../../components/icons/Transparent";
+import Title from "../../../components/Title.astro";
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+---
+
+<section class="relative">
+  <ScreenWidthLayout>
+    <div
+      class="w-full h-full pt-20 pb-40 px-36 flex flex-col gap-10 max-lg:px-20 max-sm:px-7"
+    >
+      <div
+        class="w-full flex flex-col place-items-start gap-6 max-lg:w-full max-lg:place-items-center
+   justify-center items-center"
+      >
+        <Title className="max-lg:text-4xl max-sm:text-2xl"
+          >Peluditos Adoptados</Title
+        >
+        <p
+          class="text-lettersMiddle text-middleLetters max-sm:text-base max-sm:text-justify max-lg:text-center"
+        >
+          ¡Descubre las historias de nuestros peluditos que ya han encontrado su
+          hogar perfecto! Aquí celebramos el amor y la felicidad que han traído
+          a sus nuevas familias. Mira cómo estos pequeños corazones han cambiado
+          vidas para siempre, llenando cada día de risas, abrazos y momentos
+          inolvidables.
+        </p>
+      </div>
+
+      <div
+        class="grid grid-cols-4 grid-rows-flow gap-10 place-items-center w-full h-[50vh]
+   max-lg:h-[150vh] max-sm:h-[250vh] max-lg:grid-cols-2 max-sm:grid-cols-1"
+      >
+        <div class="w-60 h-80 max-sm:w-72 max-sm:h-52 relative">
+          <img class="rounded-md" src="/Image/Adoptados.jpg" alt="" />
+        </div>
+
+        <div class="w-60 h-80 max-sm:w-72 max-sm:h-52 relative">
+          <img class="rounded-md" src="/Image/Adoptados1.jpg" alt="" />
+        </div>
+
+        <div class="w-60 h-80 max-sm:w-72 max-sm:h-52 relative">
+          <img class="rounded-md" src="/Image/Adoptados2.jpg" alt="" />
+        </div>
+
+        <div class="w-60 h-80 max-sm:w-72 max-sm:h-52 relative">
+          <img class="rounded-md" src="/Image/Adoptados3.jpg" alt="" />
+        </div>
+      </div>
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute -bottom-0.5 scale-x-[-1]">
+    <Transparent color={"#003049"} client:visible />
+  </div>
+</section>

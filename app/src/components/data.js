@@ -17,7 +17,7 @@ export const NavBarMenu = [
   {
     id: 4,
     title: "Pasos SOS",
-    url: "./HogaresTepa",
+    url: "./Pasos",
   },
   {
     id: 5,

@@ -1,0 +1,56 @@
+---
+import EstandarButton from "../../../components/Buttons/EstandarButton.astro";
+import Transparent from "../../../components/icons/Transparent";
+import Title from "../../../components/Title.astro";
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+---
+
+<section class="relative">
+  <ScreenWidthLayout>
+    <div
+      class="flex flex-row justify-center items-center gap-14 py-20 px-36 max-lg:flex-col max-lg:px-10"
+    >
+      <div class="w-[50%] flex flex-col gap-10 max-lg:w-full items-center">
+        <div class="flex flex-col gap-1">
+          <Title className="max-lg:text-3xl max-sm:text-2xl ">
+            En <span class="text-secondary">PASOS</span> tenemos a muchos buscando un hogar</Title
+          >
+          <p class="text-longLetters text-lettersMiddle text-center uppercase">
+            Tu buscas un peludito
+          </p>
+        </div>
+
+        <p
+          class="text-lettersMiddle text-middleLetters max-lg:text-base text-justify"
+        >
+          Nos alegra saber que estas pensando en adoptar, todos nuestros peludos
+          estan a la espera de una familia y son entregados en optimas
+          condiciones de salud y belleza a adoptantes responsables y amorosos.
+          En esta pagina conoceras nuestro proceso de adopcion y requisitos,
+          pero lo primero es conocer al peludo que deseas adoptar, si ya tienes
+          su nombre sigue leyendo nuestras condiciones, de lo contrario puedes
+          conocer todos nuestro peluditos en los siguientes links.
+        </p>
+        <EstandarButton
+          bgColor={"bg-primary"}
+          url={"./PeluditosAdoptables"}
+          nameButton={"PELUDITOS ADOPTABLES"}
+        />
+      </div>
+
+      <div class="rounded-xl w-[50%] max-lg:w-full max-lg:py-10">
+        <!-- este video quedara aqui hasta que implemente la base de datos mientras tanto se cambia por una foto
+         <video controls width="600">
+          <source
+            src="https://youtu.be/6jF2DZbaBl4?si=UH0SijqCcFghzmkO"
+            type="video/mp4"
+          />
+        </video>-->
+       <img class="rounded-md" src="/Image/grupo.jpg" alt="">
+      </div>
+    </ScreenWidthLayout>
+    </div>
+  <div class="w-full absolute -bottom-0.5 scale-x-[-1]">
+    <Transparent color={"#669bbc"} client:visible />
+  </div>
+</section>

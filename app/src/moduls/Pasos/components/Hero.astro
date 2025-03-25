@@ -1,0 +1,24 @@
+---
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+import Transparent from "../../../components/icons/Transparent";
+---
+
+<section
+  class="bg-[url('/Image/bgPasos1.jpg')] bg-cover bg-no-repeat bg-center
+   flex flex-col w-full h-[70vh] max-lg:h-[100vh] relative
+   max-sm:px-10 text-center"
+>
+  <ScreenWidthLayout>
+    <div class="gap-6 items-center justify-center flex flex-col">
+      <p
+        class="text-lettersLight text-longLetters font-semibold max-sm:text-lg"
+      >
+        UN ESPACIO EN TU HOGAR PARA NUESTROS PELUDITOS
+      </p>
+      <img class="h-10" src="/Image/logo.png" alt="" />
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute left-0 -bottom-0.5 scale-x-[-1]">
+    <Transparent color={"#fff"} client:visible />
+  </div>
+</section>

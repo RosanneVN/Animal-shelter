@@ -1,12 +1,8 @@
 ---
-import Hero from "../components/ApadrinaYDona/Hero.astro";
-import Ayudanos from "../components/ApadrinaYDona/Ayudanos.astro";
 import Header from "../layouts/Header.astro";
-import DonarConPayu from "../components/ApadrinaYDona/DonarConPayu";
+import ApadrinaYDonaModule from "../moduls/ApadrinaYDona/index.astro";
 ---
 
 <Header>
-  <Hero />
-  <DonarConPayu client:visible/>
-  <Ayudanos />
+  <ApadrinaYDonaModule />
 </Header>
