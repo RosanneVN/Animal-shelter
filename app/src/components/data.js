@@ -30,3 +30,31 @@ export const NavBarMenu = [
     url: "./Contactanos",
   },
 ];
+
+export const NavBarAdminMenu = [
+  {
+    id: 1,
+    title: "Mascotas",
+    url: "/administrationPages/Pets"
+  },
+  {
+    id: 2,
+    title: "Adopciones",
+    url: "/administrationPages/AdoptionRequests"
+  },
+  {
+    id: 3,
+    title: "Voluntariado",
+    url: "/administrationPages/VoluntareRequests"
+  },
+  {
+    id: 4,
+    title: "Calendario",
+    url: "/administrationPages/Calendar"
+  },
+  {
+    id: 1,
+    title: "Blog",
+    url: "/administrationPages/AdminBlog"
+  }
+]
