@@ -1,21 +1,18 @@
-import React, { useContext } from "react";
-import AdoptionCards from "./AdoptionCards";
-import { ModalFormContext } from "../../Context/ModalFormContext";
-import AdoptionCardListFather from "./AdoptionCardListFather";
-import useFetch from "../../Services/useFetch";
+import AdoptionCardListFather from "../../../../components/AdoptionCardList/AdoptionCardListFather";
+import EditAdoptionCards from "./EditAdoptionCards";
+import useFetch from "../../../../Services/useFetch";
 
 type Props = {};
 const URL = "http://localhost:4321/api/adoption";
-const AdoptionCardList = (props: Props) => {
+const EditAdoptionCardList = (props: Props) => {
   const { data, loading, error } = useFetch({ url: URL });
-  const { setIsOpen } = useContext(ModalFormContext);
+
   return (
     <AdoptionCardListFather>
       {error && <p>Error: {error}</p>}
       {loading && <p>Loading...</p>}
       {data?.map((pet) => (
-        <AdoptionCards
-          onOpen={setIsOpen}
+        <EditAdoptionCards
           key={pet.id}
           petname={pet.petname}
           id={pet.id}
@@ -27,4 +24,4 @@ const AdoptionCardList = (props: Props) => {
     </AdoptionCardListFather>
   );
 };
-export default AdoptionCardList;
+export default EditAdoptionCardList;
