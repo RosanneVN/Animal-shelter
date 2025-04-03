@@ -1,11 +1,11 @@
 import AdoptionCardListFather from "../../../../components/AdoptionCardList/AdoptionCardListFather";
 import EditAdoptionCards from "./EditAdoptionCards";
-import useFetch from "../../../../Services/useFetch";
+import { getServicesPets } from "../../../../Services/adoption.services";
 
 type Props = {};
-const URL = "http://localhost:4321/api/adoption";
+
 const EditAdoptionCardList = (props: Props) => {
-  const { data, loading, error } = useFetch({ url: URL });
+  const { data, loading, error } =  getServicesPets();
 
   return (
     <AdoptionCardListFather>

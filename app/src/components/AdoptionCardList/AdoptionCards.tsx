@@ -1,9 +1,9 @@
 import React from "react";
 import AdoptionButton from "../Buttons/AdoptionButton";
 import AdoptionFather from "./AdoptionFather";
-import type { Pets } from "../../interfaces";
+import type { PetsType } from "../../Domain/Types/PetsType";
 
-interface Props extends Pets {
+interface Props extends PetsType {
   onOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 

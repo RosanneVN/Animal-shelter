@@ -4,15 +4,21 @@ import EditButtonSection from "./EditButtonSection";
 import ModalFormContainer from "../../../../layouts/ModalFormContainer";
 import EditCards from "./EditCards";
 import WarningMesage from "../../../../components/administrationComponents/WarningMesage";
-import type { Pets } from "../../../../interfaces";
+import type { PetsType } from "../../../../Domain/Types/PetsType";
 
-const EditAdoptionCards = ({ id, petname, age, gender, species }: Pets) => {
+const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
   const [isEdit, setIsEdit] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
 
   return (
     <>
-      <AdoptionFather id={id} petname={petname} age={age} gender={gender} species={species}>
+      <AdoptionFather
+        id={id}
+        petname={petname}
+        age={age}
+        gender={gender}
+        species={species}
+      >
         <EditButtonSection
           onClick={() => {
             setIsEdit(true);

@@ -1,7 +1,6 @@
 import type React from "react";
-import AdoptionButton from "../Buttons/AdoptionButton";
-import type { Pets } from "../../interfaces";
-interface Props extends Pets {
+import type { PetsType } from "../../Domain/Types/PetsType";
+interface Props extends PetsType {
   children: React.ReactNode;
 }
 const AdoptionFather = ({

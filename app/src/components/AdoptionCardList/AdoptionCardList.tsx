@@ -2,12 +2,12 @@ import React, { useContext } from "react";
 import AdoptionCards from "./AdoptionCards";
 import { ModalFormContext } from "../../Context/ModalFormContext";
 import AdoptionCardListFather from "./AdoptionCardListFather";
-import useFetch from "../../Services/useFetch";
+import { getServicesPets } from "../../Services/adoption.services";
 
 type Props = {};
 const URL = "http://localhost:4321/api/adoption";
 const AdoptionCardList = (props: Props) => {
-  const { data, loading, error } = useFetch({ url: URL });
+  const { data, loading, error } =  getServicesPets();
   const { setIsOpen } = useContext(ModalFormContext);
   return (
     <AdoptionCardListFather>

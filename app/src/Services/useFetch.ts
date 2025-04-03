@@ -1,11 +1,10 @@
 import { useEffect, useState } from "react";
-import type { Pets } from "../interfaces";
 
 type Props = {
   url: string;
 };
-function useFetch({ url }: Props) {
-  const [data, setData] = useState<Pets[]>([]);
+function useFetch<T>({ url }: Props) {
+  const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [controller, setController] = useState<AbortController | null>(null);
