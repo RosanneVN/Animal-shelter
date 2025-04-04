@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import AdoptionFather from "../../../../components/AdoptionCardList/AdoptionFather";
 import EditButtonSection from "./EditButtonSection";
 import ModalFormContainer from "../../../../layouts/ModalFormContainer";
@@ -10,7 +10,9 @@ import {
 } from "../../../../Services/adoption.services";
 
 const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
+  //isEdit es para abrir y cerrar el modal de creacion
   const [isEdit, setIsEdit] = useState(false);
+  //isDelete es para abrir y cerrar el modal de confirmacion
   const [isDelete, setIsDelete] = useState(false);
   const { handleDeletePet } = useHandleDeletePet();
 
@@ -61,6 +63,7 @@ const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
             setIsDelete(false);
             handleDeletePet(id);
           }}
+          onClose={()=>{setIsDelete(false)}}
         />
       </ModalFormContainer>
     </>
