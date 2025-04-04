@@ -1,21 +1,33 @@
-import  { useState } from "react";
+import { useState } from "react";
 import AdoptionFather from "../../../../components/AdoptionCardList/AdoptionFather";
 import EditButtonSection from "./EditButtonSection";
 import ModalFormContainer from "../../../../layouts/ModalFormContainer";
 import EditCards from "./Forms/EditCards";
 import WarningMesage from "../../../../components/administrationComponents/WarningMesage";
 import type { PetsType } from "../../../../Domain/Types/PetsType";
-import {
-  useHandleDeletePet,
-} from "../../../../Services/adoption.services";
+import { useHandleDeletePet } from "../../../../Services/adoption.services";
 
 const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
   //isEdit es para abrir y cerrar el modal de creacion
   const [isEdit, setIsEdit] = useState(false);
   //isDelete es para abrir y cerrar el modal de confirmacion
   const [isDelete, setIsDelete] = useState(false);
-  const { handleDeletePet } = useHandleDeletePet();
+  const { handleDeletePet, loading, error } = useHandleDeletePet();
 
+  const deletePet = () => {
+    if (loading) {
+      return;
+    }
+    setIsDelete(false);
+    handleDeletePet(id);
+    window.location.reload();
+  };
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+  if (loading) {
+    return <p>Loading...</p>;
+  }
   return (
     <>
       <AdoptionFather
@@ -59,11 +71,10 @@ const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
         }}
       >
         <WarningMesage
-          onClick={() => {
+          onClick={deletePet}
+          onClose={() => {
             setIsDelete(false);
-            handleDeletePet(id);
           }}
-          onClose={()=>{setIsDelete(false)}}
         />
       </ModalFormContainer>
     </>
