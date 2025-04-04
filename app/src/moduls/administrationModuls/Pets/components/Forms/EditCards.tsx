@@ -1,11 +1,11 @@
 import React, { useContext, useState } from "react";
-import InputForm from "../../../../components/Inputs/InputForm";
-import OptionButtons from "../../../../components/Inputs/OptionButtons";
-import SendButton from "../../../../components/Buttons/SendButton";
-import UploadInput from "../../../../components/Inputs/UploadInput";
-import type { PetsType } from "../../../../Domain/Types/PetsType";
-import { useHandleUpdatePet } from "../../../../Services/adoption.services";
-import { useRouter } from "wouter";
+import InputForm from "../../../../../components/Inputs/InputForm";
+import OptionButtons from "../../../../../components/Inputs/OptionButtons";
+import SendButton from "../../../../../components/Buttons/SendButton";
+import UploadInput from "../../../../../components/Inputs/UploadInput";
+import type { PetsType } from "../../../../../Domain/Types/PetsType";
+import { useHandleUpdatePet } from "../../../../../Services/adoption.services";
+import { PetsEnum } from "../../../../../Const/PetsEnum";
 
 interface Props extends PetsType {
   onClose: () => void;
@@ -18,16 +18,15 @@ type FormData = {
   genderPet: string;
 };
 
+
 const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
   const [values, setValues] = useState<FormData>({
     imgPet: "",
     namePet: petname,
     agePet: age.toString(),
-    speciesPet: species,
-    genderPet: gender,
+    speciesPet: species || PetsEnum.perro,
+    genderPet: gender || PetsEnum.macho,
   });
-  const router = useRouter();
-
   //...prev es que mantenemos los demas inputs intactos expeto en el que estamos obteniendo
   const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
@@ -39,6 +38,11 @@ const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
   const { handleUpdatePet, loading, error } = useHandleUpdatePet();
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!values.genderPet || !values.speciesPet) {
+      alert("Todos los campos deben estar seleccionados");
+      return;
+    }
+
     if (loading) {
       return;
     }
@@ -46,8 +50,8 @@ const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
       idUpdate: id,
       petnameUpdate: values.namePet,
       ageUpdate: parseInt(values.agePet),
-      speciesUpdate: species,
-      genderUpdate: gender,
+      speciesUpdate: values.speciesPet,
+      genderUpdate: values.genderPet,
     });
     if (error) {
       return;
@@ -107,8 +111,21 @@ const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
         />
         <OptionButtons
           label={"Seleccione el sexo de la mascota"}
-          first={"Hembra"}
-          second={"Macho"}
+          first={PetsEnum.hembra}
+          second={PetsEnum.macho}
+          selectedValue={values.genderPet}
+          onChange={(value) => {
+            handleChange("genderPet", value);
+          }}
+        />
+        <OptionButtons
+          label={"Seleccione la especie de la mascota"}
+          first={PetsEnum.gato}
+          second={PetsEnum.perro}
+          selectedValue={values.speciesPet}
+          onChange={(value) => {
+            handleChange("speciesPet", value);
+          }}
         />
       </div>
 

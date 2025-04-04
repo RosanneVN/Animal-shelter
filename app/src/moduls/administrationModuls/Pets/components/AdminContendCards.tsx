@@ -3,7 +3,7 @@ import { ModalFormProvider } from "../../../../Context/ModalFormContext";
 import ModalForm from "../../../../layouts/ModalForm";
 import CreatePetsButton from "./CreatePetsButton";
 import EditAdoptionCardList from "./EditAdoptionCardList";
-import EditCards from "./EditCards";
+import EditCards from "./Forms/EditCards";
 
 export default function AdminContendCards() {
   return (

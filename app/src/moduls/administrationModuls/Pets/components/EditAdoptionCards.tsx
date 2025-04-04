@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import AdoptionFather from "../../../../components/AdoptionCardList/AdoptionFather";
 import EditButtonSection from "./EditButtonSection";
 import ModalFormContainer from "../../../../layouts/ModalFormContainer";
-import EditCards from "./EditCards";
+import EditCards from "./Forms/EditCards";
 import WarningMesage from "../../../../components/administrationComponents/WarningMesage";
 import type { PetsType } from "../../../../Domain/Types/PetsType";
 import {
