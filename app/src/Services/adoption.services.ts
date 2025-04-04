@@ -27,25 +27,49 @@ export const handleCreatePet = ({}) => {
   });
 };
 
-export const handleUpdatePet = () => {
+type UpdatePets = {
+  idUpdate: string;
+  petnameUpdate: string;
+  ageUpdate: number;
+  speciesUpdate: string;
+  genderUpdate: string;
+};
+export const useHandleUpdatePet = () => {
   const { mutate, loading, error } = useMutation();
-  mutate({
-    url: URL,
-    method: "PATCH",
-    body: {
-      petname: "Carlos",
-      age: 2,
-      species: "gato",
-      gender: "macho",
-    },
-  });
+  const handleUpdatePet = ({
+    idUpdate,
+    petnameUpdate,
+    ageUpdate,
+    speciesUpdate,
+    genderUpdate,
+  }: UpdatePets) => {
+ const m = mutate({
+      url: URL + "?id=" + idUpdate,
+      method: "PATCH",
+      body: {
+        petname: petnameUpdate,
+        age: ageUpdate,
+        species: speciesUpdate,
+        gender: genderUpdate,
+      },
+    });
+    console.log(m);
+
+    console.log(error);
+  };
+  return { handleUpdatePet, loading, error };
 };
 
-export const handleDeletePet = (id: string) => {
+export const useHandleDeletePet = () => {
   const { mutate, loading, error } = useMutation();
-  mutate({
-    id: id,
-    url: URL,
-    method: "DELETE",
-  });
+  const handleDeletePet = (id: string) => {
+    const m = mutate({
+      url: URL + "?id=" + id,
+      method: "DELETE",
+    });
+    console.log(m);
+
+    console.log(error);
+  };
+  return { handleDeletePet, loading, error };
 };

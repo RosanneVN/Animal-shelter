@@ -11,11 +11,11 @@ export default function AdminContendCards() {
       <section className="w-full">
         <ModalFormProvider>
           <ModalForm>
-            <EditCards />
+            <></>
           </ModalForm>
-          <CreatePetsButton />
-          <EditAdoptionCardList />
         </ModalFormProvider>
+        <CreatePetsButton />
+        <EditAdoptionCardList />
       </section>
     </>
   );

@@ -16,6 +16,7 @@ const OptionButtons = ({ first, second, label }: Props) => {
         <div className="flex flex-col justify-center items-center">
         <div className="text-xs p-2 bg-orange-50 flex w-fit rounded-md text-lettersDark">
           <button
+            type="button"
             className={` w-24 rounded-sm py-1 ${
               isSelected === true ? "bg-orange-400" : "bg-orange-50 "
             }`}
@@ -26,6 +27,7 @@ const OptionButtons = ({ first, second, label }: Props) => {
             {first}
           </button>
           <button
+            type="button"
             className={` w-24 rounded-sm py-1 ${
               isSelected === false ? "bg-orange-400" : "bg-orange-50 "
             }`}

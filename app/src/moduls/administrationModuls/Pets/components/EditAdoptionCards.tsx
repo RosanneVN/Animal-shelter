@@ -5,10 +5,14 @@ import ModalFormContainer from "../../../../layouts/ModalFormContainer";
 import EditCards from "./EditCards";
 import WarningMesage from "../../../../components/administrationComponents/WarningMesage";
 import type { PetsType } from "../../../../Domain/Types/PetsType";
+import {
+  useHandleDeletePet,
+} from "../../../../Services/adoption.services";
 
 const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
   const [isEdit, setIsEdit] = useState(false);
   const [isDelete, setIsDelete] = useState(false);
+  const { handleDeletePet } = useHandleDeletePet();
 
   return (
     <>
@@ -34,7 +38,16 @@ const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
           setIsEdit(false);
         }}
       >
-        <EditCards />
+        <EditCards
+          id={id}
+          petname={petname}
+          age={age}
+          species={species}
+          gender={gender}
+          onClose={() => {
+            setIsEdit(false);
+          }}
+        />
       </ModalFormContainer>
 
       <ModalFormContainer
@@ -46,6 +59,7 @@ const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
         <WarningMesage
           onClick={() => {
             setIsDelete(false);
+            handleDeletePet(id);
           }}
         />
       </ModalFormContainer>
