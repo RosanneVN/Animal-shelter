@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import InputForm from "../../../../../components/Inputs/InputForm";
+import React, { useContext, useState } from "react";
 import OptionButtons from "../../../../../components/Inputs/OptionButtons";
-import SendButton from "../../../../../components/Buttons/SendButton";
-import UploadInput from "../../../../../components/Inputs/UploadInput";
-import type { PetsType } from "../../../../../Domain/Types/PetsType";
-import { useHandleUpdatePet } from "../../../../../Services/adoption.services";
 import { PetsEnum } from "../../../../../Const/PetsEnum";
+import InputForm from "../../../../../components/Inputs/InputForm";
+import UploadInput from "../../../../../components/Inputs/UploadInput";
+import { useHandleCreatePet } from "../../../../../Services/adoption.services";
+import SendButton from "../../../../../components/Buttons/SendButton";
+import { ModalFormContext } from "../../../../../Context/ModalFormContext";
 
-interface Props extends PetsType {
-  onClose: () => void;
-}
 type FormData = {
   imgPet: any;
   namePet: string;
@@ -18,16 +15,15 @@ type FormData = {
   genderPet: string;
 };
 
-
-const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
+export default function CreateCards() {
+  const { setIsOpen } = useContext(ModalFormContext);
   const [values, setValues] = useState<FormData>({
     imgPet: "",
-    namePet: petname,
-    agePet: age.toString(),
-    speciesPet: species || PetsEnum.perro,
-    genderPet: gender || PetsEnum.macho,
+    namePet: "",
+    agePet: "",
+    speciesPet: "",
+    genderPet: "",
   });
-  //...prev es que mantenemos los demas inputs intactos expeto en el que estamos obteniendo
   const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
       ...prev,
@@ -35,10 +31,15 @@ const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
     }));
   };
 
-  const { handleUpdatePet, loading, error } = useHandleUpdatePet();
+  const { handleCreatePet, loading, error } = useHandleCreatePet();
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!values.genderPet || !values.speciesPet) {
+    if (
+      !values.genderPet ||
+      !values.speciesPet ||
+      !values.namePet ||
+      !values.agePet
+    ) {
       alert("Todos los campos deben estar seleccionados");
       return;
     }
@@ -46,17 +47,16 @@ const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
     if (loading) {
       return;
     }
-    handleUpdatePet({
-      idUpdate: id,
-      petnameUpdate: values.namePet,
-      ageUpdate: parseInt(values.agePet),
-      speciesUpdate: values.speciesPet,
-      genderUpdate: values.genderPet,
+    handleCreatePet({
+      petnameNew: values.namePet,
+      ageNew: parseInt(values.agePet),
+      speciesNew: values.speciesPet,
+      genderNew: values.genderPet,
     });
     if (error) {
       return;
     }
-    onClose();
+    setIsOpen(false);
     window.location.reload();
   };
   if (error) {
@@ -65,6 +65,8 @@ const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
   if (loading) {
     return <p>Loading...</p>;
   }
+
+  //el form  tiene una funcion submit que significa q el boton que tenga el type submit se ejecuta cuando se envia el formulario
   return (
     <form
       onSubmit={(e) => submit(e)}
@@ -73,7 +75,9 @@ const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
       <button
         type="button"
         className="rounded-full p-2 shadow-md self-end hover:translate-y-1 hover:shadow-none"
-        onClick={onClose}
+        onClick={() => {
+          setIsOpen(false);
+        }}
       >
         {" "}
         <img className="size-4" src="/Image/closeIcon.png" alt="" />
@@ -134,5 +138,4 @@ const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
       </div>
     </form>
   );
-};
-export default EditCards;
+}

@@ -1,6 +1,7 @@
 import adoptionAdapters, {
   adoptionAdaptersToBackend,
 } from "../Domain/Adapters/adoption.adapters";
+import type { PetsType } from "../Domain/Types/PetsType";
 import type { Pets } from "../interfaces/backendAPI";
 import useFetch from "./useFetch";
 import useMutation from "./useMutation";
@@ -13,18 +14,32 @@ export const getServicesPets = () => {
   return { data: adaptedData, loading, error };
 };
 
-export const handleCreatePet = ({}) => {
+type CreatePets = {
+  petnameNew: string;
+  ageNew: number;
+  speciesNew: string;
+  genderNew: string;
+};
+export const useHandleCreatePet = () => {
   const { mutate, loading, error } = useMutation();
-  mutate({
-    url: URL,
-    method: "POST",
-    body: {
-      petname: "Pedro",
-      age: 2,
-      species: "perro",
-      gender: "macho",
-    },
-  });
+  const handleCreatePet = ({
+    petnameNew,
+    ageNew,
+    speciesNew,
+    genderNew,
+  }: CreatePets) => {
+    mutate({
+      url: URL,
+      method: "POST",
+      body: {
+        petname: petnameNew,
+        age: ageNew,
+        species: speciesNew,
+        gender: genderNew,
+      },
+    });
+  };
+  return { handleCreatePet, loading, error };
 };
 
 type UpdatePets = {
@@ -43,7 +58,7 @@ export const useHandleUpdatePet = () => {
     speciesUpdate,
     genderUpdate,
   }: UpdatePets) => {
- const m = mutate({
+    const m = mutate({
       url: URL + "?id=" + idUpdate,
       method: "PATCH",
       body: {

@@ -3,7 +3,7 @@ import { ModalFormProvider } from "../../../../Context/ModalFormContext";
 import ModalForm from "../../../../layouts/ModalForm";
 import CreatePetsButton from "./CreatePetsButton";
 import EditAdoptionCardList from "./EditAdoptionCardList";
-import EditCards from "./Forms/EditCards";
+import CreateCards from "./Forms/CreateCards";
 
 export default function AdminContendCards() {
   return (
@@ -11,10 +11,10 @@ export default function AdminContendCards() {
       <section className="w-full">
         <ModalFormProvider>
           <ModalForm>
-            <></>
+            <CreateCards />
           </ModalForm>
+          <CreatePetsButton />
         </ModalFormProvider>
-        <CreatePetsButton />
         <EditAdoptionCardList />
       </section>
     </>
