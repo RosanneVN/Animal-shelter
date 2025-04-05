@@ -10,8 +10,17 @@ import {
 } from "../../Backend/Schemas/Adoption.schemas";
 
 export const GET: APIRoute = async ({ params, request }) => {
-  const pets = await db.select().from(Pets);
-  console.log(pets);
+  const url = new URL(request.url);
+  const speciesFilter = url.searchParams.get("species") || "";
+  let pets;
+ 
+   if (speciesFilter) {
+    pets = await db.select().from(Pets).where(eq(Pets.species, speciesFilter));
+    console.log(pets);
+    
+  } else {
+     pets = await db.select().from(Pets);
+  }
 
   return new Response(JSON.stringify(pets), {
     status: 200,

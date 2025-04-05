@@ -28,7 +28,7 @@ function useFetch<T>({ url }: Props) {
     return () => {
       abortController.abort();
     };
-  }, []);
+  }, [url]);
   return { data, loading, error };
 }
 export default useFetch;

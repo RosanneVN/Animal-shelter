@@ -1,15 +1,20 @@
-import adoptionAdapters, {
-  adoptionAdaptersToBackend,
-} from "../Domain/Adapters/adoption.adapters";
-import type { PetsType } from "../Domain/Types/PetsType";
+import adoptionAdapters from "../Domain/Adapters/adoption.adapters";
 import type { Pets } from "../interfaces/backendAPI";
 import useFetch from "./useFetch";
 import useMutation from "./useMutation";
 
 const URL = "http://localhost:4321/api/adoption";
+type Props = {
+  filterSpecie?: string;
+};
 
-export const getServicesPets = () => {
-  const { data, loading, error } = useFetch<Pets>({ url: URL });
+export const getServicesPets = ({ filterSpecie = "" }: Props) => {
+  console.log(filterSpecie);
+
+  const { data, loading, error } = useFetch<Pets>({
+    url: `${URL}?species=${filterSpecie}`,
+  });
+
   const adaptedData = adoptionAdapters({ data });
   return { data: adaptedData, loading, error };
 };
