@@ -6,14 +6,14 @@ import useMutation from "./useMutation";
 const URL = "http://localhost:4321/api/adoption";
 type Props = {
   filterSpecie?: string;
+  searchFilter?: string;
 };
 
-export const getServicesPets = ({ filterSpecie = "" }: Props) => {
-  console.log(filterSpecie);
-
+export const getServicesPets = ({ filterSpecie = "", searchFilter = ""}: Props) => {
   const { data, loading, error } = useFetch<Pets>({
-    url: `${URL}?species=${filterSpecie}`,
+    url: `${URL}?species=${filterSpecie}&search=${searchFilter}`,
   });
+console.log(searchFilter);
 
   const adaptedData = adoptionAdapters({ data });
   return { data: adaptedData, loading, error };

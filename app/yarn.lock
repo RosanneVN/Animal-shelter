@@ -1669,6 +1669,7 @@ __metadata:
     react-easy-crop: "npm:^5.4.1"
     tailwindcss: "npm:^3.4.14"
     typescript: "npm:^5.6.3"
+    use-debounce: "npm:^10.0.4"
     uuid: "npm:^11.1.0"
     wouter: "npm:^3.6.0"
     zod: "npm:^3.24.2"
@@ -5858,6 +5859,15 @@ __metadata:
   bin:
     update-browserslist-db: cli.js
   checksum: 10c0/536a2979adda2b4be81b07e311bd2f3ad5e978690987956bc5f514130ad50cac87cd22c710b686d79731e00fbee8ef43efe5fcd72baa241045209195d43dcc80
+  languageName: node
+  linkType: hard
+
+"use-debounce@npm:^10.0.4":
+  version: 10.0.4
+  resolution: "use-debounce@npm:10.0.4"
+  peerDependencies:
+    react: "*"
+  checksum: 10c0/73494fc44b2bd58a7ec799a528fc20077c45fe2e94fedff6dcd88d136f7a39f417d77f584d5613aac615ed32aeb2ea393797ae1f7d5b2645eab57cb497a6d0cb
   languageName: node
   linkType: hard
 

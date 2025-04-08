@@ -4,12 +4,15 @@ import { getServicesPets } from "../../../../Services/adoption.services";
 import { useState } from "react";
 
 type Props = {
-  filterSpecie: string
+  filterSpecie: string;
+  searchFilter: string;
 };
 
-const EditAdoptionCardList = ({filterSpecie}: Props) => {
- 
-  const { data, loading, error } =  getServicesPets({filterSpecie});
+const EditAdoptionCardList = ({ filterSpecie, searchFilter }: Props) => {
+  const { data, loading, error } = getServicesPets({
+    filterSpecie,
+    searchFilter,
+  });
 
   if (loading) {
     return <p>Loading...</p>;
