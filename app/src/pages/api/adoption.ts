@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { db, eq, like, Pets, sql } from "astro:db";
+import { db, eq, like, Pets, count } from "astro:db";
 import { v4 as uuidv4 } from "uuid";
 import {
   deletePetsSchema,
@@ -13,30 +13,46 @@ export const GET: APIRoute = async ({ params, request }) => {
   const url = new URL(request.url);
   const speciesFilter = url.searchParams.get("species") || "";
   const searchQuery = url.searchParams.get("search") || "";
+  const page = Math.max(parseInt(url.searchParams.get("page") || "1", 10), 1);
+  const limit = Math.min(
+    parseInt(url.searchParams.get("limit") || "10", 10),
+    100
+  );
 
   let pets;
   if (searchQuery) {
     pets = await db
       .select()
       .from(Pets)
-      .where(
-        like(Pets.petname, "%" + searchQuery.toLowerCase() + "%")
-      );
+      .where(like(Pets.petname, "%" + searchQuery.toLowerCase() + "%"))
+      .limit(limit)
+      .offset((page - 1) * limit);
   } else if (speciesFilter) {
-    pets = await db.select().from(Pets).where(eq(Pets.species, speciesFilter));
+    pets = await db
+      .select()
+      .from(Pets)
+      .where(eq(Pets.species, speciesFilter))
+      .limit(limit)
+      .offset((page - 1) * limit);
   } else {
-    pets = await db.select().from(Pets);
+    pets = await db
+      .select()
+      .from(Pets)
+      .limit(limit)
+      .offset((page - 1) * limit);
   }
 
-  console.log(pets);
 
-  return new Response(JSON.stringify(pets), {
-    status: 200,
-    statusText: "Michi encontrado",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  return new Response(
+    JSON.stringify({ data: pets, pagination: { page, limit } }),
+    {
+      status: 200,
+      statusText: "Michi encontrado",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 };
 
 export const POST: APIRoute = async ({ request }) => {

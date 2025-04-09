@@ -15,7 +15,7 @@ function useFetch<T>({ url }: Props) {
     setLoading(true);
     fetch(url, { signal: abortController.signal })
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((resBackend) => setData(resBackend.data))
       .catch((error) => {
         if (error.name === "AbortError") {
           console.log("Request canceled");
@@ -29,6 +29,8 @@ function useFetch<T>({ url }: Props) {
       abortController.abort();
     };
   }, [url]);
+  console.log(data);
+
   return { data, loading, error };
 }
 export default useFetch;

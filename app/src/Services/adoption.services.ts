@@ -7,13 +7,17 @@ const URL = "http://localhost:4321/api/adoption";
 type Props = {
   filterSpecie?: string;
   searchFilter?: string;
+  page?: number;
+  limit?: number;
 };
 
-export const getServicesPets = ({ filterSpecie = "", searchFilter = ""}: Props) => {
+export const getServicesPets = ({ filterSpecie = "", searchFilter = "", page, limit}: Props) => {
   const { data, loading, error } = useFetch<Pets>({
-    url: `${URL}?species=${filterSpecie}&search=${searchFilter}`,
+    url: `${URL}?species=${filterSpecie}&search=${searchFilter}&page=${page}&limit=${limit}`,
   });
-console.log(searchFilter);
+console.log(page);
+console.log(limit);
+
 
   const adaptedData = adoptionAdapters({ data });
   return { data: adaptedData, loading, error };

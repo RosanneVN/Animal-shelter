@@ -1,17 +1,20 @@
 import AdoptionCardListFather from "../../../../components/AdoptionCardList/AdoptionCardListFather";
 import EditAdoptionCards from "./EditAdoptionCards";
 import { getServicesPets } from "../../../../Services/adoption.services";
-import { useState } from "react";
 
 type Props = {
   filterSpecie: string;
   searchFilter: string;
+ limit: number;
+  page: number;
 };
 
-const EditAdoptionCardList = ({ filterSpecie, searchFilter }: Props) => {
+const EditAdoptionCardList = ({ filterSpecie, searchFilter, limit, page }: Props) => {
   const { data, loading, error } = getServicesPets({
     filterSpecie,
     searchFilter,
+    limit,
+    page,
   });
 
   if (loading) {
