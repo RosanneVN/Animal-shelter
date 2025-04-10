@@ -14,10 +14,7 @@ export const GET: APIRoute = async ({ params, request }) => {
   const speciesFilter = url.searchParams.get("species") || "";
   const searchQuery = url.searchParams.get("search") || "";
   const page = Math.max(parseInt(url.searchParams.get("page") || "1", 10), 1);
-  const limit = Math.min(
-    parseInt(url.searchParams.get("limit") || "10", 10),
-    100
-  );
+  const limit = Math.min(parseInt(url.searchParams.get("limit") || "10", 10), 100);
 
   let pets;
   if (searchQuery) {
@@ -42,9 +39,26 @@ export const GET: APIRoute = async ({ params, request }) => {
       .offset((page - 1) * limit);
   }
 
+  let totalPets: any;
+  if (searchQuery) {
+    totalPets = await db
+      .select({ count: count() })
+      .from(Pets)
+      .where(like(Pets.petname, "%" + searchQuery.toLowerCase() + "%"));
+  } else if (speciesFilter) {
+    totalPets = await db
+      .select({ count: count() })
+      .from(Pets)
+      .where(eq(Pets.species, speciesFilter));
+  } else {
+    totalPets = await db.select({ count: count() }).from(Pets);
+  }
+  console.log(totalPets);
+  const totalPages: number = Math.ceil(totalPets[0].count / limit);
+  console.log("totalPages", totalPages);
 
   return new Response(
-    JSON.stringify({ data: pets, pagination: { page, limit } }),
+    JSON.stringify({ data: pets, pagination: { page, limit, totalPages } }),
     {
       status: 200,
       statusText: "Michi encontrado",

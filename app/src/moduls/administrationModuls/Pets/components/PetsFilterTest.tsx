@@ -1,7 +1,6 @@
-import type { Dispatch, SetStateAction } from "react";
-import { PetsEnum } from "../../../../Const/PetsEnum";
+import type { Dispatch, SetStateAction } from "react";import { PetsEnum } from "../../../../Const/PetsEnum";
 type Props = {
-  onFilterChange: Dispatch<SetStateAction<string>>;
+  onFilterChange: (specie: string) => void;
 };
 export default function PetsFilterTest({ onFilterChange }: Props) {
   return (
