@@ -1,0 +1,46 @@
+---
+import Transparent from "../../../components/icons/Transparent";
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+
+
+---
+
+<section
+  class="bg-terciary text-lettersLight relative h-[90vh] max-sm:h-[130vh]
+   justify-center items-center flex"
+>
+  <ScreenWidthLayout>
+    <div
+      class="px-36 py-28 flex flex-col max-sm:w-full items-center justify-center
+       text-justify gap-5 max-lg:px-10 max-w-[1200px] m-auto"
+    >
+      <p class="text-longLetters uppercase font-semibold">
+        Requisitos basicos para adoptar:
+      </p>
+      <p class="text-middleLetters text-justify">
+        Nos encantaria poder entregar un peludito a cada persona que desee
+        adoptar, pero la gran responsabilidad que sentimos con nuestros angeles
+        nos obliga a tener unos requisitos minimos que nos permitan tener cierta
+        seguridad en que los hogares donde llegaran seran los definitivos.
+      </p>
+      <ol class="list-decimal space-y-2 text-middleLetters ">
+        <li>
+          Ser mayor de 18 años. En caso de ser menor de edad, uno de sus padres
+          deben llenar el formulario.
+        </li>
+        <li>
+          Residir permanente en La Habana, por cuestiones de seguimiento, no
+          damos en adopción a otras provincias.
+        </li>
+        <li>Estar de acuerdo con la esterilización y el seguimiento.</li>
+        <li>
+          La adopción es individual, es decir, usted no puede adoptar para luego
+          darle el perro/gato a otra persona.
+        </li>
+      </ol>
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute -bottom-0.5">
+    <Transparent color={"#fff"} client:visible />
+  </div>
+</section>

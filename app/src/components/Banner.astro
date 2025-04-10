@@ -1,0 +1,49 @@
+---
+import ScreenWidthLayout from "../layouts/ScreenWidthLayout.astro";
+
+const {title1, title2, text1, text2, urlImg} = Astro.props
+---
+
+<section class="relative">
+  <div
+    class="flex flex-row py-20 px-36 bg-[url('/Image/bannerAdoptaBg.jpg')]
+  bg-cover bg-no-repeat bg-center w-full h-[100vh] place-content-center place-items-center
+  max-lg:px-5 max-lg:flex-col max-lg:h-[120vh] max-sm:h-[140vh]"
+  >
+    <ScreenWidthLayout>
+      <div
+        class="flex flex-row max-sm:flex-col w-full place-content-center place-items-center gap-10"
+      >
+        <div
+          class="flex flex-col w-[50%] h-fit bg-primary text-lettersLight
+       px-10 py-20 rounded-lg gap-6 relative z-10 max-lg:w-full text-center"
+        >
+          <p class="text-bigLetters max-sm:text-xl font-semibold">
+            Muchos animales necesitan un hogar
+          </p>
+          <p class="text-middleLetters max-sm:text-base">
+            ADOPTA, dales una oportunidad y seran tus amigos fieles en todo
+            momento No te arrepentiras!
+          </p>
+        </div>
+        <div
+          class="flex flex-col w-[50%] h-fit bg-secondary text-lettersLight
+       px-10 py-20 rounded-lg gap-6 relative z-10 max-lg:w-full text-center"
+        >
+          <p class="text-bigLetters font-semibold max-sm:text-xl">
+
+            Hemos rescatado más de 100 Peludos
+          </p>
+          <p class="text-middleLetters max-sm:text-base">
+            Cada adopcion garantiza la oportunidad de ayudar a otro peludo de la
+            calle.
+          </p>
+        </div>
+      </div>
+    </ScreenWidthLayout>
+  </div>
+  <div
+    class="w-full h-[70vh] bg-gradient-to-b from-primary to-transparent absolute top-0"
+  >
+  </div>
+</section>

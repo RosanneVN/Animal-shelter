@@ -1,17 +1,8 @@
 ---
-import ContendCards from "../components/ContendCards";
-import Title from "../components/Title.astro";
+import Header from "../layouts/Header.astro";
+import PeluditosAdoptablesModule from "../moduls/PeluditosAdoptables/index.astro";
 ---
 
-<section
-  class="w-full h-full py-20 px-36 flex flex-col gap-10 max-lg:px-20 max-sm:px-7"
->
-  <Title className="max-lg:text-4xl max-sm:text-2xl">Peluditos Adoptables</Title
-  >
-  <div
-    class="grid grid-cols-3 grid-rows-flow place-items-center w-full h-full
-    max-lg:h-[150vh] max-sm:h-[400vh] max-lg:grid-cols-2 max-sm:grid-cols-1 gap-16"
-  >
-    <ContendCards client:visible />
-  </div>
-</section>
+<Header>
+  <PeluditosAdoptablesModule />
+</Header>

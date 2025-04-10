@@ -1,0 +1,43 @@
+---
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+import EstandarButton from "../../../components/Buttons/EstandarButton.astro";
+import Transparent from "../../../components/icons/Transparent";
+import Title from "../../../components/Title.astro";
+---
+
+<section
+  class="bg-[url('/Image/ApadrinayDonaHero.jpg')] bg-cover bg-no-repeat bg-center flex flex-col
+   w-full h-[100vh] relative justify-center items-start px-36 max-sm:px-10 text-lettersLight max-lg:px-20"
+>
+  <ScreenWidthLayout>
+    <div class="flex flex-col w-[50%] max-sm:w-full gap-7">
+      <Title className="text-lettersLight max-lg:text-longLetters uppercase"
+        >Donaciones</Title
+      >
+
+      <p class="text-justify">
+        Con tu apoyo, podemos seguir brindando amor, cuidado y un hogar seguro a
+        los animales que más lo necesitan. Cada donación cuenta y nos acerca un
+        paso más a un mundo donde todos los peluditos tengan una oportunidad
+        para vivir felices y sanos. ¡Únete a nosotros y haz que la compasión sea
+        la respuesta!
+      </p>
+
+      <div class="flex flex-row gap-5">
+        <EstandarButton
+          bgColor={"bg-secondary"}
+          url={"./ApadrinaYDona#donarCon"}
+          nameButton={"!dona aqui¡"}
+        />
+        <EstandarButton
+          bgColor={"bg-primary"}
+          url={"./Contactanos"}
+          nameButton={"Únete a nosotros"}
+        />
+      </div>
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute left-0 -bottom-1 scale-x-[-1]">
+    <Transparent color={"#fff"} />
+  </div>
+</section>

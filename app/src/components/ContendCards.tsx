@@ -1,13 +1,16 @@
 import { ModalFormProvider } from "../Context/ModalFormContext";
+import ModalForm from "../layouts/ModalForm";
 import AdoptionCardList from "./AdoptionCardList/AdoptionCardList";
-import ModalForm from "./ModalForm";
+import Stepper from "./Forms/Stepper";
 
 export default function ContendCards() {
   return (
     <>
-      <section className=" w-full">
+      <section className="w-full">
         <ModalFormProvider>
-          <ModalForm></ModalForm>
+          <ModalForm>
+            <Stepper />
+          </ModalForm>
           <AdoptionCardList />
         </ModalFormProvider>
       </section>

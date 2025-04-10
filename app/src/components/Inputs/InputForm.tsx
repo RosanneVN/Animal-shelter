@@ -2,7 +2,7 @@ type Props = {
   name: string;
   type?: React.HTMLInputTypeAttribute;
   placeholderText?: string;
-  errorMesage: any;
+  errorMesage?: any;
   isRequired?: boolean;
   label?: string;
   value?: string | number | string[];
@@ -35,7 +35,7 @@ const InputForm = ({
             type={type}   
             onChange={onChange}
             placeholder={placeholderText}
-            className="rounded-full border-[1px] focus:border-2 focus:outline-none focus:bg-orange-50 border-orange-400 border-solid 
+            className="rounded-lg border-[1px] focus:border-2 focus:outline-none focus:bg-orange-50 border-orange-400 border-solid 
       text-lettersDark font-normal text-xs py-1 px-3"
           />
         </div>

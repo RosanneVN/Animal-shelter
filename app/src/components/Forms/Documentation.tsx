@@ -3,35 +3,33 @@ import BackAndNext from "../Buttons/BackAndNext";
 import InputForm from "../Inputs/InputForm";
 import OptionButtons from "../Inputs/OptionButtons";
 import Notes from "./Notes";
+import FormContent from "../FormContent";
 
 type FormData = {
-   docId?: any
-  };
-  type Props ={
-    nextStep: any
-    prevStep: any
-  }
+  docId?: any;
+};
+type Props = {
+  nextStep?: any;
+  prevStep: any;
+};
 
-const Documentation = ({nextStep, prevStep}: Props) => {
-     const [values, setValues] = useState<FormData>({
-       docId: undefined
-      });
-    
-      const handleChange = (
-        field: keyof typeof values,
-        value: string | number | boolean
-      ) => {
-        setValues((prev) => ({
-          ...prev,
-          [field]: value,
-        }));
-      };
+const Documentation = ({ nextStep, prevStep }: Props) => {
+  const [values, setValues] = useState<FormData>({
+    docId: undefined,
+  });
+
+  const handleChange = (
+    field: keyof typeof values,
+    value: string | number | boolean
+  ) => {
+    setValues((prev) => ({
+      ...prev,
+      [field]: value,
+    }));
+  };
   return (
     <>
-      <form
-        action=""
-        className="w-[60%] rounded-xl flex flex-col overflow-auto"
-      >
+      <FormContent>
         <div className="py-9 px-10 flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-1">
             <h3 className="text-center text-lg text-orange-400 font-semibold">
@@ -44,21 +42,18 @@ const Documentation = ({nextStep, prevStep}: Props) => {
 
           <div className=" flex flex-col justify-between h-full gap-5">
             <div className="flex flex-col gap-5">
-            <InputForm
+              <InputForm
                 name={""}
-                label={"Envíenos una foto de su carnet de identidad (frontal y trasera)"}
+                label={
+                  "Envíenos una foto de su carnet de identidad (frontal y trasera)"
+                }
                 type={"file"}
                 placeholderText={""}
                 errorMesage={
-                  !values.docId
-                    ? "Este campo es obligatorio"
-                    : undefined
+                  !values.docId ? "Este campo es obligatorio" : undefined
                 }
                 onChange={(inputValue) => {
-                  handleChange(
-                    "docId",
-                    inputValue.target.value.trim()
-                  );
+                  handleChange("docId", inputValue.target.value.trim());
                 }}
                 isRequired={true}
                 value={values.docId}
@@ -78,7 +73,7 @@ const Documentation = ({nextStep, prevStep}: Props) => {
             <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
           </div>
         </div>
-      </form>
+      </FormContent>
     </>
   );
 };

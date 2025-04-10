@@ -9,7 +9,7 @@ export default {
       },
       colors: {
         primary: "#003049",
-        secondary: "#c1121f",
+        secondary: "#FB923C",
         terciary: "#669bbc",
         lettersDark: "#333",
         lettersMiddle: "#999",
@@ -20,9 +20,9 @@ export default {
       },
       fontSize: {
         bigLetters: "2.3rem",
-        longLetters:"1.3rem",
-        middleLetters:"1rem",
-        shortLetters:"0.8rem",
+        longLetters: "1.3rem",
+        middleLetters: "1rem",
+        shortLetters: "0.8rem",
       }
     },
   },
