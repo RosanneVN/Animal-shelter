@@ -1,4 +1,4 @@
-import type { Dispatch, SetStateAction } from "react";import { PetsEnum } from "../../../../Const/PetsEnum";
+import { PetsEnum } from "../../../../Const/PetsEnum";
 type Props = {
   onFilterChange: (specie: string) => void;
 };

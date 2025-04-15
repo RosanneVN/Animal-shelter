@@ -2,7 +2,6 @@ import AdoptionCardListFather from "../../../../components/AdoptionCardList/Adop
 import EditAdoptionCards from "./EditAdoptionCards";
 import { getServicesPets } from "../../../../Services/adoption.services";
 import PaginationComponents from "./PaginationComponents";
-import { useEffect, useState } from "react";
 
 type Props = {
   filterSpecie: string;

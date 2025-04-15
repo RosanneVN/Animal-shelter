@@ -5,9 +5,10 @@ import AdoptionCardListFather from "./AdoptionCardListFather";
 import { getServicesPets } from "../../Services/adoption.services";
 
 type Props = {};
+
 const URL = "http://localhost:4321/api/adoption";
-const AdoptionCardList = (props: Props) => {
-  const { data, loading, error } =  getServicesPets();
+const AdoptionCardList = ({}: Props) => {
+  const { data, loading, error } = getServicesPets({});
   const { setIsOpen } = useContext(ModalFormContext);
   return (
     <AdoptionCardListFather>
