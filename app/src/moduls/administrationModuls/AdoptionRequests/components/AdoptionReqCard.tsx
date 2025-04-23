@@ -1,8 +1,18 @@
 import React from "react";
 
-type Props = {};
+type Props = {
+  fullname: string;
+  age: number;
+  cellPhone: number;
+  address: string;
+};
 
-export default function AdoptionReqCard({}: Props) {
+export default function AdoptionReqCard({
+  fullname,
+  age,
+  cellPhone,
+  address,
+}: Props) {
   return (
     <section className="flex w-[70%] rounded-md shadow-md  overflow-hidden">
       <div>
@@ -12,22 +22,26 @@ export default function AdoptionReqCard({}: Props) {
       <div className="flex flex-col px-10 py-5 text-middleLetters gap-5 text-lettersDark ">
         <div className="flex flex-col">
           <p>
-            <span className="font-semibold">Nombre:</span> Rosanne Vazquez Nunez
+            <span className="font-semibold">Nombre:</span>
+            {fullname}
           </p>
           <p>
-            <span className="font-semibold">Edad:</span> 21
+            <span className="font-semibold">Edad:</span> {age}
           </p>
           <p>
-            <span className="font-semibold">Telefono:</span> 56775245
+            <span className="font-semibold">Telefono:</span> {cellPhone}
           </p>
           <p>
-            <span className="font-semibold"> Direccion:</span> Lorem ipsum
-            dolor, sit amet consectetur adipisicing elit.
+            <span className="font-semibold"> Direccion:</span> {address}
           </p>
         </div>
         <div className="flex w-full justify-between">
-            <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md">Aprobada</div>
-            <div className="py-1 px-3 shadow-md rounded-md text-red-600">Borrar</div>
+          <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md">
+            Aprobada
+          </div>
+          <div className="py-1 px-3 shadow-md rounded-md text-red-600">
+            Borrar
+          </div>
         </div>
       </div>
     </section>
