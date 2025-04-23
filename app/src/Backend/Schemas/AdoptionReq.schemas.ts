@@ -3,10 +3,11 @@ import { z } from "zod";
 export const AdoptionReqSchema = z.object({
   fullname: z.string().min(1, "El nombre es obligatorio"),
   age: z.number().int().positive("La edad debe ser un número positivo"),
-  cellPhone: z.string().min(1, "El numero de telefono es obligatorio"),
+  cellPhone: z.number().int().positive("El numero de telefono es obligatorio"),
   alternativeCellPhone: z
-    .string()
-    .min(1, "El teléfono alternativo es obligatorio"),
+    .number()
+    .int()
+    .positive("El teléfono alternativo es obligatorio"),
   address: z.string().min(1, "La dirección es obligatoria"),
   motivation: z.string().min(1, "Este campo es obligarorio"),
   forWho: z.string().min(1, "La persona es obligatoria"),
@@ -22,7 +23,7 @@ export const AdoptionReqSchema = z.object({
   petAlergic: z.string().min(1, "Este campo es obligarorio"),
   family: z.string().min(1, "Este campo es obligarorio"),
   adoptionAgree: z.string().min(1, "Este campo es obligarorio"),
-  howManyPets: z.string().min(1, "Este campo es obligarorio"),
+  howManyPets: z.number().int().positive("Este campo es obligarorio"),
   petsBefore: z.string().min(1, "Este campo es obligarorio"),
   petsBeforeAlive: z.string().min(1, "Este campo es obligarorio"),
   job: z.string().min(1, "Este campo es obligarorio"),
