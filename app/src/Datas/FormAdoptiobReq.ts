@@ -2,6 +2,7 @@ import type { FormAdoptionReqType } from "../Domain/Types/FormAdoptionReqType";
 
 export const FormAdoptionReq: FormAdoptionReqType = {
   PersonalData: {
+    id: "",
     fullname: "",
     age: undefined,
     cellPhone: undefined,

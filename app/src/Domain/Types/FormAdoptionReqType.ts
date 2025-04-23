@@ -1,4 +1,5 @@
 export interface FormPersonalDataType {
+    id: string,
     fullname: string,
     age?: number,
     cellPhone?: number,
