@@ -9,12 +9,15 @@ import {
   type UpdatePetInput,
 } from "../../Backend/Schemas/Adoption.schemas";
 
-export const GET: APIRoute = async ({ params, request }) => {
+export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const speciesFilter = url.searchParams.get("species") || "";
   const searchQuery = url.searchParams.get("search") || "";
   const page = Math.max(parseInt(url.searchParams.get("page") || "1", 10), 1);
-  const limit = Math.min(parseInt(url.searchParams.get("limit") || "10", 10), 100);
+  const limit = Math.min(
+    parseInt(url.searchParams.get("limit") || "10", 10),
+    100
+  );
 
   let pets;
   if (searchQuery) {
