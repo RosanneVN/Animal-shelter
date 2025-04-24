@@ -31,7 +31,7 @@ export interface AdoptionReqInterface {
   petAlergic: string;
   family: string;
   adoptionAgree: string;
-  howManyPets: string;
+  howManyPets: number;
   petsBefore: string;
   petsBeforeAlive: string;
   job: string;

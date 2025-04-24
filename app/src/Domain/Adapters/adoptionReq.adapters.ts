@@ -12,9 +12,9 @@ export default function adoptionReqAdapters({
     PersonalData: {
       id: adoptionReq.id,
       fullname: adoptionReq.fullname,
-      age: adoptionReq.age,
-      cellPhone: adoptionReq.cellPhone,
-      alternativeCellPhone: adoptionReq.alternativeCellPhone,
+      age: adoptionReq?.age || 0,
+      cellPhone: adoptionReq?.cellPhone || 0,
+      alternativeCellPhone: adoptionReq?.alternativeCellPhone || 0,
       address: adoptionReq.address,
     },
     Motivaciones: {
@@ -36,7 +36,7 @@ export default function adoptionReqAdapters({
     Experience: {
       family: adoptionReq.family,
       adoptionAgree: adoptionReq.adoptionAgree,
-      howManyPets: adoptionReq.howManyPets,
+      howManyPets: adoptionReq?.howManyPets || 0,
       petsBefore: adoptionReq.petsBefore,
       petsBeforeAlive: adoptionReq.petsBeforeAlive,
     },

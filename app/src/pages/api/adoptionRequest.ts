@@ -41,6 +41,7 @@ export const POST: APIRoute = async ({ request }) => {
     const adoptionReq = await db
       .insert(AdoptionRequestsDB)
       .values({ id: uuidv4(), ...validationData });
+    console.log(adoptionReq);
 
     return new Response(JSON.stringify(adoptionReq), {
       status: 200,

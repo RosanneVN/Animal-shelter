@@ -1,9 +1,9 @@
-import React from "react";
+
 
 type Props = {
   fullname: string;
-  age: number;
-  cellPhone: number;
+  age?: number;
+  cellPhone?: number;
   address: string;
 };
 
