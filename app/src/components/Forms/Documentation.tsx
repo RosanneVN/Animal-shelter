@@ -18,12 +18,15 @@ const Documentation = ({ nextStep, prevStep }: Props) => {
     FormAdoptionReq.Documentation
   );
 
-  const { setRequestsValues } = useContext(FormAdoptionReqContext);
+  const { setRequestsValues, requestsValues } = useContext(
+    FormAdoptionReqContext
+  );
   const handleNext = () => {
-    setRequestsValues((prev) => ({
-      ...prev,
+    const newRequestsValues = {
+      ...requestsValues,
       Documentation: values,
-    }));
+    };
+    setRequestsValues(newRequestsValues);
     nextStep();
   };
 
