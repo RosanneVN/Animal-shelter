@@ -1,17 +1,17 @@
 import AdoptionReqCard from "./AdoptionReqCard";
 import { getServicesAdoptionReq } from "../../../../Services/adoptionReq.services";
 import type { FormAdoptionReqType } from "../../../../Domain/Types/FormAdoptionReqType";
-type Props = {};
 
-export default function AdoptionReqList({}: Props) {
+export default function AdoptionReqList() {
   const { data } = getServicesAdoptionReq();
-console.log("data", data);
+  console.log("data", data);
 
   return (
     <section className="flex flex-col justify-center items-center gap-10">
-      {data?.map((adoptionReq:FormAdoptionReqType) => (
+      {data?.map((adoptionReq: FormAdoptionReqType) => (
         <AdoptionReqCard
-          key={adoptionReq.PersonalData.id}
+          key={adoptionReq.PersonalData.id + adoptionReq.petId}
+          id={adoptionReq.PersonalData.id}
           fullname={adoptionReq.PersonalData.fullname}
           age={adoptionReq.PersonalData.age}
           cellPhone={adoptionReq.PersonalData.cellPhone}

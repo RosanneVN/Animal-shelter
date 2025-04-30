@@ -59,5 +59,5 @@ export type FormAdoptionReqType = {
   LifeStyle: FormLifeStyleType;
   Knowledge: FormKnowledgeType;
   Documentation: FormDocumentationType;
-  petId?: string;
+  petId: string;
 };

@@ -28,7 +28,7 @@ export const FormAdoptionReq: FormAdoptionReqType = {
   Experience: {
     family: "",
     adoptionAgree: "",
-    howManyPets: "",
+    howManyPets: 0,
     petsBefore: "",
     petsBeforeAlive: "",
   },
@@ -47,4 +47,5 @@ export const FormAdoptionReq: FormAdoptionReqType = {
     CIpicture: undefined,
     youAgree: "",
   },
+  petId: "",
 };

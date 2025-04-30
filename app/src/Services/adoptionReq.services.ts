@@ -10,6 +10,8 @@ export const getServicesAdoptionReq = () => {
   const { data, error, loading } = useFetch<AdoptionReqInterface>({ url: URL });
 
   const adaptedData = adoptionReqAdapters({ data });
+  console.log("adaptedData", adaptedData);
+
   return { data: adaptedData, error, loading };
 };
 
@@ -62,4 +64,19 @@ export const useHandleCreateAdoptionReq = () => {
     });
   };
   return { handleCreateAdoptionReq, loading, error };
+};
+
+export const useHandleDeleteAdoptionReq = () => {
+  const { mutate, loading, error } = useMutation();
+  const handleDeleteAdoptionReq = (id: string) => {
+    console.log("id", id);
+
+    const m = mutate({
+      url: URL + "?id=" + id,
+      method: "DELETE",
+    });
+    console.log(m);
+    console.log(error);
+  };
+  return { handleDeleteAdoptionReq, loading, error };
 };
