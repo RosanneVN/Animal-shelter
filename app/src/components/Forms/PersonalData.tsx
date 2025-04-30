@@ -19,7 +19,14 @@ const PersonalData = ({ nextStep }: Props) => {
   const handleNext = () => {
     setRequestsValues((prev) => ({
       ...prev,
-      PersonalData: values,
+      PersonalData: {
+        address:values.address,
+        fullname:values.fullname,
+        age:Number(values.age),
+        id:values.id,
+        alternativeCellPhone:Number(values.alternativeCellPhone),
+        cellPhone:Number(values.cellPhone)
+      },
     }));
     nextStep()
   };

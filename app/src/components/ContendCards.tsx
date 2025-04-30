@@ -9,12 +9,12 @@ export default function ContendCards() {
     <>
       <section className="w-full">
         <ModalFormProvider>
-          <ModalForm>
-            <FormAdoptionReqProvider>
+          <FormAdoptionReqProvider>
+            <ModalForm>
               <Stepper />
-            </FormAdoptionReqProvider>
-          </ModalForm>
-          <AdoptionCardList />
+            </ModalForm>
+            <AdoptionCardList />
+          </FormAdoptionReqProvider>
         </ModalFormProvider>
       </section>
     </>

@@ -21,7 +21,13 @@ const Experience = ({ nextStep, prevStep }: Props) => {
   const handleNext = () => {
     setRequestsValues((prev) => ({
       ...prev,
-      Experience: values,
+      Experience: {
+        family: values.family,
+        adoptionAgree: values.adoptionAgree,
+        howManyPets: Number(values.howManyPets),
+        petsBefore: values.petsBefore,
+        petsBeforeAlive: values.petsBeforeAlive,
+      },
     }));
     nextStep();
   };

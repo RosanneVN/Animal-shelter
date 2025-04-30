@@ -7,27 +7,45 @@ import FormContent from "../FormContent";
 import { FormAdoptionReq } from "../../Datas/FormAdoptiobReq";
 import type { FormDocumentationType } from "../../Domain/Types/FormAdoptionReqType";
 import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
+import { useHandleCreateAdoptionReq } from "../../Services/adoptionReq.services";
+import { ModalFormContext } from "../../Context/ModalFormContext";
 
 type Props = {
   nextStep?: any;
   prevStep: any;
 };
 
-const Documentation = ({ nextStep, prevStep }: Props) => {
+const Documentation = ({ prevStep }: Props) => {
+  const { setIsOpen } = useContext(ModalFormContext);
   const [values, setValues] = useState<FormDocumentationType>(
     FormAdoptionReq.Documentation
   );
 
-  const { setRequestsValues, requestsValues } = useContext(
+  const { requestsValues, setRequestsValues } = useContext(
     FormAdoptionReqContext
   );
-  const handleNext = () => {
+  
+    const { handleCreateAdoptionReq, loading, error } =
+    useHandleCreateAdoptionReq();
+  const handleNext = async() => {
     const newRequestsValues = {
       ...requestsValues,
       Documentation: values,
     };
     setRequestsValues(newRequestsValues);
-    nextStep();
+    console.log(newRequestsValues);
+    
+    if (loading) {
+      return;
+    }
+    await handleCreateAdoptionReq({
+      requestsValuesContext: newRequestsValues,
+    });
+
+    if (error) {
+      return;
+    }
+    setIsOpen(false);
   };
 
   const handleChange = (
@@ -39,6 +57,8 @@ const Documentation = ({ nextStep, prevStep }: Props) => {
       [field]: value,
     }));
   };
+   
+
   return (
     <>
       <FormContent>
