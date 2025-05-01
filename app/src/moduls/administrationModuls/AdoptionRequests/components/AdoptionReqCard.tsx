@@ -3,6 +3,7 @@ import ModalFormContainer from "../../../../layouts/ModalFormContainer";
 import WarningMesage from "../../../../components/administrationComponents/WarningMesage";
 import { useHandleDeleteAdoptionReq } from "../../../../Services/adoptionReq.services";
 
+
 type Props = {
   id: string;
   fullname: string;
@@ -36,9 +37,11 @@ export default function AdoptionReqCard({
     return <p>Loading...</p>;
   }
 
+
+  
   return (
-    <>
-      <section className="flex w-[70%] rounded-md shadow-md  overflow-hidden">
+    <a className="w-full flex flex-col items-center justify-center" href={`/administrationPages/${id}`}>
+      <section className="flex w-[700px] rounded-md shadow-md  overflow-hidden">
         <div>
           <img className="size-[212px]" src="/Image/Adoptable1.jpg" alt="" />
         </div>
@@ -63,6 +66,9 @@ export default function AdoptionReqCard({
             <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
               Aprobada
             </div>
+            <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
+              Leida
+            </div>
             <div
               onClick={() => setIsDelete(true)}
               className="py-1 px-3 shadow-md rounded-md text-red-600 cursor-pointer"
@@ -85,6 +91,6 @@ export default function AdoptionReqCard({
           }}
         />
       </ModalFormContainer>
-    </>
+    </a>
   );
 }

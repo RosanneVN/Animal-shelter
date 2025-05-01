@@ -1,0 +1,10 @@
+---
+import Header from "../../layouts/Header.astro";
+import { AdoptionReqView } from "../../moduls/administrationModuls/AdoptionRequests/components/AdoptionReqView";
+
+const { adoptionReqID } = Astro.params;
+---
+
+<Header>
+  <AdoptionReqView client:only adoptionReqID={adoptionReqID} />
+</Header>

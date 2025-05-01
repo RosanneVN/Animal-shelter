@@ -3,7 +3,7 @@ import { getServicesAdoptionReq } from "../../../../Services/adoptionReq.service
 import type { FormAdoptionReqType } from "../../../../Domain/Types/FormAdoptionReqType";
 
 export default function AdoptionReqList() {
-  const { data } = getServicesAdoptionReq();
+  const { data } = getServicesAdoptionReq({});
   console.log("data", data);
 
   return (

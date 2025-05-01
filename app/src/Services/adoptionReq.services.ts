@@ -5,9 +5,17 @@ import useFetch from "./useFetch";
 import useMutation from "./useMutation";
 
 const URL = "http://localhost:4321/api/adoptionRequest";
+type Props = {
+  filterID?: string;
+};
 
-export const getServicesAdoptionReq = () => {
-  const { data, error, loading } = useFetch<AdoptionReqInterface>({ url: URL });
+export const getServicesAdoptionReq = ({ filterID }: Props) => {
+  const { data, error, loading } = useFetch<AdoptionReqInterface>({
+    url: `${URL}${filterID?"?id="+filterID:""}`,
+  });
+  console.log(`${URL}${filterID?"?id="+filterID:""}`);
+  
+  console.log("data", data);
 
   const adaptedData = adoptionReqAdapters({ data });
   console.log("adaptedData", adaptedData);

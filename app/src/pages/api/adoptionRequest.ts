@@ -9,7 +9,19 @@ import {
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
-  const adoptionReq = await db.select().from(AdoptionRequestsDB);
+  const filterID = url.searchParams.get("id") || "";
+  let adoptionReq;
+  
+  if (filterID && filterID !== undefined) {
+    adoptionReq = await db
+      .select()
+      .from(AdoptionRequestsDB)
+      .where(eq(AdoptionRequestsDB.id, filterID));
+  } else {
+    adoptionReq = await db.select().from(AdoptionRequestsDB);
+  }
+  console.log(adoptionReq);
+  
 
   return new Response(JSON.stringify({ data: adoptionReq }), {
     status: 200,
