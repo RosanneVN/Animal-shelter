@@ -60,6 +60,9 @@ const AdoptionRequestsDB = defineTable({
 
     //union de tablas, llave foranea
     petId: column.text({ references: () => Pets.columns.id }),
+
+    //Read
+    isRead: column.boolean(),
   },
 });
 

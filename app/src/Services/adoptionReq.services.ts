@@ -1,3 +1,4 @@
+import type { UpdateAdoptionReqInput } from "../Backend/Schemas/AdoptionReq.schemas";
 import adoptionReqAdapters from "../Domain/Adapters/adoptionReq.adapters";
 import type { FormAdoptionReqType } from "../Domain/Types/FormAdoptionReqType";
 import type { AdoptionReqInterface } from "../interfaces/backendAPI";
@@ -11,10 +12,10 @@ type Props = {
 
 export const getServicesAdoptionReq = ({ filterID }: Props) => {
   const { data, error, loading } = useFetch<AdoptionReqInterface>({
-    url: `${URL}${filterID?"?id="+filterID:""}`,
+    url: `${URL}${filterID ? "?id=" + filterID : ""}`,
   });
-  console.log(`${URL}${filterID?"?id="+filterID:""}`);
-  
+  console.log(`${URL}${filterID ? "?id=" + filterID : ""}`);
+
   console.log("data", data);
 
   const adaptedData = adoptionReqAdapters({ data });

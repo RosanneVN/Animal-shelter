@@ -16,6 +16,7 @@ export default function AdoptionReqList() {
           age={adoptionReq.PersonalData.age}
           cellPhone={adoptionReq.PersonalData.cellPhone}
           address={adoptionReq.PersonalData.address}
+          isRead={adoptionReq.isRead}
         />
       ))}
     </section>

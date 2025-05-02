@@ -44,4 +44,5 @@ export interface AdoptionReqInterface {
   CIpicture?: File;
   youAgree: string;
   petId: string;
+  isRead: boolean;
 }

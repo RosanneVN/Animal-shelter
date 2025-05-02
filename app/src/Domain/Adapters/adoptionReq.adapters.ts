@@ -55,5 +55,6 @@ export default function adoptionReqAdapters({
       youAgree: adoptionReq.youAgree,
     },
     petId: adoptionReq.petId,
+    isRead: adoptionReq.isRead,
   }));
 }

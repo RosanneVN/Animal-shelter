@@ -60,4 +60,5 @@ export type FormAdoptionReqType = {
   Knowledge: FormKnowledgeType;
   Documentation: FormDocumentationType;
   petId: string;
+  isRead: boolean;
 };
