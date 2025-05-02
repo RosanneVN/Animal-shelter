@@ -2,8 +2,11 @@ import AdoptionReqCard from "./AdoptionReqCard";
 import { getServicesAdoptionReq } from "../../../../Services/adoptionReq.services";
 import type { FormAdoptionReqType } from "../../../../Domain/Types/FormAdoptionReqType";
 
-export default function AdoptionReqList() {
-  const { data } = getServicesAdoptionReq({});
+type Props = {
+  readingFilter: string;
+};
+export default function AdoptionReqList({readingFilter}:Props) {
+  const { data } = getServicesAdoptionReq({readingFilter});
   console.log("data", data);
 
   return (

@@ -8,10 +8,21 @@ import {
   type CreateAdoptionReqInput,
   type UpdateAdoptionReqInput,
 } from "../../Backend/Schemas/AdoptionReq.schemas";
+import { AdoptionReqEnum } from "../../Const/AdoptionReqEnum";
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const filterID = url.searchParams.get("id") || "";
+  const readingFilter = url.searchParams.get("readingFilter") || "";
+  console.log("readingFilter", readingFilter);
+  let readingFilterBoolean: boolean | undefined;
+  if (readingFilter === AdoptionReqEnum.leidas) {
+    readingFilterBoolean = true;
+  } else if (readingFilter === AdoptionReqEnum.noLeidas) {
+    readingFilterBoolean = false;
+  }
+  console.log("ppppp", readingFilterBoolean);
+
   let adoptionReq;
 
   if (filterID && filterID !== undefined) {
@@ -26,10 +37,15 @@ export const GET: APIRoute = async ({ request }) => {
         .set({ isRead: true })
         .where(eq(AdoptionRequestsDB.id, filterID));
     }
+  }
+  if (readingFilter && readingFilter !== undefined && readingFilterBoolean !== undefined) {
+    adoptionReq = await db
+      .select()
+      .from(AdoptionRequestsDB)
+      .where(eq(AdoptionRequestsDB.isRead, readingFilterBoolean));
   } else {
     adoptionReq = await db.select().from(AdoptionRequestsDB);
   }
-  console.log(adoptionReq);
 
   return new Response(JSON.stringify({ data: adoptionReq }), {
     status: 200,

@@ -1,17 +1,16 @@
 import { useState } from "react";
-import { useHandleDeletePet } from "../../../../Services/adoption.services";
 import AdoptionReqList from "./AdoptionReqList";
-import ModalFormContainer from "../../../../layouts/ModalFormContainer";
-import WarningMesage from "../../../../components/administrationComponents/WarningMesage";
-
-type Props = {
-  id: string;
-};
+import RadingFilter from "./RadingFilter";
 
 export default function AdoptionRequestContend() {
+  const [readingFilter, setReadingFilter] = useState("");
+  const handleFilterChange = (filter: string) => {
+    setReadingFilter(filter);
+  };
   return (
     <>
-      <AdoptionReqList  />
+      <RadingFilter onFilterChange={handleFilterChange} />
+      <AdoptionReqList readingFilter={readingFilter} />
     </>
   );
 }
