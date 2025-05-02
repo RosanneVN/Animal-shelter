@@ -45,4 +45,5 @@ export interface AdoptionReqInterface {
   youAgree: string;
   petId: string;
   isRead: boolean;
+  isApproved: boolean;
 }

@@ -1,4 +1,8 @@
-import { getServicesAdoptionReq } from "../../../../Services/adoptionReq.services";
+import { useState } from "react";
+import {
+  getServicesAdoptionReq,
+  useHandleUpdateAdoptionReq,
+} from "../../../../Services/adoptionReq.services";
 
 type Props = {
   adoptionReqID?: string;
@@ -10,6 +14,23 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
   const { data } = getServicesAdoptionReq({ filterID: adoptionReqID });
   const adoptionReq = data?.[0];
   console.log("data", data);
+
+  const { handleUpdateAdoptionReq, loading, error } =
+    useHandleUpdateAdoptionReq();
+
+  const handleApproved = () => {
+    handleUpdateAdoptionReq({
+      id: adoptionReq.PersonalData.id,
+      isApprovedUpdate: true,
+    });
+  };
+  const handleNotApproved = () => {
+    handleUpdateAdoptionReq({
+      id: adoptionReq.PersonalData.id,
+      isApprovedUpdate: false,
+    });
+  };
+
   return (
     <>
       <section
@@ -316,10 +337,16 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
         </div>
 
         <div className="flex w-full justify-between px-36">
-          <button className="py-1 px-3 bg-secondary shadow-md rounded-lg font-semibold hover:text-red-600 hover:bg-white">
+          <button
+            onClick={handleNotApproved}
+            className="py-1 px-3 bg-secondary shadow-md rounded-lg font-semibold hover:text-red-600 hover:bg-white"
+          >
             Desaprobar solicitud
           </button>
-          <button className="py-1 px-3 bg-secondary shadow-md rounded-lg font-semibold hover:text-green-600 hover:bg-white">
+          <button
+            onClick={handleApproved}
+            className="py-1 px-3 bg-secondary shadow-md rounded-lg font-semibold hover:text-green-600 hover:bg-white"
+          >
             Aprobar solicitud
           </button>
         </div>

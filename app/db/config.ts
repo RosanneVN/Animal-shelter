@@ -63,6 +63,7 @@ const AdoptionRequestsDB = defineTable({
 
     //Read
     isRead: column.boolean(),
+    isApproved: column.boolean()
   },
 });
 

@@ -14,14 +14,13 @@ export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const filterID = url.searchParams.get("id") || "";
   const readingFilter = url.searchParams.get("readingFilter") || "";
-  console.log("readingFilter", readingFilter);
+
   let readingFilterBoolean: boolean | undefined;
   if (readingFilter === AdoptionReqEnum.leidas) {
     readingFilterBoolean = true;
   } else if (readingFilter === AdoptionReqEnum.noLeidas) {
     readingFilterBoolean = false;
   }
-  console.log("ppppp", readingFilterBoolean);
 
   let adoptionReq;
 
@@ -38,7 +37,11 @@ export const GET: APIRoute = async ({ request }) => {
         .where(eq(AdoptionRequestsDB.id, filterID));
     }
   }
-  if (readingFilter && readingFilter !== undefined && readingFilterBoolean !== undefined) {
+  else if (
+    readingFilter &&
+    readingFilter !== undefined &&
+    readingFilterBoolean !== undefined
+  ) {
     adoptionReq = await db
       .select()
       .from(AdoptionRequestsDB)
@@ -46,7 +49,7 @@ export const GET: APIRoute = async ({ request }) => {
   } else {
     adoptionReq = await db.select().from(AdoptionRequestsDB);
   }
-
+  console.log("adoptionReq", adoptionReq);
   return new Response(JSON.stringify({ data: adoptionReq }), {
     status: 200,
     statusText: "Michi encontrado",
@@ -84,9 +87,12 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const validationData: CreateAdoptionReqInput = validationResults.data;
-    const adoptionReq = await db
-      .insert(AdoptionRequestsDB)
-      .values({ id: uuidv4(), ...validationData, isRead: false });
+    const adoptionReq = await db.insert(AdoptionRequestsDB).values({
+      id: uuidv4(),
+      ...validationData,
+      isRead: false,
+      isApproved: false,
+    });
     console.log("adoptionReq", adoptionReq);
 
     return new Response(JSON.stringify(adoptionReq), {
@@ -151,6 +157,8 @@ export const PATCH: APIRoute = async ({ request }) => {
     const body = await request.json();
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
+    console.log("id", id);
+    
     if (!id) {
       throw new Error("ID not found");
     }
@@ -178,12 +186,12 @@ export const PATCH: APIRoute = async ({ request }) => {
       );
     }
 
-    const validatedData: UpdateAdoptionReqInput = dataValidadtion.data;
     const updateData = await db
       .update(AdoptionRequestsDB)
-      .set(validatedData)
+      .set({ isApproved: dataValidadtion.data.isApproved })
       .where(eq(AdoptionRequestsDB.id, id));
-    console.log(updateData);
+
+    console.log("updateData", updateData);
 
     return new Response(JSON.stringify(updateData), {
       status: 200,

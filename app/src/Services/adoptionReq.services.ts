@@ -8,13 +8,13 @@ import useMutation from "./useMutation";
 const URL = "http://localhost:4321/api/adoptionRequest";
 type Props = {
   filterID?: string;
-  readingFilter: string;
+  readingFilter?: string;
 };
 
 export const getServicesAdoptionReq = ({ filterID, readingFilter }: Props) => {
   const { data, error, loading } = useFetch<AdoptionReqInterface>({
     url: `${URL}${
-      filterID ? "?id=" + filterID+"&" : "?"
+      filterID ? "?id=" + filterID + "&" : "?"
     }readingFilter=${readingFilter}`,
   });
 
@@ -86,8 +86,27 @@ export const useHandleDeleteAdoptionReq = () => {
       url: URL + "?id=" + id,
       method: "DELETE",
     });
-    console.log(m);
-    console.log(error);
   };
   return { handleDeleteAdoptionReq, loading, error };
+};
+
+type UpdateAdoptionReq = {
+  id: string;
+  isApprovedUpdate: boolean;
+};
+export const useHandleUpdateAdoptionReq = () => {
+  const { mutate, loading, error } = useMutation();
+  const handleUpdateAdoptionReq = ({
+    id,
+    isApprovedUpdate,
+  }: UpdateAdoptionReq) => {
+    const m = mutate({
+      url: URL + "?id=" + id,
+      method: "PATCH",
+      body: {
+        isApproved: isApprovedUpdate,
+      },
+    });
+  };
+  return { handleUpdateAdoptionReq, loading, error };
 };

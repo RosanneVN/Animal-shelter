@@ -110,6 +110,7 @@ export default async function () {
       youAgree: "Si",
       petId: "311221",
       isRead: false,
+      isApproved: false,
     },
     {
       id: uuidv4(),
@@ -145,6 +146,7 @@ export default async function () {
       youAgree: "Si",
       petId: "999",
       isRead: false,
+      isApproved: false,
     },
   ]);
 }

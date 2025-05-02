@@ -20,6 +20,7 @@ export default function AdoptionReqList({readingFilter}:Props) {
           cellPhone={adoptionReq.PersonalData.cellPhone}
           address={adoptionReq.PersonalData.address}
           isRead={adoptionReq.isRead}
+          isApproved={adoptionReq.isApproved}
         />
       ))}
     </section>

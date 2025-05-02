@@ -43,5 +43,7 @@ export const deleteAdoptionReqSchema = z.object({
 
 export type CreateAdoptionReqInput = z.infer<typeof AdoptionReqSchema>;
 
-export const updateAdoptionReqSchema = AdoptionReqSchema.partial();
+export const updateAdoptionReqSchema = z.object({
+  isApproved: z.boolean(),
+});
 export type UpdateAdoptionReqInput = z.infer<typeof updateAdoptionReqSchema>;

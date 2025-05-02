@@ -10,6 +10,7 @@ type Props = {
   cellPhone?: number;
   address: string;
   isRead: boolean;
+  isApproved: boolean;
 };
 
 export default function AdoptionReqCard({
@@ -19,6 +20,7 @@ export default function AdoptionReqCard({
   cellPhone,
   address,
   isRead,
+  isApproved
 }: Props) {
   const { handleDeleteAdoptionReq, loading, error } =
     useHandleDeleteAdoptionReq();
@@ -37,8 +39,6 @@ export default function AdoptionReqCard({
   if (loading) {
     return <p>Loading...</p>;
   }
-
-
 
   return (
     <a
@@ -67,9 +67,12 @@ export default function AdoptionReqCard({
             </p>
           </div>
           <div className="flex w-full justify-between">
-            <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
-              Aprobada
-            </div>
+            {isApproved &&
+              <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
+                Aprobada
+              </div>
+            }
+
             {isRead && (
               <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
                 Leida
