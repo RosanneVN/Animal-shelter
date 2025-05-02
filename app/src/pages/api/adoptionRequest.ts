@@ -6,7 +6,6 @@ import {
   deleteAdoptionReqSchema,
   updateAdoptionReqSchema,
   type CreateAdoptionReqInput,
-  type UpdateAdoptionReqInput,
 } from "../../Backend/Schemas/AdoptionReq.schemas";
 import { AdoptionReqEnum } from "../../Const/AdoptionReqEnum";
 
@@ -14,15 +13,22 @@ export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const filterID = url.searchParams.get("id") || "";
   const readingFilter = url.searchParams.get("readingFilter") || "";
-
+  const isApprovedFilter = url.searchParams.get("isApprovedFilter") || "";
+  let adoptionReq;
   let readingFilterBoolean: boolean | undefined;
+  let isApprovedFilterBoolean: boolean | undefined;
+
   if (readingFilter === AdoptionReqEnum.leidas) {
     readingFilterBoolean = true;
   } else if (readingFilter === AdoptionReqEnum.noLeidas) {
     readingFilterBoolean = false;
   }
 
-  let adoptionReq;
+  if (isApprovedFilter === AdoptionReqEnum.aprobadas) {
+    isApprovedFilterBoolean = true;
+  } else if (isApprovedFilter === AdoptionReqEnum.noAprobadas) {
+    isApprovedFilterBoolean = false;
+  }
 
   if (filterID && filterID !== undefined) {
     adoptionReq = await db
@@ -36,8 +42,7 @@ export const GET: APIRoute = async ({ request }) => {
         .set({ isRead: true })
         .where(eq(AdoptionRequestsDB.id, filterID));
     }
-  }
-  else if (
+  } else if (
     readingFilter &&
     readingFilter !== undefined &&
     readingFilterBoolean !== undefined
@@ -46,9 +51,19 @@ export const GET: APIRoute = async ({ request }) => {
       .select()
       .from(AdoptionRequestsDB)
       .where(eq(AdoptionRequestsDB.isRead, readingFilterBoolean));
+  } else if (
+    isApprovedFilter &&
+    isApprovedFilter !== undefined &&
+    isApprovedFilterBoolean !== undefined
+  ) {
+    adoptionReq = await db
+      .select()
+      .from(AdoptionRequestsDB)
+      .where(eq(AdoptionRequestsDB.isApproved, isApprovedFilterBoolean));
   } else {
     adoptionReq = await db.select().from(AdoptionRequestsDB);
   }
+
   console.log("adoptionReq", adoptionReq);
   return new Response(JSON.stringify({ data: adoptionReq }), {
     status: 200,
@@ -158,7 +173,7 @@ export const PATCH: APIRoute = async ({ request }) => {
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
     console.log("id", id);
-    
+
     if (!id) {
       throw new Error("ID not found");
     }

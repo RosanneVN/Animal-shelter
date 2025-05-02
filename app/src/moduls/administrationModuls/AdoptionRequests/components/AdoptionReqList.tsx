@@ -4,9 +4,10 @@ import type { FormAdoptionReqType } from "../../../../Domain/Types/FormAdoptionR
 
 type Props = {
   readingFilter: string;
+  isApprovedFilter: string;
 };
-export default function AdoptionReqList({readingFilter}:Props) {
-  const { data } = getServicesAdoptionReq({readingFilter});
+export default function AdoptionReqList({readingFilter, isApprovedFilter}:Props) {
+  const { data } = getServicesAdoptionReq({readingFilter, isApprovedFilter});
   console.log("data", data);
 
   return (

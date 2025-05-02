@@ -9,13 +9,14 @@ const URL = "http://localhost:4321/api/adoptionRequest";
 type Props = {
   filterID?: string;
   readingFilter?: string;
+  isApprovedFilter?: string;
 };
 
-export const getServicesAdoptionReq = ({ filterID, readingFilter }: Props) => {
+export const getServicesAdoptionReq = ({ filterID, readingFilter, isApprovedFilter }: Props) => {
   const { data, error, loading } = useFetch<AdoptionReqInterface>({
     url: `${URL}${
       filterID ? "?id=" + filterID + "&" : "?"
-    }readingFilter=${readingFilter}`,
+    }readingFilter=${readingFilter}&isApprovedFilter=${isApprovedFilter}`,
   });
 
   console.log("data", data);
