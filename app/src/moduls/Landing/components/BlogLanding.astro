@@ -1,7 +1,8 @@
 ---
 import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
-import BlogComponent from "../../../components/BlogComponent.astro";
+import BlogComponent from "../../../components/BlogComponent";
 import Transparent from "../../../components/icons/Transparent";
+import ReadMoreLink from "../../Blog/components/ReadMoreLink";
 ---
 
 <section
@@ -17,11 +18,15 @@ import Transparent from "../../../components/icons/Transparent";
           CONOCE MAS NUESTRA LABOR
         </p>
         <div class="grid grid-cols-3 grid-flow-row max-lg:grid-cols-1">
-          <BlogComponent />
-          <BlogComponent />
-          <BlogComponent />
-          <BlogComponent />
-          <BlogComponent />
+          <BlogComponent>
+            <ReadMoreLink />
+          </BlogComponent>
+          <BlogComponent>
+            <ReadMoreLink />
+          </BlogComponent>
+          <BlogComponent>
+            <ReadMoreLink />
+          </BlogComponent>
         </div>
 
         <a class="text-primary underline text-middleLetters" href="./Blog"
