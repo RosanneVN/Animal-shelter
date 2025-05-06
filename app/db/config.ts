@@ -63,10 +63,18 @@ const AdoptionRequestsDB = defineTable({
 
     //Read
     isRead: column.boolean(),
-    isApproved: column.boolean()
+    isApproved: column.boolean(),
+  },
+});
+
+const CreditCardsDB = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    cardNumber: column.text(),
+    numberPhone: column.number(),
   },
 });
 
 export default defineDb({
-  tables: { Pets, AdoptionRequestsDB },
+  tables: { Pets, AdoptionRequestsDB, CreditCardsDB },
 });

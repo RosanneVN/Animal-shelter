@@ -1,4 +1,4 @@
-import { db, Pets, AdoptionRequestsDB } from "astro:db";
+import { db, Pets, AdoptionRequestsDB, CreditCardsDB } from "astro:db";
 import { v4 as uuidv4 } from "uuid";
 export default async function () {
   await db.insert(Pets).values([
@@ -149,4 +149,10 @@ export default async function () {
       isApproved: false,
     },
   ]);
+
+  await db.insert(CreditCardsDB).values([
+    {id: uuidv4(), cardNumber: "9254-0987-5643-6543", numberPhone: 56775245},
+    {id: uuidv4(), cardNumber: "9254-6621-5643-8734", numberPhone: 58908790},
+    {id: uuidv4(), cardNumber: "1234-0987-5643-6543", numberPhone: 53435687},
+  ])
 }
