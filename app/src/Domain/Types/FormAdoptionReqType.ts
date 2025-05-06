@@ -1,27 +1,21 @@
-//lo que llega al backend
-
-//Seccion de las cards de informacion de las mascotas
-export interface Pets {
-  id: string;
-  petname: string;
-  age: number;
-  gender: string;
-  species: string;
-}
-
-//Seccion de las solicitudes de adoption
-export interface AdoptionReqInterface {
+export interface FormPersonalDataType {
   id: string;
   fullname: string;
   age?: number;
   cellPhone?: number;
   alternativeCellPhone?: number;
   address: string;
+}
+
+export interface FormMotivacionesType {
   motivation: string;
   forWho: string;
   petMoney: string;
   petFollowing: string;
   notAbandoned: string;
+}
+
+export interface FormHomeConditionsType {
   ownHouse: string;
   agreeRent: string;
   bigPlace: string;
@@ -29,21 +23,43 @@ export interface AdoptionReqInterface {
   houseNotScape: string;
   childrens: string;
   petAlergic: string;
+}
+
+export interface FromExperienceType {
   family: string;
   adoptionAgree: string;
   howManyPets: number;
   petsBefore: string;
   petsBeforeAlive: string;
+}
+
+export interface FormLifeStyleType {
   job: string;
   iftravel: string;
   petIfTravel: string;
   otherHouse: string;
+}
+
+export interface FormKnowledgeType {
   petDoctorClose: string;
   vacunationSchema: string;
   sterilizationOpinion: string;
+}
+
+export interface FormDocumentationType {
   CIpicture?: File;
   youAgree: string;
+}
+
+export type FormAdoptionReqType = {
+  PersonalData: FormPersonalDataType;
+  Motivaciones: FormMotivacionesType;
+  HomeConditions: FormHomeConditionsType;
+  Experience: FromExperienceType;
+  LifeStyle: FormLifeStyleType;
+  Knowledge: FormKnowledgeType;
+  Documentation: FormDocumentationType;
   petId: string;
   isRead: boolean;
   isApproved: boolean;
-}
+};

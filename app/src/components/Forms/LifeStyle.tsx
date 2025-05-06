@@ -1,21 +1,30 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import BackAndNext from "../Buttons/BackAndNext";
 import OptionButtons from "../Inputs/OptionButtons";
 import InputForm from "../Inputs/InputForm";
 import FormContent from "../FormContent";
+import { FormAdoptionReq } from "../../Datas/FormAdoptiobReq";
+import type { FormLifeStyleType } from "../../Domain/Types/FormAdoptionReqType";
+import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
 
-type FormData = {
-  ifTravel: string;
-};
 type Props = {
   nextStep: any;
   prevStep: any;
 };
 
 const LifeStyle = ({ nextStep, prevStep }: Props) => {
-  const [values, setValues] = useState<FormData>({
-    ifTravel: "",
-  });
+  const [values, setValues] = useState<FormLifeStyleType>(
+    FormAdoptionReq.LifeStyle
+  );
+
+  const { setRequestsValues } = useContext(FormAdoptionReqContext);
+  const handleNext = () => {
+    setRequestsValues((prev) => ({
+      ...prev,
+      LifeStyle: values,
+    }));
+    nextStep();
+  };
 
   const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
@@ -32,7 +41,7 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
               Formulario de adopción
             </h3>
             <h4 className="text-center text-sm font-semibold text-lettersDark">
-              Datos Personales
+              Estilo de Vida y Planificación
             </h4>
           </div>
 
@@ -42,11 +51,19 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
                 label={"¿Trabaja o estudia?"}
                 first={"Trabajo"}
                 second={"Estudio"}
+                selectedValue={values.job}
+                onChange={(value) => {
+                  handleChange("job", value);
+                }}
               />
               <OptionButtons
                 label={"¿Tiene planes de viajar en el futuro?"}
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.iftravel}
+                onChange={(value) => {
+                  handleChange("iftravel", value);
+                }}
               />
               <InputForm
                 name={""}
@@ -56,13 +73,13 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
                 type={"text"}
                 placeholderText={"Se quedara con..."}
                 errorMesage={
-                  !values.ifTravel ? "Este campo es obligatorio" : undefined
+                  !values.petIfTravel ? "Este campo es obligatorio" : undefined
                 }
                 onChange={(inputValue) => {
-                  handleChange("ifTravel", inputValue.target.value.trim());
+                  handleChange("petIfTravel", inputValue.target.value.trim());
                 }}
                 isRequired={true}
-                value={values.ifTravel}
+                value={values.petIfTravel}
                 defaultValue={""}
               />
               <OptionButtons
@@ -71,9 +88,16 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
                 }
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.otherHouse}
+                onChange={(value) => {
+                  handleChange("otherHouse", value);
+                }}
               />
             </div>
-            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
+            <BackAndNext
+              prevStep={prevStep}
+              nextStep={handleNext}
+            ></BackAndNext>
           </div>
         </div>
       </FormContent>

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { type MouseEvent } from "react";
 import AdoptionButton from "../Buttons/AdoptionButton";
 import AdoptionFather from "./AdoptionFather";
 import type { PetsType } from "../../Domain/Types/PetsType";
 
 interface Props extends PetsType {
-  onOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  onOpen: () => void;
 }
 
 const AdoptionCards = ({
@@ -23,7 +23,7 @@ const AdoptionCards = ({
       gender={gender}
       species={species}
     >
-      <AdoptionButton onClick={() => onOpen(true)} />
+      <AdoptionButton onClick={() => onOpen()} />
     </AdoptionFather>
   );
 };

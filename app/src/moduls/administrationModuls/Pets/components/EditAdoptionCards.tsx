@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AdoptionFather from "../../../../components/AdoptionCardList/AdoptionFather";
-import EditButtonSection from "./EditButtonSection";
+import EditButtonSection from "../../../../components/administrationComponents/EditButtonSection";
 import ModalFormContainer from "../../../../layouts/ModalFormContainer";
 import EditCards from "./Forms/EditCards";
 import WarningMesage from "../../../../components/administrationComponents/WarningMesage";

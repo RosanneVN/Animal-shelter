@@ -11,14 +11,17 @@ type Props = {
   limit?: number;
 };
 
-export const getServicesPets = ({ filterSpecie = "", searchFilter = "", page, limit}: Props) => {
-  
+export const getServicesPets = ({
+  filterSpecie = "",
+  searchFilter = "",
+  page,
+  limit,
+}: Props) => {
   const { data, loading, error, pagination } = useFetch<Pets>({
     url: `${URL}?species=${filterSpecie}&search=${searchFilter}&page=${page}&limit=${limit}`,
   });
-console.log(page);
-console.log(limit);
-
+  console.log(page);
+  console.log(limit);
 
   const adaptedData = adoptionAdapters({ data });
   return { data: adaptedData, loading, error, pagination };

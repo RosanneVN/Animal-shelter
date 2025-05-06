@@ -1,32 +1,64 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import BackAndNext from "../Buttons/BackAndNext";
 import InputForm from "../Inputs/InputForm";
 import OptionButtons from "../Inputs/OptionButtons";
 import Notes from "./Notes";
 import FormContent from "../FormContent";
+import { FormAdoptionReq } from "../../Datas/FormAdoptiobReq";
+import type { FormDocumentationType } from "../../Domain/Types/FormAdoptionReqType";
+import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
+import { useHandleCreateAdoptionReq } from "../../Services/adoptionReq.services";
+import { ModalFormContext } from "../../Context/ModalFormContext";
 
-type FormData = {
-  docId?: any;
-};
 type Props = {
   nextStep?: any;
   prevStep: any;
 };
 
-const Documentation = ({ nextStep, prevStep }: Props) => {
-  const [values, setValues] = useState<FormData>({
-    docId: undefined,
-  });
+const Documentation = ({ prevStep }: Props) => {
+  const { setIsOpen } = useContext(ModalFormContext);
+  const [values, setValues] = useState<FormDocumentationType>(
+    FormAdoptionReq.Documentation
+  );
+
+  const { requestsValues, setRequestsValues } = useContext(
+    FormAdoptionReqContext
+  );
+  
+    const { handleCreateAdoptionReq, loading, error } =
+    useHandleCreateAdoptionReq();
+  const handleNext = async() => {
+    const newRequestsValues = {
+      ...requestsValues,
+      Documentation: values,
+    };
+    setRequestsValues(newRequestsValues);
+    console.log(newRequestsValues);
+    
+    if (loading) {
+      return;
+    }
+    await handleCreateAdoptionReq({
+      requestsValuesContext: newRequestsValues,
+    });
+
+    if (error) {
+      return;
+    }
+    setIsOpen(false);
+  };
 
   const handleChange = (
     field: keyof typeof values,
-    value: string | number | boolean
+    value: string | number | boolean | File
   ) => {
     setValues((prev) => ({
       ...prev,
       [field]: value,
     }));
   };
+   
+
   return (
     <>
       <FormContent>
@@ -36,7 +68,7 @@ const Documentation = ({ nextStep, prevStep }: Props) => {
               Formulario de adopción
             </h3>
             <h4 className="text-center text-sm font-semibold text-lettersDark">
-              Datos Personales
+              Documentacion
             </h4>
           </div>
 
@@ -50,13 +82,12 @@ const Documentation = ({ nextStep, prevStep }: Props) => {
                 type={"file"}
                 placeholderText={""}
                 errorMesage={
-                  !values.docId ? "Este campo es obligatorio" : undefined
+                  !values.CIpicture ? "Este campo es obligatorio" : undefined
                 }
                 onChange={(inputValue) => {
-                  handleChange("docId", inputValue.target.value.trim());
+                  handleChange("CIpicture", inputValue.target.value.trim());
                 }}
                 isRequired={true}
-                value={values.docId}
                 defaultValue={""}
               />
               <Notes
@@ -68,9 +99,16 @@ const Documentation = ({ nextStep, prevStep }: Props) => {
                 label={"¿Está de acuerdo con todas las condiciones anteriores?"}
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.youAgree}
+                onChange={(values) => {
+                  handleChange("youAgree", values);
+                }}
               />
             </div>
-            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
+            <BackAndNext
+              prevStep={prevStep}
+              nextStep={handleNext}
+            ></BackAndNext>
           </div>
         </div>
       </FormContent>
