@@ -6,6 +6,7 @@ export const CreditCardsSchema = z.object({
     .number()
     .int()
     .positive("El numero de telefono es obligatorio"),
+    nameCard: z.string().min(1, "El nombre de la tarjeta es obligatorio")
 });
 
 export const deleteCreditCardsSchema = z.object({
