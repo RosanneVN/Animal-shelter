@@ -72,6 +72,7 @@ const CreditCardsDB = defineTable({
     id: column.text({ primaryKey: true }),
     cardNumber: column.text(),
     numberPhone: column.number(),
+    nameCard: column.text(),
   },
 });
 

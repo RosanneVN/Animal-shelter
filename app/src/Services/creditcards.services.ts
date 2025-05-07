@@ -17,12 +17,14 @@ export const getServicesCreditCards = () => {
 type CreateCreditCards = {
   cardNumberNew: string;
   numberPhoneNew: number;
+  nameCardNew: string;
 };
 export const useHandleCreateCreditCards = () => {
   const { mutate, loading, error } = useMutation();
   const handleCreateCreditCards = ({
     cardNumberNew,
     numberPhoneNew,
+    nameCardNew
   }: CreateCreditCards) => {
     mutate({
       url: URL,
@@ -30,6 +32,7 @@ export const useHandleCreateCreditCards = () => {
       body: {
         cardNumber: cardNumberNew,
         numberPhone: numberPhoneNew,
+        nameCard: nameCardNew
       },
     });
   };
@@ -40,6 +43,7 @@ type UpdateCreditCards = {
   idUpdate: string;
   cardNumberUpdate: string;
   numberPhoneUpdate: number;
+  nameCardUpdate: string;
 };
 export const useHandleUpdateCreditCards = () => {
   const { mutate, loading, error } = useMutation();
@@ -47,6 +51,7 @@ export const useHandleUpdateCreditCards = () => {
     idUpdate,
     cardNumberUpdate,
     numberPhoneUpdate,
+    nameCardUpdate
   }: UpdateCreditCards) => {
     const m = mutate({
       url: URL + "?id=" + idUpdate,
@@ -54,6 +59,7 @@ export const useHandleUpdateCreditCards = () => {
       body: {
         cardNumber: cardNumberUpdate,
         numberPhone: numberPhoneUpdate,
+        nameCard: nameCardUpdate
       },
     });
   };

@@ -10,5 +10,6 @@ export default function creditCardsAdapters({ data }: Props): CreditCardsType[] 
     id: creditCard.id,
     cardNumber: creditCard.cardNumber,
     numberPhone: creditCard.numberPhone,
+    nameCard: creditCard.nameCard
   }));
 }

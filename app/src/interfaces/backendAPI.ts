@@ -53,4 +53,5 @@ export interface CreditCards {
   id: string;
   cardNumber: string;
   numberPhone: number;
+  nameCard: string;
 }

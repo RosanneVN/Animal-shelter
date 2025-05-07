@@ -151,8 +151,23 @@ export default async function () {
   ]);
 
   await db.insert(CreditCardsDB).values([
-    {id: uuidv4(), cardNumber: "9254-0987-5643-6543", numberPhone: 56775245},
-    {id: uuidv4(), cardNumber: "9254-6621-5643-8734", numberPhone: 58908790},
-    {id: uuidv4(), cardNumber: "1234-0987-5643-6543", numberPhone: 53435687},
-  ])
+    {
+      id: uuidv4(),
+      cardNumber: "9254-0987-5643-6543",
+      numberPhone: 56775245,
+      nameCard: "Tarjeta de prueba",
+    },
+    {
+      id: uuidv4(),
+      cardNumber: "9254-6621-5643-8734",
+      numberPhone: 58908790,
+      nameCard: "Tarjeta de prueba",
+    },
+    {
+      id: uuidv4(),
+      cardNumber: "1234-0987-5643-6543",
+      numberPhone: 53435687,
+      nameCard: "Tarjeta de prueba",
+    },
+  ]);
 }
