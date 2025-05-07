@@ -47,5 +47,7 @@ export const FormAdoptionReq: FormAdoptionReqType = {
     CIpicture: undefined,
     youAgree: "",
   },
-  petId: "",
+  petId: "",  
+  isRead: false,
+  isApproved: false,
 };
