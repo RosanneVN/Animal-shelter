@@ -2,12 +2,12 @@ import type { APIRoute } from "astro";
 import { CreditCardsDB, db, eq } from "astro:db";
 import {
   CreditCardsSchema,
+  deleteCreditCardsSchema,
   type CreateCreditCardsInput,
 } from "../../Backend/Schemas/CreditCards.schema";
 
 export const GET: APIRoute = async ({}) => {
   const creditCards = await db.select().from(CreditCardsDB);
-  console.log("creditCards", creditCards);
   return new Response(JSON.stringify({ data: creditCards }), {
     status: 200,
     statusText: "Michi encontrado",
@@ -21,10 +21,7 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
     const validationResults = CreditCardsSchema.safeParse(body);
-    console.log("body", body);
-    
-    console.log("validationResults", validationResults );
-    
+
     if (!validationResults.success) {
       return new Response(
         JSON.stringify({
@@ -61,11 +58,15 @@ export const DELETE: APIRoute = async ({ request }) => {
   try {
     const url = new URL(request.url);
     const id = url.searchParams.get("id");
+    console.log("id", id);
+
     if (!id) {
       throw new Error("ID not found");
     }
 
-    const validationResult = CreditCardsSchema.safeParse({ id });
+    const validationResult = deleteCreditCardsSchema.safeParse({ id });
+    console.log("validationResult", validationResult);
+    
     if (!validationResult.success) {
       return new Response(
         JSON.stringify({
@@ -74,10 +75,11 @@ export const DELETE: APIRoute = async ({ request }) => {
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
-
     const creditCards = await db
       .delete(CreditCardsDB)
       .where(eq(CreditCardsDB.id, id));
+    console.log("creditCards", creditCards);
+
     return new Response(
       JSON.stringify({ message: `Michi con id ${id} eliminado` }),
       {

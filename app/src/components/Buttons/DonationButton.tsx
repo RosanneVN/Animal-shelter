@@ -1,9 +1,10 @@
 type Props = {
   title: string;
   onOpen?: React.Dispatch<React.SetStateAction<boolean>>
+  children?: any
 };
 
-const DonationButton = ({ title, onOpen=()=>{} }: Props) => {
+const DonationButton = ({ title, onOpen=()=>{}, children }: Props) => {
   return (
     <>
       <button
@@ -13,6 +14,7 @@ const DonationButton = ({ title, onOpen=()=>{} }: Props) => {
       >
         <img className="size-8" src="/Image/creditCard.png" alt="" />
         {title}
+        {children}
       </button>
     </>
   );

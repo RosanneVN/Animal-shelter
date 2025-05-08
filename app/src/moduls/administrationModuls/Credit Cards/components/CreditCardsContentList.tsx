@@ -13,8 +13,8 @@ type Props = {};
 
 export default function CreditCardsContentList({}: Props) {
   return (
-    <>
-      {" "}
+    
+      <section className="w-full flex flex-col justify-center items-center gap-5">
       <ModalFormProvider>
         <ModalForm>
           <CreditCardFormCreate />
@@ -22,6 +22,7 @@ export default function CreditCardsContentList({}: Props) {
         <CreateNewCreditCard />
       </ModalFormProvider>
       <ListMapCards />
-    </>
+      </section>
+   
   );
 }
