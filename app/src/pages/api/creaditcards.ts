@@ -7,6 +7,7 @@ import {
 
 export const GET: APIRoute = async ({}) => {
   const creditCards = await db.select().from(CreditCardsDB);
+  console.log("creditCards", creditCards);
   return new Response(JSON.stringify({ data: creditCards }), {
     status: 200,
     statusText: "Michi encontrado",
@@ -20,6 +21,10 @@ export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();
     const validationResults = CreditCardsSchema.safeParse(body);
+    console.log("body", body);
+    
+    console.log("validationResults", validationResults );
+    
     if (!validationResults.success) {
       return new Response(
         JSON.stringify({

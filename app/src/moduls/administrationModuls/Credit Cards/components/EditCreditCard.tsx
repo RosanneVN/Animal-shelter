@@ -1,29 +1,35 @@
 import React, { useContext, useState } from "react";
-import InputForm from "../../../../components/Inputs/InputForm";
-import type { CreditCards } from "../../../../interfaces/backendAPI";
 import SendButton from "../../../../components/Buttons/SendButton";
-import { useHandleCreateCreditCards } from "../../../../Services/creditcards.services";
+import InputForm from "../../../../components/Inputs/InputForm";
 import { ModalFormContext } from "../../../../Context/ModalFormContext";
+import type { CreditCards } from "../../../../interfaces/backendAPI";
+import { useHandleUpdateCreditCards } from "../../../../Services/creditcards.services";
 
-export default function CreditCardFormCreate({}) {
+type Props = {};
+
+export default function EditCreditCard({
+  id,
+  nameCard,
+  cardNumber,
+  numberPhone,
+}: CreditCards) {
   const { setIsOpen } = useContext(ModalFormContext);
   const [values, setValues] = useState<CreditCards>({
-    id: "",
-    cardNumber: "",
-    numberPhone: 0,
-    nameCard: "",
+    id: id,
+    cardNumber: cardNumber,
+    numberPhone: numberPhone,
+    nameCard: nameCard,
   });
-  console.log("values", values);
 
-  const handleChange = (field: keyof typeof values, value: string | number) => {
+  const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
       ...prev,
       [field]: value,
     }));
   };
 
-  const { handleCreateCreditCards, loading, error } =
-    useHandleCreateCreditCards();
+  const { handleUpdateCreditCards, loading, error } =
+    useHandleUpdateCreditCards();
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!values.numberPhone || !values.cardNumber || !values.nameCard) {
@@ -34,17 +40,13 @@ export default function CreditCardFormCreate({}) {
     if (loading) {
       return;
     }
-
-    handleCreateCreditCards({
-      cardNumberNew: values.cardNumber,
-      numberPhoneNew: Number(values.numberPhone),
-      nameCardNew: values.nameCard,
+    handleUpdateCreditCards({
+      idUpdate: id,
+      cardNumberUpdate: values.cardNumber,
+      numberPhoneUpdate: Number(values.numberPhone),
+      nameCardUpdate: values.nameCard,
     });
   };
-  
-  if (error) {
-    return;
-  }
   if (error) {
     return <p>Error: {error}</p>;
   }

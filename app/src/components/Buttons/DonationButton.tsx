@@ -1,9 +1,9 @@
 type Props = {
   title: string;
-  onOpen: React.Dispatch<React.SetStateAction<boolean>>
+  onOpen?: React.Dispatch<React.SetStateAction<boolean>>
 };
 
-const DonationButton = ({ title, onOpen }: Props) => {
+const DonationButton = ({ title, onOpen=()=>{} }: Props) => {
   return (
     <>
       <button

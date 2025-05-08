@@ -1,18 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { getServicesCreditCards } from "../../../../Services/creditcards.services";
-import DonationButton from "../../../../components/Buttons/DonationButton";
-import { ModalFormContext } from "../../../../Context/ModalFormContext";
+import CreditCardWithEdit from "./CreditCardWithEdit";
 
-type Props = {onClick:any};
-
-export default function ListMapCards({onClick}: Props) {
+export default function ListMapCards() {
   const { data } = getServicesCreditCards();
   console.log("data", data);
- 
+
   return (
     <div>
       {data.map((creditCard) => (
-        <DonationButton onOpen={onClick} title={creditCard.nameCard} />
+        <CreditCardWithEdit
+          nameCard={creditCard.nameCard}
+          id={creditCard.id}
+          cardNumber={creditCard.cardNumber}
+          numberPhone={creditCard.numberPhone}
+        />
       ))}
     </div>
   );

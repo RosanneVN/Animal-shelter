@@ -67,7 +67,8 @@ export default function CreateCards() {
     return <p>Loading...</p>;
   }
 
-  //el form  tiene una funcion submit que significa q el boton que tenga el type submit se ejecuta cuando se envia el formulario
+  //el form  tiene una funcion submit que significa q el boton que tenga el type 
+  // submit se ejecuta cuando se envia el formulario
   return (
     <form
       onSubmit={(e) => submit(e)}
