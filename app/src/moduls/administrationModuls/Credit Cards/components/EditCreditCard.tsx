@@ -5,15 +5,17 @@ import { ModalFormContext } from "../../../../Context/ModalFormContext";
 import type { CreditCards } from "../../../../interfaces/backendAPI";
 import { useHandleUpdateCreditCards } from "../../../../Services/creditcards.services";
 
-type Props = {};
+interface Props extends CreditCards {
+  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
+};
 
 export default function EditCreditCard({
   id,
   nameCard,
   cardNumber,
   numberPhone,
-}: CreditCards) {
-  const { setIsOpen } = useContext(ModalFormContext);
+  onClick,
+}: Props) {
   const [values, setValues] = useState<CreditCards>({
     id: id,
     cardNumber: cardNumber,
@@ -63,9 +65,7 @@ export default function EditCreditCard({
         <button
           type="button"
           className="rounded-full p-2 shadow-md self-end hover:translate-y-1 hover:shadow-none"
-          onClick={() => {
-            setIsOpen(false);
-          }}
+          onClick={onClick}
         >
           {" "}
           <img className="size-4" src="/Image/closeIcon.png" alt="" />

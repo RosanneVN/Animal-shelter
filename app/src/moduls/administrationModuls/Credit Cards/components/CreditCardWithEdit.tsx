@@ -32,6 +32,7 @@ export default function CreditCardWithEdit({
           id={id}
           cardNumber={cardNumber}
           numberPhone={numberPhone}
+          onClick={()=>setOnClick(false)}
         />
       </ModalFormContainer>
     </>
