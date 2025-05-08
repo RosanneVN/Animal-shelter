@@ -21,7 +21,7 @@ export default function EditCreditCard({
     nameCard: nameCard,
   });
 
-  const handleChange = (field: keyof typeof values, value: string) => {
+  const handleChange = (field: keyof typeof values, value: string | number) => {
     setValues((prev) => ({
       ...prev,
       [field]: value,
