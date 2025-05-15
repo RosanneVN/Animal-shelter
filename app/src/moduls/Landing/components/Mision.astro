@@ -2,6 +2,9 @@
 import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
 import EstandarButton from "../../../components/Buttons/EstandarButton.astro";
 import Title from "../../../components/Title.astro";
+
+const Message =
+  "Hola, me interesaria participar como voluntario(a) en su organizacion de proteccion animal, me gustaria saber como puedo ayudar";
 ---
 
 <ScreenWidthLayout>
@@ -50,7 +53,7 @@ import Title from "../../../components/Title.astro";
         </p>
         <EstandarButton
           bgColor={"bg-primary"}
-          url={"./ApadrinaYDona"}
+          url={`https://wa.me/56775245?text=${Message}`}
           nameButton={"QUIERO SER VOLUNTARIO"}
         />
       </div>

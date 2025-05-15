@@ -2,20 +2,16 @@ import { useState } from "react";
 import ScreenWidthLayoutTsx from "../../../layouts/ScreenWidthLayoutTsx";
 import InputForm from "../../../components/Inputs/InputForm";
 import TextareaForm from "../../../components/Inputs/TextareaForm";
-import SendButton from "../../../components/Buttons/SendButton";
+
 
 type FormData = {
   fullName: string;
-  cellPhone?: string | number;
-  email: string;
   message: string;
 };
 
 const FooterContacto = () => {
   const [values, setValues] = useState<FormData>({
     fullName: "",
-    cellPhone: undefined,
-    email: "",
     message: "",
   });
 
@@ -23,7 +19,9 @@ const FooterContacto = () => {
     setValues((prev) => ({
       ...prev,
       [field]: value,
+      
     }));
+    console.log(values);
   };
 
   return (
@@ -82,9 +80,14 @@ const FooterContacto = () => {
                   }
                 />
               </div>
-              <div className="w-full flex justify-end mb-4">
-                <SendButton></SendButton>
-              </div>
+              <a
+                target="_blank"
+                href={`https://wa.me/56775245?text=Hola, mi nombre es ${values.fullName}, ${values.message}`}
+                className="uppercase text-lettersDark w-fit bg-orange-200 py-1
+ px-5 rounded-xl shadow-lg hover:translate-y-1 hover:shadow-none"
+              >
+                Enviar
+              </a>
             </form>
           </div>
         </div>
