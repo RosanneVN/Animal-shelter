@@ -76,6 +76,14 @@ const CreditCardsDB = defineTable({
   },
 });
 
+const UserAuth = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    username: column.text(),
+    password: column.text(),
+  }
+})
+
 export default defineDb({
-  tables: { Pets, AdoptionRequestsDB, CreditCardsDB },
+  tables: { Pets, AdoptionRequestsDB, CreditCardsDB, UserAuth },
 });

@@ -1,5 +1,6 @@
-import { db, Pets, AdoptionRequestsDB, CreditCardsDB } from "astro:db";
+import { db, Pets, AdoptionRequestsDB, CreditCardsDB, UserAuth } from "astro:db";
 import { v4 as uuidv4 } from "uuid";
+import bcrypt from "bcrypt";
 export default async function () {
   await db.insert(Pets).values([
     {
@@ -170,4 +171,12 @@ export default async function () {
       nameCard: "Tarjeta de prueba",
     },
   ]);
+
+  await db.insert(UserAuth).values([
+    {
+      id: uuidv4(),
+      username: "rosanne",
+      password: bcrypt.hashSync("123456",10)
+    }
+  ])
 }
