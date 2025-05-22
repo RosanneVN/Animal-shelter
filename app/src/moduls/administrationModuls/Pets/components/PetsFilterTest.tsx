@@ -8,7 +8,7 @@ export default function PetsFilterTest({ onFilterChange }: Props) {
       onChange={(e) => {
         onFilterChange(e.target.value);
       }}
-      className="bg-white shadow-md rounded-xl text-lettersDark"
+      className="bg-white shadow-md rounded-xl text-lettersDark px-3 mx-5"
     >
       <option value="">Todas</option>
       <option value={PetsEnum.perro}>Perro</option>

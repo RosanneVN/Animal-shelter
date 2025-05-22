@@ -28,8 +28,10 @@ export default function AdminContendCards() {
           <ModalForm>
             <CreateCards />
           </ModalForm>
-          <PetsFilterTest onFilterChange={handleSpecie} />
-          <SearchBar onSearch={handleSearch} />
+          <div className="flex gap-2 ">
+            <PetsFilterTest onFilterChange={handleSpecie} />
+            <SearchBar onSearch={handleSearch} />
+          </div>
           <CreatePetsButton />
         </ModalFormProvider>
         <EditAdoptionCardList
