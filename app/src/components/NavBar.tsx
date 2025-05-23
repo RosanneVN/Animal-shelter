@@ -2,6 +2,7 @@ import { useState } from "react";
 import { NavBarAdminMenu, NavBarMenu } from "./data";
 import ResponsiveMenu from "./ResponsiveMenu";
 import { useLocation } from "wouter";
+import LogoutButton from "../moduls/administrationModuls/Auth/components/LogOutBtn";
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -35,6 +36,7 @@ bg-white/55 rounded-full backdrop-blur-md"
                     </li>
                   );
                 })}
+                <LogoutButton />
               </ul>
             ) : (
               <ul className="flex  items-center gap-3 text-primary">

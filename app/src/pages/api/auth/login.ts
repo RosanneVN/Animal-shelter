@@ -3,7 +3,7 @@ import { db, eq, UserAuth } from "astro:db";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const JWT_SECRET = "tu_secreto_seguro";
+const JWT_SECRET = process.env.JWT_SECRET || "tu_secreto_seguro";
 
 export const POST: APIRoute = async ({ request }) => {
   const { username, password } = await request.json();
