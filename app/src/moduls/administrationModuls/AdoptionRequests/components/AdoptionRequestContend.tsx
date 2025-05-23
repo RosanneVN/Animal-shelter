@@ -15,10 +15,16 @@ export default function AdoptionRequestContend() {
   };
 
   return (
-    <>
-      <RadingFilter onFilterChange={handleFilterChange} />
-      <ApprovedFilter onApprovedFilterChange={handleApprovedFilterChange} />
-      <AdoptionReqList readingFilter={readingFilter} isApprovedFilter={isApprovedFilter} />
-    </>
+    <section className="flex flex-col gap-10">
+      <div className="flex justify-end gap-10">
+        {" "}
+        <RadingFilter onFilterChange={handleFilterChange} />
+        <ApprovedFilter onApprovedFilterChange={handleApprovedFilterChange} />
+      </div>
+      <AdoptionReqList
+        readingFilter={readingFilter}
+        isApprovedFilter={isApprovedFilter}
+      />
+    </section>
   );
 }

@@ -23,12 +23,12 @@ export default function AdminContendCards() {
   };
   return (
     <>
-      <section className="w-full">
+      <section className="w-full flex flex-col">
         <ModalFormProvider>
           <ModalForm>
             <CreateCards />
           </ModalForm>
-          <div className="flex gap-2 ">
+          <div className="flex gap-2 max-sm:flex-col-reverse max-sm:gap-3">
             <PetsFilterTest onFilterChange={handleSpecie} />
             <SearchBar onSearch={handleSearch} />
           </div>

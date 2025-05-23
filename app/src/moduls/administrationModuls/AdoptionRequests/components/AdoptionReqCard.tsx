@@ -53,8 +53,7 @@ export default function AdoptionReqCard({
         <div className="flex flex-col px-10 py-5 text-middleLetters gap-5 text-lettersDark ">
           <div className="flex flex-col">
             <p>
-              <span className="font-semibold">Nombre:</span>
-              {fullname}
+              <span className="font-semibold">Nombre:</span> {fullname}
             </p>
             <p>
               <span className="font-semibold">Edad:</span> {age}
