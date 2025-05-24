@@ -44,8 +44,8 @@ export const NavBarAdminMenu = [
   },
   {
     id: 3,
-    title: "Voluntariado",
-    url: "/administrationPages/VoluntareRequests"
+    title: "Tarjetas",
+    url: "/administrationPages/CreaditCards"
   },
   {
     id: 4,

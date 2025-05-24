@@ -23,19 +23,21 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
       id: adoptionReq.PersonalData.id,
       isApprovedUpdate: true,
     });
+    window.location.href = "/administrationPages/AdoptionRequests";
   };
   const handleNotApproved = () => {
     handleUpdateAdoptionReq({
       id: adoptionReq.PersonalData.id,
       isApprovedUpdate: false,
     });
+    window.location.href = "/administrationPages/AdoptionRequests";
   };
 
   return (
     <>
       <section
         className="pb-20 pt-40 px-36 w-full flex flex-col justify-center items-center gap-10
-       text-lettersDark text-middleLetters"
+       text-lettersDark text-middleLetters max-sm:px-5 max-sm:text-shortLetters"
       >
         <div>
           <img
@@ -45,13 +47,16 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
           />
         </div>
 
-        <div className="flex flex-col gap-5 rounded-lg w-[800px] border-2 border-orange-200 pb-5 overflow-hidden">
+        <div
+          className="flex flex-col gap-5 rounded-lg w-[800px] border-2 border-orange-200 pb-5 overflow-hidden
+        max-sm:w-[350px]"
+        >
           <div className=" px-10 bg-orange-200 py-1">
-            <h3 className=" font-semibold text-longLetters uppercase">
+            <h3 className=" font-semibold text-longLetters  uppercase">
               Personal Data
             </h3>
           </div>
-          <div className=" px-10">
+          <div className=" px-10 max-sm:px-5">
             <p>
               <span className="font-semibold">Nombre completo: </span>{" "}
               {adoptionReq?.PersonalData.fullname}
@@ -77,14 +82,17 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
           </div>
         </div>
 
-        <div className=" rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5">
+        <div
+          className=" rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5
+        max-sm:w-[350px]"
+        >
           <div className=" px-10 bg-orange-200 py-1">
             {" "}
             <h3 className="font-semibold text-longLetters uppercase">
               Motivaciones
             </h3>
           </div>
-          <div className=" px-10">
+          <div className=" px-10 max-sm:px-5 py-3">
             {" "}
             <p>
               <span className="font-semibold">Motivaciones: </span>{" "}
@@ -122,14 +130,17 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
           </div>
         </div>
 
-        <div className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5">
+        <div
+          className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5
+        max-sm:w-[350px]"
+        >
           <div className=" px-10 bg-orange-200 py-1">
             {" "}
             <h3 className="font-semibold text-longLetters uppercase">
               Condiciones del Hogar
             </h3>
           </div>
-          <div className=" px-10">
+          <div className=" px-10 max-sm:px-5 py-3">
             {" "}
             <p>
               {" "}
@@ -190,14 +201,17 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
           </div>
         </div>
 
-        <div className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5">
+        <div
+          className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5
+        max-sm:w-[350px]"
+        >
           <div className=" px-10 bg-orange-200 py-1">
             {" "}
             <h3 className="font-semibold text-longLetters uppercase">
               Experiencia
             </h3>
           </div>
-          <div className="px-10">
+          <div className="px-10 py-3 max-sm:px-5">
             <p>
               {" "}
               <span className="font-semibold">
@@ -238,14 +252,17 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
           </div>
         </div>
 
-        <div className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5">
+        <div
+          className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5
+        max-sm:w-[350px]"
+        >
           <div className=" px-10 bg-orange-200 py-1">
             <h3 className="font-semibold text-longLetters uppercase">
               Estilo de vida
             </h3>
           </div>
 
-          <div className="px-10">
+          <div className="px-10 py-3 max-sm:px-5">
             {" "}
             <p>
               <span className="font-semibold">¿Trabaja o estudia?:</span>{" "}
@@ -279,14 +296,17 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
           </div>
         </div>
 
-        <div className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5">
+        <div
+          className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5
+        max-sm:w-[350px]"
+        >
           <div className=" px-10 bg-orange-200 py-1">
             {" "}
             <h3 className="font-semibold text-longLetters uppercase">
               Conocimientos y Opiniones
             </h3>
           </div>
-          <div className=" px-10">
+          <div className=" px-10 py-3 max-sm:px-5">
             {" "}
             <p>
               {" "}
@@ -314,14 +334,17 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
           </div>
         </div>
 
-        <div className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5">
+        <div
+          className="rounded-lg w-[800px]  border-2 border-orange-200 pb-5 overflow-hidden gap-5
+        max-sm:w-[350px]"
+        >
           <div className=" px-10 bg-orange-200 py-1">
             {" "}
             <h3 className="font-semibold text-longLetters uppercase">
               Documentación
             </h3>
           </div>
-          <div className=" px-10">
+          <div className=" px-10 py-3 max-sm:px-5">
             {" "}
             <p>
               <span className="font-semibold">
@@ -331,12 +354,12 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
               {adoptionReq?.Documentation.youAgree}
             </p>
             <p>
-              <span className="font-semibold">Foto del CI</span>
+              <span className="font-semibold">Foto del CI:</span>
             </p>
           </div>
         </div>
 
-        <div className="flex w-full justify-between px-36">
+        <div className="flex w-full justify-between px-36 max-sm:px-0">
           <button
             onClick={handleNotApproved}
             className="py-1 px-3 bg-secondary shadow-md rounded-lg font-semibold hover:text-red-600 hover:bg-white"

@@ -47,3 +47,11 @@ export interface AdoptionReqInterface {
   isRead: boolean;
   isApproved: boolean;
 }
+
+//seccion de las tarjetas de credito
+export interface CreditCards {
+  id: string;
+  cardNumber: string;
+  numberPhone: number;
+  nameCard: string;
+}

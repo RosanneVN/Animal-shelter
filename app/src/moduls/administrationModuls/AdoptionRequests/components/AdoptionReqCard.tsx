@@ -20,7 +20,7 @@ export default function AdoptionReqCard({
   cellPhone,
   address,
   isRead,
-  isApproved
+  isApproved,
 }: Props) {
   const { handleDeleteAdoptionReq, loading, error } =
     useHandleDeleteAdoptionReq();
@@ -45,16 +45,18 @@ export default function AdoptionReqCard({
       className="w-full flex flex-col items-center justify-center"
       href={`/administrationPages/${id}`}
     >
-      <section className="flex w-[700px] rounded-md shadow-md  overflow-hidden">
-        <div>
-          <img className="size-[212px]" src="/Image/Adoptable1.jpg" alt="" />
+      <section
+        className="flex max-sm:flex-col w-[700px] max-sm:w-[350px] rounded-md shadow-md
+        overflow-hidden max-sm:justify-center  max-sm:items-center"
+      >
+        <div className="flex size-[212px]">
+          <img className="h-[212px] w-[212px]" src="/Image/Adoptable1.jpg" alt="" />
         </div>
 
-        <div className="flex flex-col px-10 py-5 text-middleLetters gap-5 text-lettersDark ">
+        <div className="flex flex-col flex-1 px-10 py-5 text-middleLetters gap-5 text-lettersDark ">
           <div className="flex flex-col">
             <p>
-              <span className="font-semibold">Nombre:</span>
-              {fullname}
+              <span className="font-semibold">Nombre:</span> {fullname}
             </p>
             <p>
               <span className="font-semibold">Edad:</span> {age}
@@ -67,21 +69,23 @@ export default function AdoptionReqCard({
             </p>
           </div>
           <div className="flex w-full justify-between">
-            {isApproved &&
-              <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
-                Aprobada
-              </div>
-            }
+            <div className="flex max-sm:w-[200px] gap-2">
+              {isApproved && (
+                <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
+                  Aprobada
+                </div>
+              )}
 
-            {isRead && (
-              <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
-                Leida
-              </div>
-            )}
+              {isRead && (
+                <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
+                  Leida
+                </div>
+              )}
+            </div>
 
             <div
               onClick={() => setIsDelete(true)}
-              className="py-1 px-3 shadow-md rounded-md text-red-600 cursor-pointer"
+              className="py-1 px-3 flex self-end shadow-md rounded-md text-red-600 cursor-pointer"
             >
               Borrar
             </div>
