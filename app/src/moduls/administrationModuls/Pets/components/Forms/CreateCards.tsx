@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import OptionButtons from "../../../../../components/Inputs/OptionButtons";
 import { PetsEnum } from "../../../../../Const/PetsEnum";
 import InputForm from "../../../../../components/Inputs/InputForm";
@@ -8,7 +8,7 @@ import SendButton from "../../../../../components/Buttons/SendButton";
 import { ModalFormContext } from "../../../../../Context/ModalFormContext";
 
 type FormData = {
-  imgPet: any;
+  imgPet: string;
   namePet: string;
   agePet: string;
   speciesPet: string;
@@ -24,23 +24,30 @@ export default function CreateCards() {
     speciesPet: "",
     genderPet: "",
   });
-  const handleChange = (field: keyof typeof values, value: string) => {
+    const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
       ...prev,
       [field]: value,
     }));
   };
 
-  const { handleCreatePet, loading, error } = useHandleCreatePet();
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleImageChange = useCallback((base64: string | null) => {
+    setValues((prev) => ({
+      ...prev,
+      imgPet: base64 || "",
+    }));
+  }, []);
+
+  const { handleCreatePet, loading, error } = useHandleCreatePet();  const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !values.genderPet ||
       !values.speciesPet ||
       !values.namePet ||
-      !values.agePet
+      !values.agePet ||
+      !values.imgPet
     ) {
-      alert("Todos los campos deben estar seleccionados");
+      alert("Todos los campos deben estar seleccionados, incluyendo la imagen");
       return;
     }
 
@@ -53,6 +60,7 @@ export default function CreateCards() {
       ageNew: parseInt(values.agePet),
       speciesNew: values.speciesPet,
       genderNew: values.genderPet,
+      imgNewBase64: values.imgPet,
     });
     if (error) {
       return;
@@ -83,10 +91,11 @@ export default function CreateCards() {
       >
         {" "}
         <img className="size-4" src="/Image/closeIcon.png" alt="" />
-      </button>
-
-      <div className="flex flex-col gap-2">
-        <UploadInput></UploadInput>
+      </button>      <div className="flex flex-col gap-2">
+        <UploadInput 
+          onImageChange={handleImageChange}
+          errorMessage={!values.imgPet ? "La imagen es obligatoria" : undefined}
+        />
         <InputForm
           name={""}
           label={"Nombre de la mascota"}

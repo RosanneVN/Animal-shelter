@@ -32,6 +32,7 @@ type CreatePets = {
   ageNew: number;
   speciesNew: string;
   genderNew: string;
+  imgNewBase64: string;
 };
 export const useHandleCreatePet = () => {
   const { mutate, loading, error } = useMutation();
@@ -40,6 +41,7 @@ export const useHandleCreatePet = () => {
     ageNew,
     speciesNew,
     genderNew,
+    imgNewBase64,
   }: CreatePets) => {
     mutate({
       url: URL,
@@ -49,6 +51,7 @@ export const useHandleCreatePet = () => {
         age: ageNew,
         species: speciesNew,
         gender: genderNew,
+        img: imgNewBase64,
       },
     });
   };
@@ -61,6 +64,7 @@ type UpdatePets = {
   ageUpdate: number;
   speciesUpdate: string;
   genderUpdate: string;
+  imgUpdateBase64?: string;
 };
 export const useHandleUpdatePet = () => {
   const { mutate, loading, error } = useMutation();
@@ -70,16 +74,23 @@ export const useHandleUpdatePet = () => {
     ageUpdate,
     speciesUpdate,
     genderUpdate,
+    imgUpdateBase64,
   }: UpdatePets) => {
+    const body: any = {
+      petname: petnameUpdate,
+      age: ageUpdate,
+      species: speciesUpdate,
+      gender: genderUpdate,
+    };
+
+    if (imgUpdateBase64) {
+      body.img = imgUpdateBase64;
+    }
+
     const m = mutate({
       url: URL + "?id=" + idUpdate,
       method: "PATCH",
-      body: {
-        petname: petnameUpdate,
-        age: ageUpdate,
-        species: speciesUpdate,
-        gender: genderUpdate,
-      },
+      body,
     });
     console.log(m);
 

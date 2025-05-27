@@ -7,6 +7,7 @@ export interface Pets {
   age: number;
   gender: string;
   species: string;
+  img: string;
 }
 
 //Seccion de las solicitudes de adoption

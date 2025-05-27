@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import InputForm from "../../../../../components/Inputs/InputForm";
 import OptionButtons from "../../../../../components/Inputs/OptionButtons";
 import SendButton from "../../../../../components/Buttons/SendButton";
@@ -11,7 +11,7 @@ interface Props extends PetsType {
   onClose: () => void;
 }
 type FormData = {
-  imgPet: any;
+  imgPet: string;
   namePet: string;
   agePet: string;
   speciesPet: string;
@@ -19,39 +19,50 @@ type FormData = {
 };
 
 
-const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
+const EditCards = ({ id, petname, age, species, gender,img, onClose }: Props) => {
   const [values, setValues] = useState<FormData>({
-    imgPet: "",
+    imgPet: img || "",
     namePet: petname,
     agePet: age.toString(),
     speciesPet: species || PetsEnum.perro,
     genderPet: gender || PetsEnum.macho,
   });
-  //...prev es que mantenemos los demas inputs intactos expeto en el que estamos obteniendo
-  const handleChange = (field: keyof typeof values, value: string) => {
+    const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
       ...prev,
       [field]: value,
     }));
   };
 
-  const { handleUpdatePet, loading, error } = useHandleUpdatePet();
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleImageChange = useCallback((base64: string | null) => {
+    setValues((prev) => ({
+      ...prev,
+      imgPet: base64 || "",
+    }));
+  }, []);
+
+  const { handleUpdatePet, loading, error } = useHandleUpdatePet();  const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!values.genderPet || !values.speciesPet) {
-      alert("Todos los campos deben estar seleccionados");
+    if (
+      !values.genderPet ||
+      !values.speciesPet ||
+      !values.namePet ||
+      !values.agePet ||
+      !values.imgPet
+    ) {
+      alert("Todos los campos deben estar seleccionados, incluyendo la imagen");
       return;
     }
 
     if (loading) {
       return;
-    }
-    handleUpdatePet({
+    }    handleUpdatePet({
       idUpdate: id,
       petnameUpdate: values.namePet,
       ageUpdate: parseInt(values.agePet),
       speciesUpdate: values.speciesPet,
       genderUpdate: values.genderPet,
+      imgUpdateBase64: values.imgPet,
     });
     if (error) {
       return;
@@ -77,10 +88,11 @@ const EditCards = ({ id, petname, age, species, gender, onClose }: Props) => {
       >
         {" "}
         <img className="size-4" src="/Image/closeIcon.png" alt="" />
-      </button>
-
-      <div className="flex flex-col gap-2">
-        <UploadInput></UploadInput>
+      </button>      <div className="flex flex-col gap-2">
+        <UploadInput 
+          onImageChange={handleImageChange}
+          errorMessage={!values.imgPet ? "La imagen es obligatoria" : undefined}
+        />
         <InputForm
           name={""}
           label={"Nombre de la mascota"}

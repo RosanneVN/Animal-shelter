@@ -4,4 +4,5 @@ export type PetsType ={
     age: number;
     species: string;
     gender: string;
+    img: string;
 }

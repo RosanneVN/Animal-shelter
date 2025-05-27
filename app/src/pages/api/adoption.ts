@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { db, eq, like, Pets, count } from "astro:db";
+import { db, eq, like, Pets, count, AdoptionRequestsDB } from "astro:db";
 import { v4 as uuidv4 } from "uuid";
 import {
   deletePetsSchema,
@@ -8,6 +8,8 @@ import {
   type CreatePetInput,
   type UpdatePetInput,
 } from "../../Backend/Schemas/Adoption.schemas";
+import { uploadImgs } from "../../Backend/utils/uploadImgs";
+import { deleteImg } from "../../Backend/utils/deleteImg";
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
@@ -90,9 +92,25 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const validationData: CreatePetInput = validationResults.data;
-    const pets = await db
-      .insert(Pets)
-      .values({ id: uuidv4(), ...validationData });
+    const img = await uploadImgs(validationData.img, validationData.petname);
+    if (!img) {
+      return new Response(
+        JSON.stringify({
+          error: "Error al subir la imagen",
+        }),
+        {
+          status: 400,
+          statusText: "Error al subir la imagen",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+    const pets = await db.insert(Pets).values({
+      id: uuidv4(),
+      ...validationData,
+      img: img.url,
+      fileId: img.fileId,
+    });
     console.log(pets);
     console.log(validationData);
 
@@ -131,8 +149,37 @@ export const DELETE: APIRoute = async ({ request }) => {
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
+    const petFileId = await db
+      .select({ fileId: Pets.fileId })
+      .from(Pets)
+      .where(eq(Pets.id, id));
+    if (petFileId[0].fileId) {
+      try {
+        await deleteImg(petFileId[0].fileId);
+      } catch {
+        console.log("not img deleted");
+      }
+    }
+    try {
+      await db
+        .delete(AdoptionRequestsDB)
+        .where(eq(AdoptionRequestsDB.petId, id));
 
-    const pets = await db.delete(Pets).where(eq(Pets.id, id));
+      console.log(`Solicitudes de adopción eliminadas para mascota ID: ${id}`);
+
+      await db.delete(Pets).where(eq(Pets.id, id));
+    } catch (error) {
+      console.log(error);
+      return new Response(
+        JSON.stringify({ error: "Error al eliminar el pet" }),
+        {
+          status: 400,
+          statusText: "Error al eliminar el pet",
+          headers: { "Content-Type": "application/json" },
+        }
+      );
+    }
+    console.log("here");
     return new Response(
       JSON.stringify({ message: `Michi con id ${id} eliminado` }),
       {
@@ -163,6 +210,7 @@ export const PATCH: APIRoute = async ({ request }) => {
     }
 
     const idValidation = deletePetsSchema.safeParse({ id });
+
     if (!idValidation.success) {
       return new Response(
         JSON.stringify({ error: idValidation.error.flatten().fieldErrors }),
@@ -186,9 +234,40 @@ export const PATCH: APIRoute = async ({ request }) => {
     }
 
     const validatedData: UpdatePetInput = dataValidadtion.data;
+    let fileId;
+    if (validatedData.img) {
+      const petFileId = await db
+        .select({ fileId: Pets.fileId })
+        .from(Pets)
+        .where(eq(Pets.id, id));
+      if (petFileId[0].fileId) {
+        try {
+          await deleteImg(petFileId[0].fileId);
+        } catch {
+          console.log("not img deleted");
+        }
+      }
+      const img = await uploadImgs(validatedData.img, uuidv4());
+      if (!img) {
+        return new Response(
+          JSON.stringify({
+            error: "Error al subir la imagen",
+          }),
+          {
+            status: 400,
+            statusText: "Error al subir la imagen",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      }
+      validatedData.img = img.url;
+      fileId = img.fileId;
+    }
+    console.log(validatedData);
+
     const updateData = await db
       .update(Pets)
-      .set(validatedData)
+      .set({ ...validatedData, fileId })
       .where(eq(Pets.id, id));
     console.log(updateData);
 

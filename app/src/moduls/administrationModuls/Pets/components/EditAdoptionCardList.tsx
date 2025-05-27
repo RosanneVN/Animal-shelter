@@ -38,6 +38,7 @@ const EditAdoptionCardList = ({ filterSpecie, searchFilter,page,setPage }: Props
             age={pet.age}
             gender={pet.gender}
             species={pet.species}
+            img={pet.img}
           />
         ))}
       </AdoptionCardListFather>

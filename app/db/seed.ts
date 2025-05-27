@@ -1,4 +1,10 @@
-import { db, Pets, AdoptionRequestsDB, CreditCardsDB, UserAuth } from "astro:db";
+import {
+  db,
+  Pets,
+  AdoptionRequestsDB,
+  CreditCardsDB,
+  UserAuth,
+} from "astro:db";
 import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
 export default async function () {
@@ -9,6 +15,8 @@ export default async function () {
       age: 3,
       gender: "macho",
       species: "gato",
+      img: "https://images.unsplash.com/photo-1678489860935-a5a732d25b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      fileId: "gggg",
     },
     {
       id: "999",
@@ -16,64 +24,8 @@ export default async function () {
       age: 4,
       gender: "macho",
       species: "perro",
-    },
-    { id: uuidv4(), petname: "Juan", age: 1, gender: "macho", species: "gato" },
-    {
-      id: uuidv4(),
-      petname: "Manolo",
-      age: 5,
-      gender: "macho",
-      species: "perro",
-    },
-    { id: uuidv4(), petname: "Max", age: 4, gender: "macho", species: "perro" },
-    {
-      id: uuidv4(),
-      petname: "Maria",
-      age: 3,
-      gender: "hembra",
-      species: "gato",
-    },
-    {
-      id: uuidv4(),
-      petname: "Roberto",
-      age: 1,
-      gender: "macho",
-      species: "gato",
-    },
-    {
-      id: uuidv4(),
-      petname: "Juana",
-      age: 5,
-      gender: "hembra",
-      species: "perro",
-    },
-    {
-      id: uuidv4(),
-      petname: "Pedro",
-      age: 4,
-      gender: "macho",
-      species: "perro",
-    },
-    {
-      id: uuidv4(),
-      petname: "Julia",
-      age: 3,
-      gender: "hembra",
-      species: "gato",
-    },
-    {
-      id: uuidv4(),
-      petname: "Carlos",
-      age: 1,
-      gender: "macho",
-      species: "gato",
-    },
-    {
-      id: uuidv4(),
-      petname: "Ana",
-      age: 5,
-      gender: "hembra",
-      species: "perro",
+      img: "https://images.unsplash.com/photo-1678489860935-a5a732d25b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      fileId: "ggg3g",
     },
   ]);
   await db.insert(AdoptionRequestsDB).values([
@@ -176,7 +128,7 @@ export default async function () {
     {
       id: uuidv4(),
       username: "rosanne",
-      password: bcrypt.hashSync("123456",10)
-    }
-  ])
+      password: bcrypt.hashSync("123456", 10),
+    },
+  ]);
 }

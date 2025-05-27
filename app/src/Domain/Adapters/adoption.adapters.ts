@@ -13,18 +13,6 @@ export default function adoptionAdapters({ data }: Props): PetsType[] {
     age: pet.age,
     gender: pet.gender,
     species: pet.species,
-  }));
-}
-
-type PropsToBackend = {
-  data: PetsType[];
-};
-export function adoptionAdaptersToBackend({ data }: PropsToBackend): Pets[] {
-  return data.map((pet) => ({
-    id: pet.id,
-    petname: pet.petname,
-    age: pet.age,
-    gender: pet.gender,
-    species: pet.species,
+    img: pet.img,
   }));
 }

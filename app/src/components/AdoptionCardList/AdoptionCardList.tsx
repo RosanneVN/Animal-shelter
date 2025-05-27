@@ -20,6 +20,8 @@ const AdoptionCardList = (props: Props) => {
     setIsOpen(true);
     console.log(id);
   };
+  console.log(data);
+  
 
   return (
     <AdoptionCardListFather>
@@ -34,6 +36,7 @@ const AdoptionCardList = (props: Props) => {
           age={pet.age}
           gender={pet.gender}
           species={pet.species}
+          img={pet.img}
         />
       ))}
     </AdoptionCardListFather>

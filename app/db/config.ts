@@ -7,6 +7,8 @@ const Pets = defineTable({
     age: column.number(),
     gender: column.text(),
     species: column.text(),
+    img: column.text(),
+    fileId: column.text(),
   },
 });
 
