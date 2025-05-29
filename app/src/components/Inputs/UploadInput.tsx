@@ -93,7 +93,7 @@ const UploadInput = ({ onImageChange, errorMessage }: Props) => {
         )}
       </div>
       {(error || errorMessage) && (
-        <p className="text-red-500 text-sm">
+        <p className="text-red-500 text-[10px]">
           {error || errorMessage}
         </p>
       )}

@@ -33,6 +33,13 @@ export default function AdoptionReqCard({
     setIsDelete(false);
     window.location.reload();
   };
+
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.preventDefault(); // Evita la navegación del enlace
+    e.stopPropagation(); // Evita la propagación del evento
+    setIsDelete(true);
+  };
+
   if (error) {
     return <p>Error: {error}</p>;
   }
@@ -41,20 +48,25 @@ export default function AdoptionReqCard({
   }
 
   return (
-    <a
-      className="w-full flex flex-col items-center justify-center"
-      href={`/administrationPages/${id}`}
-    >
+    <div className="w-full flex flex-col items-center justify-center ">
       <section
         className="flex max-sm:flex-col w-[700px] max-sm:w-[350px] rounded-md shadow-md
-        overflow-hidden max-sm:justify-center  max-sm:items-center"
+        overflow-hidden max-sm:justify-center  max-sm:items-center relative"
       >
-        <div className="flex size-[212px]">
-          <img className="h-[212px] w-[212px]" src="/Image/Adoptable1.jpg" alt="" />
+        <a
+          className="absolute inset-0 z-0"
+          href={`/administrationPages/${id}`}
+        />
+        <div className="flex size-[212px] relative z-10">
+          <img
+            className="h-[212px] w-[212px]"
+            src="/Image/Adoptable1.jpg"
+            alt=""
+          />
         </div>
 
         <div className="flex flex-col flex-1 px-10 py-5 text-middleLetters gap-5 text-lettersDark ">
-          <div className="flex flex-col">
+          <div className="flex flex-col pointer-events-none">
             <p>
               <span className="font-semibold">Nombre:</span> {fullname}
             </p>
@@ -84,8 +96,9 @@ export default function AdoptionReqCard({
             </div>
 
             <div
-              onClick={() => setIsDelete(true)}
-              className="py-1 px-3 flex self-end shadow-md rounded-md text-red-600 cursor-pointer"
+              onClick={handleDeleteClick}
+              className="py-1 px-3 flex self-end shadow-md rounded-md text-red-600 cursor-pointer 
+              relative z-20 bg-white hover:bg-red-50 transition-colors"
             >
               Borrar
             </div>
@@ -105,6 +118,6 @@ export default function AdoptionReqCard({
           }}
         />
       </ModalFormContainer>
-    </a>
+    </div>
   );
 }

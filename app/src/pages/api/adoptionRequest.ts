@@ -8,6 +8,8 @@ import {
   type CreateAdoptionReqInput,
 } from "../../Backend/Schemas/AdoptionReq.schemas";
 import { AdoptionReqEnum } from "../../Const/AdoptionReqEnum";
+import { uploadImgs } from "../../Backend/utils/uploadImgs";
+import { deleteImg } from "../../Backend/utils/deleteImg";
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
@@ -102,11 +104,18 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const validationData: CreateAdoptionReqInput = validationResults.data;
+    const imgFront = await uploadImgs(validationData.CImgFront, uuidv4());
+    const imgBack = await uploadImgs(validationData.CImgBack, uuidv4());
+
     const adoptionReq = await db.insert(AdoptionRequestsDB).values({
       id: uuidv4(),
       ...validationData,
       isRead: false,
       isApproved: false,
+      CImgFront: imgFront.url,
+      CImgBack: imgBack.url,
+      idImgCBack: imgBack.fileId,
+      idImgCIFront: imgFront.fileId,
     });
     console.log("adoptionReq", adoptionReq);
 
@@ -144,9 +153,29 @@ export const DELETE: APIRoute = async ({ request }) => {
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
-    const adoptionReq = await db
-      .delete(AdoptionRequestsDB)
+    const CImgFrontFieldId = await db
+      .select({ fileId: AdoptionRequestsDB.CImgFront })
+      .from(AdoptionRequestsDB)
       .where(eq(AdoptionRequestsDB.id, id));
+    const CImgBackFieldId = await db
+      .select({ fileId: AdoptionRequestsDB.CImgBack })
+      .from(AdoptionRequestsDB)
+      .where(eq(AdoptionRequestsDB.id, id));
+
+    if (CImgFrontFieldId[0].fileId && CImgBackFieldId[0].fileId) {
+      try {
+        await deleteImg(CImgFrontFieldId[0].fileId);
+        await deleteImg(CImgBackFieldId[0].fileId);
+      } catch {
+        console.log("not img deleted");
+      }
+    }
+    try {
+      await db.delete(AdoptionRequestsDB).where(eq(AdoptionRequestsDB.id, id));
+    } catch (error) {
+      console.log(error);
+    }
+
     return new Response(
       JSON.stringify({ message: `Michi con id ${id} eliminado` }),
       {
