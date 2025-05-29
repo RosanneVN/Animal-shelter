@@ -44,7 +44,8 @@ export const FormAdoptionReq: FormAdoptionReqType = {
     sterilizationOpinion: "",
   },
   Documentation: {
-    CIpicture: undefined,
+    CImgFront: "",
+    CImgBack: "",
     youAgree: "",
   },
   petId: "",  

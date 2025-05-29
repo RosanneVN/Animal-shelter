@@ -71,6 +71,8 @@ export const useHandleCreateAdoptionReq = () => {
         sterilizationOpinion:
           requestsValuesContext.Knowledge.sterilizationOpinion,
         youAgree: requestsValuesContext.Documentation.youAgree,
+        CImgFront: requestsValuesContext.Documentation.CImgFront,
+        CImgBack: requestsValuesContext.Documentation.CImgBack,
         petId: requestsValuesContext.petId,
       },
     });

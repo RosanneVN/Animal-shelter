@@ -47,7 +47,8 @@ export interface FormKnowledgeType {
 }
 
 export interface FormDocumentationType {
-  CIpicture?: File;
+ CImgFront: string;
+  CImgBack: string;
   youAgree: string;
 }
 

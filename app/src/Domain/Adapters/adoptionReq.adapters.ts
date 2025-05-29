@@ -53,6 +53,8 @@ export default function adoptionReqAdapters({
     },
     Documentation: {
       youAgree: adoptionReq.youAgree,
+      CImgFront: adoptionReq.CImgFront,
+      CImgBack: adoptionReq.CImgBack,
     },
     petId: adoptionReq.petId,
     isRead: adoptionReq.isRead,

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import BackAndNext from "../Buttons/BackAndNext";
 import InputForm from "../Inputs/InputForm";
 import OptionButtons from "../Inputs/OptionButtons";
@@ -9,6 +9,7 @@ import type { FormDocumentationType } from "../../Domain/Types/FormAdoptionReqTy
 import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
 import { useHandleCreateAdoptionReq } from "../../Services/adoptionReq.services";
 import { ModalFormContext } from "../../Context/ModalFormContext";
+import UploadInput from "../Inputs/UploadInput";
 
 type Props = {
   nextStep?: any;
@@ -24,17 +25,17 @@ const Documentation = ({ prevStep }: Props) => {
   const { requestsValues, setRequestsValues } = useContext(
     FormAdoptionReqContext
   );
-  
-    const { handleCreateAdoptionReq, loading, error } =
+
+  const { handleCreateAdoptionReq, loading, error } =
     useHandleCreateAdoptionReq();
-  const handleNext = async() => {
+  const handleNext = async () => {
     const newRequestsValues = {
       ...requestsValues,
       Documentation: values,
     };
     setRequestsValues(newRequestsValues);
     console.log(newRequestsValues);
-    
+
     if (loading) {
       return;
     }
@@ -57,7 +58,20 @@ const Documentation = ({ prevStep }: Props) => {
       [field]: value,
     }));
   };
-   
+
+  const handleImageChangeBack = useCallback((base64: string | null) => {
+    setValues((prev) => ({
+      ...prev,
+      CImgFront: base64 || "",
+    }));
+  }, []);
+  const handleImageChangeFront = useCallback((base64: string | null) => {
+    setValues((prev) => ({
+      ...prev,
+      CImgBack: base64 || "",
+    }));
+  }, []);
+
 
   return (
     <>
@@ -73,22 +87,20 @@ const Documentation = ({ prevStep }: Props) => {
           </div>
 
           <div className=" flex flex-col justify-between h-full gap-5">
-            <div className="flex flex-col gap-5">
-              <InputForm
-                name={""}
-                label={
-                  "Envíenos una foto de su carnet de identidad (frontal y trasera)"
+            <div className="flex flex-col gap-2">
+              <label className="text-shortLetters text-lettersDark" htmlFor="">Adujnte foto delantera del carnet de identidad</label>
+              <UploadInput
+                onImageChange={handleImageChangeFront}
+                errorMessage={
+                  !values.CImgFront? "La imagen es obligatoria" : undefined
                 }
-                type={"file"}
-                placeholderText={""}
-                errorMesage={
-                  !values.CIpicture ? "Este campo es obligatorio" : undefined
+              />
+                <label className="text-shortLetters text-lettersDark" htmlFor="">Adujnte foto trasera del carnet de identidad</label>
+              <UploadInput
+                onImageChange={handleImageChangeBack}
+                errorMessage={
+                  !values.CImgBack? "La imagen es obligatoria" : undefined
                 }
-                onChange={(inputValue) => {
-                  handleChange("CIpicture", inputValue.target.value.trim());
-                }}
-                isRequired={true}
-                defaultValue={""}
               />
               <Notes
                 noteText={

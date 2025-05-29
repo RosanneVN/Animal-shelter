@@ -27,6 +27,15 @@ export default async function () {
       img: "https://images.unsplash.com/photo-1678489860935-a5a732d25b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
       fileId: "ggg3g",
     },
+      {
+      id: uuidv4(),
+      petname: "Jacinto",
+      age: 2.5,
+      gender: "macho",
+      species: "perro",
+      img: "https://images.unsplash.com/photo-1678489860935-a5a732d25b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      fileId: "gggg",
+    },
   ]);
   await db.insert(AdoptionRequestsDB).values([
     {
@@ -61,6 +70,10 @@ export default async function () {
       vacunationSchema: "Para mi",
       sterilizationOpinion: "Bien",
       youAgree: "Si",
+      CImgFront: "https://th.bing.com/th/id/OIP.uji87jJr-E5MppjfnrVCdwHaDt?rs=1&pid=ImgDetMain",
+      CImgBack: "https://th.bing.com/th/id/OIP.uji87jJr-E5MppjfnrVCdwHaDt?rs=1&pid=ImgDetMain",
+      idImgCIFront: "gggg",
+      idImgCBack: "ggg3g",
       petId: "311221",
       isRead: false,
       isApproved: false,
@@ -97,6 +110,10 @@ export default async function () {
       vacunationSchema: "Para mi",
       sterilizationOpinion: "Bien",
       youAgree: "Si",
+      CImgFront: "https://images.unsplash.com/photo-1678489860935-a5a732d25b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      CImgBack: "https://images.unsplash.com/photo-1678489860935-a5a732d25b4d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80",
+      idImgCIFront: "ggg3g",
+      idImgCBack: "gggg",
       petId: "999",
       isRead: false,
       isApproved: false,

@@ -59,6 +59,10 @@ const AdoptionRequestsDB = defineTable({
 
     //Documentation
     youAgree: column.text(),
+    CImgFront: column.text(),
+    CImgBack: column.text(),
+    idImgCIFront: column.text(),
+    idImgCBack: column.text(),
 
     //union de tablas, llave foranea
     petId: column.text({ references: () => Pets.columns.id }),

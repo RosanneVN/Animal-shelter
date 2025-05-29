@@ -356,6 +356,10 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
             <p>
               <span className="font-semibold">Foto del CI:</span>
             </p>
+            <div>
+              <img src={adoptionReq?.Documentation.CImgFront} alt="p" />
+              <img src={adoptionReq?.Documentation.CImgBack} alt="p" />
+            </div>
           </div>
         </div>
 

@@ -42,7 +42,8 @@ export interface AdoptionReqInterface {
   petDoctorClose: string;
   vacunationSchema: string;
   sterilizationOpinion: string;
-  CIpicture?: File;
+ CImgFront: string;
+  CImgBack: string;
   youAgree: string;
   petId: string;
   isRead: boolean;
