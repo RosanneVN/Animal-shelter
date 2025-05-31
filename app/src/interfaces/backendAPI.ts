@@ -48,6 +48,7 @@ export interface AdoptionReqInterface {
   petId: string;
   isRead: boolean;
   isApproved: boolean;
+  petImg: string;
 }
 
 //seccion de las tarjetas de credito

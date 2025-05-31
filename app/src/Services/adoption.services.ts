@@ -24,7 +24,7 @@ export const getServicesPets = ({
   console.log(limit);
 
   const adaptedData = adoptionAdapters({ data });
-  return { data: adaptedData, loading, error, pagination };
+  return { data: adaptedData, loading, error, pagination }; 
 };
 
 type CreatePets = {

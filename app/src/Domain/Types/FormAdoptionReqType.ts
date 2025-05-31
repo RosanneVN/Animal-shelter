@@ -63,4 +63,5 @@ export type FormAdoptionReqType = {
   petId: string;
   isRead: boolean;
   isApproved: boolean;
+  petImg: string;
 };

@@ -6,10 +6,12 @@ import {
 
 type Props = {
   adoptionReqID?: string;
+  
 };
 
 export const AdoptionReqView = ({ adoptionReqID }: Props) => {
   console.log(adoptionReqID);
+  
 
   const { data } = getServicesAdoptionReq({ filterID: adoptionReqID });
   const adoptionReq = data?.[0];
@@ -40,11 +42,7 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
        text-lettersDark text-middleLetters max-sm:px-5 max-sm:text-shortLetters"
       >
         <div>
-          <img
-            className="size-80 rounded-lg"
-            src="/Image/ayudanos1.jpg"
-            alt=""
-          />
+          <img className="size-80 rounded-lg" src={adoptionReq?.petImg} alt="" />
         </div>
 
         <div

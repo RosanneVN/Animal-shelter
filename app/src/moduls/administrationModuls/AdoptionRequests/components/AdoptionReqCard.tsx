@@ -11,6 +11,7 @@ type Props = {
   address: string;
   isRead: boolean;
   isApproved: boolean;
+  petImg: string;
 };
 
 export default function AdoptionReqCard({
@@ -21,6 +22,7 @@ export default function AdoptionReqCard({
   address,
   isRead,
   isApproved,
+  petImg
 }: Props) {
   const { handleDeleteAdoptionReq, loading, error } =
     useHandleDeleteAdoptionReq();
@@ -60,7 +62,7 @@ export default function AdoptionReqCard({
         <div className="flex size-[212px] relative z-10">
           <img
             className="h-[212px] w-[212px]"
-            src="/Image/Adoptable1.jpg"
+            src={petImg}
             alt=""
           />
         </div>
