@@ -10,13 +10,21 @@ type Props = {
   filterID?: string;
   readingFilter?: string;
   isApprovedFilter?: string;
+  page?: number;
+  limit?: number;
 };
 
-export const getServicesAdoptionReq = ({ filterID, readingFilter, isApprovedFilter }: Props) => {
-  const { data, error, loading } = useFetch<AdoptionReqInterface>({
+export const getServicesAdoptionReq = ({
+  filterID,
+  readingFilter,
+  isApprovedFilter,
+  page,
+  limit,
+}: Props) => {
+  const { data, error, loading, pagination } = useFetch<AdoptionReqInterface>({
     url: `${URL}${
       filterID ? "?id=" + filterID + "&" : "?"
-    }readingFilter=${readingFilter}&isApprovedFilter=${isApprovedFilter}`,
+    }readingFilter=${readingFilter}&isApprovedFilter=${isApprovedFilter}&page=${page}&limit=${limit}`,
   });
 
   console.log("data", data);
@@ -24,7 +32,7 @@ export const getServicesAdoptionReq = ({ filterID, readingFilter, isApprovedFilt
   const adaptedData = adoptionReqAdapters({ data });
   console.log("adaptedData", adaptedData);
 
-  return { data: adaptedData, error, loading };
+  return { data: adaptedData, error, loading, pagination };
 };
 
 type CreateAdoptionReq = {

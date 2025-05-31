@@ -38,7 +38,7 @@ export default function AdminContendCards() {
           setPage={setPage}
           page={page}
           filterSpecie={filterSpecie}
-          searchFilter={searchFilter}
+          searchFilter={searchFilter} 
         />
       </section>
     </>
