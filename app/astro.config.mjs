@@ -11,4 +11,9 @@ import db from "@astrojs/db";
 export default defineConfig({
   integrations: [react(), tailwind(), db()],
   output: "server",
+  vite: {
+    ssr: {
+      noExternal: ["@uiw/react-md-editor", "@uiw/react-markdown-preview"]
+    }
+  }
 });

@@ -1,8 +1,7 @@
 ---
 import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
-import BlogComponent from "../../../components/BlogComponent";
+import PublicBlogList from "../../../components/PublicBlogList";
 import Transparent from "../../../components/icons/Transparent";
-import ReadMoreLink from "../../Blog/components/ReadMoreLink";
 ---
 
 <section
@@ -17,18 +16,7 @@ import ReadMoreLink from "../../Blog/components/ReadMoreLink";
         <p class="text-lg text-lettersMiddle text-center pb-5">
           CONOCE MAS NUESTRA LABOR
         </p>
-        <div class="grid grid-cols-3 grid-flow-row max-lg:grid-cols-1">
-          <BlogComponent>
-            <ReadMoreLink />
-          </BlogComponent>
-          <BlogComponent>
-            <ReadMoreLink />
-          </BlogComponent>
-          <BlogComponent>
-            <ReadMoreLink />
-          </BlogComponent>
-        </div>
-
+        <PublicBlogList client:visible maxPosts={3} showReadMore={true} />
         <a class="text-primary underline text-middleLetters" href="./Blog"
           >«Entradas mas antiguas</a
         >

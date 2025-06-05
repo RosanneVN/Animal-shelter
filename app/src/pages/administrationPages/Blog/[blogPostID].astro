@@ -1,8 +1,10 @@
 ---
 import Header from "../../../layouts/Header.astro";
 import DetailsPostBlog from "../../../moduls/administrationModuls/AdminBlog/components/DetailsPostBlog";
+
+const { blogPostID } = Astro.params;
 ---
 
 <Header>
-  <DetailsPostBlog />
+  <DetailsPostBlog client:visible blogPostId={blogPostID || ""} />
 </Header>

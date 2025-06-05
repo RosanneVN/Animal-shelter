@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import MarkdownRenderer from "../../../../components/MarkdownRenderer";
-import type { BlogPostType } from "../../../../Domain/Types/BlogPostType";
+import MarkdownRenderer from "./MarkdownRenderer";
+import type { BlogPostType } from "../Domain/Types/BlogPostType";
 
 type Props = {
   blogPostId: string;
 };
 
-export default function DetailsPostBlog({ blogPostId }: Props) {
+export default function PublicBlogPostDetail({ blogPostId }: Props) {
   const [blogPost, setBlogPost] = useState<BlogPostType | null>(null);
   const [loading, setLoading] = useState(true);
 
@@ -17,7 +17,7 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
         const data = await response.json();
         
         if (data.data) {
-          const post = data.data.find((p: BlogPostType) => p.id === blogPostId);
+          const post = data.data.find((p: BlogPostType) => p.id === blogPostId && p.isPublished);
           if (post) {
             setBlogPost(post);
           }
@@ -35,7 +35,7 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
   }, [blogPostId]);
 
   const handleBack = () => {
-    window.location.href = "/administrationPages/AdminBlog";
+    window.location.href = "/Blog";
   };
 
   const formatDate = (dateString: string) => {
@@ -61,7 +61,7 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
       <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-10">
         <div className="flex justify-center items-center min-h-64">
           <div className="text-center">
-            <p className="text-red-500 mb-4">Post no encontrado</p>
+            <p className="text-red-500 mb-4">Post no encontrado o no está disponible</p>
             <button
               onClick={handleBack}
               className="text-secondary hover:text-primary"
@@ -112,13 +112,6 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
                 {blogPost.updatedAt && (
                   <span>Actualizado: {formatDate(blogPost.updatedAt)}</span>
                 )}
-                <span className={`px-2 py-1 rounded text-xs ${
-                  blogPost.isPublished 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-yellow-100 text-yellow-800'
-                }`}>
-                  {blogPost.isPublished ? 'Publicado' : 'Borrador'}
-                </span>
               </div>
               
               {/* Excerpt */}
@@ -139,14 +132,14 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
           </div>
         </article>
 
-        {/* Action buttons */}
-        <div className="flex gap-4 mt-8 justify-center">
+        {/* Back button */}
+        <div className="flex justify-center mt-8">
           <button
-            onClick={() => window.location.href = `/administrationPages/Blog/edit/${blogPost.id}`}
+            onClick={handleBack}
             className="px-6 py-2 bg-secondary text-white rounded-lg hover:bg-secondary/90 
             transition-colors duration-200 font-medium"
           >
-            Editar Post
+            ← Volver al Blog
           </button>
         </div>
       </div>

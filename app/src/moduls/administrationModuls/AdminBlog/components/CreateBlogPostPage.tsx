@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHandleCreateBlogPost } from "../../../../Services/blogpost.services";
 import InputForm from "../../../../components/Inputs/InputForm";
+import MarkdownEditor from "../../../../components/Inputs/MarkdownEditor";
 
 export default function CreateBlogPostPage() {
   const [values, setValues] = useState({
@@ -102,18 +103,14 @@ export default function CreateBlogPostPage() {
               onChange={(e) => handleChange("imageUrl", e.target.value)}
               type="url"
             />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-lettersDark mb-2">
-              Contenido *
-            </label>
-            <textarea
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-secondary focus:border-transparent resize-vertical min-h-64"
-              placeholder="Contenido completo del post..."
+          </div>          <div>
+            <MarkdownEditor
+              label="Contenido"
               value={values.content}
-              onChange={(e) => handleChange("content", e.target.value)}
-              required
+              onChange={(value) => handleChange("content", value || "")}
+              placeholder="Escribe el contenido del post en Markdown..."
+              isRequired={true}
+              height={500}
             />
           </div>
 
