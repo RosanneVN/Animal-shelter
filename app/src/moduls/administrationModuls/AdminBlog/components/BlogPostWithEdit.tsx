@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import EditButtonSection from "../../../../components/administrationComponents/EditButtonSection";
-import ModalFormContainer from "../../../../layouts/ModalFormContainer";
-import EditBlogPostForm from "./EditBlogPostForm";
 import { useHandleDeleteBlogPost } from "../../../../Services/blogpost.services";
 import type { BlogPostType } from "../../../../Domain/Types/BlogPostType";
 
@@ -18,7 +16,6 @@ export default function BlogPostWithEdit({
   createdAt,
   updatedAt,
 }: Props) {
-  const [isEditOpen, setIsEditOpen] = useState(false);
   const { handleDeleteBlogPost } = useHandleDeleteBlogPost();
 
   const handleDelete = async () => {
@@ -26,6 +23,9 @@ export default function BlogPostWithEdit({
       await handleDeleteBlogPost(id);
       window.location.reload();
     }
+  };
+  const handleEdit = () => {
+    window.location.href = `/administrationPages/Blog/edit/${id}`;
   };
 
   const formatDate = (dateString: string) => {
@@ -53,35 +53,11 @@ export default function BlogPostWithEdit({
           </p>
           <p className="text-lettersMiddle text-shortLetters text-justify">
             {excerpt}
-          </p>
-          <EditButtonSection
-            onClick={() => setIsEditOpen(true)}
+          </p>          <EditButtonSection
+            onClick={handleEdit}
             onDelete={handleDelete}
-          />
-        </div>
+          />        </div>
       </div>
-
-      {isEditOpen && (
-        <ModalFormContainer 
-          isOpen={isEditOpen} 
-          onClose={() => setIsEditOpen(false)}
-        >
-          <EditBlogPostForm
-            blogPost={{
-              id,
-              title,
-              content,
-              excerpt,
-              imageUrl,
-              publishedDate,
-              isPublished,
-              createdAt,
-              updatedAt,
-            }}
-            onClose={() => setIsEditOpen(false)}
-          />
-        </ModalFormContainer>
-      )}
     </div>
   );
 }

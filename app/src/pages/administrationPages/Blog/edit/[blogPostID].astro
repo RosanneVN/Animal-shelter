@@ -1,0 +1,10 @@
+---
+import Header from "../../../../layouts/Header.astro";
+import EditBlogPostPage from "../../../../moduls/administrationModuls/AdminBlog/components/EditBlogPostPage";
+
+const { blogPostID } = Astro.params;
+---
+
+<Header>
+  <EditBlogPostPage client:visible blogPostId={blogPostID || ""} />
+</Header>
