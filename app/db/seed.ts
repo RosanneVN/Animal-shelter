@@ -4,6 +4,7 @@ import {
   AdoptionRequestsDB,
   CreditCardsDB,
   UserAuth,
+  BlogPostsDB,
 } from "astro:db";
 import { v4 as uuidv4 } from "uuid";
 import bcrypt from "bcrypt";
@@ -140,12 +141,68 @@ export default async function () {
       nameCard: "Tarjeta de prueba",
     },
   ]);
-
   await db.insert(UserAuth).values([
     {
       id: uuidv4(),
       username: "rosanne",
       password: bcrypt.hashSync("123456", 10),
+    },
+  ]);
+
+  await db.insert(BlogPostsDB).values([
+    {
+      id: uuidv4(),
+      title: "Cómo preparar tu hogar para adoptar una mascota",
+      content: "Adoptar una mascota es una decisión importante que requiere preparación. En este artículo te explicamos todo lo que necesitas saber para preparar tu hogar y recibir a tu nuevo compañero de la mejor manera posible. Desde la elección del espacio adecuado hasta los elementos básicos que necesitarás tener listos antes de la llegada de tu nueva mascota.",
+      excerpt: "Guía completa para preparar tu hogar antes de adoptar una mascota. Consejos prácticos y elementos esenciales.",
+      imageUrl: "https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      publishedDate: "2024-12-01",
+      isPublished: true,
+      createdAt: "2024-12-01T10:00:00Z",
+      updatedAt: "2024-12-01T10:00:00Z",
+    },
+    {
+      id: uuidv4(),
+      title: "Los beneficios de adoptar mascotas mayores",
+      content: "Muchas personas buscan cachorros cuando deciden adoptar, pero las mascotas mayores tienen ventajas únicas que las hacen compañeros maravillosos. Son más tranquilas, ya tienen personalidad definida, y suelen ser muy agradecidas. En este post exploramos por qué adoptar una mascota mayor puede ser la mejor decisión que tomes.",
+      excerpt: "Descubre las ventajas de adoptar mascotas adultas y cómo pueden ser los compañeros perfectos.",
+      imageUrl: "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      publishedDate: "2024-11-28",
+      isPublished: true,
+      createdAt: "2024-11-28T14:30:00Z",
+      updatedAt: "2024-11-28T14:30:00Z",
+    },
+    {
+      id: uuidv4(),
+      title: "Cuidados básicos para gatos rescatados",
+      content: "Los gatos rescatados necesitan cuidados especiales durante sus primeras semanas en el nuevo hogar. Desde la alimentación adecuada hasta la socialización gradual, este artículo cubre todos los aspectos importantes para garantizar que tu gato rescatado se adapte de la mejor manera a su nueva vida.",
+      excerpt: "Todo lo que necesitas saber sobre el cuidado de gatos recién rescatados.",
+      imageUrl: "https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      publishedDate: "2024-11-25",
+      isPublished: true,
+      createdAt: "2024-11-25T09:15:00Z",
+      updatedAt: "2024-11-25T09:15:00Z",
+    },
+    {
+      id: uuidv4(),
+      title: "Historia de éxito: Jacinto encuentra su hogar perfecto",
+      content: "Conoce la emotiva historia de Jacinto, un perro que llegó al refugio en condiciones difíciles y después de meses de cuidado y amor, finalmente encontró una familia que lo adoptó. Esta es una historia que nos recuerda por qué hacemos este trabajo y la importancia de nunca rendirse.",
+      excerpt: "La inspiradora historia de Jacinto y su camino hacia encontrar una familia amorosa.",
+      imageUrl: "https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      publishedDate: "2024-11-20",
+      isPublished: true,
+      createdAt: "2024-11-20T16:45:00Z",
+      updatedAt: "2024-11-20T16:45:00Z",
+    },
+    {
+      id: uuidv4(),
+      title: "Próximos eventos de adopción en la comunidad",
+      content: "Te invitamos a participar en nuestros próximos eventos de adopción que se realizarán en diferentes puntos de la ciudad. Estos eventos son una oportunidad perfecta para conocer a nuestras mascotas disponibles para adopción en un ambiente relajado y familiar. ¡Ven y conoce a tu futuro compañero!",
+      excerpt: "Únete a nuestros eventos de adopción y encuentra a tu nuevo mejor amigo.",
+      imageUrl: "https://images.unsplash.com/photo-1581888227599-779811939961?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80",
+      publishedDate: "2024-11-15",
+      isPublished: false,
+      createdAt: "2024-11-15T12:00:00Z",
     },
   ]);
 }

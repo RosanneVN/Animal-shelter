@@ -58,3 +58,16 @@ export interface CreditCards {
   numberPhone: number;
   nameCard: string;
 }
+
+//seccion de los blog posts
+export interface BlogPosts {
+  id: string;
+  title: string;
+  content: string;
+  excerpt: string;
+  imageUrl?: string;
+  publishedDate: string;
+  isPublished: boolean;
+  createdAt: string;
+  updatedAt?: string;
+}

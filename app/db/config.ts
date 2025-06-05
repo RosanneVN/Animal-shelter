@@ -90,6 +90,20 @@ const UserAuth = defineTable({
   }
 })
 
+const BlogPostsDB = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    title: column.text(),
+    content: column.text(),
+    excerpt: column.text(),
+    imageUrl: column.text({ optional: true }),
+    publishedDate: column.text(),
+    isPublished: column.boolean({ default: true }),
+    createdAt: column.text(),
+    updatedAt: column.text({ optional: true }),
+  },
+});
+
 export default defineDb({
-  tables: { Pets, AdoptionRequestsDB, CreditCardsDB, UserAuth },
+  tables: { Pets, AdoptionRequestsDB, CreditCardsDB, UserAuth, BlogPostsDB },
 });
