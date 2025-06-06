@@ -19,17 +19,18 @@ type CreateBlogPost = {
   content: string;
   excerpt: string;
   imageUrl?: string;
+  img?: string; // Base64 image for upload
   publishedDate: string;
   isPublished?: boolean;
 };
 
 export const useHandleCreateBlogPost = () => {
-  const { mutate, loading, error } = useMutation();
-  const handleCreateBlogPost = ({
+  const { mutate, loading, error } = useMutation();  const handleCreateBlogPost = ({
     title,
     content,
     excerpt,
     imageUrl,
+    img,
     publishedDate,
     isPublished = true,
   }: CreateBlogPost) => {
@@ -41,6 +42,7 @@ export const useHandleCreateBlogPost = () => {
         content,
         excerpt,
         imageUrl,
+        img,
         publishedDate,
         isPublished,
       },
@@ -55,18 +57,19 @@ type UpdateBlogPost = {
   content?: string;
   excerpt?: string;
   imageUrl?: string;
+  img?: string; // Base64 image for upload
   publishedDate?: string;
   isPublished?: boolean;
 };
 
 export const useHandleUpdateBlogPost = () => {
-  const { mutate, loading, error } = useMutation();
-  const handleUpdateBlogPost = ({
+  const { mutate, loading, error } = useMutation();  const handleUpdateBlogPost = ({
     id,
     title,
     content,
     excerpt,
     imageUrl,
+    img,
     publishedDate,
     isPublished,
   }: UpdateBlogPost) => {
@@ -78,6 +81,7 @@ export const useHandleUpdateBlogPost = () => {
         content,
         excerpt,
         imageUrl,
+        img,
         publishedDate,
         isPublished,
       },

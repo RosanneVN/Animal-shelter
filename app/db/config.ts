@@ -97,6 +97,8 @@ const BlogPostsDB = defineTable({
     content: column.text(),
     excerpt: column.text(),
     imageUrl: column.text({ optional: true }),
+    img: column.text({ optional: true }), // Base64 image for upload
+    fileId: column.text({ optional: true }), // CDN file ID for deletion
     publishedDate: column.text(),
     isPublished: column.boolean({ default: true }),
     createdAt: column.text(),

@@ -8,6 +8,8 @@ import {
   type CreateBlogPostInput,
   type UpdateBlogPostInput,
 } from "../../Backend/Schemas/Blog.schemas";
+import { uploadImgs } from "../../Backend/utils/uploadImgs";
+import { deleteImg } from "../../Backend/utils/deleteImg";
 
 export const GET: APIRoute = async ({ request }) => {
   try {
@@ -69,9 +71,38 @@ export const POST: APIRoute = async ({ request }) => {
     }
 
     const validationData: CreateBlogPostInput = validationResults.data;
+    
+    // Handle image upload if img is provided
+    let imageUrl = validationData.imageUrl;
+    let fileId = validationData.fileId;
+    
+    if (validationData.img) {
+      const img = await uploadImgs(validationData.img, validationData.title || uuidv4());
+      if (!img) {
+        return new Response(
+          JSON.stringify({
+            error: "Error al subir la imagen",
+          }),
+          {
+            status: 400,
+            statusText: "Error al subir la imagen",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      }
+      imageUrl = img.url;
+      fileId = img.fileId;
+    }
+
     const newPost = await db.insert(BlogPostsDB).values({
       id: uuidv4(),
-      ...validationData,
+      title: validationData.title,
+      content: validationData.content,
+      excerpt: validationData.excerpt,
+      imageUrl,
+      fileId,
+      publishedDate: validationData.publishedDate,
+      isPublished: validationData.isPublished,
       createdAt: new Date().toISOString(),
     });
 
@@ -106,6 +137,20 @@ export const DELETE: APIRoute = async ({ request }) => {
         }),
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
+    }
+
+    // Delete associated image from CDN if exists
+    const postFileId = await db
+      .select({ fileId: BlogPostsDB.fileId })
+      .from(BlogPostsDB)
+      .where(eq(BlogPostsDB.id, id));
+    
+    if (postFileId[0]?.fileId) {
+      try {
+        await deleteImg(postFileId[0].fileId);
+      } catch {
+        console.log("Image not deleted from CDN");
+      }
     }
 
     await db.delete(BlogPostsDB).where(eq(BlogPostsDB.id, id));
@@ -150,9 +195,45 @@ export const PATCH: APIRoute = async ({ request }) => {
     }
 
     const validatedData: UpdateBlogPostInput = dataValidation.data;
+    let fileId;
+    
+    // Handle image upload if new image is provided
+    if (validatedData.img) {
+      // Delete old image from CDN if exists
+      const postFileId = await db
+        .select({ fileId: BlogPostsDB.fileId })
+        .from(BlogPostsDB)
+        .where(eq(BlogPostsDB.id, id));
+      
+      if (postFileId[0]?.fileId) {
+        try {
+          await deleteImg(postFileId[0].fileId);
+        } catch {
+          console.log("Old image not deleted from CDN");
+        }
+      }
+      
+      // Upload new image
+      const img = await uploadImgs(validatedData.img, uuidv4());
+      if (!img) {
+        return new Response(
+          JSON.stringify({
+            error: "Error al subir la imagen",
+          }),
+          {
+            status: 400,
+            statusText: "Error al subir la imagen",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      }
+      validatedData.imageUrl = img.url;
+      fileId = img.fileId;
+    }
+
     const updateData = await db
       .update(BlogPostsDB)
-      .set({ ...validatedData, updatedAt: new Date().toISOString() })
+      .set({ ...validatedData, fileId, updatedAt: new Date().toISOString() })
       .where(eq(BlogPostsDB.id, id));
 
     return new Response(JSON.stringify(updateData), {

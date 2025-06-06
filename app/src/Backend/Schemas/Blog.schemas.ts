@@ -5,6 +5,8 @@ export const BlogPostSchema = z.object({
   content: z.string().min(1, "El contenido es requerido"),
   excerpt: z.string().min(1, "El extracto es requerido"),
   imageUrl: z.string().optional(),
+  img: z.string().optional(), // Base64 image for upload
+  fileId: z.string().optional(), // CDN file ID for deletion
   publishedDate: z.string().min(1, "La fecha de publicación es requerida"),
   isPublished: z.boolean().default(true),
 });

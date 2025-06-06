@@ -4,13 +4,16 @@ import { fileToBase64, validateImageFile } from "../../utils/imageUtils";
 type Props = {
   onImageChange?: (base64: string | null) => void;
   errorMessage?: string;
+  previewURL?: string;
+  className?: string;
 };
 
-const UploadInput = ({ onImageChange, errorMessage }: Props) => {
+const UploadInput = ({ onImageChange, errorMessage, previewURL,className }: Props) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [preview, setPreview] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+
   useEffect(() => {
     if (!selectedFile) {
       setPreview("");
@@ -26,7 +29,7 @@ const UploadInput = ({ onImageChange, errorMessage }: Props) => {
     const convertToBase64 = async () => {
       setLoading(true);
       setError("");
-      
+
       try {
         const base64 = await fileToBase64(selectedFile);
         onImageChange?.(base64);
@@ -47,7 +50,7 @@ const UploadInput = ({ onImageChange, errorMessage }: Props) => {
 
   const handleFileSelect = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    
+
     if (!file) {
       setSelectedFile(null);
       return;
@@ -63,9 +66,10 @@ const UploadInput = ({ onImageChange, errorMessage }: Props) => {
 
     setError("");
     setSelectedFile(file);
-  };  return (
+  };
+  return (
     <div className="flex flex-col gap-2">
-      <div className="flex bg-orange-200 h-48 rounded-md items-center justify-center relative">
+      <div className={"flex bg-orange-200 rounded-md h-48 items-center justify-center relative "+className}>
         <input
           className="h-full w-full opacity-0 absolute top-0 z-30"
           type="file"
@@ -78,24 +82,22 @@ const UploadInput = ({ onImageChange, errorMessage }: Props) => {
             <div className="text-white text-sm">Procesando imagen...</div>
           </div>
         )}
-        {preview ? (
+        {preview||previewURL ? (
           <img
-            src={preview}
+            src={preview||previewURL}
             alt="Preview"
             className="w-full h-full object-cover rounded-md"
           />
         ) : (
           <img
-            src="/Image/camera.png"
+            src={"/Image/camera.png"}
             alt="Seleccionar imagen"
             className="w-9 z-20"
           />
         )}
       </div>
       {(error || errorMessage) && (
-        <p className="text-red-500 text-[10px]">
-          {error || errorMessage}
-        </p>
+        <p className="text-red-500 text-[10px]">{error || errorMessage}</p>
       )}
     </div>
   );
