@@ -112,13 +112,7 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
                 {blogPost.updatedAt && (
                   <span>Actualizado: {formatDate(blogPost.updatedAt)}</span>
                 )}
-                <span className={`px-2 py-1 rounded text-xs ${
-                  blogPost.isPublished 
-                    ? 'bg-green-100 text-green-800' 
-                    : 'bg-yellow-100 text-yellow-800'
-                }`}>
-                  {blogPost.isPublished ? 'Publicado' : 'Borrador'}
-                </span>
+              
               </div>
               
               {/* Excerpt */}

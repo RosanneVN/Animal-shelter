@@ -29,34 +29,40 @@ export default function BlogPostWithEdit({
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('es-ES', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+    return new Date(dateString).toLocaleDateString("es-ES", {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
     });
   };
 
   return (
-    <div className="flex flex-row pt-20 w-full">
+    <div className="flex flex-row pt-20 w-full lg:w-96">
       <div className="max-sm:mr-0 flex flex-col gap-5 shadow-md rounded-lg ">
-        <img
-          className="rounded-t-lg h-48 w-full object-cover"
-          src={imageUrl || "/Image/articuloBlogCorto.jpg"}
-          alt={title}
-        />
-        <div className="mx-5 mb-5 flex flex-col gap-3 ">
-          <p className="font-semibold text-middleLettersLetters text-lettersDark">
-            {title}
-          </p>
-          <p className="text-lettersMiddle text-shortLetters">
-            {formatDate(publishedDate)}
-          </p>
-          <p className="text-lettersMiddle text-shortLetters text-justify">
-            {excerpt}
-          </p>          <EditButtonSection
-            onClick={handleEdit}
-            onDelete={handleDelete}
-          />        </div>
+        <a href={"/administrationPages/Blog/" + id}>
+          <img
+            className="rounded-t-lg h-48 w-full object-cover"
+            src={imageUrl || "/Image/articuloBlogCorto.jpg"}
+            alt={title}
+          />
+        </a>
+        <div className="mx-5 mb-5 flex flex-col gap-3 h-full justify-between">
+          <a
+            className="flex flex-col gap-3 "
+            href={"/administrationPages/Blog/" + id}
+          >
+            <p className="font-semibold text-middleLettersLetters text-lettersDark line-clamp-2">
+              {title}
+            </p>
+            <p className="text-lettersMiddle text-shortLetters">
+              {formatDate(publishedDate)}
+            </p>
+            <p className="text-lettersMiddle text-shortLetters text-justify line-clamp-3">
+              {excerpt}
+            </p>
+          </a>
+          <EditButtonSection onClick={handleEdit} onDelete={handleDelete} />
+        </div>
       </div>
     </div>
   );

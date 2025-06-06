@@ -32,7 +32,7 @@ export default function ListMapBlogPosts() {
   }
 
   return (
-    <div className="grid grid-cols-3 grid-flow-row max-lg:grid-cols-1 gap-2 w-full">
+    <div className="grid grid-cols-3 grid-flow-row max-lg:grid-cols-1 gap-4 w-full">
       {data.map((blogPost) => (
         <BlogPostWithEdit
           key={blogPost.id}
