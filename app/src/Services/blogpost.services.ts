@@ -5,13 +5,18 @@ import useMutation from "./useMutation";
 
 const URL = "http://localhost:4321/api/blogposts";
 
-export const getServicesBlogPosts = () => {
-  const { data, loading, error } = useFetch<BlogPosts>({
-    url: URL,
+type BlogPostsProps = {
+  page?: number;
+  limit?: number;
+};
+
+export const getServicesBlogPosts = ({ page, limit }: BlogPostsProps = {}) => {
+  const { data, loading, error, pagination } = useFetch<BlogPosts>({
+    url: `${URL}${page ? `?page=${page}&limit=${limit || 10}` : ""}`,
   });
 
   const adaptedData = blogPostAdapters({ data });
-  return { data: adaptedData, loading, error };
+  return { data: adaptedData, loading, error, pagination };
 };
 
 type CreateBlogPost = {
