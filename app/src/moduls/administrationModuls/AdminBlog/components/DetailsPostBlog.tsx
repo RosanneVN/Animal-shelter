@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import MarkdownRenderer from "../../../../components/MarkdownRenderer";
+import MarkdownRenderer from "../../../../components/MarkdownRenderer/MarkdownRenderer";
 import type { BlogPostType } from "../../../../Domain/Types/BlogPostType";
 
 type Props = {

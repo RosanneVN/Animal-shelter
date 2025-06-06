@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { getServicesBlogPosts } from "../Services/blogpost.services";
-import MarkdownRenderer from "./MarkdownRenderer";
+import MarkdownRenderer from "./MarkdownRenderer/MarkdownRenderer";
 import PaginationComponents from "../moduls/administrationModuls/PaginationComponents";
 
 const PublicBlogList = () => {
