@@ -40,6 +40,8 @@ export default function CreditCardFormCreate({}) {
       numberPhoneNew: Number(values.numberPhone),
       nameCardNew: values.nameCard,
     });
+    setIsOpen(false);
+
   };
   
   if (error) {
@@ -65,7 +67,6 @@ export default function CreditCardFormCreate({}) {
             setIsOpen(false);
           }}
         >
-          {" "}
           <img className="size-4" src="/Image/closeIcon.png" alt="" />
         </button>
 

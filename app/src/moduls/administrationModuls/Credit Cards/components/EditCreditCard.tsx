@@ -6,8 +6,8 @@ import type { CreditCards } from "../../../../interfaces/backendAPI";
 import { useHandleUpdateCreditCards } from "../../../../Services/creditcards.services";
 
 interface Props extends CreditCards {
-  onClick: React.MouseEventHandler<HTMLButtonElement> | undefined;
-};
+  onClick:() => void;
+}
 
 export default function EditCreditCard({
   id,
@@ -48,6 +48,7 @@ export default function EditCreditCard({
       numberPhoneUpdate: Number(values.numberPhone),
       nameCardUpdate: values.nameCard,
     });
+    onClick()
   };
   if (error) {
     return <p>Error: {error}</p>;
