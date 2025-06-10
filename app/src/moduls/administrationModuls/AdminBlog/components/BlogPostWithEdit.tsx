@@ -37,7 +37,7 @@ export default function BlogPostWithEdit({
   };
 
   return (
-    <div className="flex flex-row pt-20 w-full lg:w-96">
+    <div className="flex flex-row pt-20 w-full lg:w-80">
       <div className="max-sm:mr-0 flex flex-col gap-5 shadow-md rounded-lg ">
         <a href={"/administrationPages/Blog/" + id}>
           <img
