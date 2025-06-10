@@ -97,8 +97,9 @@ export const GET: APIRoute = async ({ request }) => {
         ? false
         : undefined;
 
+  console.log("filterID", filterID);
   let adoptionReq;
-  let totalAdoptionReq:any;
+  let totalAdoptionReq: any;
 
   if (filterID) {
     adoptionReq = await createBaseQuery()
@@ -106,6 +107,7 @@ export const GET: APIRoute = async ({ request }) => {
       .limit(limit)
       .offset((page - 1) * limit);
 
+      console.log("req", adoptionReq);
     if (adoptionReq[0]?.isRead === false) {
       await db
         .update(AdoptionRequestsDB)
@@ -141,7 +143,10 @@ export const GET: APIRoute = async ({ request }) => {
   }
 
   console.log("adoptionReq", adoptionReq);
-  const totalPages: number = Math.ceil(totalAdoptionReq[0].count / limit);
+  let totalPages: number = 0;
+  if (totalAdoptionReq && totalAdoptionReq[0].count === 0) {
+     totalPages = Math.ceil(totalAdoptionReq[0].count / limit);
+  }
   return new Response(
     JSON.stringify({
       data: adoptionReq,

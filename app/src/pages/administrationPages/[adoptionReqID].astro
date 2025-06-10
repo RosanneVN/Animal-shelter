@@ -6,5 +6,5 @@ const { adoptionReqID } = Astro.params;
 ---
 
 <Header>
-  <AdoptionReqView client:only adoptionReqID={adoptionReqID} />
+  <AdoptionReqView client:load adoptionReqID={adoptionReqID} />
 </Header>

@@ -14,8 +14,8 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
   
 
   const { data } = getServicesAdoptionReq({ filterID: adoptionReqID });
-  const adoptionReq = data?.[0];
   console.log("data", data);
+  const adoptionReq = data[0];
 
   const { handleUpdateAdoptionReq, loading, error } =
     useHandleUpdateAdoptionReq();
