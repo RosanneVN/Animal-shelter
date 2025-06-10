@@ -14,12 +14,12 @@ const EditAdoptionCards = ({ id, petname, age, gender, species,img }: PetsType) 
   const [isDelete, setIsDelete] = useState(false);
   const { handleDeletePet, loading, error } = useHandleDeletePet();
 
-  const deletePet = () => {
+  const deletePet = async () => {
     if (loading) {
       return;
     }
     setIsDelete(false);
-    handleDeletePet(id);
+    await handleDeletePet(id);
     window.location.reload();
   };
   if (error) {

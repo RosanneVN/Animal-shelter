@@ -18,8 +18,15 @@ type FormData = {
   genderPet: string;
 };
 
-
-const EditCards = ({ id, petname, age, species, gender,img, onClose }: Props) => {
+const EditCards = ({
+  id,
+  petname,
+  age,
+  species,
+  gender,
+  img,
+  onClose,
+}: Props) => {
   const [values, setValues] = useState<FormData>({
     imgPet: img || "",
     namePet: petname,
@@ -27,7 +34,7 @@ const EditCards = ({ id, petname, age, species, gender,img, onClose }: Props) =>
     speciesPet: species || PetsEnum.perro,
     genderPet: gender || PetsEnum.macho,
   });
-    const handleChange = (field: keyof typeof values, value: string) => {
+  const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
       ...prev,
       [field]: value,
@@ -41,7 +48,8 @@ const EditCards = ({ id, petname, age, species, gender,img, onClose }: Props) =>
     }));
   }, []);
 
-  const { handleUpdatePet, loading, error } = useHandleUpdatePet();  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { handleUpdatePet, loading, error } = useHandleUpdatePet();
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !values.genderPet ||
@@ -56,7 +64,8 @@ const EditCards = ({ id, petname, age, species, gender,img, onClose }: Props) =>
 
     if (loading) {
       return;
-    }    handleUpdatePet({
+    }
+    await handleUpdatePet({
       idUpdate: id,
       petnameUpdate: values.namePet,
       ageUpdate: parseInt(values.agePet),
@@ -88,8 +97,9 @@ const EditCards = ({ id, petname, age, species, gender,img, onClose }: Props) =>
       >
         {" "}
         <img className="size-4" src="/Image/closeIcon.png" alt="" />
-      </button>      <div className="flex flex-col gap-2">
-        <UploadInput 
+      </button>{" "}
+      <div className="flex flex-col gap-2">
+        <UploadInput
           onImageChange={handleImageChange}
           errorMessage={!values.imgPet ? "La imagen es obligatoria" : undefined}
         />
@@ -140,7 +150,6 @@ const EditCards = ({ id, petname, age, species, gender,img, onClose }: Props) =>
           }}
         />
       </div>
-
       <div className="flex w-full justify-end text-shortLetters">
         <SendButton type={"submit"} />
       </div>

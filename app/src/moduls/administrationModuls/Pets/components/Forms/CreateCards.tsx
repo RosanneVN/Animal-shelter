@@ -38,7 +38,8 @@ export default function CreateCards() {
     }));
   }, []);
 
-  const { handleCreatePet, loading, error } = useHandleCreatePet();  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const { handleCreatePet, loading, error } = useHandleCreatePet();  
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !values.genderPet ||
@@ -55,7 +56,7 @@ export default function CreateCards() {
       return;
     }
     
-    handleCreatePet({
+    await handleCreatePet({
       petnameNew: values.namePet,
       ageNew: parseInt(values.agePet),
       speciesNew: values.speciesPet,

@@ -23,11 +23,11 @@ export default function CreditCardWithEdit({
   const [isDelete, setIsDelete] = useState(false);
   const { handleDeleteCreditCards, loading, error } =
     useHandleDeleteCreditCards();
-  const deleteCard = () => {
+  const deleteCard = async () => {
     if (loading) {
       return;
     }
-    handleDeleteCreditCards(id);
+    await handleDeleteCreditCards(id);
     setIsDelete(false);
     window.location.reload();
   };

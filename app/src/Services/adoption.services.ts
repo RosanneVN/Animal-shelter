@@ -36,14 +36,14 @@ type CreatePets = {
 };
 export const useHandleCreatePet = () => {
   const { mutate, loading, error } = useMutation();
-  const handleCreatePet = ({
+  const handleCreatePet = async ({
     petnameNew,
     ageNew,
     speciesNew,
     genderNew,
     imgNewBase64,
   }: CreatePets) => {
-    mutate({
+    await mutate({
       url: URL,
       method: "POST",
       body: {
@@ -68,7 +68,7 @@ type UpdatePets = {
 };
 export const useHandleUpdatePet = () => {
   const { mutate, loading, error } = useMutation();
-  const handleUpdatePet = ({
+  const handleUpdatePet = async ({
     idUpdate,
     petnameUpdate,
     ageUpdate,
@@ -87,13 +87,11 @@ export const useHandleUpdatePet = () => {
       body.img = imgUpdateBase64;
     }
 
-    const m = mutate({
+    await mutate({
       url: URL + "?id=" + idUpdate,
       method: "PATCH",
       body,
     });
-    console.log(m);
-
     console.log(error);
   };
   return { handleUpdatePet, loading, error };
@@ -101,13 +99,11 @@ export const useHandleUpdatePet = () => {
 
 export const useHandleDeletePet = () => {
   const { mutate, loading, error } = useMutation();
-  const handleDeletePet = (id: string) => {
-    const m = mutate({
+  const handleDeletePet = async (id: string) => {
+    await mutate({
       url: URL + "?id=" + id,
       method: "DELETE",
     });
-    console.log(m);
-
     console.log(error);
   };
   return { handleDeletePet, loading, error };

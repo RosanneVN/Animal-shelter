@@ -27,11 +27,11 @@ export default function AdoptionReqCard({
   const { handleDeleteAdoptionReq, loading, error } =
     useHandleDeleteAdoptionReq();
   const [isDelete, setIsDelete] = useState(false);
-  const deletePet = () => {
+  const deletePet = async () => {
     if (loading) {
       return;
     }
-    handleDeleteAdoptionReq(id);
+    await handleDeleteAdoptionReq(id);
     setIsDelete(false);
     window.location.reload();
   };

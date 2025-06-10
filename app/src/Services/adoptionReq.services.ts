@@ -42,10 +42,10 @@ type CreateAdoptionReq = {
 };
 export const useHandleCreateAdoptionReq = () => {
   const { mutate, loading, error } = useMutation();
-  const handleCreateAdoptionReq = ({
+  const handleCreateAdoptionReq = async ({
     requestsValuesContext,
   }: CreateAdoptionReq) => {
-    mutate({
+    await mutate({
       url: URL,
       method: "POST",
       body: {
@@ -92,10 +92,10 @@ export const useHandleCreateAdoptionReq = () => {
 
 export const useHandleDeleteAdoptionReq = () => {
   const { mutate, loading, error } = useMutation();
-  const handleDeleteAdoptionReq = (id: string) => {
+  const handleDeleteAdoptionReq = async (id: string) => {
     console.log("id", id);
 
-    const m = mutate({
+   await mutate({
       url: URL + "?id=" + id,
       method: "DELETE",
     });
@@ -109,11 +109,11 @@ type UpdateAdoptionReq = {
 };
 export const useHandleUpdateAdoptionReq = () => {
   const { mutate, loading, error } = useMutation();
-  const handleUpdateAdoptionReq = ({
+  const handleUpdateAdoptionReq = async ({
     id,
     isApprovedUpdate,
   }: UpdateAdoptionReq) => {
-    const m = mutate({
+   await mutate({
       url: URL + "?id=" + id,
       method: "PATCH",
       body: {

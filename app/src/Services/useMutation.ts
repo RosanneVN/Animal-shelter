@@ -13,33 +13,33 @@ function useMutation() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
-  const mutate = ({ url, method, body, headers }: MutationProps) => {
+  const mutate = async ({ url, method, body, headers }: MutationProps) => {
     setLoading(true);
     setError(null);
 
-    fetch(url, {
-      method,
-      headers: {
-        "Content-Type": "application/json",
-        ...headers,
-      },
-      body: body ? JSON.stringify(body) : null,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setData(data);
-      })
-      .catch((err) => {
-        setError(err.message);
-      })
-      .finally(() => {
-        setLoading(false);
+    try {
+      const response = await fetch(url, {
+        method,
+        headers: {
+          "Content-Type": "application/json",
+          ...headers,
+        },
+        body: body ? JSON.stringify(body) : null,
       });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setData(data);
+      return { success: true, data }; // ← Retorna el resultado
+    } catch (err) {
+      setError("Error al enviar solicitud");
+      return { success: false, error: "Error al enviar solicitud" }; // ← Retorna el error
+    } finally {
+      setLoading(false);
+    }
   };
 
   return { mutate, data, loading, error };

@@ -20,15 +20,15 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
   const { handleUpdateAdoptionReq, loading, error } =
     useHandleUpdateAdoptionReq();
 
-  const handleApproved = () => {
-    handleUpdateAdoptionReq({
+  const handleApproved = async () => {
+    await handleUpdateAdoptionReq({
       id: adoptionReq.PersonalData.id,
       isApprovedUpdate: true,
     });
     window.location.href = "/administrationPages/AdoptionRequests";
   };
-  const handleNotApproved = () => {
-    handleUpdateAdoptionReq({
+  const handleNotApproved = async () => {
+   await handleUpdateAdoptionReq({
       id: adoptionReq.PersonalData.id,
       isApprovedUpdate: false,
     });

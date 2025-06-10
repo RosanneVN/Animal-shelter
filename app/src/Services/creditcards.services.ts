@@ -21,12 +21,12 @@ type CreateCreditCards = {
 };
 export const useHandleCreateCreditCards = () => {
   const { mutate, loading, error } = useMutation();
-  const handleCreateCreditCards = ({
+  const handleCreateCreditCards = async ({
     cardNumberNew,
     numberPhoneNew,
     nameCardNew
   }: CreateCreditCards) => {
-    mutate({
+   await mutate({
       url: URL,
       method: "POST",
       body: {
@@ -47,13 +47,13 @@ type UpdateCreditCards = {
 };
 export const useHandleUpdateCreditCards = () => {
   const { mutate, loading, error } = useMutation();
-  const handleUpdateCreditCards = ({
+  const handleUpdateCreditCards = async ({
     idUpdate,
     cardNumberUpdate,
     numberPhoneUpdate,
     nameCardUpdate
   }: UpdateCreditCards) => {
-    const m = mutate({
+    await mutate({
       url: URL + "?id=" + idUpdate,
       method: "PATCH",
       body: {
@@ -68,8 +68,8 @@ export const useHandleUpdateCreditCards = () => {
 
 export const useHandleDeleteCreditCards = () => {
   const { mutate, loading, error } = useMutation();
-  const handleDeleteCreditCards = (id: string) => {
-    const m = mutate({
+  const handleDeleteCreditCards = async (id: string) => {
+    await mutate({
       url: URL + "?id=" + id,
       method: "DELETE",
     });
