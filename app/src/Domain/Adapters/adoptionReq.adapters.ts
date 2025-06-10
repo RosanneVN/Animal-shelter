@@ -8,7 +8,12 @@ type Props = {
 export default function adoptionReqAdapters({
   data,
 }: Props): FormAdoptionReqType[] {
-  return data.map((adoptionReq) => ({
+  console.log("data", data);
+  
+  if (!data || data.length < 1) {
+    return [];
+  }
+  return data?.map((adoptionReq) => ({
     PersonalData: {
       id: adoptionReq.id,
       fullname: adoptionReq.fullname,

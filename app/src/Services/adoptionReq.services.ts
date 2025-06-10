@@ -28,6 +28,8 @@ export const getServicesAdoptionReq = ({
   });
 
   console.log("data", data);
+  console.log("pagination", pagination);
+  
 
   const adaptedData = adoptionReqAdapters({ data });
   console.log("adaptedData", adaptedData);

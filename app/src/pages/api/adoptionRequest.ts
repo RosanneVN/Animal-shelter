@@ -87,18 +87,18 @@ export const GET: APIRoute = async ({ request }) => {
     readingFilter === AdoptionReqEnum.leidas
       ? true
       : readingFilter === AdoptionReqEnum.noLeidas
-      ? false
-      : undefined;
+        ? false
+        : undefined;
 
   const isApprovedFilterBoolean =
     isApprovedFilter === AdoptionReqEnum.aprobadas
       ? true
       : isApprovedFilter === AdoptionReqEnum.noAprobadas
-      ? false
-      : undefined;
+        ? false
+        : undefined;
 
   let adoptionReq;
-  let totalAdoptionReq;
+  let totalAdoptionReq:any;
 
   if (filterID) {
     adoptionReq = await createBaseQuery()
@@ -124,31 +124,37 @@ export const GET: APIRoute = async ({ request }) => {
       eq(AdoptionRequestsDB.isRead, readingFilterBoolean)
     );
   } else if (isApprovedFilterBoolean !== undefined) {
-    adoptionReq = await db
-      createBaseQuery()
-        .where(eq(AdoptionRequestsDB.isApproved, isApprovedFilterBoolean))
-        .limit(limit)
-        .offset((page - 1) * limit);
+    adoptionReq = await createBaseQuery()
+      .where(eq(AdoptionRequestsDB.isApproved, isApprovedFilterBoolean))
+      .limit(limit)
+      .offset((page - 1) * limit);
 
-         totalAdoptionReq = await createCountQuery()
-        .where(eq(AdoptionRequestsDB.isApproved, isApprovedFilterBoolean));
-
+    totalAdoptionReq = await createCountQuery().where(
+      eq(AdoptionRequestsDB.isApproved, isApprovedFilterBoolean)
+    );
   } else {
     adoptionReq = await createBaseQuery()
-        .limit(limit)
-        .offset((page - 1) * limit);
+      .limit(limit)
+      .offset((page - 1) * limit);
 
-      totalAdoptionReq = await createCountQuery();
+    totalAdoptionReq = await createCountQuery();
   }
 
   console.log("adoptionReq", adoptionReq);
-  return new Response(JSON.stringify({ data: adoptionReq }), {
-    status: 200,
-    statusText: "Michi encontrado",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  const totalPages: number = Math.ceil(totalAdoptionReq[0].count / limit);
+  return new Response(
+    JSON.stringify({
+      data: adoptionReq,
+      pagination: { page, limit, totalPages },
+    }),
+    {
+      status: 200,
+      statusText: "Michi encontrado",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 };
 
 export const POST: APIRoute = async ({ request }) => {

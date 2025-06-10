@@ -23,9 +23,16 @@ export default function AdoptionReqList({
     page,
     limit,
   });
+  console.log("data adption req", pagination);
 
   if (loading) {
     return <p>Loading...</p>;
+  }
+  if (!data || data.length < 1) {
+    return <p>No data</p>;
+  }
+  if (error) {
+    return <p>Error loading data</p>;
   }
   return (
     <section className="flex flex-col justify-center items-center gap-10">
