@@ -106,6 +106,15 @@ const BlogPostsDB = defineTable({
   },
 });
 
+const CalendarEvents = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    date: column.text(),
+    location: column.text(),
+    description: column.text(),
+  }
+})
+
 export default defineDb({
-  tables: { Pets, AdoptionRequestsDB, CreditCardsDB, UserAuth, BlogPostsDB },
+  tables: { Pets, AdoptionRequestsDB, CreditCardsDB, UserAuth, BlogPostsDB, CalendarEvents },
 });
