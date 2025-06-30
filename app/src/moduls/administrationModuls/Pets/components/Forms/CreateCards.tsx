@@ -24,7 +24,7 @@ export default function CreateCards() {
     speciesPet: "",
     genderPet: "",
   });
-    const handleChange = (field: keyof typeof values, value: string) => {
+  const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
       ...prev,
       [field]: value,
@@ -38,7 +38,7 @@ export default function CreateCards() {
     }));
   }, []);
 
-  const { handleCreatePet, loading, error } = useHandleCreatePet();  
+  const { handleCreatePet, loading, error } = useHandleCreatePet();
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
@@ -55,7 +55,7 @@ export default function CreateCards() {
     if (loading) {
       return;
     }
-    
+
     await handleCreatePet({
       petnameNew: values.namePet,
       ageNew: parseInt(values.agePet),
@@ -76,7 +76,17 @@ export default function CreateCards() {
     return <p>Loading...</p>;
   }
 
-  //el form  tiene una funcion submit que significa q el boton que tenga el type 
+  const validateNoSpecialChars = (value: string): string | undefined => {
+    // Permite letras, espacios, acentos y ñ
+    const regex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*$/;
+    if (!value) return "Este campo es obligatorio";
+    if (!regex.test(value)) return "No se permiten caracteres especiales";
+    return undefined;
+  };
+
+  const [nameError, setNameError] = useState<string | undefined>(undefined);
+
+  //el form  tiene una funcion submit que significa q el boton que tenga el type
   // submit se ejecuta cuando se envia el formulario
   return (
     <form
@@ -92,8 +102,9 @@ export default function CreateCards() {
       >
         {" "}
         <img className="size-4" src="/Image/closeIcon.png" alt="" />
-      </button>      <div className="flex flex-col gap-2">
-        <UploadInput 
+      </button>{" "}
+      <div className="flex flex-col gap-2">
+        <UploadInput
           onImageChange={handleImageChange}
           errorMessage={!values.imgPet ? "La imagen es obligatoria" : undefined}
         />
@@ -103,10 +114,12 @@ export default function CreateCards() {
           type={"text"}
           placeholderText={"Rocky"}
           errorMesage={
-            !values.namePet ? "Este campo es obligatorio" : undefined
+            !values.namePet ? "Este campo es obligatorio" : nameError
           }
           onChange={(inputValue) => {
-            handleChange("namePet", inputValue.target.value.trim());
+            const value = inputValue.target.value.trim();
+            setNameError(validateNoSpecialChars(value));
+            handleChange("namePet", value);
           }}
           isRequired={true}
           value={values.namePet}
@@ -144,7 +157,6 @@ export default function CreateCards() {
           }}
         />
       </div>
-
       <div className="flex w-full justify-end text-shortLetters">
         <SendButton type={"submit"} />
       </div>
