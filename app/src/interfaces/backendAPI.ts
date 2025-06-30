@@ -71,3 +71,11 @@ export interface BlogPosts {
   createdAt: string;
   updatedAt?: string;
 }
+
+//seccion de los eventos de calendario
+export interface CalendarEvents {
+  id: string;
+  date: string;
+  location: string;
+  description: string;
+}
