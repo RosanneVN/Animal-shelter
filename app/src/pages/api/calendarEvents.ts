@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { CalendarEvents, db, eq } from "astro:db";
+import { CalendarEvents, count, db, eq } from "astro:db";
 import {
   CalendarEventsSchema,
   deleteCalendarEventsSchema,
@@ -9,17 +9,37 @@ import {
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
+  const page = Math.max(parseInt(url.searchParams.get("page") || "1", 10), 1);
+  const limit = Math.min(
+    parseInt(url.searchParams.get("limit") || "10", 10),
+    100
+  );
 
-  let calendarEvents = await db.select().from(CalendarEvents);
-console.log("calendar", calendarEvents);
+  let calendarEvents = await db
+    .select()
+    .from(CalendarEvents)
+    .limit(limit)
+    .offset((page - 1) * limit);
+  console.log("calendar", calendarEvents);
 
-  return new Response(JSON.stringify({data: calendarEvents }), {
-    status: 200,
-    statusText: "Michi encontrado",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+  let totalEvents: any;
+  totalEvents = await db.select({ count: count() }).from(CalendarEvents);
+
+  const totalPages: number = Math.ceil(totalEvents[0].count / limit);
+
+  return new Response(
+    JSON.stringify({
+      data: calendarEvents,
+      pagination: { page, limit, totalPages },
+    }),
+    {
+      status: 200,
+      statusText: "Michi encontrado",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
 };
 
 export const POST: APIRoute = async ({ request }) => {
@@ -121,26 +141,26 @@ export const PATCH: APIRoute = async ({ request }) => {
       }
     );
   }
-  try{
-  const validatedData: UpdateCalendarEventsInput = dataValidadtion.data;
-  const updateData = await db
-    .update(CalendarEvents)
-    .set(validatedData)
-    .where(eq(CalendarEvents.id, id));
+  try {
+    const validatedData: UpdateCalendarEventsInput = dataValidadtion.data;
+    const updateData = await db
+      .update(CalendarEvents)
+      .set(validatedData)
+      .where(eq(CalendarEvents.id, id));
 
     return new Response(JSON.stringify(updateData), {
       status: 200,
       statusText: "Michi actualizado",
       headers: { "Content-Type": "application/json" },
     });
-} catch (error) {
-  return new Response(
-    JSON.stringify({ error: "Error al procesar la solicitud" }),
-    {
-      status: 500,
-      statusText: "Error en el servidor",
-      headers: { "Content-Type": "application/json" },
-    }
-  );
-}
+  } catch (error) {
+    return new Response(
+      JSON.stringify({ error: "Error al procesar la solicitud" }),
+      {
+        status: 500,
+        statusText: "Error en el servidor",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
 };

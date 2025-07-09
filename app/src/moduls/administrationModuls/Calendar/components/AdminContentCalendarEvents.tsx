@@ -1,12 +1,18 @@
-import { ModalFormProvider } from "../../../../Context/ModalFormContext";
+import {
+  ModalFormContext,
+  ModalFormProvider,
+} from "../../../../Context/ModalFormContext";
 import ModalForm from "../../../../layouts/ModalForm";
 import CreateCardForm from "./CreateCardForm";
 import CreateEventButton from "./CreateEventButton";
 import CalendarEventsList from "./CalendarEventsList";
+import { useContext, useState } from "react";
 
 type Props = {};
 
 export default function AdminContentCalendarEvents({}: Props) {
+  const [page, setPage] = useState(1);
+  
   return (
     <section className="w-full flex flex-col">
       <ModalFormProvider>
@@ -16,7 +22,7 @@ export default function AdminContentCalendarEvents({}: Props) {
         <CreateEventButton />
       </ModalFormProvider>
 
-      <CalendarEventsList  />
+      <CalendarEventsList page={page} setPage={setPage} />
     </section>
   );
 }

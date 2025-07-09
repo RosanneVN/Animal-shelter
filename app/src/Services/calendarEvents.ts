@@ -1,4 +1,3 @@
-import type { Props } from "astro";
 import type { CalendarEvents } from "../interfaces/backendAPI";
 import useFetch from "./useFetch";
 import calendarEventsAdapters from "../Domain/Adapters/calendarEvents.adapters";
@@ -6,9 +5,13 @@ import useMutation from "./useMutation";
 
 const URL = "http://localhost:4321/api/calendarEvents";
 
-export const getServicesCalendarEvents = ({}:Props) => {
+type Props = {
+  page?: number;
+  limit?: number;
+}; 
+export const getServicesCalendarEvents = ({page, limit}:Props) => {
 const { data, loading, error, pagination } = useFetch<CalendarEvents>({
-    url: URL,
+    url: `${URL}?page=${page}&limit=${limit}`,
 })
 
 console.log("dataPaquito", data);
