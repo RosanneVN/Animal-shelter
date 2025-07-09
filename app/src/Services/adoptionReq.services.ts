@@ -1,4 +1,3 @@
-import type { UpdateAdoptionReqInput } from "../Backend/Schemas/AdoptionReq.schemas";
 import adoptionReqAdapters from "../Domain/Adapters/adoptionReq.adapters";
 import type { FormAdoptionReqType } from "../Domain/Types/FormAdoptionReqType";
 import type { AdoptionReqInterface } from "../interfaces/backendAPI";
