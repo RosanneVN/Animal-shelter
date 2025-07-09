@@ -112,6 +112,7 @@ const CalendarEvents = defineTable({
     date: column.text(),
     location: column.text(),
     description: column.text(),
+    img: column.text(),
   }
 })
 

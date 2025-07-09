@@ -11,5 +11,6 @@ export default function calendarEventsAdapters({ data }: Props):CalendarEventsTy
         date: event.date,
         location: event.location,
         description: event.description,
+        img: event.img,
     }))
 }

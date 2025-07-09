@@ -78,4 +78,5 @@ export interface CalendarEvents {
   date: string;
   location: string;
   description: string;
+  img: string;
 }

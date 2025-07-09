@@ -3,4 +3,5 @@ export type CalendarEventsType = {
     date: string;
     location: string;
     description: string;
+    img: string;
 }
