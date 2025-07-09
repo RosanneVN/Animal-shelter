@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   getServicesAdoptionReq,
   useHandleUpdateAdoptionReq,
@@ -6,12 +5,10 @@ import {
 
 type Props = {
   adoptionReqID?: string;
-  
 };
 
 export const AdoptionReqView = ({ adoptionReqID }: Props) => {
   console.log(adoptionReqID);
-  
 
   const { data } = getServicesAdoptionReq({ filterID: adoptionReqID });
   console.log("data", data);
@@ -20,17 +17,32 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
   const { handleUpdateAdoptionReq, loading, error } =
     useHandleUpdateAdoptionReq();
 
+  const phoneNumber = adoptionReq?.PersonalData.cellPhone;
+  const sendWhatsAppMessage = ({ message }: { message: string }) => {
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
   const handleApproved = async () => {
     await handleUpdateAdoptionReq({
       id: adoptionReq.PersonalData.id,
       isApprovedUpdate: true,
     });
+    sendWhatsAppMessage({
+      message:
+        "Hola, somos la Organizacion de proteccion animal PASOS, hemos culminado con la revision de su solicitud, le damos la enorabuena¡Aprobamos tu solicitud! Pongase en contacto con nosotros para los siguientes pasos a seguir.",
+    });
     window.location.href = "/administrationPages/AdoptionRequests";
   };
   const handleNotApproved = async () => {
-   await handleUpdateAdoptionReq({
+    await handleUpdateAdoptionReq({
       id: adoptionReq.PersonalData.id,
       isApprovedUpdate: false,
+    });
+    sendWhatsAppMessage({
+      message:
+        "Hola, somos la Organizacion de proteccion animal PASOS, hemos culminado con la revision de su solicitud, lamentamos informarle que actualmente no cumple con los requerimientos necesarios para realizar la adopcion. Le agradecemos por su tiempo.",
     });
     window.location.href = "/administrationPages/AdoptionRequests";
   };
@@ -42,7 +54,11 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
        text-lettersDark text-middleLetters max-sm:px-5 max-sm:text-shortLetters"
       >
         <div>
-          <img className="size-80 rounded-lg" src={adoptionReq?.petImg} alt="" />
+          <img
+            className="size-80 rounded-lg"
+            src={adoptionReq?.petImg}
+            alt=""
+          />
         </div>
 
         <div
