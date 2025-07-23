@@ -40,8 +40,10 @@ export default function CalendarEventsList({ page, setPage }: Props) {
               key={event.id}
               id={event.id}
               date={event.date}
+              title={event.title}
               location={event.location}
               description={event.description}
+              img={event.img}
             />
           ))}
         </div>

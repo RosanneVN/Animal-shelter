@@ -11,6 +11,8 @@ export default function EditEventsCards({
   date,
   location,
   description,
+  title,
+  img,
 }: CalendarEventsType) {
   //isEdit es para abrir y cerrar el modal de creacion
   const [isEdit, setIsEdit] = useState(false);
@@ -39,7 +41,9 @@ export default function EditEventsCards({
         id={id}
         date={date}
         location={location}
+        title={title}
         description={description}
+        img={img}
         onEdit={()=>{setIsEdit(true)}}
         onDelete={()=>{setIsDelete(true)}}
       />
@@ -53,8 +57,10 @@ export default function EditEventsCards({
         <EditCardsForm
           id={id}
           date={date}
+          title={title}
           location={location}
           description={description}
+          img={img}
           onClose={() => {
             setIsEdit(false);
           }}

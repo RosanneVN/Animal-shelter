@@ -1,11 +1,14 @@
 import type { APIRoute } from "astro";
 import { CalendarEvents, count, db, eq } from "astro:db";
+import { v4 as uuidv4 } from "uuid";
 import {
   CalendarEventsSchema,
   deleteCalendarEventsSchema,
   type CreateCalendarEventsInput,
   type UpdateCalendarEventsInput,
 } from "../../Backend/Schemas/CalendarEvents.schemas";
+import { uploadImgs } from "../../Backend/utils/uploadImgs";
+import { deleteImg } from "../../Backend/utils/deleteImg";
 
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
@@ -59,7 +62,25 @@ export const POST: APIRoute = async ({ request }) => {
   }
 
   const validationData: CreateCalendarEventsInput = validationResults.data;
-  const calendarEvents = await db.insert(CalendarEvents).values(validationData);
+  const img = await uploadImgs(validationData.img, validationData.title);
+  if (!img) {
+    return new Response(
+      JSON.stringify({
+        error: "Error al subir la imagen",
+      }),
+      {
+        status: 400,
+        statusText: "Error al subir la imagen",
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+  }
+  const calendarEvents = await db.insert(CalendarEvents).values({
+    id: uuidv4(),
+    ...validationData,
+    img: img.url,
+    fileId: img.fileId,
+  });
   console.log(calendarEvents);
 
   return new Response(JSON.stringify(calendarEvents), {
@@ -86,6 +107,17 @@ export const DELETE: APIRoute = async ({ request }) => {
       }),
       { status: 400, headers: { "Content-Type": "application/json" } }
     );
+  }
+  const eventFileId = await db
+    .select({ fileId: CalendarEvents.fileId })
+    .from(CalendarEvents)
+    .where(eq(CalendarEvents.id, id));
+  if (eventFileId[0].fileId) {
+    try {
+      await deleteImg(eventFileId[0].fileId);
+    } catch {
+      console.log("not img deleted");
+    }
   }
   try {
     await db.delete(CalendarEvents).where(eq(CalendarEvents.id, id));
@@ -143,11 +175,41 @@ export const PATCH: APIRoute = async ({ request }) => {
   }
   try {
     const validatedData: UpdateCalendarEventsInput = dataValidadtion.data;
+    let fileId;
+    if (validatedData.img) {
+      const eventFileId = await db
+        .select({ fileId: CalendarEvents.fileId })
+        .from(CalendarEvents)
+        .where(eq(CalendarEvents.id, id));
+      if (eventFileId[0].fileId) {
+        try {
+          await deleteImg(eventFileId[0].fileId);
+        } catch {
+          console.log("not img deleted");
+        }
+      }
+      const img = await uploadImgs(validatedData.img, uuidv4());
+      if (!img) {
+        return new Response(
+          JSON.stringify({
+            error: "Error al subir la imagen",
+          }),
+          {
+            status: 400,
+            statusText: "Error al subir la imagen",
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+      }
+      validatedData.img = img.url;
+      fileId = img.fileId;
+    }
+
     const updateData = await db
       .update(CalendarEvents)
-      .set(validatedData)
+      .set({ ...validatedData, fileId })
       .where(eq(CalendarEvents.id, id));
-
+    console.log(updateData);
     return new Response(JSON.stringify(updateData), {
       status: 200,
       statusText: "Michi actualizado",

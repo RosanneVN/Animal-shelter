@@ -1,16 +1,19 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import SendButton from "../../../../components/Buttons/SendButton";
 import InputForm from "../../../../components/Inputs/InputForm";
 import type { CalendarEventsType } from "../../../../Domain/Types/CalendarEventsType";
 import { useHandleUpdateCalendarEvents } from "../../../../Services/calendarEvents";
+import UploadInput from "../../../../components/Inputs/UploadInput";
 
 interface Props extends CalendarEventsType {
   onClose: () => void;
 }
-type FormData = {
+type FormData = { 
   date: string;
   location: string;
   description: string;
+  title: string;
+  img: string;
 };
 
 export default function EditCardsForm({
@@ -18,12 +21,16 @@ export default function EditCardsForm({
   date,
   location,
   description,
+  title,
+  img,
   onClose,
 }: Props) {
   const [values, setValues] = useState<FormData>({
     date: date,
     location: location,
     description: description,
+    title: title,
+    img: img || "",
   });
 
   const handleChange = (field: keyof typeof values, value: string) => {
@@ -32,11 +39,19 @@ export default function EditCardsForm({
       [field]: value,
     }));
   };
+
+  const handleImageChange = useCallback((base64: string | null) => {
+    setValues((prev) => ({
+      ...prev,
+      img: base64 || "",
+    }));
+  }, []);
+
   const { handleUpdateCalendarEvents, loading, error } =
     useHandleUpdateCalendarEvents();
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!values.date || !values.location || !values.description) {
+    if (!values.date || !values.location || !values.description || !values.img) {
       alert("Todos los campos deben estar seleccionados, incluyendo la imagen");
       return;
     }
@@ -48,6 +63,8 @@ export default function EditCardsForm({
       dateUpdate: values.date,
       locationUpdate: values.location,
       descriptionUpdate: values.description,
+      imgUpdateBase64: values.img,
+      titleUpdate: values.title,
     });
     if (error) {
       return;
@@ -76,6 +93,23 @@ export default function EditCardsForm({
         <img className="size-4" src="/Image/closeIcon.png" alt="" />
       </button>{" "}
       <div className="flex flex-col gap-2">
+         <UploadInput
+          onImageChange={handleImageChange}
+          errorMessage={!values.img ? "La imagen es obligatoria" : undefined}
+        />
+          <InputForm
+          name={""}
+          label={"Nombre del evento"}
+          type={"text"}
+          placeholderText={"Feria de adopciones de mascotas..."}
+          errorMesage={!values.title ? "Este campo es obligatorio" : undefined}
+          onChange={(inputValue) => {
+            handleChange("title", inputValue.target.value.trim());
+          }}
+          isRequired={true}
+          value={values.title}
+          defaultValue={""}
+        />
         <InputForm
           name={""}
           label={"Fecha y hora del evento"}

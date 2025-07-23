@@ -1,15 +1,17 @@
 import InputForm from "../../../../components/Inputs/InputForm";
 import SendButton from "../../../../components/Buttons/SendButton";
-import { useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { useHandleCreateCalendarEvents } from "../../../../Services/calendarEvents";
 import { ModalFormContext } from "../../../../Context/ModalFormContext";
+import UploadInput from "../../../../components/Inputs/UploadInput";
 
 type FormData = {
   date: string;
   location: string;
   description: string;
+  imgEvent: string;
+  title: string; 
 };
-
 
 export default function CreateCardForm() {
   const { setIsOpen } = useContext(ModalFormContext);
@@ -17,7 +19,10 @@ export default function CreateCardForm() {
     date: "",
     location: "",
     description: "",
+    imgEvent: "",
+    title: "", 
   });
+
 
   const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
@@ -26,11 +31,18 @@ export default function CreateCardForm() {
     }));
   };
 
+  const handleImageChange = useCallback((base64: string | null) => {
+      setValues((prev) => ({
+        ...prev,
+        imgEvent: base64 || "",
+      }));
+    }, []);
+
   const { handleCreateCalendarEvents, loading, error } =
     useHandleCreateCalendarEvents();
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!values.date || !values.location || !values.description) {
+    if (!values.date || !values.location || !values.description || !values.imgEvent || !values.title) {
       alert("Todos los campos deben estar seleccionados, incluyendo la imagen");
       return;
     }
@@ -41,6 +53,8 @@ export default function CreateCardForm() {
       dateNew: values.date,
       locationNew: values.location,
       descriptionNew: values.description,
+      imgNewBase64: values.imgEvent,
+      titleNew: values.title,
     });
     if (error) {
       return;
@@ -69,6 +83,25 @@ export default function CreateCardForm() {
         <img className="size-4" src="/Image/closeIcon.png" alt="" />
       </button>{" "}
       <div className="flex flex-col gap-2">
+         <UploadInput
+          onImageChange={handleImageChange}
+          errorMessage={!values.imgEvent ? "La imagen es obligatoria" : undefined}
+        />
+         <InputForm
+          name={""}
+          label={"Nombre del evento"}
+          type={"text"}
+          placeholderText={"Feria de adopciones de mascotas..."}
+          errorMesage={
+            !values.title ? "Este campo es obligatorio" : undefined
+          }
+          onChange={(inputValue) => {
+            handleChange("title", inputValue.target.value.trim());
+          }}
+          isRequired={true}
+          value={values.title}
+          defaultValue={""}
+        />
         <InputForm
           name={""}
           label={"Fecha y hora del evento"}

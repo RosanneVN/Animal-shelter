@@ -230,19 +230,22 @@ export default async function () {
     {
       id: uuidv4(),
       date: "2024-11-20",
+      title: "Feria de adopciones de mascotas",
       location: "Playa, Jaimanitas",
       description:
         "Feria de adopciones donde se puede ver a los animales y adoptarlos.",
-         img: "https://th.bing.com/th/id/OIP.DZxGvmQNRyqBpiFYR74KdQHaEK?rs=1&pid=ImgDetMain",
+      img: "https://th.bing.com/th/id/OIP.DZxGvmQNRyqBpiFYR74KdQHaEK?rs=1&pid=ImgDetMain",
+      fileId: "gggg",
     },
     {
       id: uuidv4(),
       date: "2024-11-15",
+      title: "Feria de adopciones de mascotas",
       location: "Playa, Jaimanitas",
       description:
         "Feria de adopciones donde se puede ver a los animales y adoptarlos.",
-         img: "https://th.bing.com/th/id/OIP.DZxGvmQNRyqBpiFYR74KdQHaEK?rs=1&pid=ImgDetMain",
+      img: "https://th.bing.com/th/id/OIP.DZxGvmQNRyqBpiFYR74KdQHaEK?rs=1&pid=ImgDetMain",
+      fileId: "gggg",
     },
-    
   ]);
 }

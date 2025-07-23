@@ -113,6 +113,8 @@ const CalendarEvents = defineTable({
     location: column.text(),
     description: column.text(),
     img: column.text(),
+    title: column.text(),
+    fileId: column.text(),
   }
 })
 
