@@ -12,6 +12,7 @@ const PublicBlogList = () => {
     { page, limit: pageSize }
   );
 
+  
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString("es-ES", {
       year: "numeric",

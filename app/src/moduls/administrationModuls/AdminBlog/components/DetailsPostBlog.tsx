@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import MarkdownRenderer from "../../../../components/MarkdownRenderer/MarkdownRenderer";
+import useFetch from "../../../../Services/useFetch";
 import type { BlogPostType } from "../../../../Domain/Types/BlogPostType";
 
 type Props = {
@@ -7,32 +8,11 @@ type Props = {
 };
 
 export default function DetailsPostBlog({ blogPostId }: Props) {
-  const [blogPost, setBlogPost] = useState<BlogPostType | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { data, loading, error } = useFetch<BlogPostType>({
+    url: `/api/blogposts?id=${blogPostId}`,
+  });
 
-  useEffect(() => {
-    const fetchBlogPost = async () => {
-      try {
-        const response = await fetch(`/api/blogposts`);
-        const data = await response.json();
-        
-        if (data.data) {
-          const post = data.data.find((p: BlogPostType) => p.id === blogPostId);
-          if (post) {
-            setBlogPost(post);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching blog post:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    if (blogPostId) {
-      fetchBlogPost();
-    }
-  }, [blogPostId]);
+  const blogPost = data[0] || null;
 
   const handleBack = () => {
     window.location.href = "/administrationPages/AdminBlog";
@@ -56,7 +36,7 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
     );
   }
 
-  if (!blogPost) {
+  if (error || !blogPost) {
     return (
       <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-10">
         <div className="flex justify-center items-center min-h-64">

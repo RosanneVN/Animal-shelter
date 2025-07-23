@@ -14,23 +14,39 @@ import { deleteImg } from "../../Backend/utils/deleteImg";
 export const GET: APIRoute = async ({ request }) => {
   try {
     const url = new URL(request.url);
+    const id = url.searchParams.get("id"); // Nuevo filtro por id
     const page = Math.max(parseInt(url.searchParams.get("page") || "1", 10), 1);
     const limit = Math.min(
       parseInt(url.searchParams.get("limit") || "10", 10),
       100
     );
 
-    const blogPosts = await db
-      .select()
-      .from(BlogPostsDB)
-      .orderBy(desc(BlogPostsDB.createdAt))
-      .offset((page - 1) * limit)
-      .limit(limit);
+    let blogPosts;
+    let totalPosts;
 
-    // Obtener el total de posts para calcular las páginas
-    const totalPosts = await db.select({ count: count() }).from(BlogPostsDB);
+    if (id) {
+      // Si hay filtro por id, solo busca ese post
+      blogPosts = await db
+        .select()
+        .from(BlogPostsDB)
+        .where(eq(BlogPostsDB.id, id))
+        .limit(1);
+
+      totalPosts = [{ count: blogPosts.length }];
+    } else {
+      // Si no hay filtro, busca paginado
+      blogPosts = await db
+        .select()
+        .from(BlogPostsDB)
+        .orderBy(desc(BlogPostsDB.createdAt))
+        .offset((page - 1) * limit)
+        .limit(limit);
+
+      // Obtener el total de posts para calcular las páginas
+      totalPosts = await db.select({ count: count() }).from(BlogPostsDB);
+    }
+
     const totalPages = Math.ceil(totalPosts[0].count / limit);
-    console.log("blog", blogPosts);
 
     return new Response(
       JSON.stringify({
