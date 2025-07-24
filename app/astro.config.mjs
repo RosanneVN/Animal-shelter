@@ -6,14 +6,16 @@ import react from "@astrojs/react";
 import tailwind from "@astrojs/tailwind";
 
 import db from "@astrojs/db";
+import cloudflare from "@astrojs/cloudflare";
 
 // https://astro.build/config
 export default defineConfig({
   integrations: [react(), tailwind(), db()],
   output: "server",
+  adapter: cloudflare(),
   vite: {
     ssr: {
-      noExternal: ["@uiw/react-md-editor", "@uiw/react-markdown-preview"]
-    }
-  }
+      noExternal: ["@uiw/react-md-editor", "@uiw/react-markdown-preview"],
+    },
+  },
 });
