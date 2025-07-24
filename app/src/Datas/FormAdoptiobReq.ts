@@ -51,4 +51,5 @@ export const FormAdoptionReq: FormAdoptionReqType = {
   petId: "",  
   isRead: false,
   isApproved: false,
+  petImg: "",
 };
