@@ -6,7 +6,7 @@ import { getServicesPets } from "../../Services/adoption.services";
 import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
 
 type Props = {};
-const URL = "http://localhost:4321/api/adoption";
+const URL = "./api/adoption";
 const AdoptionCardList = (props: Props) => {
   const { data, loading, error } = getServicesPets({});
   const { setIsOpen } = useContext(ModalFormContext);

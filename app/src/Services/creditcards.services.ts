@@ -3,7 +3,7 @@ import type { CreditCards } from "../interfaces/backendAPI";
 import useFetch from "./useFetch";
 import useMutation from "./useMutation";
 
-const URL = "http://localhost:4321/api/creaditcards";
+const URL = "/api/creaditcards";
 
 export const getServicesCreditCards = () => {
   const { data, loading, error } = useFetch<CreditCards>({

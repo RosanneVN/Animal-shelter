@@ -4,7 +4,7 @@ import type { AdoptionReqInterface } from "../interfaces/backendAPI";
 import useFetch from "./useFetch";
 import useMutation from "./useMutation";
 
-const URL = "http://localhost:4321/api/adoptionRequest";
+const URL = "./api/adoptionRequest";
 type Props = {
   filterID?: string;
   readingFilter?: string;

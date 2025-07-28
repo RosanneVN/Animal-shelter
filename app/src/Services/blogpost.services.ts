@@ -3,7 +3,7 @@ import type { BlogPosts } from "../interfaces/backendAPI";
 import useFetch from "./useFetch";
 import useMutation from "./useMutation";
 
-const URL = "http://localhost:4321/api/blogposts";
+const URL = "./api/blogposts";
 
 type BlogPostsProps = {
   page?: number;
