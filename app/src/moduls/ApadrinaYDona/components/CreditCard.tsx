@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
 import { ModalFormContext } from "../../../Context/ModalFormContext";
 
-type Props = {};
+type Props = {
+ 
+  cardNumber: string;
+  numberPhone: number;
+};
 
-const CreditCard = (props: Props) => {
+const CreditCard = ({  cardNumber, numberPhone }: Props) => {
   const { setIsOpen } = useContext(ModalFormContext);
   return (
     <>
@@ -23,17 +27,13 @@ const CreditCard = (props: Props) => {
           <div className="rounded-md border-[1px] px-3 py-1 border-solid w-full  border-orange-400">
             <p className="font-semibold">Numero de la tarjeta:</p>
             <hr className="border-orange-400" />
-            <p>9254-0987-5643-6543</p>
+            <p>{cardNumber}</p>
           </div>
           <div className="rounded-md border-[1px] px-3  py-1 border-solid w-full  border-orange-400">
             <p className="font-semibold">Numero de telefono a confirmar:</p>
             <hr className="border-orange-400" />
-            <p>+53 56-77-52-45</p>
+            <p>{numberPhone}</p>
           </div>
-        </div>
-
-        <div className="w-full flex items-center justify-center">
-          <img className="size-48" src="/Image/qr.jpeg" alt="" />
         </div>
       </div>
     </>
