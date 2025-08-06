@@ -1,8 +1,8 @@
 import AdoptionCardListFather from "../../../../components/AdoptionCardList/AdoptionCardListFather";
 import EditAdoptionCards from "./EditAdoptionCards";
 import { getServicesPets } from "../../../../Services/adoption.services";
-import PaginationComponents from "./PaginationComponents";
-import { useEffect, useState } from "react";
+import PaginationComponents from "../../PaginationComponents";
+
 
 type Props = {
   filterSpecie: string;
@@ -38,6 +38,7 @@ const EditAdoptionCardList = ({ filterSpecie, searchFilter,page,setPage }: Props
             age={pet.age}
             gender={pet.gender}
             species={pet.species}
+            img={pet.img}
           />
         ))}
       </AdoptionCardListFather>

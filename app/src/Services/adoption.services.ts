@@ -3,7 +3,7 @@ import type { Pets } from "../interfaces/backendAPI";
 import useFetch from "./useFetch";
 import useMutation from "./useMutation";
 
-const URL = "http://localhost:4321/api/adoption";
+const URL = "./api/adoption";
 type Props = {
   filterSpecie?: string;
   searchFilter?: string;
@@ -24,7 +24,7 @@ export const getServicesPets = ({
   console.log(limit);
 
   const adaptedData = adoptionAdapters({ data });
-  return { data: adaptedData, loading, error, pagination };
+  return { data: adaptedData, loading, error, pagination }; 
 };
 
 type CreatePets = {
@@ -32,16 +32,18 @@ type CreatePets = {
   ageNew: number;
   speciesNew: string;
   genderNew: string;
+  imgNewBase64: string;
 };
 export const useHandleCreatePet = () => {
   const { mutate, loading, error } = useMutation();
-  const handleCreatePet = ({
+  const handleCreatePet = async ({
     petnameNew,
     ageNew,
     speciesNew,
     genderNew,
+    imgNewBase64,
   }: CreatePets) => {
-    mutate({
+    await mutate({
       url: URL,
       method: "POST",
       body: {
@@ -49,6 +51,7 @@ export const useHandleCreatePet = () => {
         age: ageNew,
         species: speciesNew,
         gender: genderNew,
+        img: imgNewBase64,
       },
     });
   };
@@ -61,28 +64,34 @@ type UpdatePets = {
   ageUpdate: number;
   speciesUpdate: string;
   genderUpdate: string;
+  imgUpdateBase64?: string;
 };
 export const useHandleUpdatePet = () => {
   const { mutate, loading, error } = useMutation();
-  const handleUpdatePet = ({
+  const handleUpdatePet = async ({
     idUpdate,
     petnameUpdate,
     ageUpdate,
     speciesUpdate,
     genderUpdate,
+    imgUpdateBase64,
   }: UpdatePets) => {
-    const m = mutate({
+    const body: any = {
+      petname: petnameUpdate,
+      age: ageUpdate,
+      species: speciesUpdate,
+      gender: genderUpdate,
+    };
+
+    if (imgUpdateBase64) {
+      body.img = imgUpdateBase64;
+    }
+
+    await mutate({
       url: URL + "?id=" + idUpdate,
       method: "PATCH",
-      body: {
-        petname: petnameUpdate,
-        age: ageUpdate,
-        species: speciesUpdate,
-        gender: genderUpdate,
-      },
+      body,
     });
-    console.log(m);
-
     console.log(error);
   };
   return { handleUpdatePet, loading, error };
@@ -90,13 +99,11 @@ export const useHandleUpdatePet = () => {
 
 export const useHandleDeletePet = () => {
   const { mutate, loading, error } = useMutation();
-  const handleDeletePet = (id: string) => {
-    const m = mutate({
+  const handleDeletePet = async (id: string) => {
+    await mutate({
       url: URL + "?id=" + id,
       method: "DELETE",
     });
-    console.log(m);
-
     console.log(error);
   };
   return { handleDeletePet, loading, error };

@@ -14,6 +14,7 @@ const AdoptionCards = ({
   age,
   gender,
   species,
+  img
 }: Props) => {
   return (
     <AdoptionFather
@@ -22,6 +23,7 @@ const AdoptionCards = ({
       age={age}
       gender={gender}
       species={species}
+      img={img}
     >
       <AdoptionButton onClick={() => onOpen()} />
     </AdoptionFather>

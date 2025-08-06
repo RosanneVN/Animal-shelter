@@ -10,6 +10,7 @@ const AdoptionFather = ({
   age,
   gender,
   species,
+  img,
 }: Props) => {
   return (
     <section className="relative">
@@ -21,8 +22,16 @@ const AdoptionFather = ({
           <div className="">
             <img
               className="rounded-lg h-40 w-48 object-cover"
-              src="/Image/Adoptable1.jpg"
-              alt=""
+              src={img || "/Image/Adoptable1.jpg"}
+              alt={
+                "Pasos SOS " +
+                species +
+                " " +
+                gender +
+                " llamado " +
+                petname +
+                " en adopción"
+              }
             />
           </div>
           <div>

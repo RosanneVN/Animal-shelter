@@ -24,7 +24,7 @@ export default function CreditCardFormCreate({}) {
 
   const { handleCreateCreditCards, loading, error } =
     useHandleCreateCreditCards();
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!values.numberPhone || !values.cardNumber || !values.nameCard) {
       alert("Todos los campos deben estar seleccionados");
@@ -35,11 +35,13 @@ export default function CreditCardFormCreate({}) {
       return;
     }
 
-    handleCreateCreditCards({
+    await handleCreateCreditCards({
       cardNumberNew: values.cardNumber,
       numberPhoneNew: Number(values.numberPhone),
       nameCardNew: values.nameCard,
     });
+    setIsOpen(false);
+    window.location.reload();
   };
   
   if (error) {
@@ -65,7 +67,6 @@ export default function CreditCardFormCreate({}) {
             setIsOpen(false);
           }}
         >
-          {" "}
           <img className="size-4" src="/Image/closeIcon.png" alt="" />
         </button>
 

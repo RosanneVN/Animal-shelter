@@ -7,19 +7,19 @@ import WarningMesage from "../../../../components/administrationComponents/Warni
 import type { PetsType } from "../../../../Domain/Types/PetsType";
 import { useHandleDeletePet } from "../../../../Services/adoption.services";
 
-const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
+const EditAdoptionCards = ({ id, petname, age, gender, species,img }: PetsType) => {
   //isEdit es para abrir y cerrar el modal de creacion
   const [isEdit, setIsEdit] = useState(false);
   //isDelete es para abrir y cerrar el modal de confirmacion
   const [isDelete, setIsDelete] = useState(false);
   const { handleDeletePet, loading, error } = useHandleDeletePet();
 
-  const deletePet = () => {
+  const deletePet = async () => {
     if (loading) {
       return;
     }
     setIsDelete(false);
-    handleDeletePet(id);
+    await handleDeletePet(id);
     window.location.reload();
   };
   if (error) {
@@ -36,6 +36,7 @@ const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
         age={age}
         gender={gender}
         species={species}
+        img={img}
       >
         <EditButtonSection
           onClick={() => {
@@ -58,6 +59,7 @@ const EditAdoptionCards = ({ id, petname, age, gender, species }: PetsType) => {
           age={age}
           species={species}
           gender={gender}
+          img={img}
           onClose={() => {
             setIsEdit(false);
           }}

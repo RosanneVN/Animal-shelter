@@ -5,10 +5,11 @@ export const PetsSchema = z.object({
   age: z.number().int().positive("La edad debe ser un número positivo"),
   species: z.enum(["perro", "gato"], { message: "La especie es obligatoria" }),
   gender: z.enum(["macho", "hembra"], { message: "El género es obligatorio" }),
+  img: z.string().url({ message: "La imagen es obligatoria" }),
 });
 
 export const deletePetsSchema = z.object({
-  id: z.string().uuid("ID no válido"),
+  id: z.string().uuid("ID no válido").or(z.string()),
 });
 
 export type CreatePetInput = z.infer<typeof PetsSchema>;

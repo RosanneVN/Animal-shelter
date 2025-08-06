@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import OptionButtons from "../../../../../components/Inputs/OptionButtons";
 import { PetsEnum } from "../../../../../Const/PetsEnum";
 import InputForm from "../../../../../components/Inputs/InputForm";
@@ -8,7 +8,7 @@ import SendButton from "../../../../../components/Buttons/SendButton";
 import { ModalFormContext } from "../../../../../Context/ModalFormContext";
 
 type FormData = {
-  imgPet: any;
+  imgPet: string;
   namePet: string;
   agePet: string;
   speciesPet: string;
@@ -31,28 +31,37 @@ export default function CreateCards() {
     }));
   };
 
+  const handleImageChange = useCallback((base64: string | null) => {
+    setValues((prev) => ({
+      ...prev,
+      imgPet: base64 || "",
+    }));
+  }, []);
+
   const { handleCreatePet, loading, error } = useHandleCreatePet();
-  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+  const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (
       !values.genderPet ||
       !values.speciesPet ||
       !values.namePet ||
-      !values.agePet
+      !values.agePet ||
+      !values.imgPet
     ) {
-      alert("Todos los campos deben estar seleccionados");
+      alert("Todos los campos deben estar seleccionados, incluyendo la imagen");
       return;
     }
 
     if (loading) {
       return;
     }
-    
-    handleCreatePet({
+
+    await handleCreatePet({
       petnameNew: values.namePet,
       ageNew: parseInt(values.agePet),
       speciesNew: values.speciesPet,
       genderNew: values.genderPet,
+      imgNewBase64: values.imgPet,
     });
     if (error) {
       return;
@@ -67,7 +76,17 @@ export default function CreateCards() {
     return <p>Loading...</p>;
   }
 
-  //el form  tiene una funcion submit que significa q el boton que tenga el type 
+  const validateNoSpecialChars = (value: string): string | undefined => {
+    // Permite letras, espacios, acentos y ñ
+    const regex = /^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]*$/;
+    if (!value) return "Este campo es obligatorio";
+    if (!regex.test(value)) return "No se permiten caracteres especiales";
+    return undefined;
+  };
+
+  const [nameError, setNameError] = useState<string | undefined>(undefined);
+
+  //el form  tiene una funcion submit que significa q el boton que tenga el type
   // submit se ejecuta cuando se envia el formulario
   return (
     <form
@@ -83,20 +102,24 @@ export default function CreateCards() {
       >
         {" "}
         <img className="size-4" src="/Image/closeIcon.png" alt="" />
-      </button>
-
+      </button>{" "}
       <div className="flex flex-col gap-2">
-        <UploadInput></UploadInput>
+        <UploadInput
+          onImageChange={handleImageChange}
+          errorMessage={!values.imgPet ? "La imagen es obligatoria" : undefined}
+        />
         <InputForm
           name={""}
           label={"Nombre de la mascota"}
           type={"text"}
           placeholderText={"Rocky"}
           errorMesage={
-            !values.namePet ? "Este campo es obligatorio" : undefined
+            !values.namePet ? "Este campo es obligatorio" : nameError
           }
           onChange={(inputValue) => {
-            handleChange("namePet", inputValue.target.value.trim());
+            const value = inputValue.target.value.trim();
+            setNameError(validateNoSpecialChars(value));
+            handleChange("namePet", value);
           }}
           isRequired={true}
           value={values.namePet}
@@ -134,7 +157,6 @@ export default function CreateCards() {
           }}
         />
       </div>
-
       <div className="flex w-full justify-end text-shortLetters">
         <SendButton type={"submit"} />
       </div>

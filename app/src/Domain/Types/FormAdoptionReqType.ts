@@ -47,7 +47,8 @@ export interface FormKnowledgeType {
 }
 
 export interface FormDocumentationType {
-  CIpicture?: File;
+ CImgFront: string;
+  CImgBack: string;
   youAgree: string;
 }
 
@@ -62,4 +63,5 @@ export type FormAdoptionReqType = {
   petId: string;
   isRead: boolean;
   isApproved: boolean;
+  petImg: string;
 };

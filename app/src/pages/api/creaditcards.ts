@@ -1,5 +1,6 @@
 import type { APIRoute } from "astro";
 import { CreditCardsDB, db, eq } from "astro:db";
+import { v4 as uuidv4 } from "uuid";
 import {
   CreditCardsSchema,
   deleteCreditCardsSchema,
@@ -35,7 +36,7 @@ export const POST: APIRoute = async ({ request }) => {
       );
     }
     const validationData: CreateCreditCardsInput = validationResults.data;
-    const creditCards = await db.insert(CreditCardsDB).values(validationData);
+    const creditCards = await db.insert(CreditCardsDB).values({...validationData,id: uuidv4(),});
     return new Response(JSON.stringify(creditCards), {
       status: 200,
       statusText: "Michi created",

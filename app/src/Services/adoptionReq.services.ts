@@ -1,30 +1,39 @@
-import type { UpdateAdoptionReqInput } from "../Backend/Schemas/AdoptionReq.schemas";
 import adoptionReqAdapters from "../Domain/Adapters/adoptionReq.adapters";
 import type { FormAdoptionReqType } from "../Domain/Types/FormAdoptionReqType";
 import type { AdoptionReqInterface } from "../interfaces/backendAPI";
 import useFetch from "./useFetch";
 import useMutation from "./useMutation";
 
-const URL = "http://localhost:4321/api/adoptionRequest";
+const URL = "./api/adoptionRequest";
 type Props = {
   filterID?: string;
   readingFilter?: string;
   isApprovedFilter?: string;
+  page?: number;
+  limit?: number;
 };
 
-export const getServicesAdoptionReq = ({ filterID, readingFilter, isApprovedFilter }: Props) => {
-  const { data, error, loading } = useFetch<AdoptionReqInterface>({
+export const getServicesAdoptionReq = ({
+  filterID,
+  readingFilter,
+  isApprovedFilter,
+  page,
+  limit,
+}: Props) => {
+  const { data, error, loading, pagination } = useFetch<AdoptionReqInterface>({
     url: `${URL}${
       filterID ? "?id=" + filterID + "&" : "?"
-    }readingFilter=${readingFilter}&isApprovedFilter=${isApprovedFilter}`,
+    }readingFilter=${readingFilter}&isApprovedFilter=${isApprovedFilter}&page=${page}&limit=${limit}`,
   });
 
   console.log("data", data);
+  console.log("pagination", pagination);
+  
 
   const adaptedData = adoptionReqAdapters({ data });
   console.log("adaptedData", adaptedData);
 
-  return { data: adaptedData, error, loading };
+  return { data: adaptedData, error, loading, pagination };
 };
 
 type CreateAdoptionReq = {
@@ -32,10 +41,10 @@ type CreateAdoptionReq = {
 };
 export const useHandleCreateAdoptionReq = () => {
   const { mutate, loading, error } = useMutation();
-  const handleCreateAdoptionReq = ({
+  const handleCreateAdoptionReq = async ({
     requestsValuesContext,
   }: CreateAdoptionReq) => {
-    mutate({
+    await mutate({
       url: URL,
       method: "POST",
       body: {
@@ -71,6 +80,8 @@ export const useHandleCreateAdoptionReq = () => {
         sterilizationOpinion:
           requestsValuesContext.Knowledge.sterilizationOpinion,
         youAgree: requestsValuesContext.Documentation.youAgree,
+        CImgFront: requestsValuesContext.Documentation.CImgFront,
+        CImgBack: requestsValuesContext.Documentation.CImgBack,
         petId: requestsValuesContext.petId,
       },
     });
@@ -80,10 +91,10 @@ export const useHandleCreateAdoptionReq = () => {
 
 export const useHandleDeleteAdoptionReq = () => {
   const { mutate, loading, error } = useMutation();
-  const handleDeleteAdoptionReq = (id: string) => {
+  const handleDeleteAdoptionReq = async (id: string) => {
     console.log("id", id);
 
-    const m = mutate({
+   await mutate({
       url: URL + "?id=" + id,
       method: "DELETE",
     });
@@ -97,11 +108,11 @@ type UpdateAdoptionReq = {
 };
 export const useHandleUpdateAdoptionReq = () => {
   const { mutate, loading, error } = useMutation();
-  const handleUpdateAdoptionReq = ({
+  const handleUpdateAdoptionReq = async ({
     id,
     isApprovedUpdate,
   }: UpdateAdoptionReq) => {
-    const m = mutate({
+   await mutate({
       url: URL + "?id=" + id,
       method: "PATCH",
       body: {

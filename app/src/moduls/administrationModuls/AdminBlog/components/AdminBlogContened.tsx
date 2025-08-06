@@ -1,31 +1,18 @@
 import React from "react";
-import BlogComponent from "../../../../components/BlogComponent";
-import ReadMoreLink from "../../../Blog/components/ReadMoreLink";
-import EditButtonSection from "../../../../components/administrationComponents/EditButtonSection";
+import CreateNewBlogPost from "./CreateNewBlogPost";
+import ListMapBlogPosts from "./ListMapBlogPosts";
 
 type Props = {};
 
 export default function AdminBlogContened({}: Props) {
   return (
-    <div className="grid grid-cols-3 grid-flow-row max-lg:grid-cols-1">
-      <BlogComponent>
-        <EditButtonSection
-          onClick={() => console.log("hola")}
-          onDelete={() => console.log("hola")}
-        />
-      </BlogComponent>
-      <BlogComponent>
-        <EditButtonSection
-          onClick={() => console.log("hola")}
-          onDelete={() => console.log("hola")}
-        />
-      </BlogComponent>
-      <BlogComponent>
-        <EditButtonSection
-          onClick={() => console.log("hola")}
-          onDelete={() => console.log("hola")}
-        />
-      </BlogComponent>
+    <div className="flex flex-col gap-6">
+      <div className="flex justify-between items-center">
+        <h1 className="text-2xl font-bold text-lettersDark">Administrar Blog</h1>
+        <CreateNewBlogPost />
+      </div>
+      
+      <ListMapBlogPosts />
     </div>
   );
 }

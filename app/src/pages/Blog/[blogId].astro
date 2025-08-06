@@ -1,0 +1,10 @@
+---
+import Header from "../../layouts/Header.astro";
+import PublicBlogPostDetail from "../../components/PublicBlogPostDetail";
+
+const { blogId } = Astro.params;
+---
+
+<Header>
+  <PublicBlogPostDetail client:visible blogPostId={blogId || ""} />
+</Header>

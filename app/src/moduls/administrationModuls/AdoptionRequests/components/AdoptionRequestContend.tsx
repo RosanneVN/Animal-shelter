@@ -5,6 +5,8 @@ import ApprovedFilter from "./ApprovedFilter";
 
 export default function AdoptionRequestContend() {
   const [readingFilter, setReadingFilter] = useState("");
+  const [page, setPage] = useState(1);
+
   const handleFilterChange = (filter: string) => {
     setReadingFilter(filter);
   };
@@ -24,6 +26,8 @@ export default function AdoptionRequestContend() {
       <AdoptionReqList
         readingFilter={readingFilter}
         isApprovedFilter={isApprovedFilter}
+        setPage={setPage}
+        page={page}
       />
     </section>
   );

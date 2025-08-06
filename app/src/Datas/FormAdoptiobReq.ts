@@ -44,10 +44,12 @@ export const FormAdoptionReq: FormAdoptionReqType = {
     sterilizationOpinion: "",
   },
   Documentation: {
-    CIpicture: undefined,
+    CImgFront: "",
+    CImgBack: "",
     youAgree: "",
   },
   petId: "",  
   isRead: false,
   isApproved: false,
+  petImg: "",
 };

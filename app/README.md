@@ -206,3 +206,17 @@ Recuerde que al adoptar se compromete a cuidar a la mascota durante toda su vida
 
 ¿Está de acuerdo con todas las condiciones anteriores?
 _ Sí _ No
+
+
+//Ejecucion de los tests
+# Ejecutar todos los tests
+npm test
+
+# Ejecutar solo este archivo
+npm test Adoption.schemas.test.ts
+
+# Ejecutar con watch mode
+npm test -- --watch
+
+# Ejecutar con coverage
+npm test -- --coverage

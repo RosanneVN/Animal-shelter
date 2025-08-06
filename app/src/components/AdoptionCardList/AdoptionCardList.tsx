@@ -6,7 +6,7 @@ import { getServicesPets } from "../../Services/adoption.services";
 import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
 
 type Props = {};
-const URL = "http://localhost:4321/api/adoption";
+const URL = "./api/adoption";
 const AdoptionCardList = (props: Props) => {
   const { data, loading, error } = getServicesPets({});
   const { setIsOpen } = useContext(ModalFormContext);
@@ -20,6 +20,8 @@ const AdoptionCardList = (props: Props) => {
     setIsOpen(true);
     console.log(id);
   };
+  console.log(data);
+  
 
   return (
     <AdoptionCardListFather>
@@ -34,6 +36,7 @@ const AdoptionCardList = (props: Props) => {
           age={pet.age}
           gender={pet.gender}
           species={pet.species}
+          img={pet.img}
         />
       ))}
     </AdoptionCardListFather>

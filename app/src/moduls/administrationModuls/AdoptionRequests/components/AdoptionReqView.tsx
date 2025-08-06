@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   getServicesAdoptionReq,
   useHandleUpdateAdoptionReq,
@@ -12,23 +11,38 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
   console.log(adoptionReqID);
 
   const { data } = getServicesAdoptionReq({ filterID: adoptionReqID });
-  const adoptionReq = data?.[0];
   console.log("data", data);
+  const adoptionReq = data[0];
 
   const { handleUpdateAdoptionReq, loading, error } =
     useHandleUpdateAdoptionReq();
 
-  const handleApproved = () => {
-    handleUpdateAdoptionReq({
+  const phoneNumber = adoptionReq?.PersonalData.cellPhone;
+  const sendWhatsAppMessage = ({ message }: { message: string }) => {
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, "_blank");
+  };
+
+  const handleApproved = async () => {
+    await handleUpdateAdoptionReq({
       id: adoptionReq.PersonalData.id,
       isApprovedUpdate: true,
     });
+    sendWhatsAppMessage({
+      message:
+        "Hola, somos la Organizacion de proteccion animal PASOS, hemos culminado con la revision de su solicitud, le damos la enorabuena¡Aprobamos tu solicitud! Pongase en contacto con nosotros para los siguientes pasos a seguir.",
+    });
     window.location.href = "/administrationPages/AdoptionRequests";
   };
-  const handleNotApproved = () => {
-    handleUpdateAdoptionReq({
+  const handleNotApproved = async () => {
+    await handleUpdateAdoptionReq({
       id: adoptionReq.PersonalData.id,
       isApprovedUpdate: false,
+    });
+    sendWhatsAppMessage({
+      message:
+        "Hola, somos la Organizacion de proteccion animal PASOS, hemos culminado con la revision de su solicitud, lamentamos informarle que actualmente no cumple con los requerimientos necesarios para realizar la adopcion. Le agradecemos por su tiempo.",
     });
     window.location.href = "/administrationPages/AdoptionRequests";
   };
@@ -42,7 +56,7 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
         <div>
           <img
             className="size-80 rounded-lg"
-            src="/Image/ayudanos1.jpg"
+            src={adoptionReq?.petImg}
             alt=""
           />
         </div>
@@ -356,6 +370,10 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
             <p>
               <span className="font-semibold">Foto del CI:</span>
             </p>
+            <div>
+              <img src={adoptionReq?.Documentation.CImgFront} alt="p" />
+              <img src={adoptionReq?.Documentation.CImgBack} alt="p" />
+            </div>
           </div>
         </div>
 

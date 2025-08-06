@@ -1,27 +1,14 @@
 ---
 import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
-import BlogComponent from "../../../components/BlogComponent";
+import PublicBlogList from "../../../components/PublicBlogList";
 import Transparent from "../../../components/icons/Transparent";
-import ReadMoreLink from "./ReadMoreLink";
 ---
 
 <section class="relative">
   <ScreenWidthLayout>
     <div class="flex flex-col w-full pt-10 pb-28 px-36 max-lg:px-10">
-      <div class="grid grid-cols-3 grid-flow-row gap-4 max-lg:grid-cols-1">
-        <BlogComponent>
-          <ReadMoreLink />
-        </BlogComponent>
-        <BlogComponent>
-          <ReadMoreLink />
-        </BlogComponent>
-        <BlogComponent>
-          <ReadMoreLink />
-        </BlogComponent>
-      </div>
-      <a class="text-primary underline max-sm:text-center" href="./Blog"
-        >«Entradas mas antiguas</a
-      >
+      <PublicBlogList client:visible />
+      
     </div>
   </ScreenWidthLayout>
   <div class="w-full absolute -bottom-0.5">

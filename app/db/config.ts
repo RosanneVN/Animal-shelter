@@ -7,6 +7,8 @@ const Pets = defineTable({
     age: column.number(),
     gender: column.text(),
     species: column.text(),
+    img: column.text(),
+    fileId: column.text(),
   },
 });
 
@@ -57,6 +59,10 @@ const AdoptionRequestsDB = defineTable({
 
     //Documentation
     youAgree: column.text(),
+    CImgFront: column.text(),
+    CImgBack: column.text(),
+    idImgCIFront: column.text(),
+    idImgCBack: column.text(),
 
     //union de tablas, llave foranea
     petId: column.text({ references: () => Pets.columns.id }),
@@ -84,6 +90,34 @@ const UserAuth = defineTable({
   }
 })
 
+const BlogPostsDB = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    title: column.text(),
+    content: column.text(),
+    excerpt: column.text(),
+    imageUrl: column.text({ optional: true }),
+    img: column.text({ optional: true }), // Base64 image for upload
+    fileId: column.text({ optional: true }), // CDN file ID for deletion
+    publishedDate: column.text(),
+    isPublished: column.boolean({ default: true }),
+    createdAt: column.text(),
+    updatedAt: column.text({ optional: true }),
+  },
+});
+
+const CalendarEvents = defineTable({
+  columns: {
+    id: column.text({ primaryKey: true }),
+    date: column.text(),
+    location: column.text(),
+    description: column.text(),
+    img: column.text(),
+    title: column.text(),
+    fileId: column.text(),
+  }
+})
+
 export default defineDb({
-  tables: { Pets, AdoptionRequestsDB, CreditCardsDB, UserAuth },
+  tables: { Pets, AdoptionRequestsDB, CreditCardsDB, UserAuth, BlogPostsDB, CalendarEvents },
 });
