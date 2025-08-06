@@ -3,7 +3,7 @@ import useFetch from "./useFetch";
 import calendarEventsAdapters from "../Domain/Adapters/calendarEvents.adapters";
 import useMutation from "./useMutation";
 
-const URL = "./api/calendarEvents";
+const URL = "/api/calendarEvents";
 
 type Props = {
   page?: number;

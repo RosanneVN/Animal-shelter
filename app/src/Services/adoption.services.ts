@@ -3,7 +3,7 @@ import type { Pets } from "../interfaces/backendAPI";
 import useFetch from "./useFetch";
 import useMutation from "./useMutation";
 
-const URL = "./api/adoption";
+const URL = "/api/adoption";
 type Props = {
   filterSpecie?: string;
   searchFilter?: string;

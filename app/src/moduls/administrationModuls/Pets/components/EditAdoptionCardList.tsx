@@ -21,6 +21,8 @@ const EditAdoptionCardList = ({ filterSpecie, searchFilter,page,setPage }: Props
     page,
     limit,
   });
+  console.log("pets", data);
+  
   console.log(pagination);
 
   if (loading) {
