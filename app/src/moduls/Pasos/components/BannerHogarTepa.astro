@@ -1,0 +1,50 @@
+---
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+---
+
+<section class="relative">
+  <div
+    class="flex flex-row py-20 px-36 bg-[url('/Image/HeroBlog.jpg')]
+     bg-cover bg-no-repeat bg-center w-full h-[100vh]
+     max-lg:px-5 max-lg:flex-col max-lg:h-[120vh] max-sm:h-[160vh]"
+  >
+    <ScreenWidthLayout>
+      <div
+        class="flex flex-row max-sm:flex-col place-content-center place-items-center gap-10"
+      >
+        <div
+          class="flex flex-col w-[50%] h-fit bg-primary text-lettersLight
+       px-10 py-20 rounded-lg gap-6 relative z-10 max-lg:w-full text-center"
+        >
+          <p class="text-bigLetters font-semibold max-sm:text-xl uppercase">
+            “100 peluditos esperan un hogar”
+          </p>
+          <p class="text-middleLetters max-sm:text-base">
+            Estamos comprometidos con encontrar hogares llenos de amor para
+            nuestros peluditos. Aquí tienes la oportunidad de conocer y adoptar
+            a los animales que más necesitan tu cariño. ¡Descubre a los
+            increíbles compañeros que esperan por ti!
+          </p>
+        </div>
+        <div
+          class="flex flex-col w-[50%] h-fit bg-secondary text-lettersLight
+       px-10 py-20 rounded-lg gap-6 relative z-10 max-lg:w-full text-center"
+        >
+          <p class="text-bigLetters font-semibold uppercase max-sm:text-xl">
+            Ayúdanos a salvar más vidas
+          </p>
+          <p class="text-middleLetters max-sm:text-base">
+            No podemos hacerlo solos. Tu apoyo, ya sea a través de donaciones,
+            voluntariado o difusión de nuestra causa, es crucial para que
+            podamos seguir rescatando y cuidando a más peluditos. Juntos,
+            podemos hacer una gran diferencia en sus vidas.
+          </p>
+        </div>
+      </div>
+    </ScreenWidthLayout>
+  </div>
+  <div
+    class="w-full h-[70vh] bg-gradient-to-b from-primary to-transparent absolute top-0"
+  >
+  </div>
+</section>

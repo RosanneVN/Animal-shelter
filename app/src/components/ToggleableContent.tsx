@@ -18,7 +18,7 @@ const ToggleableContent = ({
   };
 
   return (
-    <div className="flex flex-col bg-lettersLight p-3 rounded-lg">
+    <div className="flex flex-col bg-gray-50 p-3 rounded-lg">
       <div className="flex flex-row justify-between items-center">
         <p className="text-middleLetters uppercase text-secondary font-semibold max-sm:text-base">
           {question}
@@ -35,11 +35,11 @@ const ToggleableContent = ({
       {/* Contenido desplegable con animación */}
       <div
         className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-40" : "max-h-0"
+          isOpen ? "max-h-72" : "max-h-0"
         }`}
       >
-        <div className="mt-2 p-2 border-t border-lettersMiddle">
-          <p className="text-middleLetters text-secondary">{answer}</p>
+        <div className="mt-2 p-2 border-t flex h-full border-lettersMiddle">
+          <p className="text-middleLetters text-lettersDark  text-justify">{answer}</p>
         </div>
       </div>
     </div>

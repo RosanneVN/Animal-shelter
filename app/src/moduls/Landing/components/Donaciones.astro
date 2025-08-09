@@ -1,0 +1,29 @@
+---
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+import EstandarButton from "../../../components/Buttons/EstandarButton.astro";
+import Title from "../../../components/Title.astro";
+---
+
+<ScreenWidthLayout>
+  <section class="px-36 py-20 w-full flex flex-col max-sm:px-10">
+    <div class="flex flex-col justify-center items-center gap-10">
+      <Title className=" text-lettersDark max-sm:text-3xl"
+        >Apoya Nuestra Labor</Title
+      >
+      <div class="w-[80%] max-sm:w-full">
+        <p class="text-middleLetters text-justify text-lettersDark">
+          Tu apoyo puede cambiar vidas. Con una pequeña donación, ayudas a
+          rescatar, cuidar y dar un hogar a animales necesitados. ¡Únete a
+          nuestra causa y sé parte de su segunda oportunidad! Cada aporte
+          cuenta. 💖 #DonaYSalva
+        </p>
+      </div>
+
+      <EstandarButton
+        bgColor={"bg-secondary"}
+        url={"./Adopta"}
+        nameButton={"HAZ TU DONACION AQUI"}
+      />
+    </div>
+  </section>
+</ScreenWidthLayout>

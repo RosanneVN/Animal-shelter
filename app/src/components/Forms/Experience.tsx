@@ -1,22 +1,36 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import InputForm from "../Inputs/InputForm";
 import OptionButtons from "../Inputs/OptionButtons";
 import BackAndNext from "../Buttons/BackAndNext";
+import FormContent from "../FormContent";
+import type { FromExperienceType } from "../../Domain/Types/FormAdoptionReqType";
+import { FormAdoptionReq } from "../../Datas/FormAdoptiobReq";
+import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
 
-type FormData = {
-  family: string;
-  pets?: number;
+type Props = {
+  nextStep: any;
+  prevStep?: any;
 };
-type Props ={
-  nextStep: any
-  prevStep?: any
-}
 
-const Experience = ({nextStep, prevStep}:Props) => {
-  const [values, setValues] = useState<FormData>({
-    family: "",
-    pets: undefined,
-  });
+const Experience = ({ nextStep, prevStep }: Props) => {
+  const [values, setValues] = useState<FromExperienceType>(
+    FormAdoptionReq.Experience
+  );
+
+  const { setRequestsValues } = useContext(FormAdoptionReqContext);
+  const handleNext = () => {
+    setRequestsValues((prev) => ({
+      ...prev,
+      Experience: {
+        family: values.family,
+        adoptionAgree: values.adoptionAgree,
+        howManyPets: Number(values.howManyPets),
+        petsBefore: values.petsBefore,
+        petsBeforeAlive: values.petsBeforeAlive,
+      },
+    }));
+    nextStep();
+  };
 
   const handleChange = (field: keyof typeof values, value: string | number) => {
     setValues((prev) => ({
@@ -27,10 +41,7 @@ const Experience = ({nextStep, prevStep}:Props) => {
 
   return (
     <>
-      <form
-        action=""
-        className="w-[60%] rounded-xl flex flex-col overflow-auto"
-      >
+      <FormContent>
         <div className="py-9 px-10 flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-1">
             <h3 className="text-center text-lg text-orange-400 font-semibold">
@@ -46,7 +57,7 @@ const Experience = ({nextStep, prevStep}:Props) => {
                 name={""}
                 label={"¿Con quién vive actualmente?"}
                 type={"text"}
-                placeholderText={"Ej: En una cesta con mantas..."}
+                placeholderText={"Ej: Actualmente vivo con..."}
                 onChange={(inputValue) => {
                   handleChange("family", inputValue.target.value);
                 }}
@@ -61,6 +72,10 @@ const Experience = ({nextStep, prevStep}:Props) => {
                 label={"¿Todos están de acuerdo con la adopción?"}
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.adoptionAgree}
+                onChange={(value) => {
+                  handleChange("adoptionAgree", value);
+                }}
               />
               <InputForm
                 name={""}
@@ -68,31 +83,41 @@ const Experience = ({nextStep, prevStep}:Props) => {
                 type={"number"}
                 placeholderText={"Ej: 3"}
                 onChange={(inputValue) => {
-                  handleChange("pets", inputValue.target.value);
+                  handleChange("howManyPets", inputValue.target.value);
                 }}
                 isRequired={true}
-                value={values.pets}
+                value={values.howManyPets}
                 defaultValue={""}
                 errorMesage={
-                  !values.pets ? "Este campo es obligatorio" : undefined
+                  !values.howManyPets ? "Este campo es obligatorio" : undefined
                 }
               />
               <OptionButtons
                 label={"¿Ha tenido anteriormente un perro o gato?"}
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.petsBefore}
+                onChange={(value) => {
+                  handleChange("petsBefore", value);
+                }}
               />
               <OptionButtons
                 label={"Si es así, ¿sigue vivo o falleció?"}
                 first={"Sigue vivo"}
                 second={"Fallecio"}
+                selectedValue={values.petsBeforeAlive}
+                onChange={(value) => {
+                  handleChange("petsBeforeAlive", value);
+                }}
               />
-             
             </div>
-            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
+            <BackAndNext
+              prevStep={prevStep}
+              nextStep={handleNext}
+            ></BackAndNext>
           </div>
         </div>
-      </form>
+      </FormContent>
     </>
   );
 };

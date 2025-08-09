@@ -1,29 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import InputForm from "../Inputs/InputForm";
 import BackAndNext from "../Buttons/BackAndNext";
+import FormContent from "../FormContent";
+import { FormAdoptionReq } from "../../Datas/FormAdoptiobReq";
+import type { FormPersonalDataType } from "../../Domain/Types/FormAdoptionReqType";
+import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
 
-type FormData = {
-  fullName: string;
-  age?: number;
-  address: string;
-  cellPhone?: string | number;
-  alternativeCellPhone?: string | number;
+type Props = {
+  nextStep: any;
+  prevStep?: any;
 };
 
-type Props ={
-  nextStep: any
-  prevStep?: any
-}
-
-const PersonalData = ({nextStep}:Props) => {
-  const [values, setValues] = useState<FormData>({
-    fullName: "",
-    age: undefined,
-    cellPhone: undefined,
-    alternativeCellPhone: undefined,
-    address: "",
-  });
-
+const PersonalData = ({ nextStep }: Props) => {
+  const [values, setValues] = useState<FormPersonalDataType>(
+    FormAdoptionReq.PersonalData
+  );
+  const { setRequestsValues } = useContext(FormAdoptionReqContext);
+  const handleNext = () => {
+    setRequestsValues((prev) => ({
+      ...prev,
+      PersonalData: {
+        address:values.address,
+        fullname:values.fullname,
+        age:Number(values.age),
+        id:values.id,
+        alternativeCellPhone:Number(values.alternativeCellPhone),
+        cellPhone:Number(values.cellPhone)
+      },
+    }));
+    nextStep()
+  };
   const handleChange = (
     field: keyof typeof values,
     value: string | number | boolean
@@ -32,27 +38,23 @@ const PersonalData = ({nextStep}:Props) => {
       ...prev,
       [field]: value,
     }));
+
   };
 
   const getEdadError = () => {
     const num = Number(values.age);
     if (num < 18) {
-      handleChange("age", "18");
       return "Edad minima 18";
     }
 
     if (num > 100) {
-      handleChange("age", "100");
       return "Edad maxima 100";
     }
   };
 
   return (
     <>
-      <form
-        action=""
-        className="w-[60%] rounded-xl flex flex-col overflow-auto"
-      >
+      <FormContent>
         <div className="py-9 px-10 flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-1">
             <h3 className="text-center text-lg text-orange-400 font-semibold">
@@ -71,13 +73,13 @@ const PersonalData = ({nextStep}:Props) => {
                 type={"text"}
                 placeholderText={"Ej: Rosanne Vazquez"}
                 onChange={(inputValue) => {
-                  handleChange("fullName", inputValue.target.value);
+                  handleChange("fullname", inputValue.target.value);
                 }}
                 isRequired={true}
-                value={values.fullName}
+                value={values.fullname}
                 defaultValue={""}
                 errorMesage={
-                  !values.fullName ? "Este campo es obligatorio" : undefined
+                  !values.fullname ? "Este campo es obligatorio" : undefined
                 }
               />
               <InputForm
@@ -145,10 +147,10 @@ const PersonalData = ({nextStep}:Props) => {
               />
             </div>
             {/*botones de siguiente*/}
-            <BackAndNext prevStep={undefined} nextStep={nextStep}></BackAndNext>
+            <BackAndNext prevStep={undefined} nextStep={handleNext}></BackAndNext>
           </div>
         </div>
-      </form>
+      </FormContent>
     </>
   );
 };

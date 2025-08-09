@@ -1,0 +1,35 @@
+---
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+import EstandarButton from "../../../components/Buttons/EstandarButton.astro";
+import Transparent from "../../../components/icons/Transparent";
+---
+
+<section
+  class="bg-[url('/Image/HeroContacto.jpg')] bg-cover bg-no-repeat bg-center flex flex-col
+   w-full h-[100vh] relative text-lettersLight"
+>
+  <ScreenWidthLayout>
+    <div class="flex flex-col justify-center items-center gap-12">
+      <div class="flex flex-col items-center">
+        <p class="text-bigLetters font-semibold max-sm:text-3xl">Contactanos</p>
+        <p class="text-longLetters max-sm:text-lg">QUEREMOS ESCUCHARTE</p>
+      </div>
+
+      <div class="flex flex-row gap-6">
+        <EstandarButton
+          bgColor={"bg-secondary"}
+          url={"./Contactanos"}
+          nameButton={"ESCRIBENOS"}
+        />
+        <EstandarButton
+          bgColor={"bg-primary"}
+          url={"./Contactanos"}
+          nameButton={"Haz una donacion"}
+        />
+      </div>
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute bottom-0 scale-x-[-1]">
+    <Transparent color={"#fff"} client:visible />
+  </div>
+</section>

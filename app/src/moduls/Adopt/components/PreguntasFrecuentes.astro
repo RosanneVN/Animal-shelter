@@ -1,0 +1,90 @@
+---
+import EstandarButton from "../../../components/Buttons/EstandarButton.astro";
+import Title from "../../../components/Title.astro";
+import ToggleableContent from "../../../components/ToggleableContent";
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+---
+
+<ScreenWidthLayout>
+  <section
+    class="flex flex-row w-full gap-10 py-20 px-36 max-lg:flex-col max-lg:px-10 max-sm:py-10"
+  >
+    <div
+      class="flex flex-col w-[35%] gap-10 max-lg:w-full max-sm:gap-5 max-sm:items-center"
+    >
+      <div class="flex flex-col">
+        <p
+          class="text-lettersMiddle text-longLetters max-lg:text-center uppercase text-center"
+        >
+          ¿Estas list@?
+        </p>
+        <Title className="max-lg:text-bigLetters max-sm:text-2xl"
+          >ANTES DE APLICAR</Title
+        >
+      </div>
+      <p
+        class="text-lettersMiddle text-middleLetters max-sm:text-base text-justify"
+      >
+        Si estás interesad@ en adoptar a alguno de nuestros peluditos, antes de
+        diligenciar el formulario <span class="text-secondary">
+          debes leer con detenimiento cada una de las siguientes preguntas
+          frecuentes:</span
+        >
+      </p>
+      <EstandarButton
+        bgColor={"bg-secondary"}
+        url={"./Contactanos"}
+        nameButton={"FORMULARIO DE ADOPCION"}
+      />
+    </div>
+
+    <div class="flex flex-col w-[65%] rounded-lg gap-3 max-lg:w-full">
+      <p class="text-lettersMiddle text-longLetters max-sm:text-xl">
+        PREGUNTAS FRECUNTES SOBRE ADOPCION
+      </p>
+
+      <div class="flex flex-col gap-6">
+        <ToggleableContent
+          client:visible
+          question={"¿por que adoptar en vez de comprar?"}
+          answer={`Adoptar en lugar de comprar es una elección que no solo salva una vida, sino que también
+           combate el comercio irresponsable de animales. Cuando compras un animal, puedes estar apoyando a
+            criadores inescrupulosos que priorizan las ganancias sobre el bienestar de los animales. En cambio,
+             adoptar de una protectora garantiza que estás dando un hogar a un animal que realmente lo necesita,
+              reduciendo la demanda de animales criados en condiciones inhumanas. Además, al adoptar, no solo
+               estás cambiando la vida de un animal, sino también contribuyendo a una sociedad más compasiva y
+                responsable con los seres vivos.`}
+          isStartOpen={true}
+        />
+        <ToggleableContent
+          client:visible
+          question={"¿CUALES SON LOS BENEFICIOS DE ADOPTAR?"}
+          answer={`Adoptar un animal es una decisión que cambia vidas. No solo es un acto de amor y compasión, sino que también te brinda beneficios para tu salud y bienestar.
+           Tener mascotas puede reducir el estrés, mejorar tu salud cardiovascular y aumentar tus niveles de felicidad. Además, fomenta la actividad física si adoptas un perro,
+            y enseña a los niños sobre responsabilidad y amor incondicional. Al adoptar, no solo das un hogar a un animal, sino que también te das un regalo a ti mismo: un 
+            compañero leal y un sentido de propósito.`}
+        />
+        <ToggleableContent
+          client:visible
+          question={"¿Qué debo llevar el día que adopte un animal?"}
+          answer={`Para completar la adopción, necesitarás traer una identificación válida (como tu DNI) y, si rentas, un documento que confirme que puedes tener mascotas en
+           tu hogar. Además, te recomendamos traer una transportadora o correa adecuada para llevar a tu nuevo amigo con seguridad.`}
+        />
+        <ToggleableContent
+          client:visible
+          question={"¿Puedo devolver al animal si no me adapto?"}
+          answer={`Entendemos que a veces las cosas no salen como se espera. Si no puedes quedarte con el animal, ofrecemos la posibilidad de devolverlo dentro de un periodo acordado para garantizar
+           su bienestar y buscarle otro hogar adecuado.`}
+        />
+        <ToggleableContent
+          client:visible
+          question={"¿Cómo puedo adoptar un animal?"}
+          answer={`El proceso de adopción es sencillo. Primero, revisa los animales disponibles en nuestra página web.
+           Una vez encuentres a tu futuro compañero, completaremos un formulario de adopción y coordinaremos una
+            entrevista para asegurarnos de que sea una buena combinación. Después, firmarás un contrato de adopción y podrás
+             llevar a tu nuevo amigo a casa.`}
+        />
+      </div>
+    </div>
+  </section>
+</ScreenWidthLayout>

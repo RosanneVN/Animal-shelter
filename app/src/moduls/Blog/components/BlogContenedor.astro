@@ -1,0 +1,17 @@
+---
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+import PublicBlogList from "../../../components/PublicBlogList";
+import Transparent from "../../../components/icons/Transparent";
+---
+
+<section class="relative">
+  <ScreenWidthLayout>
+    <div class="flex flex-col w-full pt-10 pb-28 px-36 max-lg:px-10">
+      <PublicBlogList client:visible />
+      
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute -bottom-0.5">
+    <Transparent color={"#003049"} client:visible />
+  </div>
+</section>

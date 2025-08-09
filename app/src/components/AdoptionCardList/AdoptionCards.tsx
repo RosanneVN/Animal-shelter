@@ -1,27 +1,32 @@
+import React, { type MouseEvent } from "react";
 import AdoptionButton from "../Buttons/AdoptionButton";
-type Props = { onOpen: React.Dispatch<React.SetStateAction<boolean>> };
-const AdoptionCards = ({ onOpen }: Props) => {
-  return (
-    <div className="flex flex-col h-fit w-fit  rounded-2xl shadow-xl">
-      <div className="flex flex-col py-10 px-8 gap-5">
-        <div className="">
-          <img
-            className="rounded-lg h-48 w-56 object-cover"
-            src="/Image/Adoptable1.jpg"
-            alt=""
-          />
-        </div>
-        <div>
-          <p className="font-bold text-shortLetters">Nombre: </p>
-          <div className="flex flex-row justify-between font-semibold text-shortLetters">
-            <p>Edad: </p>
-            <p>Sexo: </p>
-          </div>
-        </div>
+import AdoptionFather from "./AdoptionFather";
+import type { PetsType } from "../../Domain/Types/PetsType";
 
-        <AdoptionButton onClick={() => onOpen(true)} />
-      </div>
-    </div>
+interface Props extends PetsType {
+  onOpen: () => void;
+}
+
+const AdoptionCards = ({
+  onOpen,
+  id,
+  petname,
+  age,
+  gender,
+  species,
+  img
+}: Props) => {
+  return (
+    <AdoptionFather
+      id={id}
+      petname={petname}
+      age={age}
+      gender={gender}
+      species={species}
+      img={img}
+    >
+      <AdoptionButton onClick={() => onOpen()} />
+    </AdoptionFather>
   );
 };
 export default AdoptionCards;

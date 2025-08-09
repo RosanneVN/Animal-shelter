@@ -1,20 +1,30 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import InputForm from "../Inputs/InputForm";
 import OptionButtons from "../Inputs/OptionButtons";
 import BackAndNext from "../Buttons/BackAndNext";
+import FormContent from "../FormContent";
+import { FormAdoptionReq } from "../../Datas/FormAdoptiobReq";
+import type { FormHomeConditionsType } from "../../Domain/Types/FormAdoptionReqType";
+import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
 
-type FormData = {
-  sleepPlace: string;
-};
 type Props = {
   nextStep: any;
   prevStep: any;
 };
 
 const HomeConditions = ({ nextStep, prevStep }: Props) => {
-  const [values, setValues] = useState<FormData>({
-    sleepPlace: "",
-  });
+  const [values, setValues] = useState<FormHomeConditionsType>(
+    FormAdoptionReq.HomeConditions
+  );
+
+  const { setRequestsValues } = useContext(FormAdoptionReqContext);
+  const handleNext = () => {
+    setRequestsValues((prev) => ({
+      ...prev,
+      HomeConditions: values,
+    }));
+    nextStep();
+  };
 
   const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
@@ -25,10 +35,7 @@ const HomeConditions = ({ nextStep, prevStep }: Props) => {
 
   return (
     <>
-      <form
-        action=""
-        className="w-[60%] rounded-xl flex flex-col overflow-auto"
-      >
+      <FormContent>
         <div className="py-9 px-10 flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-1">
             <h3 className="text-center text-lg text-orange-400 font-semibold">
@@ -44,6 +51,10 @@ const HomeConditions = ({ nextStep, prevStep }: Props) => {
                 label={" ¿Vive en casa propia o alquilada?"}
                 first={"Propia"}
                 second={"Alquiler"}
+                selectedValue={values.ownHouse}
+                onChange={(value) => {
+                  handleChange("ownHouse", value);
+                }}
               />
               <OptionButtons
                 label={
@@ -51,6 +62,10 @@ const HomeConditions = ({ nextStep, prevStep }: Props) => {
                 }
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.agreeRent}
+                onChange={(value) => {
+                  handleChange("agreeRent", value);
+                }}
               />
               <OptionButtons
                 label={
@@ -58,6 +73,10 @@ const HomeConditions = ({ nextStep, prevStep }: Props) => {
                 }
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.bigPlace}
+                onChange={(value) => {
+                  handleChange("bigPlace", value);
+                }}
               />
               <InputForm
                 name={""}
@@ -78,22 +97,37 @@ const HomeConditions = ({ nextStep, prevStep }: Props) => {
                 label={" ¿La vivienda está asegurada para evitar escapes?"}
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.houseNotScape}
+                onChange={(value) => {
+                  handleChange("houseNotScape", value);
+                }}
               />
               <OptionButtons
                 label={"¿Hay niños pequeños en casa?"}
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.childrens}
+                onChange={(value) => {
+                  handleChange("childrens", value);
+                }}
               />
               <OptionButtons
                 label={"¿Hay algún alérgico o asmático en la casa?"}
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.petAlergic}
+                onChange={(value) => {
+                  handleChange("petAlergic", value);
+                }}
               />
             </div>
-            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
+            <BackAndNext
+              prevStep={prevStep}
+              nextStep={handleNext}
+            ></BackAndNext>
           </div>
         </div>
-      </form>
+      </FormContent>
     </>
   );
 };

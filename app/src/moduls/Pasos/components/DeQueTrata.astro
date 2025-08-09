@@ -1,0 +1,38 @@
+---
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+import Transparent from "../../../components/icons/Transparent";
+---
+
+<section class="relative">
+  <ScreenWidthLayout>
+    <div
+      class="flex flex-row w-full pt-20 pb-40 px-36 gap-10 max-lg:px-10 max-lg:flex-col place-content-center place-items-center"
+    >
+      <div
+        class="w-[50%] flex flex-col gap-6 text-xl max-lg:w-full text-lettersMiddle"
+      >
+        <p
+          class="font-semibold text-center text-bigLetters uppercase text-lettersDark max-sm:text-longLetters"
+        >
+          ¿Quienes somos?
+        </p>
+        <p class="max-sm:text-base text-middleLetters text-justify">
+          Se conocen como hogares de paso, es una forma en la que nos puedes
+          ayudar con nuestra labor de seguir salvando las vidas de más
+          peluditos. Consiste en abrir un espacio en tu casa o apartamento para
+          acoger de forma temporal a uno de nuestros perritos rescatados.
+          Tendrás que cuidarlo y darle cariño, mientras nosotros nos encargamos
+          de su alimentación y gastos veterinarios hasta que encontremos su
+          hogar definitivo.
+        </p>
+      </div>
+
+      <div class="w-[50%] max-sm:w-full">
+        <img class="rounded-md" src="Image/quienesSomos.jpg" alt="" />
+      </div>
+    </div>
+  </ScreenWidthLayout>
+  <div class="w-full absolute -bottom-0.5 scale-x-[-1]">
+    <Transparent color={"#003049"} client:visible />
+  </div>
+</section>

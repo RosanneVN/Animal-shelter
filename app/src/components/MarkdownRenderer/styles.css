@@ -1,0 +1,73 @@
+/* Estilos para elementos de encabezado */
+.markdown-content h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 1rem 0;
+  line-height: 1.2;
+}
+
+.markdown-content h2 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  margin: 0.875rem 0;
+  line-height: 1.3;
+}
+
+.markdown-content h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0.75rem 0;
+  line-height: 1.4;
+}
+
+.markdown-content h4 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0.625rem 0;
+  line-height: 1.4;
+}
+
+.markdown-content h5 {
+  font-size: 1.125rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+.markdown-content h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+/* Estilos para las clases de tamaño de Quill */
+.markdown-content .ql-size-small {
+  font-size: 0.75rem;
+}
+
+.markdown-content .ql-size-large {
+  font-size: 1.5rem;
+}
+
+.markdown-content .ql-size-huge {
+  font-size: 2.5rem;
+}
+
+/* Estilos para texto básico */
+.markdown-content p {
+  margin: 0.5rem 0;
+  line-height: 1.6;
+}
+
+.markdown-content strong {
+  font-weight: bold;
+}
+
+.markdown-content em {
+  font-style: italic;
+}
+
+.markdown-content u {
+  text-decoration: underline;
+}

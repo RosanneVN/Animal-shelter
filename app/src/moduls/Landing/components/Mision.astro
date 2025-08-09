@@ -1,0 +1,62 @@
+---
+import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
+import EstandarButton from "../../../components/Buttons/EstandarButton.astro";
+import Title from "../../../components/Title.astro";
+
+const Message =
+  "Hola, me interesaria participar como voluntario(a) en su organizacion de proteccion animal, me gustaria saber como puedo ayudar";
+---
+
+<ScreenWidthLayout>
+  <section
+    class="flex flex-col pb-40 pt-10 px-36 w-full max-lg:pb-20 max-lg:px-10"
+  >
+    <div class="pb-20 flex flex-col place-items-center">
+      <Title classname=" text-bigLetters max-sm:text-3xl">Nuestra misión</Title>
+      <p class="text-lettersMiddle text-longLetters text-center uppercase">
+        Trabajando en pro de los animales
+      </p>
+    </div>
+
+    <div class="flex flex-row gap-16 max-lg:flex-col">
+      <div
+        class="flex flex-col gap-6 max-lg:gap-2 max-sm:text-base text-middleLetters justify-center items-center"
+      >
+        <p class="font-semibold uppercase text-center text-lettersDark">
+          Lo que hacemos
+        </p>
+        <p class="text-lettersMiddle text-justify">
+          Los animales que llegan a la fundación reciben atención veterinaria
+          completa, incluyendo esterilización, vacunación, desparacitación y
+          cualquier tratamiento necesario para garantizar su bienestar hasta que
+          logremos encontrarles un hogar que los cuide de por vida.
+        </p>
+        <EstandarButton
+          bgColor={"bg-secondary"}
+          url={"./ApadrinaYDona#ayudanos"}
+          nameButton={"¿COMO AYUDAR?"}
+        />
+      </div>
+
+      <div
+        class="flex flex-col gap-6 max-lg:gap-2 max-sm:text-base text-middleLetters justify-center items-center"
+      >
+        <p class="font-semibold uppercase text-center text-lettersDark">
+          Lo que queremos
+        </p>
+        <p class="text-lettersMiddle text-justify">
+          Promover la sensibilización colectiva fomentando la esterilización, el
+          respeto a la vida, el NO al maltrato animal y la adopción responsable
+          y soñamos con convertirnos en una organización líder en la protección
+          y preservación de los animales que son víctimas del maltrato y la
+          indiferencia.
+        </p>
+        <EstandarButton
+          bgColor={"bg-primary"}
+          url={`https://wa.me/56775245?text=${Message}`}
+          nameButton={"QUIERO SER VOLUNTARIO"}
+        />
+      </div>
+    </div>
+  </section>
+</ScreenWidthLayout>

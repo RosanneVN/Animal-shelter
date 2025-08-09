@@ -1,18 +1,20 @@
 type Props = {
-  image: any;
   title: string;
+  onOpen?: React.Dispatch<React.SetStateAction<boolean>>
+  children?: any
 };
 
-const DonationButton = ({ image, title }: Props) => {
+const DonationButton = ({ title, onOpen=()=>{}, children }: Props) => {
   return (
     <>
       <button
-        className="bg-secondary px-8 py-3 w-full text-shortLetters text-center text-lettersLight font-semibold
-         rounded-full hover:bg-primary transition duration-500 max-md:text-sm max-md:px-5 max-md:py-4"
-       
+        onClick={() => onOpen(true)}
+        className="flex flex-row bg-white shadow-md px-10 py-3 w-fit text-middleLetters gap-10
+         text-lettersDark uppercase rounded-lg max-md:text-sm max-md:px-5 max-md:py-4 hover:translate-y-1"
       >
-        <img src={image} alt="" />
+        <img className="size-8" src="/Image/creditCard.png" alt="" />
         {title}
+        {children}
       </button>
     </>
   );

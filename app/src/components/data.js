@@ -17,7 +17,7 @@ export const NavBarMenu = [
   {
     id: 4,
     title: "Pasos SOS",
-    url: "./HogaresTepa",
+    url: "./Pasos",
   },
   {
     id: 5,
@@ -30,3 +30,31 @@ export const NavBarMenu = [
     url: "./Contactanos",
   },
 ];
+
+export const NavBarAdminMenu = [
+  {
+    id: 1,
+    title: "Mascotas",
+    url: "/administrationPages/Pets"
+  },
+  {
+    id: 2,
+    title: "Adopciones",
+    url: "/administrationPages/AdoptionRequests"
+  },
+  {
+    id: 3,
+    title: "Tarjetas",
+    url: "/administrationPages/CreaditCards"
+  },
+  {
+    id: 4,
+    title: "Calendario",
+    url: "/administrationPages/Calendar"
+  },
+  {
+    id: 1,
+    title: "Blog",
+    url: "/administrationPages/AdminBlog"
+  }
+]

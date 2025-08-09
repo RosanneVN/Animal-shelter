@@ -1,22 +1,31 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import TextareaForm from "../Inputs/TextareaForm";
 import OptionButtons from "../Inputs/OptionButtons";
 import BackAndNext from "../Buttons/BackAndNext";
 import Notes from "./Notes";
+import FormContent from "../FormContent";
+import type { FormMotivacionesType } from "../../Domain/Types/FormAdoptionReqType";
+import { FormAdoptionReq } from "../../Datas/FormAdoptiobReq";
+import { FormAdoptionReqContext } from "../../Context/FormAdoptionReqContext";
 
-type FormData = {
-  motivation: string;
+type Props = {
+  nextStep: any;
+  prevStep: any;
 };
 
-type Props ={
-  nextStep: any
-  prevStep: any
-}
+const Motivaciones = ({ nextStep, prevStep }: Props) => {
+  const [values, setValues] = useState<FormMotivacionesType>(
+    FormAdoptionReq.Motivaciones
+  );
 
-const Motivaciones = ({nextStep, prevStep}: Props) => {
-  const [values, setValues] = useState<FormData>({
-    motivation: "",
-  });
+  const { setRequestsValues } = useContext(FormAdoptionReqContext);
+  const handleNext = () => {
+    setRequestsValues((prev) => ({
+      ...prev,
+      Motivaciones: values,
+    }));
+    nextStep();
+  };
 
   const handleChange = (field: keyof typeof values, value: string) => {
     setValues((prev) => ({
@@ -27,10 +36,7 @@ const Motivaciones = ({nextStep, prevStep}: Props) => {
 
   return (
     <>
-      <form
-        action=""
-        className="w-[60%] rounded-xl flex flex-col overflow-auto"
-      >
+      <FormContent>
         <div className="py-9 px-10 flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-1">
             <h3 className="text-center text-lg text-orange-400 font-semibold">
@@ -61,6 +67,10 @@ const Motivaciones = ({nextStep, prevStep}: Props) => {
                 label={"¿La mascota será para usted o para otra persona?"}
                 first={"Para mi"}
                 second={"Otra persona"}
+                selectedValue={values.forWho}
+                onChange={(value) => {
+                  handleChange("forWho", value);
+                }}
               />
 
               <OptionButtons
@@ -69,6 +79,10 @@ const Motivaciones = ({nextStep, prevStep}: Props) => {
                 }
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.petMoney}
+                onChange={(value) => {
+                  handleChange("petMoney", value);
+                }}
               />
               <Notes
                 noteText={"Nota: La esterilización está cubierta por nosotros."}
@@ -80,6 +94,10 @@ const Motivaciones = ({nextStep, prevStep}: Props) => {
                 }
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.petFollowing}
+                onChange={(value) => {
+                  handleChange("petFollowing", value);
+                }}
               />
 
               <OptionButtons
@@ -88,12 +106,19 @@ const Motivaciones = ({nextStep, prevStep}: Props) => {
                 }
                 first={"Si"}
                 second={"No"}
+                selectedValue={values.notAbandoned}
+                onChange={(value) => {
+                  handleChange("notAbandoned", value);
+                }}
               />
             </div>
-            <BackAndNext prevStep={prevStep} nextStep={nextStep}></BackAndNext>
+            <BackAndNext
+              prevStep={prevStep}
+              nextStep={handleNext}
+            ></BackAndNext>
           </div>
         </div>
-      </form>
+      </FormContent>
     </>
   );
 };
