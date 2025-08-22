@@ -18,7 +18,7 @@ const OptionButtons = ({
   return (
     <>
       <div className="flex flex-col ">
-        <label htmlFor="" className="text-xs text-lettersDark">
+        <label htmlFor="" className="text-xs max-sm:text-center text-lettersDark">
           {label}
         </label>
         <div className="flex flex-col justify-center items-center">

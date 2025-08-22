@@ -88,7 +88,7 @@ const EditCards = ({
   return (
     <form
       onSubmit={(e) => submit(e)}
-      className="flex flex-col w-80 max-sm:w-full bg-white p-5 rounded-xl gap-5 z-50 "
+      className="flex flex-col max-sm:justify-between  w-80 max-sm:h-[100dvh] max-sm:w-full bg-white p-5 rounded-xl gap-5 z-50 "
     >
       <button
         type="button"
@@ -97,59 +97,67 @@ const EditCards = ({
       >
         {" "}
         <img className="size-4" src="/Image/closeIcon.png" alt="" />
-      </button>{" "}
-      <div className="flex flex-col gap-2">
-        <UploadInput
-          onImageChange={handleImageChange}
-          errorMessage={!values.imgPet ? "La imagen es obligatoria" : undefined}
-        />
-        <InputForm
-          name={""}
-          label={"Nombre de la mascota"}
-          type={"text"}
-          placeholderText={"Rocky"}
-          errorMesage={
-            !values.namePet ? "Este campo es obligatorio" : undefined
-          }
-          onChange={(inputValue) => {
-            handleChange("namePet", inputValue.target.value.trim());
-          }}
-          isRequired={true}
-          value={values.namePet}
-          defaultValue={""}
-        />
-        <InputForm
-          name={""}
-          label={"Edad de la mascota"}
-          type={"text"}
-          placeholderText={" 3 meses"}
-          errorMesage={!values.agePet ? "Este campo es obligatorio" : undefined}
-          onChange={(inputValue) => {
-            handleChange("agePet", inputValue.target.value.trim());
-          }}
-          isRequired={true}
-          value={values.agePet}
-          defaultValue={""}
-        />
-        <OptionButtons
-          label={"Seleccione el sexo de la mascota"}
-          first={PetsEnum.hembra}
-          second={PetsEnum.macho}
-          selectedValue={values.genderPet}
-          onChange={(value) => {
-            handleChange("genderPet", value);
-          }}
-        />
-        <OptionButtons
-          label={"Seleccione la especie de la mascota"}
-          first={PetsEnum.gato}
-          second={PetsEnum.perro}
-          selectedValue={values.speciesPet}
-          onChange={(value) => {
-            handleChange("speciesPet", value);
-          }}
-        />
+      </button>
+      <div className="flex w-full max-sm:items-center">
+        <div className="flex  w-full flex-col gap-2 max-sm:gap-4 ">
+          <UploadInput
+            previewURL={values.imgPet}
+            onImageChange={handleImageChange}
+            errorMessage={
+              !values.imgPet ? "La imagen es obligatoria" : undefined
+            }
+          />
+          <InputForm
+            name={""}
+            label={"Nombre de la mascota"}
+            type={"text"}
+            placeholderText={"Rocky"}
+            errorMesage={
+              !values.namePet ? "Este campo es obligatorio" : undefined
+            }
+            onChange={(inputValue) => {
+              handleChange("namePet", inputValue.target.value.trim());
+            }}
+            isRequired={true}
+            value={values.namePet}
+            defaultValue={""}
+          />
+          <InputForm
+            name={""}
+            label={"Edad de la mascota"}
+            type={"text"}
+            placeholderText={" 3 meses"}
+            errorMesage={
+              !values.agePet ? "Este campo es obligatorio" : undefined
+            }
+            onChange={(inputValue) => {
+              handleChange("agePet", inputValue.target.value.trim());
+            }}
+            isRequired={true}
+            value={values.agePet}
+            defaultValue={""}
+          />
+          <OptionButtons
+            label={"Seleccione el sexo de la mascota"}
+            first={PetsEnum.hembra}
+            second={PetsEnum.macho}
+            selectedValue={values.genderPet}
+            onChange={(value) => {
+              handleChange("genderPet", value);
+            }}
+          />
+          <OptionButtons
+            label={"Seleccione la especie de la mascota"}
+            first={PetsEnum.gato}
+            second={PetsEnum.perro}
+            selectedValue={values.speciesPet}
+            onChange={(value) => {
+              handleChange("speciesPet", value);
+            }}
+          />
+        </div>
       </div>
+
       <div className="flex w-full justify-end text-shortLetters">
         <SendButton type={"submit"} />
       </div>

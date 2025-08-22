@@ -3,20 +3,32 @@ import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
 import Facebook from "../../../components/icons/Facebook.astro";
 import Instagram from "../../../components/icons/Instagram.astro";
 import ContactCards from "./ContactCards";
+
+const Message =
+  "Buenos días/tardes, les escribo desde la web de PASOS.";
 ---
 
 <ScreenWidthLayout>
   <section class="flex flex-row justify-between py-20 max-lg:flex-col">
     <!--contacto -->
     <div
-      class="w-[50%] max-lg:w-full max-sm:py-10 h-[70vh] flex justify-center items-center"
+      class="w-[50%] max-lg:w-full max-sm:py-10 h-[70vh] flex justify-center items-center"  
     >
       <div
         class="flex flex-col gap-10 max-sm:mx-auto justify-center items-center w-full max-sm:p-8"
       >
-        <ContactCards nameContact={"Laura"} />
-        <ContactCards nameContact={"Gabriela"} />
-        <ContactCards nameContact={"Raquel"} />
+        <ContactCards
+          url={`https://wa.me/56775245?text=${Message}`}
+          nameContact={"Laura"}
+        />
+        <ContactCards
+          url={`https://wa.me/56775245?text=${Message}`}
+          nameContact={"Gabriela"}
+        />
+        <ContactCards
+          url={`https://wa.me/56775245?text=${Message}`}
+          nameContact={"Raquel"}
+        />
       </div>
     </div>
 

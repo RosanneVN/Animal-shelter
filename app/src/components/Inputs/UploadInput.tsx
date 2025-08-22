@@ -10,9 +10,11 @@ type Props = {
 
 const UploadInput = ({ onImageChange, errorMessage, previewURL,className }: Props) => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [preview, setPreview] = useState<string>("");
+  const [preview, setPreview] = useState<string>(previewURL || "");
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
+
+ 
 
   useEffect(() => {
     if (!selectedFile) {

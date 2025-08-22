@@ -1,15 +1,27 @@
 ---
-const { nameButton, url, bgColor } = Astro.props;
+interface ButtonProps {
+  nameButton: string;
+  url: string;
+  bgColor?: string;
+  target?: '_self' | '_blank' | '_parent' | '_top';
+}
+
+const {
+  nameButton,
+  url,
+  bgColor = '',
+  target
+}: ButtonProps = Astro.props as ButtonProps;
+
+const rel = target === '_blank' ? 'noopener noreferrer' : undefined;
 ---
 
 <div
-  class={`px-8 py-3 rounded-full flex place-items-center w-fit  max-md:px-3 max-md:py-3 
-   ${bgColor}`}
+  class={`px-8 py-3 rounded-full flex place-items-center w-fit max-md:px-3 max-md:py-3 ${bgColor}`}
 >
-  <a target="_blank" href={url}>
-    <p class="text-middleLetters  uppercase text-white max-md:text-sm max-sm:text-shortLetters">
+  <a href={url} target={target} rel={rel}>
+    <p class="text-middleLetters uppercase text-white max-md:text-sm max-sm:text-shortLetters">
       {nameButton}
     </p>
   </a>
 </div>
- 
