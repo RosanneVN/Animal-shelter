@@ -36,7 +36,7 @@ export const AdoptionReqSchema = z.object({
   youAgree: z.string().min(1, "Este campo es obligarorio"),
   CImgFront: z.string().min(1, "Este campo es obligarorio"),
   CImgBack: z.string().min(1, "Este campo es obligarorio"),
-  petId: z.string().uuid("ID no válido"),
+  petId: z.string().min(1, "ID no válido"),
 });
 
 export const deleteAdoptionReqSchema = z.object({
