@@ -1,11 +1,12 @@
 type Props = {
   nameContact: string;
+  url: string;
 };
 
-const ContactCards = ({ nameContact }: Props) => {
+const ContactCards = ({ nameContact, url }: Props) => {
   return (
     <>
-      <div
+      <a href={url} target="_blank"
         className="flex flex-row shadow-lg rounded-md overflow-hidden w-96 h-20  max-sm:w-full
        justify-between items-center text-lettersDark hover:translate-y-1"
       >
@@ -15,7 +16,7 @@ const ContactCards = ({ nameContact }: Props) => {
         <div className="w-[70%] flex items-center justify-center">
           <p>Contacta con {nameContact}</p>
         </div>
-      </div>
+      </a>
     </>
   );
 };

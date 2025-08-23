@@ -11,8 +11,8 @@ const CreditCard = ({  cardNumber, numberPhone }: Props) => {
   const { setIsOpen } = useContext(ModalFormContext);
   return (
     <>
-      <div className=" bg-white w-96 px-6 py-6 rounded-lg h-[70vh] text-lettersDark justify-between flex flex-col">
-        <div className="flex items-end justify-end">
+      <div className=" bg-white w-96 px-6 py-6 rounded-lg gap-3 text-lettersDark justify-between flex flex-col">
+        <div className="flex items-end justify-end ">
           <button
             onClick={() => {
               setIsOpen(false);

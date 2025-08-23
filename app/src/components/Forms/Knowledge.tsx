@@ -51,8 +51,8 @@ const Knowledge = ({ nextStep, prevStep }: Props) => {
             <div className="flex flex-col gap-5">
               <OptionButtons
                 label={"¿Conoce algún veterinario en su zona?"}
-                first={"Para mi"}
-                second={"Otra persona"}
+                first={"Si"}
+                second={"No"}
                 selectedValue={values.petDoctorClose}
                 onChange={(value) => {
                   handleChange("petDoctorClose", value);
@@ -60,8 +60,8 @@ const Knowledge = ({ nextStep, prevStep }: Props) => {
               />
               <OptionButtons
                 label={"¿Conoce el esquema de vacunación y desparasitación?"}
-                first={"Para mi"}
-                second={"Otra persona"}
+                first={"Si"}
+                second={"No"}
                 selectedValue={values.vacunationSchema}
                 onChange={(value) => {
                   handleChange("vacunationSchema", value);

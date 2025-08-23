@@ -63,7 +63,7 @@ const Experience = ({ nextStep, prevStep }: Props) => {
                 }}
                 isRequired={true}
                 value={values.family}
-                defaultValue={""}
+               
                 errorMesage={
                   !values.family ? "Este campo es obligatorio" : undefined
                 }
@@ -87,7 +87,7 @@ const Experience = ({ nextStep, prevStep }: Props) => {
                 }}
                 isRequired={true}
                 value={values.howManyPets}
-                defaultValue={""}
+               
                 errorMesage={
                   !values.howManyPets ? "Este campo es obligatorio" : undefined
                 }
