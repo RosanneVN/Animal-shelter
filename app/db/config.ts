@@ -4,7 +4,7 @@ const Pets = defineTable({
   columns: {
     id: column.text({ primaryKey: true }),
     petname: column.text(),
-    age: column.number(),
+    age: column.text(),
     gender: column.text(),
     species: column.text(),
     img: column.text(),

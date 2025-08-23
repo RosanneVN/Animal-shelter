@@ -40,6 +40,7 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
       id: adoptionReq.PersonalData.id,
       isApprovedUpdate: false,
     });
+    console.log("desaprobada");
     sendWhatsAppMessage({
       message:
         "Hola, somos la Organizacion de proteccion animal PASOS, hemos culminado con la revision de su solicitud, lamentamos informarle que actualmente no cumple con los requerimientos necesarios para realizar la adopcion. Le agradecemos por su tiempo.",

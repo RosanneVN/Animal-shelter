@@ -14,7 +14,7 @@ export default async function () {
     {
       id: "311221",
       petname: "Maykelbb",
-      age: 3,
+      age: "3",
       gender: "macho",
       species: "gato",
       img: "https://th.bing.com/th/id/OIP.DZxGvmQNRyqBpiFYR74KdQHaEK?rs=1&pid=ImgDetMain",
@@ -23,7 +23,7 @@ export default async function () {
     {
       id: "999",
       petname: "Paco",
-      age: 4,
+      age: "4",
       gender: "macho",
       species: "perro",
       img: "https://th.bing.com/th/id/OIP.DZxGvmQNRyqBpiFYR74KdQHaEK?rs=1&pid=ImgDetMain",
@@ -32,7 +32,7 @@ export default async function () {
     {
       id: uuidv4(),
       petname: "Jacinto",
-      age: 2.5,
+      age: "2 meses y medio",
       gender: "macho",
       species: "perro",
       img: "https://th.bing.com/th/id/OIP.DZxGvmQNRyqBpiFYR74KdQHaEK?rs=1&pid=ImgDetMain",

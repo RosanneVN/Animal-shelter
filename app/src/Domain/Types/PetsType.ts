@@ -1,7 +1,7 @@
 export type PetsType ={
     id: string;
     petname: string;
-    age: number;
+    age: string;
     species: string;
     gender: string;
     img: string;

@@ -4,7 +4,7 @@
 export interface Pets {
   id: string;
   petname: string;
-  age: number;
+  age: string;
   gender: string;
   species: string;
   img: string;

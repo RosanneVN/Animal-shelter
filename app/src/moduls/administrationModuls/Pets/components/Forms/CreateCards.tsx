@@ -58,7 +58,7 @@ export default function CreateCards() {
 
     await handleCreatePet({
       petnameNew: values.namePet,
-      ageNew: parseInt(values.agePet),
+      ageNew: values.agePet,
       speciesNew: values.speciesPet,
       genderNew: values.genderPet,
       imgNewBase64: values.imgPet,

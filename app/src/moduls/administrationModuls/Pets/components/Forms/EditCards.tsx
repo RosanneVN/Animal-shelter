@@ -30,7 +30,7 @@ const EditCards = ({
   const [values, setValues] = useState<FormData>({
     imgPet: img || "",
     namePet: petname,
-    agePet: age.toString(),
+    agePet: age,
     speciesPet: species || PetsEnum.perro,
     genderPet: gender || PetsEnum.macho,
   });
@@ -68,7 +68,7 @@ const EditCards = ({
     await handleUpdatePet({
       idUpdate: id,
       petnameUpdate: values.namePet,
-      ageUpdate: parseInt(values.agePet),
+      ageUpdate: values.agePet,
       speciesUpdate: values.speciesPet,
       genderUpdate: values.genderPet,
       imgUpdateBase64: values.imgPet,

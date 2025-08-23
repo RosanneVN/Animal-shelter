@@ -5,7 +5,7 @@ type Props = { onFilterChange: any };
 export default function RadingFilter({ onFilterChange }: Props) {
   return (
     <div className="flex flex-col max-sm:flex-row gap-2 max-sm:gap-5 text-lettersDark max-sm:w-full 
-    text-shortLetters">
+    max-sm:text-shortLetters">
       {" "}
       <label htmlFor="">Lectura de solicitudes: </label>
       <select

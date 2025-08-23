@@ -29,7 +29,7 @@ export const getServicesPets = ({
 
 type CreatePets = {
   petnameNew: string;
-  ageNew: number;
+  ageNew: string;
   speciesNew: string;
   genderNew: string;
   imgNewBase64: string;
@@ -61,7 +61,7 @@ export const useHandleCreatePet = () => {
 type UpdatePets = {
   idUpdate: string;
   petnameUpdate: string;
-  ageUpdate: number;
+  ageUpdate: string;
   speciesUpdate: string;
   genderUpdate: string;
   imgUpdateBase64?: string;
