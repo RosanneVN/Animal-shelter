@@ -14,13 +14,12 @@ const UploadInput = ({ onImageChange, errorMessage, previewURL,className }: Prop
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
 
- 
+  console.log(preview);
 
   useEffect(() => {
     if (!selectedFile) {
-      setPreview("");
+      setPreview(previewURL || "");
       setError("");
-      onImageChange?.(null);
       return;
     }
 

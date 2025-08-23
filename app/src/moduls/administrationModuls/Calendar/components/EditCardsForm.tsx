@@ -96,6 +96,7 @@ export default function EditCardsForm({
          <UploadInput
           onImageChange={handleImageChange}
           errorMessage={!values.img ? "La imagen es obligatoria" : undefined}
+          previewURL={img}
         />
           <InputForm
           name={""}

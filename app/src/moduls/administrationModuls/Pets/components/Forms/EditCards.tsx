@@ -48,6 +48,7 @@ const EditCards = ({
     }));
   }, []);
 
+  console.log(values.agePet);
   const { handleUpdatePet, loading, error } = useHandleUpdatePet();
   const submit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -61,7 +62,6 @@ const EditCards = ({
       alert("Todos los campos deben estar seleccionados, incluyendo la imagen");
       return;
     }
-
     if (loading) {
       return;
     }
@@ -126,7 +126,7 @@ const EditCards = ({
             name={""}
             label={"Edad de la mascota"}
             type={"text"}
-            placeholderText={" 3 meses"}
+            placeholderText={"3 meses"}
             errorMesage={
               !values.agePet ? "Este campo es obligatorio" : undefined
             }
