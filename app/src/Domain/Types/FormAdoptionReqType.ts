@@ -28,7 +28,7 @@ export interface FormHomeConditionsType {
 export interface FromExperienceType {
   family: string;
   adoptionAgree: string;
-  howManyPets: number;
+  howManyPets: number | undefined;
   petsBefore: string;
   petsBeforeAlive: string;
 }

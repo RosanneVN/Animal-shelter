@@ -149,8 +149,8 @@ export default async function () {
   await db.insert(UserAuth).values([
     {
       id: uuidv4(),
-      username: "rosanne",
-      password: bcrypt.hashSync("123456", 10),
+      username: "pasos",
+      password: bcrypt.hashSync("Q:9ba0syxEEDY)!7", 10),
     },
   ]);
 
