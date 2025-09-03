@@ -151,7 +151,7 @@ export default async function () {
       id: uuidv4(),
       username: "pasos",
       password: bcrypt.hashSync("Q:9ba0syxEEDY)!7", 10),
-    },
+    }, 
   ]);
 
   await db.insert(BlogPostsDB).values([

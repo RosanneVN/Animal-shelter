@@ -15,7 +15,7 @@ const AdoptionFather = ({
   return (
     <section className="relative">
       <div className="bg-white p-2 rounded-full absolute top-2 right-3">
-        <img className="size-6" src="/Icons/SVGs/Female.svg" alt="" />
+        <img className="size-6"  src={`${gender == "hembra" ? "/Icons/SVGs/Female.svg" :"/Icons/SVGs/Male.svg"}`} alt="" />
       </div>
       <div className="flex flex-col h-fit w-fit rounded-2xl shadow-xl">
         <div className="flex flex-col py-7 px-4 gap-5">
