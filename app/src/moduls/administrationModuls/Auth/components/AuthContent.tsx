@@ -37,6 +37,7 @@ export default function AuthContent({}: Props) {
         // Handle login failure
         const errorData = await response.text();
         console.error("Login failed:", errorData);
+        alert("Login failed: " + errorData);
         // You could set an error message in the state to display to the user
       }
     } catch (error) {
