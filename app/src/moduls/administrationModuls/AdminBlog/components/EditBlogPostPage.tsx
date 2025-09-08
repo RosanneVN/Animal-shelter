@@ -118,7 +118,7 @@ export default function EditBlogPostPage({ blogPostId }: Props) {
 
   if (loading) {
     return (
-      <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-10">
+      <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-5">
         <div className="flex justify-center items-center min-h-64">
           <p className="text-lettersMiddle">Cargando post...</p>
         </div>
@@ -128,7 +128,7 @@ export default function EditBlogPostPage({ blogPostId }: Props) {
 
   if (!blogPost) {
     return (
-      <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-10">
+      <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-5">
         <div className="flex justify-center items-center min-h-64">
           <div className="text-center">
             <p className="text-red-500 mb-4">Post no encontrado</p>
@@ -144,23 +144,19 @@ export default function EditBlogPostPage({ blogPostId }: Props) {
     );
   }
   return (
-    <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-10">
+    <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-5">
       <div className="max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-8">
           {" "}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 max-sm:flex-col max-sm:w-full">
             <button
               onClick={handleBack}
-              className="text-secondary hover:text-primary transition-colors duration-200"
+              className="text-secondary hover:text-primary transition-colors duration-200 max-sm:self-start"
             >
               ← Volver al Blog
             </button>
-            <h1 className="text-3xl font-bold text-lettersDark">Editar Post</h1>
-            {hasUnsavedChanges && (
-              <span className="text-sm text-orange-600 font-medium">
-                • Cambios sin guardar
-              </span>
-            )}
+            <h1 className="text-3xl font-bold text-lettersDark ">Editar Post</h1>
+           
           </div>
         </div>{" "}
         {showPreview ? (
@@ -232,7 +228,7 @@ export default function EditBlogPostPage({ blogPostId }: Props) {
                 onChange={(value) => handleChange("content", value || "")}
                 placeholder="Escribe el contenido del post en Markdown..."
                 isRequired={true}
-                height={500}
+                height={400}
               />
             </div>
             <div className="flex items-center gap-2">
@@ -255,7 +251,7 @@ export default function EditBlogPostPage({ blogPostId }: Props) {
                 Error al actualizar el post. Por favor, inténtalo de nuevo.
               </div>
             )}
-            <div className="flex gap-4 pt-4">
+            <div className="flex gap-4 pt-4 max-sm:flex-col max-sm:items-stretch">
               <button
                 type="button"
                 onClick={handleBack}

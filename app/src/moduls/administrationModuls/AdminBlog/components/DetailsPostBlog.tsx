@@ -28,7 +28,7 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
 
   if (loading) {
     return (
-      <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-10">
+      <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-5">
         <div className="flex justify-center items-center min-h-64">
           <p className="text-lettersMiddle">Cargando post...</p>
         </div>
@@ -38,7 +38,7 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
 
   if (error || !blogPost) {
     return (
-      <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-10">
+      <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-5">
         <div className="flex justify-center items-center min-h-64">
           <div className="text-center">
             <p className="text-red-500 mb-4">Post no encontrado</p>
@@ -55,7 +55,7 @@ export default function DetailsPostBlog({ blogPostId }: Props) {
   }
 
   return (
-    <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-10">
+    <div className="w-full h-full pt-40 pb-20 px-36 max-sm:px-5">
       <div className="max-w-4xl mx-auto">
         {/* Navigation */}
         <div className="flex items-center gap-4 mb-8">

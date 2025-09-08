@@ -83,7 +83,7 @@ const MarkdownEditor = ({
         </label>
       )}
       
-      <div className="border pb-10 border-gray-300 rounded-lg overflow-hidden">
+      <div className="border pb-10 border-gray-300 rounded-lg overflow-hidden max-sm:pb-24">
         <ReactQuill
           theme="snow"
           value={value}
@@ -92,7 +92,7 @@ const MarkdownEditor = ({
           modules={modules}
           formats={formats}
           style={{ 
-            height: height - 42,
+            height: height,
             fontFamily: 'Helvetica, Arial, sans-serif'
           }}
         />

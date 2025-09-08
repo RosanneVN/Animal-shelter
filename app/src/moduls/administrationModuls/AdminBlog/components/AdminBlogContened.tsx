@@ -7,8 +7,8 @@ type Props = {};
 export default function AdminBlogContened({}: Props) {
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-lettersDark">Administrar Blog</h1>
+      <div className="flex justify-between items-center max-sm:flex-col max-sm:gap-3">
+        <h1 className="text-2xl font-bold text-lettersDark max-md:text-xl">Administrar Blog</h1>
         <CreateNewBlogPost />
       </div>
       
