@@ -59,8 +59,8 @@ const MarkdownEditor = ({
           </label>
         )}
         
-        <div className="border border-gray-300 rounded-lg overflow-hidden">
-          <textarea
+        <div className="border  border-gray-300 rounded-lg overflow-hidden">
+          <textarea 
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
@@ -83,7 +83,7 @@ const MarkdownEditor = ({
         </label>
       )}
       
-      <div className="border border-gray-300 rounded-lg overflow-hidden">
+      <div className="border pb-10 border-gray-300 rounded-lg overflow-hidden">
         <ReactQuill
           theme="snow"
           value={value}
