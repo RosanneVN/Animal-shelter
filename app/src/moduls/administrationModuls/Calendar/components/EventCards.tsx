@@ -22,7 +22,7 @@ export default function EventCards({
   onDelete,
 }: Props) {
   return (
-    <section className="w-72 py-7 px-3 rounded-md shadow-md flex flex-col gap-5 items-center">
+    <section className="w-72 py-7 px-3 rounded-md shadow-md flex flex-col gap-5 items-start justify-center">
       <div>
         <img className="w-72 h-60" src={img} alt="Event" />
       </div>

@@ -32,7 +32,7 @@ export default function CalendarEventsList({ page, setPage }: Props) {
     <>
       <section className="flex flex-col gap-10 max-sm:gap-5 max-sm:flex-row">
         <div
-          className="grid grid-cols-4 grid-rows-flow place-items-center w-full gap-10 h-full
+          className="grid grid-cols-3 grid-rows-flow place-items-center w-full gap-10 h-full
     max-lg:h-[200vh] max-sm:h-[450vh] max-lg:grid-cols-2 max-sm:grid-cols-1 max-sm:gap-10 my-10"
         >
           {data?.map((event) => (
