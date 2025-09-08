@@ -28,7 +28,7 @@ export const FormAdoptionReq: FormAdoptionReqType = {
   Experience: {
     family: "",
     adoptionAgree: "",
-    howManyPets: 0,
+    howManyPets: undefined,
     petsBefore: "",
     petsBeforeAlive: "",
   },

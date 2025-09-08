@@ -22,7 +22,7 @@ export default function AdoptionReqCard({
   address,
   isRead,
   isApproved,
-  petImg
+  petImg,
 }: Props) {
   const { handleDeleteAdoptionReq, loading, error } =
     useHandleDeleteAdoptionReq();
@@ -60,11 +60,7 @@ export default function AdoptionReqCard({
           href={`/administrationPages/${id}`}
         />
         <div className="flex size-[212px] relative z-10">
-          <img
-            className="h-[212px] w-[212px]"
-            src={petImg}
-            alt=""
-          />
+          <img className="h-[212px] w-[212px]" src={petImg} alt="" />
         </div>
 
         <div className="flex flex-col flex-1 px-10 py-5 text-middleLetters gap-5 text-lettersDark ">
@@ -87,6 +83,11 @@ export default function AdoptionReqCard({
               {isApproved && (
                 <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
                   Aprobada
+                </div>
+              )}
+              {isRead && !isApproved && (
+                <div className=" text-shortLetters py-1 px-2 bg-secondary rounded-md cursor-pointer">
+                  No Aprobada
                 </div>
               )}
 
