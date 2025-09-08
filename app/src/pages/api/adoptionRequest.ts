@@ -141,11 +141,23 @@ export const GET: APIRoute = async ({ request }) => {
 
     totalAdoptionReq = await createCountQuery();
   }
-
+ 
   console.log("adoptionReq", adoptionReq);
   let totalPages: number = 0;
-  if (totalAdoptionReq && totalAdoptionReq[0].count === 0) {
-     totalPages = Math.ceil(totalAdoptionReq[0].count / limit);
+  // Calcular totalPages correctamente para todos los escenarios
+  // 1. Si filtramos por id: el total es la cantidad retornada (0 o 1 normalmente)
+  // 2. Para el resto de filtros: usamos la consulta de conteo
+  // 3. totalPages = 0 solo cuando no hay registros; si hay registros, ceil(total/limit)
+  let totalCount = 0;
+  if (filterID) {
+    totalCount = Array.isArray(adoptionReq) ? adoptionReq.length : 0;
+  } else if (totalAdoptionReq) {
+    totalCount = Number(totalAdoptionReq[0]?.count) || 0;
+  }
+  if (totalCount > 0) {
+    totalPages = Math.ceil(totalCount / limit);
+  } else {
+    totalPages = 0; // explícito para claridad
   }
   return new Response(
     JSON.stringify({
