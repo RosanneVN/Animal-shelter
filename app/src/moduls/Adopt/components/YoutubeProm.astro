@@ -13,7 +13,8 @@ import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
       <div class="w-[50%] flex flex-col gap-10 max-lg:w-full items-center">
         <div class="flex flex-col gap-1">
           <Title className="max-lg:text-3xl max-sm:text-2xl ">
-            En <span class="text-secondary">PASOS</span> tenemos a muchos buscando un hogar</Title
+            En <span class="text-secondary">PASOS</span> tenemos a muchos buscando
+            un hogar</Title
           >
           <p class="text-longLetters text-lettersMiddle text-center uppercase">
             Tu buscas un peludito
@@ -39,17 +40,14 @@ import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
       </div>
 
       <div class="rounded-xl w-[50%] max-lg:w-full max-lg:py-10">
-        <!-- este video quedara aqui hasta que implemente la base de datos mientras tanto se cambia por una foto
-         <video controls width="600">
-          <source
-            src="https://youtu.be/6jF2DZbaBl4?si=UH0SijqCcFghzmkO"
-            type="video/mp4"
-          />
-        </video>-->
-       <img class="rounded-md" src="/Image/grupo.jpg" alt="">
+        <img
+          class="rounded-md"
+          src="/Image/grupo.jpg"
+          alt="Equipo de voluntarias del refugio PASOS S.O.S con un pequeño gato negro rescatado."
+        />
       </div>
-    </ScreenWidthLayout>
     </div>
+  </ScreenWidthLayout>
   <div class="w-full absolute -bottom-0.5 scale-x-[-1]">
     <Transparent color={"#669bbc"} client:visible />
   </div>

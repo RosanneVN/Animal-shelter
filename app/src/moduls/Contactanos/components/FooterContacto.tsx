@@ -32,7 +32,7 @@ const FooterContacto = () => {
             <img
               className="w-48 max-sm:w-32  scale-x-[-1]"
               src="/Image/perritoForm.png"
-              alt=""
+              alt="Imagen de perrito feliz listo para ser adoptado por una nueva familia."
             />
           </div>
           <div className="flex flex-col w-[60%] max-sm:w-full gap-7 py-3 px-10 text-shortLetters">
