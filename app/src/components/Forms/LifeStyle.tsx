@@ -19,18 +19,18 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
 
   const { setRequestsValues } = useContext(FormAdoptionReqContext);
   const handleNext = () => {
-    if (
-      !values.job ||
-      !values.iftravel ||
-      !values.petIfTravel ||
-      !values.otherHouse
-    ) {
+    if (!values.job || !values.iftravel || !values.otherHouse) {
       alert("Por favor, complete todos los campos obligatorios");
       return;
     }
+    const finalValues = { ...values };
+    if (finalValues.iftravel === "No") {
+      finalValues.petIfTravel = "No pienso viajar";
+    }
+
     setRequestsValues((prev) => ({
       ...prev,
-      LifeStyle: values,
+      LifeStyle: finalValues,
     }));
     nextStep();
   };
@@ -81,9 +81,6 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
                 }
                 type={"text"}
                 placeholderText={"Se quedara con..."}
-                errorMesage={
-                  !values.petIfTravel ? "Este campo es obligatorio" : undefined
-                }
                 onChange={(inputValue) => {
                   handleChange("petIfTravel", inputValue.target.value.trim());
                 }}

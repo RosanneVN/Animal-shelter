@@ -30,9 +30,14 @@ const HomeConditions = ({ nextStep, prevStep }: Props) => {
       alert("Por favor, complete todos los campos obligatorios");
       return;
     }
+    const finalValues = { ...values };
+    if (finalValues.ownHouse === "Propia") {
+      finalValues.agreeRent = "Si";
+    }
+
     setRequestsValues((prev) => ({
       ...prev,
-      HomeConditions: values,
+      HomeConditions: finalValues,
     }));
     nextStep();
   };

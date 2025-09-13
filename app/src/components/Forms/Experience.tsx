@@ -23,20 +23,25 @@ const Experience = ({ nextStep, prevStep }: Props) => {
       !values.family ||
       !values.adoptionAgree ||
       !values.howManyPets ||
-      !values.petsBefore ||
-      !values.petsBeforeAlive
+      !values.petsBefore
     ) {
       alert("Por favor, complete todos los campos obligatorios");
       return;
     }
+
+    const finalValues = { ...values };
+    if (finalValues.petsBefore === "No") {
+      finalValues.petsBeforeAlive = "Fallecio";
+    }
+
     setRequestsValues((prev) => ({
       ...prev,
       Experience: {
-        family: values.family,
-        adoptionAgree: values.adoptionAgree,
-        howManyPets: Number(values.howManyPets),
-        petsBefore: values.petsBefore,
-        petsBeforeAlive: values.petsBeforeAlive,
+        family: finalValues.family,
+        adoptionAgree: finalValues.adoptionAgree,
+        howManyPets: Number(finalValues.howManyPets),
+        petsBefore: finalValues.petsBefore,
+        petsBeforeAlive: finalValues.petsBeforeAlive,
       },
     }));
     nextStep();

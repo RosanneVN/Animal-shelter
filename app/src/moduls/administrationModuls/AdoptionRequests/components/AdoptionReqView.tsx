@@ -165,14 +165,16 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
               </span>{" "}
               {adoptionReq?.HomeConditions.ownHouse}
             </p>
-            <p>
-              {" "}
-              <span className="font-semibold">
+            {adoptionReq?.HomeConditions.ownHouse === "Alquiler" && (
+              <p>
                 {" "}
-                Si es alquilada, ¿ha confirmado que permiten tener animales?:
-              </span>{" "}
-              {adoptionReq?.HomeConditions.agreeRent}
-            </p>
+                <span className="font-semibold">
+                  {" "}
+                  Si es alquilada, ¿ha confirmado que permiten tener animales?:
+                </span>{" "}
+                {adoptionReq?.HomeConditions.agreeRent}
+              </p>
+            )}
             <p>
               {" "}
               <span className="font-semibold">
@@ -256,14 +258,16 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
               </span>{" "}
               {adoptionReq?.Experience.petsBefore}
             </p>
-            <p>
-              {" "}
-              <span className="font-semibold">
+            {adoptionReq?.Experience.petsBefore == "Si" && (
+              <p>
                 {" "}
-                Si es así, ¿sigue vivo o falleció?:
-              </span>{" "}
-              {adoptionReq?.Experience.petsBeforeAlive}
-            </p>
+                <span className="font-semibold">
+                  {" "}
+                  Si es así, ¿sigue vivo o falleció?:
+                </span>{" "}
+                {adoptionReq?.Experience.petsBeforeAlive}
+              </p>
+            )}
           </div>
         </div>
 
@@ -291,15 +295,17 @@ export const AdoptionReqView = ({ adoptionReqID }: Props) => {
               </span>{" "}
               {adoptionReq?.LifeStyle.iftravel}
             </p>
-            <p>
-              {" "}
-              <span className="font-semibold">
+            {adoptionReq?.LifeStyle.iftravel == "Si" && (
+              <p>
                 {" "}
-                Si responde “sí,” ¿qué pasará con la mascota durante ese
-                tiempo?:
-              </span>
-              {adoptionReq?.LifeStyle.petIfTravel}
-            </p>
+                <span className="font-semibold">
+                  {" "}
+                  Si responde “sí,” ¿qué pasará con la mascota durante ese
+                  tiempo?:
+                </span>
+                {adoptionReq?.LifeStyle.petIfTravel}
+              </p>
+            )}
             <p>
               {" "}
               <span className="font-semibold">
