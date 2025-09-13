@@ -6,7 +6,7 @@ export default function ListMapCards() {
   console.log("data", data);
 
   return (
-    <div className="flex flex-col gap-5 min-h-[40vh]">
+    <div className="flex flex-col gap-5 min-h-[50vh]">
       {data.map((creditCard) => (
         <CreditCardWithEdit
           nameCard={creditCard.nameCard}

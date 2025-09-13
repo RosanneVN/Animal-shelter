@@ -17,7 +17,7 @@ export default function AdoptionRequestContend() {
   };
 
   return (
-    <section className="flex flex-col gap-10 max-sm:gap-16">
+    <section className="flex flex-col gap-10 max-sm:gap-16 min-h-[60vh]">
       <div className="flex justify-end gap-10 max-sm:gap-5 max-sm:flex-col">
         {" "}
         <RadingFilter onFilterChange={handleFilterChange} />
