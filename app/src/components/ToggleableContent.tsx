@@ -35,7 +35,7 @@ const ToggleableContent = ({
       {/* Contenido desplegable con animación */}
       <div
         className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${
-          isOpen ? "max-h-72" : "max-h-0"
+          isOpen ? "max-h-fit" : "max-h-0"
         }`}
       >
         <div className="mt-2 p-2 border-t flex h-full border-lettersMiddle">
