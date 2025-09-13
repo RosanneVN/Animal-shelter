@@ -6,38 +6,48 @@ import ScreenWidthLayout from "../../../layouts/ScreenWidthLayout.astro";
 ---
 
 <section
-  class="bg-[url('/Image/bg2.jpg')] bg-cover bg-no-repeat bg-center flex flex-col
-   w-full h-[100vh] relative justify-center items-start px-36 max-sm:px-10 text-lettersLight max-lg:px-20"
+  class="bg-[url('/Image/bg2.jpg')] bg-cover bg-no-repeat bg-center flex flex-col h-[100vh]
+   w-full relative place-content-center"
 >
-  <ScreenWidthLayout>
-    <div class="flex flex-col w-[50%] max-sm:w-full gap-7">
-      <Title
-        className="text-lettersDark text-bigLetters max-sm:text-bigLetters uppercase"
-        >Adopciones</Title
+  <div class="flex">
+    <ScreenWidthLayout>
+      <div
+        class="px-36 flex flex-col relative z-10 max-sm:px-10 max-lg:px-20"
       >
-      <p
-        class="text-middleLetters lg:font-semibold text-justify text-lettersDark max-sm:text-middleLetters"
-      >
-        ¿Estás listo para encontrar al compañero perfecto que te haga sonreír
-        cada día? En nuestra protectora, tenemos a los peluditos más adorables
-        esperando por ti. ¡Ven y descubre a tu nueva mejor amiga o amigo, y
-        prepárate para vivir una aventura llena de amor y felicidad!
-      </p>
-
-      <div class="flex flex-row gap-6 max-sm:gap-3">
-        <EstandarButton
-          bgColor={"bg-secondary"}
-          url={"./Contactanos"}
-          nameButton={"CONTACTANOS"}
-        />
-        <EstandarButton
-          bgColor={"bg-primary"}
-          url={"./ApadrinaYDona#donaCon"}
-          nameButton={"haz una donacion"}
-        />
+        <div
+          class="text-lettersLight flex flex-col w-[50%] max-sm:w-full gap-7"
+        >
+          <Title
+            className="text-lettersLight max-sm:pt-5 text-bigLetters max-sm:text-bigLetters uppercase max-sm:text-center"
+            >Adopciones</Title
+          >
+          <p
+            class="text-middleLetters text-justify text-lettersLight max-sm:text-middleLetters"
+          >
+            ¿Estás listo para encontrar al compañero perfecto que te haga sonreír
+            cada día? En nuestra protectora, tenemos a los peluditos más
+            adorables esperando por ti. ¡Ven y descubre a tu nueva mejor amiga o
+            amigo, y prepárate para vivir una aventura llena de amor y
+            felicidad!
+          </p>
+        </div>
+        <div class="flex flex-row gap-6 max-sm:gap-3 py-12">
+          <EstandarButton
+            bgColor={"bg-secondary"}
+            url={"./Contactanos"}
+            nameButton={"CONTACTANOS"}
+          />
+          <EstandarButton
+            bgColor={"bg-primary"}
+            url={"./ApadrinaYDona#donaCon"}
+            nameButton={"haz una donacion"}
+          />
+        </div>
       </div>
-    </div>
-  </ScreenWidthLayout>
+    </ScreenWidthLayout>
+    <div class="h-[100vh] w-full absolute top-0 bg-black/50"></div>
+  </div>
+
   <div class="w-full absolute left-0 -bottom-0.5 scale-x-[-1]">
     <Transparent color={"#fff"} client:visible />
   </div>
