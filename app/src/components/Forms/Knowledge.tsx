@@ -20,6 +20,14 @@ const Knowledge = ({ nextStep, prevStep }: Props) => {
 
   const { setRequestsValues } = useContext(FormAdoptionReqContext);
   const handleNext = () => {
+    if(
+      !values.petDoctorClose ||
+      !values.vacunationSchema ||
+      !values.sterilizationOpinion
+    ){
+      alert("Por favor, complete todos los campos obligatorios");
+      return;
+    }
     setRequestsValues((prev) => ({
       ...prev,
       Knowledge: values,

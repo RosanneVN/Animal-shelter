@@ -17,29 +17,26 @@ function useMutation() {
     setLoading(true);
     setError(null);
 
-    try {
-      const response = await fetch(url, {
-        method,
-        headers: {
-          "Content-Type": "application/json",
-          ...headers,
-        },
-        body: body ? JSON.stringify(body) : null,
-      });
+    const response = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+        ...headers,
+      },
+      body: body ? JSON.stringify(body) : null,
+    });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+    console.log("res",response);
 
-      const data = await response.json();
-      setData(data);
-      return { success: true, data }; // ← Retorna el resultado
-    } catch (err) {
-      setError("Error al enviar solicitud");
-      return { success: false, error: "Error al enviar solicitud" }; // ← Retorna el error
-    } finally {
-      setLoading(false);
+    if (!response.ok) {
+      const errorText = await response.text();
+      throw new Error(`HTTP error! status: ${response.status} - ${errorText}`);
     }
+
+    const data = await response.json();
+
+    setData(data);
+    return { success: true, data };
   };
 
   return { mutate, data, loading, error };

@@ -19,6 +19,17 @@ const HomeConditions = ({ nextStep, prevStep }: Props) => {
 
   const { setRequestsValues } = useContext(FormAdoptionReqContext);
   const handleNext = () => {
+    if (
+      !values.ownHouse ||
+      !values.bigPlace ||
+      !values.sleepPlace ||
+      !values.houseNotScape ||
+      !values.childrens ||
+      !values.petAlergic
+    ) {
+      alert("Por favor, complete todos los campos obligatorios");
+      return;
+    }
     setRequestsValues((prev) => ({
       ...prev,
       HomeConditions: values,

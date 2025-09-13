@@ -1,5 +1,5 @@
 import type { APIRoute } from "astro";
-import { AdoptionRequestsDB, count, db, eq, Pets } from "astro:db";
+import { AdoptionRequestsDB, count, db, desc, eq, Pets } from "astro:db";
 import { v4 as uuidv4 } from "uuid";
 import {
   AdoptionReqSchema,
@@ -10,6 +10,7 @@ import {
 import { AdoptionReqEnum } from "../../Const/AdoptionReqEnum";
 import { uploadImgs } from "../../Backend/utils/uploadImgs";
 import { deleteImg } from "../../Backend/utils/deleteImg";
+import { log } from "console";
 
 const getAdoptionRequestQuery = () => {
   return {
@@ -61,7 +62,7 @@ const createBaseQuery = () => {
   return db
     .select(getAdoptionRequestQuery())
     .from(AdoptionRequestsDB)
-    .innerJoin(Pets, eq(AdoptionRequestsDB.petId, Pets.id));
+    .innerJoin(Pets, eq(AdoptionRequestsDB.petId, Pets.id)).orderBy(desc(AdoptionRequestsDB.id));
 };
 
 // ✅ Helper para consulta de conteo
@@ -87,15 +88,15 @@ export const GET: APIRoute = async ({ request }) => {
     readingFilter === AdoptionReqEnum.leidas
       ? true
       : readingFilter === AdoptionReqEnum.noLeidas
-        ? false
-        : undefined;
+      ? false
+      : undefined;
 
   const isApprovedFilterBoolean =
     isApprovedFilter === AdoptionReqEnum.aprobadas
       ? true
       : isApprovedFilter === AdoptionReqEnum.noAprobadas
-        ? false
-        : undefined;
+      ? false
+      : undefined;
 
   console.log("filterID", filterID);
   let adoptionReq;
@@ -107,7 +108,7 @@ export const GET: APIRoute = async ({ request }) => {
       .limit(limit)
       .offset((page - 1) * limit);
 
-      console.log("req", adoptionReq);
+    console.log("req", adoptionReq);
     if (adoptionReq[0]?.isRead === false) {
       await db
         .update(AdoptionRequestsDB)
@@ -141,7 +142,7 @@ export const GET: APIRoute = async ({ request }) => {
 
     totalAdoptionReq = await createCountQuery();
   }
- 
+
   console.log("adoptionReq", adoptionReq);
   let totalPages: number = 0;
   // Calcular totalPages correctamente para todos los escenarios
@@ -205,8 +206,10 @@ export const POST: APIRoute = async ({ request }) => {
     const imgFront = await uploadImgs(validationData.CImgFront, uuidv4());
     const imgBack = await uploadImgs(validationData.CImgBack, uuidv4());
 
+    const newId = uuidv4();
+
     const adoptionReq = await db.insert(AdoptionRequestsDB).values({
-      id: uuidv4(),
+      id: newId,
       ...validationData,
       isRead: false,
       isApproved: false,
@@ -217,8 +220,15 @@ export const POST: APIRoute = async ({ request }) => {
     });
     console.log("adoptionReq", adoptionReq);
 
-    return new Response(JSON.stringify(adoptionReq), {
-      status: 200,
+    const newAdoptionRequest = await db
+      .select()
+      .from(AdoptionRequestsDB)
+      .where(eq(AdoptionRequestsDB.id, newId))
+      .limit(1);
+
+      log("newAdoptionRequest", newAdoptionRequest);
+    return new Response(JSON.stringify(newAdoptionRequest[0]), {
+      status: 201,
       statusText: "Michi created",
       headers: {
         "Content-Type": "application/json",
@@ -335,7 +345,8 @@ export const PATCH: APIRoute = async ({ request }) => {
 
     console.log("updateData", updateData);
 
-    return new Response(JSON.stringify(updateData), {
+    // Devuelve un mensaje de éxito en formato JSON
+    return new Response(JSON.stringify({ message: "Solicitud actualizada correctamente" }), {
       status: 200,
       statusText: "Michi actualizado",
       headers: { "Content-Type": "application/json" },
@@ -350,4 +361,16 @@ export const PATCH: APIRoute = async ({ request }) => {
       }
     );
   }
+};
+
+// ✅ AÑADIR ESTE MANEJADOR PARA CORS
+export const OPTIONS: APIRoute = async () => {
+  return new Response(null, {
+    status: 204, // No Content
+    headers: {
+      "Access-Control-Allow-Origin": "*", // O tu dominio específico: 'http://localhost:4321'
+      "Access-Control-Allow-Methods": "GET, POST, DELETE, PATCH, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  });
 };

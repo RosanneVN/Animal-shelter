@@ -28,8 +28,6 @@ export const getServicesAdoptionReq = ({
 
   console.log("data", data);
 
-  
-
   const adaptedData = adoptionReqAdapters({ data });
   console.log("adaptedData", adaptedData);
 
@@ -44,7 +42,7 @@ export const useHandleCreateAdoptionReq = () => {
   const handleCreateAdoptionReq = async ({
     requestsValuesContext,
   }: CreateAdoptionReq) => {
-    await mutate({
+    const response = await mutate({
       url: URL,
       method: "POST",
       body: {
@@ -85,6 +83,10 @@ export const useHandleCreateAdoptionReq = () => {
         petId: requestsValuesContext.petId,
       },
     });
+    console.log(response, "response");
+    if (!response.success) {
+      throw new Error("Error al enviar solicitud");
+    }
   };
   return { handleCreateAdoptionReq, loading, error };
 };
@@ -94,7 +96,7 @@ export const useHandleDeleteAdoptionReq = () => {
   const handleDeleteAdoptionReq = async (id: string) => {
     console.log("id", id);
 
-   await mutate({
+    await mutate({
       url: URL + "?id=" + id,
       method: "DELETE",
     });
@@ -112,7 +114,7 @@ export const useHandleUpdateAdoptionReq = () => {
     id,
     isApprovedUpdate,
   }: UpdateAdoptionReq) => {
-   await mutate({
+    await mutate({
       url: URL + "?id=" + id,
       method: "PATCH",
       body: {

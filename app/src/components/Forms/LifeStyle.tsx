@@ -19,6 +19,15 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
 
   const { setRequestsValues } = useContext(FormAdoptionReqContext);
   const handleNext = () => {
+    if (
+      !values.job ||
+      !values.iftravel ||
+      !values.petIfTravel ||
+      !values.otherHouse
+    ) {
+      alert("Por favor, complete todos los campos obligatorios");
+      return;
+    }
     setRequestsValues((prev) => ({
       ...prev,
       LifeStyle: values,

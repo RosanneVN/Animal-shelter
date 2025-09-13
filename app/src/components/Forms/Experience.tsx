@@ -19,6 +19,16 @@ const Experience = ({ nextStep, prevStep }: Props) => {
 
   const { setRequestsValues } = useContext(FormAdoptionReqContext);
   const handleNext = () => {
+    if (
+      !values.family ||
+      !values.adoptionAgree ||
+      !values.howManyPets ||
+      !values.petsBefore ||
+      !values.petsBeforeAlive
+    ) {
+      alert("Por favor, complete todos los campos obligatorios");
+      return;
+    }
     setRequestsValues((prev) => ({
       ...prev,
       Experience: {
@@ -63,7 +73,6 @@ const Experience = ({ nextStep, prevStep }: Props) => {
                 }}
                 isRequired={true}
                 value={values.family}
-               
                 errorMesage={
                   !values.family ? "Este campo es obligatorio" : undefined
                 }
@@ -87,7 +96,6 @@ const Experience = ({ nextStep, prevStep }: Props) => {
                 }}
                 isRequired={true}
                 value={values.howManyPets}
-               
                 errorMesage={
                   !values.howManyPets ? "Este campo es obligatorio" : undefined
                 }

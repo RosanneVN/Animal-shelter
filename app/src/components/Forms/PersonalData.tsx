@@ -17,18 +17,30 @@ const PersonalData = ({ nextStep }: Props) => {
   );
   const { setRequestsValues } = useContext(FormAdoptionReqContext);
   const handleNext = () => {
+    if (
+      !values.fullname ||
+      !values.age ||
+      !values.address ||
+      !values.cellPhone ||
+      !values.alternativeCellPhone ||
+      getEdadError()
+    ) {
+      alert("Por favor, complete todos los campos obligatorios");
+      return;
+
+    }
     setRequestsValues((prev) => ({
       ...prev,
       PersonalData: {
-        address:values.address,
-        fullname:values.fullname,
-        age:Number(values.age),
-        id:values.id,
-        alternativeCellPhone:Number(values.alternativeCellPhone),
-        cellPhone:Number(values.cellPhone)
+        address: values.address,
+        fullname: values.fullname,
+        age: Number(values.age),
+        id: values.id,
+        alternativeCellPhone: Number(values.alternativeCellPhone),
+        cellPhone: Number(values.cellPhone),
       },
     }));
-    nextStep()
+    nextStep();
   };
   const handleChange = (
     field: keyof typeof values,
@@ -38,7 +50,6 @@ const PersonalData = ({ nextStep }: Props) => {
       ...prev,
       [field]: value,
     }));
-
   };
 
   const getEdadError = () => {
@@ -147,7 +158,10 @@ const PersonalData = ({ nextStep }: Props) => {
               />
             </div>
             {/*botones de siguiente*/}
-            <BackAndNext prevStep={undefined} nextStep={handleNext}></BackAndNext>
+            <BackAndNext
+              prevStep={undefined}
+              nextStep={handleNext}
+            ></BackAndNext>
           </div>
         </div>
       </FormContent>

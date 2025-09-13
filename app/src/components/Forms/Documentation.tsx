@@ -12,7 +12,6 @@ import { ModalFormContext } from "../../Context/ModalFormContext";
 import UploadInput from "../Inputs/UploadInput";
 
 type Props = {
-  nextStep?: any;
   prevStep: any;
 };
 
@@ -28,7 +27,13 @@ const Documentation = ({ prevStep }: Props) => {
 
   const { handleCreateAdoptionReq, loading, error } =
     useHandleCreateAdoptionReq();
-  const handleNext = async () => {
+
+  // Esta función ahora se ejecutará con el onSubmit del formulario
+  const handleFinalSubmit = async () => {
+    if (!values.CImgBack || !values.CImgFront || !values.youAgree) {
+      alert("Por favor, complete todos los campos obligatorios");
+      return;
+    }
     const newRequestsValues = {
       ...requestsValues,
       Documentation: values,
@@ -39,11 +44,15 @@ const Documentation = ({ prevStep }: Props) => {
     if (loading) {
       return;
     }
-    await handleCreateAdoptionReq({
-      requestsValuesContext: newRequestsValues,
-    });
-
-    if (error) {
+    try {
+      await handleCreateAdoptionReq({
+        requestsValuesContext: newRequestsValues,
+      });
+    } catch (error) {
+      console.log(error);
+      alert(
+        "Hubo un error al enviar la solicitud. Por favor, inténtelo de nuevo."
+      );
       return;
     }
     setIsOpen(false);
@@ -72,10 +81,10 @@ const Documentation = ({ prevStep }: Props) => {
     }));
   }, []);
 
-
   return (
     <>
-      <FormContent>
+      {/* Le pasamos la lógica de envío al onSubmit de FormContent */}
+      <FormContent onSubmit={handleFinalSubmit}>
         <div className="py-9 px-10 flex flex-col gap-4 h-full">
           <div className="flex flex-col gap-1">
             <h3 className="text-center text-lg text-orange-400 font-semibold">
@@ -88,18 +97,22 @@ const Documentation = ({ prevStep }: Props) => {
 
           <div className=" flex flex-col justify-between h-full gap-5">
             <div className="flex flex-col gap-2">
-              <label className="text-shortLetters text-lettersDark" htmlFor="">Adujnte foto delantera del carnet de identidad</label>
+              <label className="text-shortLetters text-lettersDark" htmlFor="">
+                Adujnte foto delantera del carnet de identidad
+              </label>
               <UploadInput
                 onImageChange={handleImageChangeFront}
                 errorMessage={
-                  !values.CImgFront? "La imagen es obligatoria" : undefined
+                  !values.CImgFront ? "La imagen es obligatoria" : undefined
                 }
               />
-                <label className="text-shortLetters text-lettersDark" htmlFor="">Adujnte foto trasera del carnet de identidad</label>
+              <label className="text-shortLetters text-lettersDark" htmlFor="">
+                Adujnte foto trasera del carnet de identidad
+              </label>
               <UploadInput
                 onImageChange={handleImageChangeBack}
                 errorMessage={
-                  !values.CImgBack? "La imagen es obligatoria" : undefined
+                  !values.CImgBack ? "La imagen es obligatoria" : undefined
                 }
               />
               <Notes
@@ -119,7 +132,9 @@ const Documentation = ({ prevStep }: Props) => {
             </div>
             <BackAndNext
               prevStep={prevStep}
-              nextStep={handleNext}
+              // Ya no necesitamos pasar `nextStep` aquí para el envío.
+              // El botón final debe ser `type="submit"` dentro de BackAndNext.
+              isFinalStep={true}
             ></BackAndNext>
           </div>
         </div>

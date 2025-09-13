@@ -20,6 +20,16 @@ const Motivaciones = ({ nextStep, prevStep }: Props) => {
 
   const { setRequestsValues } = useContext(FormAdoptionReqContext);
   const handleNext = () => {
+    if (
+      !values.motivation ||
+      !values.forWho ||
+      !values.petMoney ||
+      !values.petFollowing ||
+      !values.notAbandoned
+    ) {
+      alert("Por favor, complete todos los campos obligatorios");
+      return;
+    }
     setRequestsValues((prev) => ({
       ...prev,
       Motivaciones: values,

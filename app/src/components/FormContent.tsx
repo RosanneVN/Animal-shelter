@@ -1,12 +1,27 @@
-import React, { Children, useContext, type ReactNode } from "react";
+import React, { useContext, type ReactNode } from "react";
 import { ModalFormContext } from "../Context/ModalFormContext";
 
-type Props = {};
+type Props = {
+  children: ReactNode;
+  // Añadimos una prop opcional para manejar el envío
+  onSubmit?: (event: React.FormEvent<HTMLFormElement>) => void;
+};
 
-export default function FormContent({ children }: { children: ReactNode }) {
+export default function FormContent({ children, onSubmit }: Props) {
   const { setIsOpen } = useContext(ModalFormContext);
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (onSubmit) {
+      onSubmit(event);
+    }
+  };
+
   return (
-    <form action="" className=" flex flex-col overflow-auto p-3  flex-1">
+    <form
+      onSubmit={handleSubmit}
+      className=" flex flex-col overflow-auto p-3  flex-1"
+    >
       {" "}
       <button
         type="button"
