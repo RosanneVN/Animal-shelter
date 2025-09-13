@@ -5,6 +5,6 @@ import { AdoptionReqView } from "../../moduls/administrationModuls/AdoptionReque
 const { adoptionReqID } = Astro.params;
 ---
 
-<Header>
+<Header title="Adoption Request Details" description="Details of the adoption request">
   <AdoptionReqView client:load adoptionReqID={adoptionReqID} />
 </Header>
