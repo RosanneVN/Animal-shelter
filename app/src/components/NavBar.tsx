@@ -12,7 +12,7 @@ const NavBar = () => {
     <>
       <nav className="flex w-full place-content-center ">
         <div
-          className="fixed top-0 z-30 w-[80%] max-sm:w-[95%] flex flex-row px-10 py-5 my-10 justify-between items-center
+          className="fixed top-0 z-30 w-[80%] max-sm:w-[95%] flex flex-row px-10 py-5 my-10 max-sm:py-3 justify-between items-center
 bg-white/55 rounded-full backdrop-blur-md"
         >
           <div className="text-2xl max-sm:text-lg text-secondary items-center justify-center font-bold flex ">
