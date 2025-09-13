@@ -17,13 +17,17 @@ export default function AuthContent({}: Props) {
   };
 
   const handleSubmit = async () => {
+const finalValues = { ...values };
+finalValues.username = finalValues.username.trim().toLowerCase();
+finalValues.password = finalValues.password.trim();
+
     try {
       const response = await fetch("/api/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values),
+        body: JSON.stringify(finalValues),
       });
 
       if (response.ok) {
