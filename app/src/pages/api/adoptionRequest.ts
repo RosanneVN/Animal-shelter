@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { AdoptionRequestsDB, count, db, desc, eq, Pets } from "astro:db";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4 , v7 as uuidv7 } from "uuid";
 import {
   AdoptionReqSchema,
   deleteAdoptionReqSchema,
@@ -206,7 +206,7 @@ export const POST: APIRoute = async ({ request }) => {
     const imgFront = await uploadImgs(validationData.CImgFront, uuidv4());
     const imgBack = await uploadImgs(validationData.CImgBack, uuidv4());
 
-    const newId = uuidv4();
+    const newId = uuidv7();
 
     const adoptionReq = await db.insert(AdoptionRequestsDB).values({
       id: newId,

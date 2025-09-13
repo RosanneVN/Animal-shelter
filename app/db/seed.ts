@@ -7,7 +7,7 @@ import {
   BlogPostsDB,
   CalendarEvents,
 } from "astro:db";
-import { v4 as uuidv4 } from "uuid";
+import { v4 as uuidv4, v7 as uuidv7 } from "uuid";
 import bcrypt from "bcrypt";
 export default async function () {
   await db.insert(Pets).values([
@@ -41,7 +41,7 @@ export default async function () {
   ]);
   await db.insert(AdoptionRequestsDB).values([
     {
-      id: uuidv4(),
+      id: uuidv7(),
       fullname: "Rosanne Vazquez Nunez",
       age: 21,
       cellPhone: 56775245,
@@ -83,7 +83,7 @@ export default async function () {
       isApproved: false,
     },
     {
-      id: uuidv4(),
+      id: uuidv7(),
       fullname: "Erick Garcia",
       age: 23,
       cellPhone: 56775245,
