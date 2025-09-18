@@ -82,7 +82,7 @@ const FooterContacto = () => {
               </div>
               <a
                 target="_blank"
-                href={`https://wa.me/56775245?text=Hola, mi nombre es ${values.fullName}, ${values.message}`}
+                href={`https://wa.me/+34604470487?text=Hola, mi nombre es ${values.fullName}, ${values.message}`}
                 className="uppercase text-lettersDark w-fit bg-orange-200 py-1
  px-5 rounded-xl shadow-lg hover:translate-y-1 hover:shadow-none"
               >
