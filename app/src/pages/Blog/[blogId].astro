@@ -5,6 +5,8 @@ import PublicBlogPostDetail from "../../components/PublicBlogPostDetail";
 const { blogId } = Astro.params;
 ---
 
-<Header>
-  <PublicBlogPostDetail client:visible blogPostId={blogId || ""} />
-</Header>
+<Header
+  title="Blog - Apadrina y Dona"
+  description="Blog de la comunidad de animales"
+/>
+<PublicBlogPostDetail client:visible blogPostId={blogId || ""} />
