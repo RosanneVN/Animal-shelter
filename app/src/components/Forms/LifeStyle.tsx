@@ -24,7 +24,12 @@ const LifeStyle = ({ nextStep, prevStep }: Props) => {
       return;
     }
     const finalValues = { ...values };
-    if (finalValues.iftravel === "No") {
+    if (
+      finalValues.iftravel
+        ?.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "") === "no"
+    ) {
       finalValues.petIfTravel = "No pienso viajar";
     }
 

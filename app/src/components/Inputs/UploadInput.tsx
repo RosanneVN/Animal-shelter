@@ -57,6 +57,14 @@ const UploadInput = ({ onImageChange, errorMessage, previewURL,className }: Prop
       return;
     }
 
+    // Validar tamaño máximo de 2MB
+    if (file.size > 2 * 1024 * 1024) {
+      alert("Use una imagen que pese menos de 2MB o le disminuya la calidad con w");
+      setError("La imagen debe pesar 2MB o menos");
+      setSelectedFile(null);
+      return;
+    }
+
     // Validate the file
     const validation = validateImageFile(file);
     if (!validation.isValid) {
